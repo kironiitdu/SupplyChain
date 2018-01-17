@@ -1,0 +1,2112 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="SCMAamraDevModel.Store" Alias="Self" Provider="System.Data.SqlClient" ProviderManifestToken="2008" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+  <EntityContainer Name="SCMAamraDevModelStoreContainer">
+    <EntitySet Name="accessories_category" EntityType="SCMAamraDevModel.Store.accessories_category" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="area" EntityType="SCMAamraDevModel.Store.area" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="bank" EntityType="SCMAamraDevModel.Store.bank" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="bank_account" EntityType="SCMAamraDevModel.Store.bank_account" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="bank_branch" EntityType="SCMAamraDevModel.Store.bank_branch" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="brand" EntityType="SCMAamraDevModel.Store.brand" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="ci_pl_details" EntityType="SCMAamraDevModel.Store.ci_pl_details" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="ci_pl_master" EntityType="SCMAamraDevModel.Store.ci_pl_master" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="city" EntityType="SCMAamraDevModel.Store.city" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="color" EntityType="SCMAamraDevModel.Store.color" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="company" EntityType="SCMAamraDevModel.Store.company" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="control" EntityType="SCMAamraDevModel.Store.control" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="country" EntityType="SCMAamraDevModel.Store.country" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="courier" EntityType="SCMAamraDevModel.Store.courier" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="currency" EntityType="SCMAamraDevModel.Store.currency" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="damage_type" EntityType="SCMAamraDevModel.Store.damage_type" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="dealer_type" EntityType="SCMAamraDevModel.Store.dealer_type" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="delivery_details" EntityType="SCMAamraDevModel.Store.delivery_details" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="delivery_master" EntityType="SCMAamraDevModel.Store.delivery_master" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="department" EntityType="SCMAamraDevModel.Store.department" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="designation" EntityType="SCMAamraDevModel.Store.designation" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="direct_transfer_details" EntityType="SCMAamraDevModel.Store.direct_transfer_details" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="direct_transfer_master" EntityType="SCMAamraDevModel.Store.direct_transfer_master" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="employee" EntityType="SCMAamraDevModel.Store.employee" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="eshop_cutomer_requisition_mapping" EntityType="SCMAamraDevModel.Store.eshop_cutomer_requisition_mapping" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="eshop_payment_method" EntityType="SCMAamraDevModel.Store.eshop_payment_method" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="eshop_return_details" EntityType="SCMAamraDevModel.Store.eshop_return_details" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="eshop_return_master" EntityType="SCMAamraDevModel.Store.eshop_return_master" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="eshop_shipping" EntityType="SCMAamraDevModel.Store.eshop_shipping" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="grn_details" EntityType="SCMAamraDevModel.Store.grn_details" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="grn_master" EntityType="SCMAamraDevModel.Store.grn_master" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="installment_details" EntityType="SCMAamraDevModel.Store.installment_details" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="internal_requisition_details" EntityType="SCMAamraDevModel.Store.internal_requisition_details" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="internal_requisition_master" EntityType="SCMAamraDevModel.Store.internal_requisition_master" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="inventory" EntityType="SCMAamraDevModel.Store.inventory" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="inventory_adjustment" EntityType="SCMAamraDevModel.Store.inventory_adjustment" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="inventory_stock" EntityType="SCMAamraDevModel.Store.inventory_stock" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="invoice_details" EntityType="SCMAamraDevModel.Store.invoice_details" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="invoice_log" EntityType="SCMAamraDevModel.Store.invoice_log" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="invoice_master" EntityType="SCMAamraDevModel.Store.invoice_master" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="local_purchase_order_details" EntityType="SCMAamraDevModel.Store.local_purchase_order_details" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="local_purchase_order_master" EntityType="SCMAamraDevModel.Store.local_purchase_order_master" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="mail_receiver_setting" EntityType="SCMAamraDevModel.Store.mail_receiver_setting" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="mrr_details" EntityType="SCMAamraDevModel.Store.mrr_details" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="mrr_master" EntityType="SCMAamraDevModel.Store.mrr_master" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="notifier_mail_account" EntityType="SCMAamraDevModel.Store.notifier_mail_account" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="online_invoice_details" EntityType="SCMAamraDevModel.Store.online_invoice_details" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="online_invoice_master" EntityType="SCMAamraDevModel.Store.online_invoice_master" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="online_invoice_requisition_mapping" EntityType="SCMAamraDevModel.Store.online_invoice_requisition_mapping" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="online_return_details" EntityType="SCMAamraDevModel.Store.online_return_details" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="online_return_master" EntityType="SCMAamraDevModel.Store.online_return_master" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="party" EntityType="SCMAamraDevModel.Store.party" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="party_journal" EntityType="SCMAamraDevModel.Store.party_journal" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="party_type" EntityType="SCMAamraDevModel.Store.party_type" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="payment_method" EntityType="SCMAamraDevModel.Store.payment_method" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="payment_request" EntityType="SCMAamraDevModel.Store.payment_request" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="process_wise_mail_setting" EntityType="SCMAamraDevModel.Store.process_wise_mail_setting" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="product" EntityType="SCMAamraDevModel.Store.product" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="product_category" EntityType="SCMAamraDevModel.Store.product_category" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="product_color_mapping" EntityType="SCMAamraDevModel.Store.product_color_mapping" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="product_price_mapping" EntityType="SCMAamraDevModel.Store.product_price_mapping" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="product_price_mapping_log" EntityType="SCMAamraDevModel.Store.product_price_mapping_log" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="product_version" EntityType="SCMAamraDevModel.Store.product_version" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="product_version_mapping" EntityType="SCMAamraDevModel.Store.product_version_mapping" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="promotion_channel_mapping" EntityType="SCMAamraDevModel.Store.promotion_channel_mapping" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="promotion_details" EntityType="SCMAamraDevModel.Store.promotion_details" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="promotion_master" EntityType="SCMAamraDevModel.Store.promotion_master" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="purchase_order_details" EntityType="SCMAamraDevModel.Store.purchase_order_details" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="purchase_order_master" EntityType="SCMAamraDevModel.Store.purchase_order_master" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="receive" EntityType="SCMAamraDevModel.Store.receive" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="receive_serial_no_details" EntityType="SCMAamraDevModel.Store.receive_serial_no_details" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="region" EntityType="SCMAamraDevModel.Store.region" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="requisition_details" EntityType="SCMAamraDevModel.Store.requisition_details" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="requisition_master" EntityType="SCMAamraDevModel.Store.requisition_master" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="retailer_type" EntityType="SCMAamraDevModel.Store.retailer_type" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="return_details" EntityType="SCMAamraDevModel.Store.return_details" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="return_master" EntityType="SCMAamraDevModel.Store.return_master" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="return_type" EntityType="SCMAamraDevModel.Store.return_type" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="role" EntityType="SCMAamraDevModel.Store.role" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="role_type" EntityType="SCMAamraDevModel.Store.role_type" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="RowCountsAndSizes" EntityType="SCMAamraDevModel.Store.RowCountsAndSizes" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="sales_type" EntityType="SCMAamraDevModel.Store.sales_type" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="sbu" EntityType="SCMAamraDevModel.Store.sbu" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="shipping_method" EntityType="SCMAamraDevModel.Store.shipping_method" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="shipping_terms" EntityType="SCMAamraDevModel.Store.shipping_terms" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="software_process_module" EntityType="SCMAamraDevModel.Store.software_process_module" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="supplier" EntityType="SCMAamraDevModel.Store.supplier" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="supplier_type" EntityType="SCMAamraDevModel.Store.supplier_type" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="terms_and_condition" EntityType="SCMAamraDevModel.Store.terms_and_condition" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="territory" EntityType="SCMAamraDevModel.Store.territory" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="to_delivery_details" EntityType="SCMAamraDevModel.Store.to_delivery_details" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="to_delivery_master" EntityType="SCMAamraDevModel.Store.to_delivery_master" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="transaction_configuration" EntityType="SCMAamraDevModel.Store.transaction_configuration" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="transfer_order_details" EntityType="SCMAamraDevModel.Store.transfer_order_details" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="transfer_order_master" EntityType="SCMAamraDevModel.Store.transfer_order_master" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="unit" EntityType="SCMAamraDevModel.Store.unit" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="user_log" EntityType="SCMAamraDevModel.Store.user_log" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="user_permission" EntityType="SCMAamraDevModel.Store.user_permission" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="users" EntityType="SCMAamraDevModel.Store.users" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="warehouse" EntityType="SCMAamraDevModel.Store.warehouse" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="viewDailySale" EntityType="SCMAamraDevModel.Store.viewDailySale" store:Type="Views" store:Schema="dbo" store:Name="viewDailySale">
+      <DefiningQuery>SELECT 
+      [viewDailySale].[invoice_details_id] AS [invoice_details_id], 
+      [viewDailySale].[invoice_no] AS [invoice_no], 
+      [viewDailySale].[delivery_date] AS [delivery_date], 
+      [viewDailySale].[party_type_name] AS [party_type_name], 
+      [viewDailySale].[party_id] AS [party_id], 
+      [viewDailySale].[party_name] AS [party_name], 
+      [viewDailySale].[color_name] AS [color_name], 
+      [viewDailySale].[product_version_name] AS [product_version_name], 
+      [viewDailySale].[territory_name] AS [territory_name], 
+      [viewDailySale].[region_name] AS [region_name], 
+      [viewDailySale].[area_name] AS [area_name], 
+      [viewDailySale].[product_category_name] AS [product_category_name], 
+      [viewDailySale].[product_category_id] AS [product_category_id], 
+      [viewDailySale].[product_id] AS [product_id], 
+      [viewDailySale].[product_name] AS [product_name], 
+      [viewDailySale].[delivered_quantity] AS [delivered_quantity], 
+      [viewDailySale].[unit_price] AS [unit_price], 
+      [viewDailySale].[total_price] AS [total_price], 
+      [viewDailySale].[per_incentive] AS [per_incentive], 
+      [viewDailySale].[total_incentive_amt] AS [total_incentive_amt], 
+      [viewDailySale].[total_price_after_incen] AS [total_price_after_incen], 
+      [viewDailySale].[invoice_total] AS [invoice_total], 
+      [viewDailySale].[paid_amount] AS [paid_amount], 
+      [viewDailySale].[balance_amount] AS [balance_amount], 
+      [viewDailySale].[remain_balance_status] AS [remain_balance_status]
+      FROM [dbo].[viewDailySale] AS [viewDailySale]</DefiningQuery>
+    </EntitySet>
+  </EntityContainer>
+  <EntityType Name="accessories_category">
+    <Key>
+      <PropertyRef Name="accessories_category_id" />
+    </Key>
+    <Property Name="accessories_category_id" Type="bigint" Nullable="false" StoreGeneratedPattern="Identity" />
+    <Property Name="accessories_category_name" Type="nvarchar" MaxLength="100" />
+    <Property Name="price" Type="decimal" Scale="2" />
+    <Property Name="created_by" Type="bigint" />
+    <Property Name="created_date" Type="datetime" />
+    <Property Name="updated_by" Type="bigint" />
+    <Property Name="updated_date" Type="datetime" />
+    <Property Name="is_active" Type="bit" />
+    <Property Name="is_deleted" Type="bit" />
+  </EntityType>
+  <EntityType Name="area">
+    <Key>
+      <PropertyRef Name="area_id" />
+    </Key>
+    <Property Name="area_id" Type="bigint" Nullable="false" StoreGeneratedPattern="Identity" />
+    <Property Name="region_id" Type="bigint" />
+    <Property Name="area_name" Type="nvarchar" MaxLength="100" />
+    <Property Name="area_code" Type="nvarchar" MaxLength="20" />
+    <Property Name="is_active" Type="bit" />
+    <Property Name="created_date" Type="datetime" />
+    <Property Name="created_by" Type="bigint" />
+    <Property Name="updated_date" Type="datetime" />
+    <Property Name="updated_by" Type="bigint" />
+  </EntityType>
+  <EntityType Name="bank">
+    <Key>
+      <PropertyRef Name="bank_id" />
+    </Key>
+    <Property Name="bank_id" Type="bigint" Nullable="false" StoreGeneratedPattern="Identity" />
+    <Property Name="bank_name" Type="nvarchar" MaxLength="100" />
+    <Property Name="created_by" Type="bigint" />
+    <Property Name="created_date" Type="datetime" />
+    <Property Name="updated_by" Type="bigint" />
+    <Property Name="updated_date" Type="datetime" />
+    <Property Name="is_active" Type="bit" />
+    <Property Name="is_deleted" Type="bit" />
+  </EntityType>
+  <EntityType Name="bank_account">
+    <Key>
+      <PropertyRef Name="bank_account_id" />
+    </Key>
+    <Property Name="bank_account_id" Type="bigint" Nullable="false" StoreGeneratedPattern="Identity" />
+    <Property Name="bank_branch_id" Type="bigint" />
+    <Property Name="bank_account_name" Type="nvarchar" MaxLength="100" />
+    <Property Name="created_by" Type="bigint" />
+    <Property Name="created_date" Type="datetime" />
+    <Property Name="updated_by" Type="bigint" />
+    <Property Name="updated_date" Type="datetime" />
+    <Property Name="is_active" Type="bit" />
+    <Property Name="is_deleted" Type="bit" />
+  </EntityType>
+  <EntityType Name="bank_branch">
+    <Key>
+      <PropertyRef Name="bank_branch_id" />
+    </Key>
+    <Property Name="bank_branch_id" Type="bigint" Nullable="false" StoreGeneratedPattern="Identity" />
+    <Property Name="bank_branch_name" Type="nvarchar" MaxLength="100" />
+    <Property Name="bank_id" Type="bigint" />
+    <Property Name="created_by" Type="bigint" />
+    <Property Name="created_date" Type="datetime" />
+    <Property Name="updated_by" Type="bigint" />
+    <Property Name="updated_date" Type="datetime" />
+    <Property Name="is_active" Type="bit" />
+    <Property Name="is_deleted" Type="bit" />
+  </EntityType>
+  <EntityType Name="brand">
+    <Key>
+      <PropertyRef Name="brand_id" />
+    </Key>
+    <Property Name="brand_id" Type="bigint" Nullable="false" StoreGeneratedPattern="Identity" />
+    <Property Name="brand_name" Type="nvarchar" MaxLength="100" />
+    <Property Name="created_by" Type="bigint" />
+    <Property Name="created_date" Type="datetime" />
+    <Property Name="updated_by" Type="bigint" />
+    <Property Name="updated_date" Type="datetime" />
+    <Property Name="is_active" Type="bit" />
+    <Property Name="is_deleted" Type="bit" />
+  </EntityType>
+  <EntityType Name="ci_pl_details">
+    <Key>
+      <PropertyRef Name="ci_pl_details_id" />
+    </Key>
+    <Property Name="ci_pl_details_id" Type="bigint" Nullable="false" StoreGeneratedPattern="Identity" />
+    <Property Name="ci_pl_master_id" Type="bigint" />
+    <Property Name="product_id" Type="bigint" />
+    <Property Name="quantity" Type="int" />
+    <Property Name="unit_price" Type="decimal" Scale="2" />
+    <Property Name="amount" Type="decimal" Scale="2" />
+    <Property Name="nw_kg_ctn" Type="decimal" Scale="2" />
+    <Property Name="gw_kg_ctn" Type="decimal" Scale="2" />
+    <Property Name="measurement" Type="decimal" Scale="2" />
+  </EntityType>
+  <EntityType Name="ci_pl_master">
+    <Key>
+      <PropertyRef Name="ci_pl_master_id" />
+    </Key>
+    <Property Name="ci_pl_master_id" Type="bigint" Nullable="false" StoreGeneratedPattern="Identity" />
+    <Property Name="supplier_id" Type="bigint" />
+    <Property Name="purchase_order_master_id" Type="bigint" />
+    <Property Name="ci_no" Type="nvarchar" MaxLength="250" />
+    <Property Name="ref_no" Type="nvarchar" MaxLength="250" />
+    <Property Name="ci_date" Type="date" />
+    <Property Name="payment_term" Type="nvarchar" MaxLength="250" />
+    <Property Name="dc_no" Type="nvarchar" MaxLength="250" />
+    <Property Name="issue_date" Type="date" />
+    <Property Name="ci_attachment_location" Type="nvarchar(max)" />
+    <Property Name="pl_attachment_location" Type="nvarchar(max)" />
+    <Property Name="created_by" Type="bigint" />
+    <Property Name="created_date" Type="datetime" />
+    <Property Name="updated_by" Type="bigint" />
+    <Property Name="updated_date" Type="datetime" />
+    <Property Name="is_active" Type="bit" />
+    <Property Name="is_received" Type="bit" />
+  </EntityType>
+  <EntityType Name="city">
+    <Key>
+      <PropertyRef Name="city_id" />
+    </Key>
+    <Property Name="city_id" Type="bigint" Nullable="false" StoreGeneratedPattern="Identity" />
+    <Property Name="city_name" Type="nvarchar" MaxLength="100" />
+    <Property Name="created_by" Type="bigint" />
+    <Property Name="created_date" Type="datetime" />
+    <Property Name="updated_by" Type="bigint" />
+    <Property Name="updated_date" Type="datetime" />
+    <Property Name="is_active" Type="bit" />
+    <Property Name="is_deleted" Type="bit" />
+  </EntityType>
+  <EntityType Name="color">
+    <Key>
+      <PropertyRef Name="color_id" />
+    </Key>
+    <Property Name="color_id" Type="bigint" Nullable="false" StoreGeneratedPattern="Identity" />
+    <Property Name="color_name" Type="nvarchar" MaxLength="100" />
+    <Property Name="created_by" Type="bigint" />
+    <Property Name="created_date" Type="datetime" />
+    <Property Name="updated_by" Type="bigint" />
+    <Property Name="updated_date" Type="datetime" />
+    <Property Name="is_active" Type="bit" />
+    <Property Name="is_deleted" Type="bit" />
+  </EntityType>
+  <EntityType Name="company">
+    <Key>
+      <PropertyRef Name="company_id" />
+    </Key>
+    <Property Name="company_id" Type="bigint" Nullable="false" StoreGeneratedPattern="Identity" />
+    <Property Name="company_name" Type="nvarchar" MaxLength="250" />
+    <Property Name="company_code" Type="nvarchar" MaxLength="50" />
+    <Property Name="address" Type="nvarchar(max)" />
+    <Property Name="mobile" Type="nvarchar" MaxLength="15" />
+    <Property Name="zip_code" Type="nvarchar" MaxLength="50" />
+    <Property Name="email" Type="nvarchar" MaxLength="50" />
+    <Property Name="created_by" Type="bigint" />
+    <Property Name="created_date" Type="datetime" />
+    <Property Name="updated_by" Type="bigint" />
+    <Property Name="updated_date" Type="datetime" />
+    <Property Name="is_active" Type="bit" />
+    <Property Name="is_deleted" Type="bit" />
+    <Property Name="country_id" Type="bigint" />
+    <Property Name="city_id" Type="bigint" />
+  </EntityType>
+  <EntityType Name="control">
+    <Key>
+      <PropertyRef Name="control_id" />
+    </Key>
+    <Property Name="control_id" Type="bigint" Nullable="false" StoreGeneratedPattern="Identity" />
+    <Property Name="control_name" Type="nvarchar" MaxLength="250" />
+    <Property Name="control_parent_id" Type="bigint" />
+    <Property Name="control_type_id" Type="bigint" />
+    <Property Name="control_sort" Type="bigint" />
+    <Property Name="control_alias" Type="nvarchar" MaxLength="250" />
+    <Property Name="control_controller" Type="nvarchar" MaxLength="250" />
+    <Property Name="control_action" Type="nvarchar" MaxLength="250" />
+    <Property Name="company_id" Type="bigint" />
+    <Property Name="Level" Type="bigint" />
+    <Property Name="icon" Type="nvarchar" MaxLength="250" />
+    <Property Name="created_by" Type="bigint" />
+    <Property Name="created_date" Type="datetime" />
+    <Property Name="updated_by" Type="bigint" />
+    <Property Name="updated_date" Type="datetime" />
+    <Property Name="is_active" Type="bit" />
+    <Property Name="is_deleted" Type="bit" />
+    <Property Name="Territory_id" Type="bigint" />
+    <Property Name="region_id" Type="bigint" />
+  </EntityType>
+  <EntityType Name="country">
+    <Key>
+      <PropertyRef Name="country_id" />
+    </Key>
+    <Property Name="country_id" Type="bigint" Nullable="false" StoreGeneratedPattern="Identity" />
+    <Property Name="country_name" Type="nvarchar" MaxLength="100" />
+    <Property Name="country_code" Type="nvarchar" MaxLength="100" />
+    <Property Name="created_by" Type="bigint" />
+    <Property Name="created_date" Type="datetime" />
+    <Property Name="updated_by" Type="bigint" />
+    <Property Name="updated_date" Type="datetime" />
+    <Property Name="is_active" Type="bit" />
+    <Property Name="is_deleted" Type="bit" />
+  </EntityType>
+  <EntityType Name="courier">
+    <Key>
+      <PropertyRef Name="courier_id" />
+    </Key>
+    <Property Name="courier_id" Type="bigint" Nullable="false" StoreGeneratedPattern="Identity" />
+    <Property Name="courier_name" Type="nvarchar" MaxLength="100" />
+    <Property Name="cell" Type="nvarchar" MaxLength="50" />
+    <Property Name="created_by" Type="bigint" />
+    <Property Name="created_date" Type="datetime" />
+    <Property Name="updated_by" Type="bigint" />
+    <Property Name="updated_date" Type="datetime" />
+    <Property Name="is_active" Type="bit" />
+    <Property Name="is_deleted" Type="bit" />
+  </EntityType>
+  <EntityType Name="currency">
+    <Key>
+      <PropertyRef Name="currency_id" />
+    </Key>
+    <Property Name="currency_id" Type="bigint" Nullable="false" StoreGeneratedPattern="Identity" />
+    <Property Name="currency_name" Type="nvarchar" MaxLength="250" />
+  </EntityType>
+  <EntityType Name="damage_type">
+    <Key>
+      <PropertyRef Name="damage_type_id" />
+    </Key>
+    <Property Name="damage_type_id" Type="bigint" Nullable="false" StoreGeneratedPattern="Identity" />
+    <Property Name="damage_type_name" Type="nvarchar" MaxLength="100" />
+    <Property Name="created_by" Type="bigint" />
+    <Property Name="created_date" Type="datetime" />
+    <Property Name="updated_by" Type="bigint" />
+    <Property Name="updated_date" Type="datetime" />
+    <Property Name="is_active" Type="bit" />
+    <Property Name="is_deleted" Type="bit" />
+  </EntityType>
+  <EntityType Name="dealer_type">
+    <Key>
+      <PropertyRef Name="dealer_type_id" />
+    </Key>
+    <Property Name="dealer_type_id" Type="bigint" Nullable="false" StoreGeneratedPattern="Identity" />
+    <Property Name="dealer_type_name" Type="nvarchar" MaxLength="100" />
+    <Property Name="dealer_type_prefix" Type="nvarchar" MaxLength="50" />
+    <Property Name="created_by" Type="bigint" />
+    <Property Name="created_date" Type="datetime" />
+    <Property Name="updated_by" Type="bigint" />
+    <Property Name="updated_date" Type="datetime" />
+    <Property Name="is_active" Type="bit" />
+    <Property Name="is_deleted" Type="bit" />
+    <Property Name="credit_limit" Type="decimal" Scale="2" />
+  </EntityType>
+  <EntityType Name="delivery_details">
+    <Key>
+      <PropertyRef Name="delivery_details_id" />
+    </Key>
+    <Property Name="delivery_details_id" Type="bigint" Nullable="false" StoreGeneratedPattern="Identity" />
+    <Property Name="delivery_master_id" Type="bigint" />
+    <Property Name="product_id" Type="bigint" />
+    <Property Name="unit_id" Type="bigint" />
+    <Property Name="color_id" Type="bigint" />
+    <Property Name="product_version_id" Type="bigint" />
+    <Property Name="party_id" Type="bigint" />
+    <Property Name="requisition_quantity" Type="int" />
+    <Property Name="delivered_quantity" Type="int" />
+    <Property Name="is_gift" Type="bit" />
+    <Property Name="is_live_dummy" Type="bit" />
+    <Property Name="gift_type" Type="nvarchar" MaxLength="50" />
+    <Property Name="unit_price" Type="decimal" Scale="2" />
+    <Property Name="line_total" Type="decimal" Scale="2" />
+  </EntityType>
+  <EntityType Name="delivery_master">
+    <Key>
+      <PropertyRef Name="delivery_master_id" />
+    </Key>
+    <Property Name="delivery_master_id" Type="bigint" Nullable="false" StoreGeneratedPattern="Identity" />
+    <Property Name="delivery_no" Type="nvarchar" MaxLength="50" />
+    <Property Name="delivery_date" Type="datetime" />
+    <Property Name="delivery_address" Type="nvarchar(max)" />
+    <Property Name="delivered_by" Type="bigint" />
+    <Property Name="party_id" Type="bigint" />
+    <Property Name="requisition_master_id" Type="bigint" />
+    <Property Name="courier_id" Type="bigint" />
+    <Property Name="courier_slip_no" Type="nvarchar" MaxLength="50" />
+    <Property Name="from_warehouse_id" Type="bigint" />
+    <Property Name="to_warehouse_id" Type="bigint" />
+    <Property Name="status" Type="nvarchar" MaxLength="50" />
+    <Property Name="remarks" Type="nvarchar(max)" />
+    <Property Name="lot_no" Type="nvarchar" MaxLength="50" />
+    <Property Name="vehicle_no" Type="nvarchar" MaxLength="50" />
+    <Property Name="truck_driver_name" Type="nvarchar" MaxLength="100" />
+    <Property Name="truck_driver_mobile" Type="nvarchar" MaxLength="50" />
+    <Property Name="total_amount" Type="decimal" Scale="2" />
+    <Property Name="owner_party_id" Type="bigint" />
+    <Property Name="receive_by" Type="bigint" />
+    <Property Name="receive_date" Type="datetime" />
+    <Property Name="created_by" Type="bigint" />
+    <Property Name="created_date" Type="datetime" />
+    <Property Name="updated_by" Type="bigint" />
+    <Property Name="updated_date" Type="datetime" />
+    <Property Name="is_active" Type="bit" />
+    <Property Name="is_deleted" Type="bit" />
+    <Property Name="company_id" Type="bigint" />
+    <Property Name="delivery_person_name" Type="nvarchar" MaxLength="150" />
+    <Property Name="challan_copy" Type="nvarchar" MaxLength="250" />
+    <Property Name="delivery_method_id" Type="int" />
+  </EntityType>
+  <EntityType Name="department">
+    <Key>
+      <PropertyRef Name="department_id" />
+    </Key>
+    <Property Name="department_id" Type="bigint" Nullable="false" StoreGeneratedPattern="Identity" />
+    <Property Name="department_name" Type="nvarchar" MaxLength="50" />
+    <Property Name="is_active" Type="bit" />
+  </EntityType>
+  <EntityType Name="designation">
+    <Key>
+      <PropertyRef Name="sales_designation_id" />
+    </Key>
+    <Property Name="sales_designation_id" Type="bigint" Nullable="false" StoreGeneratedPattern="Identity" />
+    <Property Name="parent_designation_id" Type="bigint" />
+    <Property Name="designation_id" Type="bigint" />
+    <Property Name="sales_type_id" Type="bigint" />
+    <Property Name="sales_designation" Type="nvarchar" MaxLength="50" />
+    <Property Name="sales_person_type_code" Type="nvarchar" MaxLength="10" />
+    <Property Name="created_by" Type="bigint" />
+    <Property Name="created_date" Type="datetime" />
+    <Property Name="updated_by" Type="bigint" />
+    <Property Name="updated_date" Type="datetime" />
+  </EntityType>
+  <EntityType Name="direct_transfer_details">
+    <Key>
+      <PropertyRef Name="direct_transfer_details_id" />
+    </Key>
+    <Property Name="direct_transfer_details_id" Type="bigint" Nullable="false" StoreGeneratedPattern="Identity" />
+    <Property Name="direct_transfer_master_id" Type="bigint" />
+    <Property Name="product_id" Type="bigint" />
+    <Property Name="color_id" Type="bigint" />
+    <Property Name="product_version_id" Type="bigint" />
+    <Property Name="quantity" Type="int" />
+  </EntityType>
+  <EntityType Name="direct_transfer_master">
+    <Key>
+      <PropertyRef Name="direct_transfer_master_id" />
+    </Key>
+    <Property Name="direct_transfer_master_id" Type="bigint" Nullable="false" StoreGeneratedPattern="Identity" />
+    <Property Name="direct_transfer_code" Type="nvarchar" MaxLength="50" />
+    <Property Name="from_warehouse_id" Type="bigint" />
+    <Property Name="to_warehouse_id" Type="bigint" />
+    <Property Name="transfer_date" Type="datetime" />
+    <Property Name="remarks" Type="nvarchar(max)" />
+    <Property Name="created_by" Type="bigint" />
+    <Property Name="created_date" Type="datetime" />
+    <Property Name="updated_by" Type="bigint" />
+    <Property Name="updated_date" Type="datetime" />
+    <Property Name="is_active" Type="bit" />
+    <Property Name="is_deleted" Type="bit" />
+  </EntityType>
+  <EntityType Name="employee">
+    <Key>
+      <PropertyRef Name="employee_id" />
+    </Key>
+    <Property Name="employee_id" Type="bigint" Nullable="false" StoreGeneratedPattern="Identity" />
+    <Property Name="employee_name" Type="nvarchar" MaxLength="100" />
+    <Property Name="date_of_birth" Type="date" />
+    <Property Name="date_of_join" Type="date" />
+    <Property Name="department_id" Type="bigint" />
+    <Property Name="designation_id" Type="bigint" />
+    <Property Name="email_address" Type="nvarchar" MaxLength="50" />
+    <Property Name="mobile_number" Type="nvarchar" MaxLength="50" />
+    <Property Name="address" Type="text" />
+    <Property Name="gender" Type="nvarchar" MaxLength="10" />
+    <Property Name="marital_status" Type="nvarchar" MaxLength="10" />
+    <Property Name="blood_group" Type="nvarchar" MaxLength="10" />
+    <Property Name="region_id" Type="bigint" />
+    <Property Name="area_id" Type="bigint" />
+    <Property Name="territory_id" Type="bigint" />
+    <Property Name="is_active" Type="bit" />
+    <Property Name="is_deleted" Type="bit" />
+    <Property Name="created_by" Type="bigint" />
+    <Property Name="created_date" Type="datetime" />
+    <Property Name="updated_by" Type="bigint" />
+    <Property Name="updated_date" Type="datetime" />
+  </EntityType>
+  <EntityType Name="eshop_cutomer_requisition_mapping">
+    <Key>
+      <PropertyRef Name="eshop_cutomer_requisition_mapping_id" />
+    </Key>
+    <Property Name="eshop_cutomer_requisition_mapping_id" Type="bigint" Nullable="false" StoreGeneratedPattern="Identity" />
+    <Property Name="delivery_date" Type="datetime" />
+    <Property Name="requisition_master_id" Type="bigint" />
+    <Property Name="customer_name" Type="nvarchar" MaxLength="50" />
+    <Property Name="mobile_no" Type="nvarchar" MaxLength="50" />
+    <Property Name="customer_email" Type="nvarchar(max)" />
+    <Property Name="shipping" Type="bigint" />
+    <Property Name="payment_method" Type="bigint" />
+    <Property Name="shipping_address" Type="nvarchar(max)" />
+    <Property Name="billing_address" Type="nvarchar(max)" />
+  </EntityType>
+  <EntityType Name="eshop_payment_method">
+    <Key>
+      <PropertyRef Name="eshop_payment_method_id" />
+    </Key>
+    <Property Name="eshop_payment_method_id" Type="bigint" Nullable="false" StoreGeneratedPattern="Identity" />
+    <Property Name="method_name" Type="nvarchar" MaxLength="100" />
+    <Property Name="is_active" Type="bit" />
+    <Property Name="created_date" Type="datetime" />
+    <Property Name="created_by" Type="bigint" />
+    <Property Name="updated_date" Type="datetime" />
+    <Property Name="updated_by" Type="bigint" />
+  </EntityType>
+  <EntityType Name="eshop_return_details">
+    <Key>
+      <PropertyRef Name="eshop_return_details_id" />
+    </Key>
+    <Property Name="eshop_return_details_id" Type="bigint" Nullable="false" StoreGeneratedPattern="Identity" />
+    <Property Name="eshop_return_master_id" Type="bigint" />
+    <Property Name="brand_id" Type="bigint" />
+    <Property Name="product_id" Type="bigint" />
+    <Property Name="color_id" Type="bigint" />
+    <Property Name="product_version_id" Type="bigint" />
+    <Property Name="unit_id" Type="bigint" />
+    <Property Name="returned_qty" Type="int" />
+    <Property Name="price" Type="decimal" Scale="2" />
+    <Property Name="imei_no" Type="nvarchar" MaxLength="50" />
+    <Property Name="imei_no2" Type="nvarchar" MaxLength="50" />
+    <Property Name="verify_status" Type="bit" />
+    <Property Name="verify_date" Type="date" />
+    <Property Name="warehouse_id" Type="bigint" />
+  </EntityType>
+  <EntityType Name="eshop_return_master">
+    <Key>
+      <PropertyRef Name="eshop_return_master_id" />
+    </Key>
+    <Property Name="eshop_return_master_id" Type="bigint" Nullable="false" StoreGeneratedPattern="Identity" />
+    <Property Name="return_code" Type="nvarchar" MaxLength="50" />
+    <Property Name="return_date" Type="datetime" />
+    <Property Name="invoice_master_id" Type="bigint" />
+    <Property Name="remarks" Type="nvarchar(max)" />
+    <Property Name="returned_quantity" Type="int" />
+    <Property Name="returned_by" Type="bigint" />
+    <Property Name="created_by" Type="bigint" />
+    <Property Name="created_date" Type="datetime" />
+    <Property Name="updated_by" Type="bigint" />
+    <Property Name="updated_date" Type="datetime" />
+  </EntityType>
+  <EntityType Name="eshop_shipping">
+    <Key>
+      <PropertyRef Name="eshop_shipping_id" />
+    </Key>
+    <Property Name="eshop_shipping_id" Type="bigint" Nullable="false" StoreGeneratedPattern="Identity" />
+    <Property Name="shipping_name" Type="nvarchar" MaxLength="100" />
+    <Property Name="is_active" Type="bit" />
+    <Property Name="created_date" Type="datetime" />
+    <Property Name="created_by" Type="bigint" />
+    <Property Name="updated_date" Type="datetime" />
+    <Property Name="updated_by" Type="bigint" />
+  </EntityType>
+  <EntityType Name="grn_details">
+    <Key>
+      <PropertyRef Name="grn_details_id" />
+    </Key>
+    <Property Name="grn_details_id" Type="bigint" Nullable="false" StoreGeneratedPattern="Identity" />
+    <Property Name="grn_master_id" Type="bigint" />
+    <Property Name="product_id" Type="bigint" />
+    <Property Name="brand_id" Type="bigint" />
+    <Property Name="color_id" Type="bigint" />
+    <Property Name="unit_id" Type="bigint" />
+    <Property Name="size_id" Type="bigint" />
+    <Property Name="product_version_id" Type="bigint" />
+    <Property Name="pi_quantity" Type="int" />
+    <Property Name="receive_quantity" Type="int" />
+    <Property Name="unit_price" Type="decimal" Scale="2" />
+    <Property Name="vat_pcnt" Type="decimal" Scale="2" />
+    <Property Name="tax_pcnt" Type="decimal" Scale="2" />
+    <Property Name="vat_amount" Type="decimal" Scale="2" />
+    <Property Name="tax_amount" Type="decimal" Scale="2" />
+    <Property Name="line_total" Type="decimal" Scale="2" />
+    <Property Name="amount" Type="decimal" Scale="2" />
+  </EntityType>
+  <EntityType Name="grn_master">
+    <Key>
+      <PropertyRef Name="grn_master_id" />
+    </Key>
+    <Property Name="grn_master_id" Type="bigint" Nullable="false" StoreGeneratedPattern="Identity" />
+    <Property Name="grn_no" Type="nvarchar" MaxLength="50" />
+    <Property Name="supplier_id" Type="bigint" />
+    <Property Name="purchase_order_master_id" Type="bigint" />
+    <Property Name="lc_id" Type="bigint" />
+    <Property Name="warehouse_id" Type="bigint" />
+    <Property Name="grn_date" Type="date" />
+    <Property Name="status" Type="nvarchar" MaxLength="50" />
+    <Property Name="remarks" Type="nvarchar(max)" />
+    <Property Name="company_id" Type="bigint" />
+    <Property Name="lot_no" Type="nvarchar" MaxLength="50" />
+    <Property Name="vat_total" Type="decimal" Scale="2" />
+    <Property Name="tax_total" Type="decimal" Scale="2" />
+    <Property Name="total_amount_without_vattax" Type="decimal" Scale="2" />
+    <Property Name="total_amount_including_vattax" Type="decimal" Scale="2" />
+    <Property Name="created_by" Type="bigint" />
+    <Property Name="created_date" Type="datetime" />
+    <Property Name="updated_by" Type="bigint" />
+    <Property Name="updated_date" Type="datetime" />
+    <Property Name="is_active" Type="bit" />
+    <Property Name="is_deleted" Type="bit" />
+    <Property Name="mrr_status" Type="bit" />
+  </EntityType>
+  <EntityType Name="installment_details">
+    <Key>
+      <PropertyRef Name="installment_details_id" />
+    </Key>
+    <Property Name="installment_details_id" Type="bigint" Nullable="false" StoreGeneratedPattern="Identity" />
+    <Property Name="internal_requisition_master_id" Type="bigint" />
+    <Property Name="installment_no" Type="nvarchar" MaxLength="100" />
+    <Property Name="installment_date" Type="date" />
+    <Property Name="installment_amount" Type="numeric" Scale="2" />
+  </EntityType>
+  <EntityType Name="internal_requisition_details">
+    <Key>
+      <PropertyRef Name="internal_requisition_details_id" />
+    </Key>
+    <Property Name="internal_requisition_details_id" Type="bigint" Nullable="false" StoreGeneratedPattern="Identity" />
+    <Property Name="internal_requisition_master_id" Type="bigint" />
+    <Property Name="product_id" Type="bigint" />
+    <Property Name="color_id" Type="bigint" />
+    <Property Name="product_version_id" Type="bigint" />
+    <Property Name="quantity" Type="int" />
+    <Property Name="price" Type="decimal" Scale="2" />
+    <Property Name="incentive_amount" Type="decimal" Scale="2" />
+    <Property Name="amount" Type="decimal" Scale="2" />
+    <Property Name="promotion_master_id" Type="bigint" />
+    <Property Name="is_gift" Type="bit" />
+    <Property Name="gift_type" Type="nvarchar" MaxLength="50" />
+  </EntityType>
+  <EntityType Name="internal_requisition_master">
+    <Key>
+      <PropertyRef Name="internal_requisition_master_id" />
+    </Key>
+    <Property Name="internal_requisition_master_id" Type="bigint" Nullable="false" StoreGeneratedPattern="Identity" />
+    <Property Name="internal_requisition_no" Type="nvarchar" MaxLength="100" />
+    <Property Name="customar_name" Type="nvarchar" MaxLength="150" />
+    <Property Name="mobile_no" Type="nvarchar" MaxLength="20" />
+    <Property Name="pricing" Type="nvarchar" MaxLength="50" />
+    <Property Name="payment_type" Type="nvarchar" MaxLength="50" />
+    <Property Name="total_amount" Type="decimal" Scale="2" />
+    <Property Name="from_warehouse_id" Type="bigint" />
+    <Property Name="to_department" Type="bigint" />
+    <Property Name="requisition_date" Type="datetime" />
+    <Property Name="remarks" Type="nvarchar(max)" />
+    <Property Name="created_by" Type="bigint" />
+    <Property Name="created_date" Type="datetime" />
+    <Property Name="requisition_status" Type="nvarchar" MaxLength="50" />
+    <Property Name="no_of_installments" Type="int" />
+    <Property Name="first_installment_date" Type="date" />
+    <Property Name="total_incentive_amount" Type="decimal" Scale="2" />
+  </EntityType>
+  <EntityType Name="inventory">
+    <Key>
+      <PropertyRef Name="inventory_id" />
+    </Key>
+    <Property Name="inventory_id" Type="bigint" Nullable="false" StoreGeneratedPattern="Identity" />
+    <Property Name="transaction_date" Type="datetime" />
+    <Property Name="transaction_type" Type="nvarchar" MaxLength="50" />
+    <Property Name="document_code" Type="nvarchar" MaxLength="50" />
+    <Property Name="product_id" Type="bigint" />
+    <Property Name="color_id" Type="bigint" />
+    <Property Name="uom_id" Type="bigint" />
+    <Property Name="opening_stock" Type="decimal" Scale="2" />
+    <Property Name="stock_in" Type="decimal" Scale="2" />
+    <Property Name="stock_out" Type="decimal" Scale="2" />
+    <Property Name="closing_stock" Type="decimal" Scale="2" />
+    <Property Name="warehouse_id" Type="bigint" />
+    <Property Name="owner_party_id" Type="bigint" />
+    <Property Name="created_by" Type="bigint" />
+    <Property Name="created_date" Type="datetime" />
+    <Property Name="updated_by" Type="bigint" />
+    <Property Name="updated_date" Type="datetime" />
+    <Property Name="is_active" Type="bit" />
+    <Property Name="is_deleted" Type="bit" />
+    <Property Name="product_version_id" Type="bigint" />
+  </EntityType>
+  <EntityType Name="inventory_adjustment">
+    <Key>
+      <PropertyRef Name="inventory_adjustment_id" />
+    </Key>
+    <Property Name="inventory_adjustment_id" Type="bigint" Nullable="false" StoreGeneratedPattern="Identity" />
+    <Property Name="adjustment_type" Type="nvarchar" MaxLength="50" />
+    <Property Name="warehouse_id" Type="bigint" />
+    <Property Name="contra_warehouse_id" Type="bigint" />
+    <Property Name="product_id" Type="bigint" />
+    <Property Name="color_id" Type="bigint" />
+    <Property Name="product_version_id" Type="bigint" />
+    <Property Name="system_quantity" Type="int" />
+    <Property Name="physical_quantity" Type="int" />
+    <Property Name="adjustment_quantity" Type="int" />
+    <Property Name="status" Type="nvarchar" MaxLength="50" />
+    <Property Name="created_by" Type="bigint" />
+    <Property Name="created_date" Type="datetime" />
+    <Property Name="updated_by" Type="bigint" />
+    <Property Name="updated_date" Type="datetime" />
+    <Property Name="approve_by" Type="bigint" />
+    <Property Name="approve_date" Type="datetime" />
+    <Property Name="cancel_by" Type="bigint" />
+    <Property Name="cancel_date" Type="datetime" />
+  </EntityType>
+  <EntityType Name="inventory_stock">
+    <Key>
+      <PropertyRef Name="inventory_stock_id" />
+    </Key>
+    <Property Name="inventory_stock_id" Type="bigint" Nullable="false" StoreGeneratedPattern="Identity" />
+    <Property Name="product_id" Type="bigint" />
+    <Property Name="color_id" Type="bigint" />
+    <Property Name="uom_id" Type="bigint" />
+    <Property Name="warehouse_id" Type="bigint" />
+    <Property Name="stock_quantity" Type="decimal" Scale="2" />
+    <Property Name="owner_party_id" Type="bigint" />
+    <Property Name="created_by" Type="bigint" />
+    <Property Name="created_date" Type="datetime" />
+    <Property Name="updated_by" Type="bigint" />
+    <Property Name="updated_date" Type="datetime" />
+    <Property Name="is_active" Type="bit" />
+    <Property Name="is_deleted" Type="bit" />
+    <Property Name="product_version_id" Type="bigint" />
+  </EntityType>
+  <EntityType Name="invoice_details">
+    <Key>
+      <PropertyRef Name="invoice_details_id" />
+    </Key>
+    <Property Name="invoice_details_id" Type="bigint" Nullable="false" StoreGeneratedPattern="Identity" />
+    <Property Name="invoice_master_id" Type="bigint" />
+    <Property Name="product_id" Type="bigint" />
+    <Property Name="product_category_id" Type="bigint" />
+    <Property Name="unit_id" Type="bigint" />
+    <Property Name="color_id" Type="bigint" />
+    <Property Name="brand_id" Type="bigint" />
+    <Property Name="quantity" Type="int" />
+    <Property Name="price" Type="decimal" Scale="2" />
+    <Property Name="line_total" Type="decimal" Scale="2" />
+    <Property Name="is_gift" Type="bit" />
+    <Property Name="gift_type" Type="nvarchar" MaxLength="50" />
+    <Property Name="is_live_dummy" Type="bit" />
+    <Property Name="product_version_id" Type="bigint" />
+    <Property Name="promotion_master_id" Type="bigint" />
+    <Property Name="discount" Type="decimal" Scale="2" />
+    <Property Name="discount_amount" Type="decimal" Scale="2" />
+  </EntityType>
+  <EntityType Name="invoice_log">
+    <Key>
+      <PropertyRef Name="invoice_log_id" />
+    </Key>
+    <Property Name="invoice_log_id" Type="bigint" Nullable="false" StoreGeneratedPattern="Identity" />
+    <Property Name="invoice_master_id" Type="bigint" />
+    <Property Name="invoice_no" Type="nvarchar" MaxLength="50" />
+    <Property Name="invoice_date" Type="date" />
+    <Property Name="party_id" Type="bigint" />
+    <Property Name="requisition_master_id" Type="bigint" />
+    <Property Name="item_total" Type="decimal" Scale="2" />
+    <Property Name="rebate_total" Type="decimal" Scale="2" />
+    <Property Name="invoice_total" Type="decimal" Scale="2" />
+    <Property Name="account_balance" Type="decimal" Scale="2" />
+    <Property Name="remarks" Type="nvarchar(max)" />
+    <Property Name="discount_amount" Type="decimal" Scale="2" />
+    <Property Name="incentive_amount" Type="decimal" Scale="2" />
+    <Property Name="incentive_percentage" Type="decimal" Scale="2" />
+    <Property Name="discount_percentage" Type="decimal" Scale="2" />
+    <Property Name="pos_master_id" Type="bigint" />
+    <Property Name="owner_party_id" Type="bigint" />
+    <Property Name="received_amount" Type="decimal" Scale="2" />
+    <Property Name="balance_amount" Type="decimal" Scale="2" />
+    <Property Name="previous_invoice_advance" Type="decimal" Scale="2" />
+    <Property Name="previous_invoice_due" Type="decimal" Scale="2" />
+    <Property Name="price_protected_amount" Type="decimal" Scale="2" />
+    <Property Name="lifting_quantity" Type="int" />
+    <Property Name="returned_qty" Type="int" />
+    <Property Name="returned_amount" Type="decimal" Scale="2" />
+    <Property Name="created_by" Type="bigint" />
+    <Property Name="created_date" Type="datetime" />
+    <Property Name="updated_by" Type="bigint" />
+    <Property Name="updated_date" Type="datetime" />
+    <Property Name="is_active" Type="bit" />
+    <Property Name="is_deleted" Type="bit" />
+    <Property Name="credit_limit" Type="decimal" Scale="2" />
+    <Property Name="party_type_id" Type="bigint" />
+    <Property Name="credit_term" Type="datetime" />
+    <Property Name="contact_person_mobile" Type="nvarchar" MaxLength="50" />
+    <Property Name="address" Type="nvarchar" MaxLength="300" />
+  </EntityType>
+  <EntityType Name="invoice_master">
+    <Key>
+      <PropertyRef Name="invoice_master_id" />
+    </Key>
+    <Property Name="invoice_master_id" Type="bigint" Nullable="false" StoreGeneratedPattern="Identity" />
+    <Property Name="invoice_no" Type="nvarchar" MaxLength="50" />
+    <Property Name="invoice_date" Type="date" />
+    <Property Name="party_id" Type="bigint" />
+    <Property Name="requisition_master_id" Type="bigint" />
+    <Property Name="item_total" Type="decimal" Scale="2" />
+    <Property Name="rebate_total" Type="decimal" Scale="2" />
+    <Property Name="invoice_total" Type="decimal" Scale="2" />
+    <Property Name="account_balance" Type="decimal" Scale="2" />
+    <Property Name="remarks" Type="nvarchar(max)" />
+    <Property Name="discount_amount" Type="decimal" Scale="2" />
+    <Property Name="incentive_amount" Type="decimal" Scale="2" />
+    <Property Name="incentive_percentage" Type="decimal" Scale="2" />
+    <Property Name="discount_percentage" Type="decimal" Scale="2" />
+    <Property Name="pos_master_id" Type="bigint" />
+    <Property Name="owner_party_id" Type="bigint" />
+    <Property Name="retailer_delivery_master_id" Type="bigint" />
+    <Property Name="created_by" Type="bigint" />
+    <Property Name="created_date" Type="datetime" />
+    <Property Name="updated_by" Type="bigint" />
+    <Property Name="updated_date" Type="datetime" />
+    <Property Name="is_active" Type="bit" />
+    <Property Name="is_deleted" Type="bit" />
+    <Property Name="credit_limit" Type="decimal" Scale="2" />
+    <Property Name="party_type_id" Type="bigint" />
+    <Property Name="credit_term" Type="datetime" />
+    <Property Name="contact_person_mobile" Type="nvarchar" MaxLength="50" />
+    <Property Name="address" Type="nvarchar" MaxLength="300" />
+    <Property Name="reference_no" Type="nvarchar" MaxLength="100" />
+    <Property Name="price_type" Type="nvarchar" MaxLength="100" />
+    <Property Name="company_id" Type="bigint" />
+    <Property Name="sales_head_recommendation" Type="nvarchar" MaxLength="300" />
+    <Property Name="operation_remarks" Type="nvarchar" MaxLength="300" />
+    <Property Name="requisition_amount" Type="decimal" Scale="2" />
+  </EntityType>
+  <EntityType Name="local_purchase_order_details">
+    <Key>
+      <PropertyRef Name="local_purchase_order_details_id" />
+    </Key>
+    <Property Name="local_purchase_order_details_id" Type="bigint" Nullable="false" StoreGeneratedPattern="Identity" />
+    <Property Name="local_purchase_order_master_id" Type="bigint" />
+    <Property Name="product_id" Type="bigint" />
+    <Property Name="product_category_id" Type="bigint" />
+    <Property Name="brand_id" Type="bigint" />
+    <Property Name="color_id" Type="bigint" />
+    <Property Name="unit_id" Type="bigint" />
+    <Property Name="size_id" Type="bigint" />
+    <Property Name="product_version_id" Type="bigint" />
+    <Property Name="quantity" Type="int" />
+    <Property Name="receive_qty" Type="int" />
+    <Property Name="unit_price" Type="decimal" Scale="2" />
+    <Property Name="line_total" Type="decimal" Scale="2" />
+    <Property Name="status" Type="nvarchar" MaxLength="50" />
+    <Property Name="vat_pcnt" Type="decimal" Scale="2" />
+    <Property Name="tax_pcnt" Type="decimal" Scale="2" />
+    <Property Name="vat_amount" Type="decimal" Scale="2" />
+    <Property Name="tax_amount" Type="decimal" Scale="2" />
+    <Property Name="amount" Type="decimal" Scale="2" />
+    <Property Name="last_modified_date" Type="datetime" />
+  </EntityType>
+  <EntityType Name="local_purchase_order_master">
+    <Key>
+      <PropertyRef Name="local_purchase_order_master_id" />
+    </Key>
+    <Property Name="local_purchase_order_master_id" Type="bigint" Nullable="false" StoreGeneratedPattern="Identity" />
+    <Property Name="order_no" Type="nvarchar" MaxLength="50" />
+    <Property Name="local_purchase_order_reference_number" Type="nvarchar" MaxLength="50" />
+    <Property Name="order_date" Type="date" />
+    <Property Name="currency_id" Type="bigint" />
+    <Property Name="status" Type="nvarchar" MaxLength="50" />
+    <Property Name="remarks" Type="nvarchar(max)" />
+    <Property Name="company_id" Type="bigint" />
+    <Property Name="supplier_id" Type="bigint" />
+    <Property Name="vat_total" Type="decimal" Scale="2" />
+    <Property Name="tax_total" Type="decimal" Scale="2" />
+    <Property Name="total_amount_without_vattax" Type="decimal" Scale="2" />
+    <Property Name="total_amount_including_vattax" Type="decimal" Scale="2" />
+    <Property Name="approve_status" Type="nvarchar" MaxLength="50" />
+    <Property Name="created_by" Type="bigint" />
+    <Property Name="created_date" Type="datetime" />
+    <Property Name="updated_by" Type="bigint" />
+    <Property Name="updated_date" Type="datetime" />
+    <Property Name="is_active" Type="bit" />
+    <Property Name="is_deleted" Type="bit" />
+  </EntityType>
+  <EntityType Name="mail_receiver_setting">
+    <Key>
+      <PropertyRef Name="mail_receiver_setting_id" />
+    </Key>
+    <Property Name="mail_receiver_setting_id" Type="bigint" Nullable="false" StoreGeneratedPattern="Identity" />
+    <Property Name="process_code_id" Type="bigint" />
+    <Property Name="receiver_name" Type="nvarchar" MaxLength="250" />
+    <Property Name="receiver_email" Type="nvarchar" MaxLength="250" />
+    <Property Name="created_by" Type="bigint" />
+    <Property Name="created_date" Type="datetime" />
+    <Property Name="updated_by" Type="bigint" />
+    <Property Name="updated_date" Type="datetime" />
+    <Property Name="is_active" Type="bit" />
+    <Property Name="is_deleted" Type="bit" />
+  </EntityType>
+  <EntityType Name="mrr_details">
+    <Key>
+      <PropertyRef Name="mrr_details_id" />
+    </Key>
+    <Property Name="mrr_details_id" Type="bigint" Nullable="false" StoreGeneratedPattern="Identity" />
+    <Property Name="mrr_master_id" Type="bigint" />
+    <Property Name="product_id" Type="bigint" />
+    <Property Name="color_id" Type="bigint" />
+    <Property Name="product_version_id" Type="bigint" />
+    <Property Name="grn_quantity" Type="int" />
+    <Property Name="saleable_quantity" Type="int" />
+    <Property Name="box_damage_quantity" Type="int" />
+    <Property Name="physical_damaged_quantity" Type="int" />
+    <Property Name="customs_lost_quantity" Type="int" />
+    <Property Name="total_received_quantity" Type="int" />
+  </EntityType>
+  <EntityType Name="mrr_master">
+    <Key>
+      <PropertyRef Name="mrr_master_id" />
+    </Key>
+    <Property Name="mrr_master_id" Type="bigint" Nullable="false" StoreGeneratedPattern="Identity" />
+    <Property Name="mrr_no" Type="nvarchar" Nullable="false" MaxLength="50" />
+    <Property Name="grn_master_id" Type="bigint" />
+    <Property Name="lost_comment" Type="nvarchar(max)" />
+    <Property Name="created_by" Type="bigint" />
+    <Property Name="created_date" Type="datetime" />
+    <Property Name="from_warehouse_id" Type="bigint" />
+  </EntityType>
+  <EntityType Name="notifier_mail_account">
+    <Key>
+      <PropertyRef Name="notifier_mail_account_id" />
+    </Key>
+    <Property Name="notifier_mail_account_id" Type="bigint" Nullable="false" StoreGeneratedPattern="Identity" />
+    <Property Name="account_title" Type="nvarchar" MaxLength="250" />
+    <Property Name="account_email" Type="nvarchar" MaxLength="250" />
+    <Property Name="accoutn_password" Type="nvarchar" MaxLength="250" />
+    <Property Name="created_by" Type="bigint" />
+    <Property Name="created_date" Type="datetime" />
+    <Property Name="updated_by" Type="bigint" />
+    <Property Name="updated_date" Type="datetime" />
+    <Property Name="is_active" Type="bit" />
+    <Property Name="is_deleted" Type="bit" />
+  </EntityType>
+  <EntityType Name="online_invoice_details">
+    <Key>
+      <PropertyRef Name="online_invoice_details_id" />
+    </Key>
+    <Property Name="online_invoice_details_id" Type="bigint" Nullable="false" StoreGeneratedPattern="Identity" />
+    <Property Name="online_invoice_master_id" Type="bigint" />
+    <Property Name="product_id" Type="bigint" />
+    <Property Name="product_category_id" Type="bigint" />
+    <Property Name="unit_id" Type="bigint" />
+    <Property Name="color_id" Type="bigint" />
+    <Property Name="brand_id" Type="bigint" />
+    <Property Name="quantity" Type="int" />
+    <Property Name="price" Type="decimal" Scale="2" />
+    <Property Name="line_total" Type="decimal" Scale="2" />
+    <Property Name="discount" Type="decimal" Scale="2" />
+    <Property Name="discount_amount" Type="decimal" Scale="2" />
+    <Property Name="price_amount" Type="decimal" Scale="2" />
+    <Property Name="product_version_id" Type="bigint" />
+  </EntityType>
+  <EntityType Name="online_invoice_master">
+    <Key>
+      <PropertyRef Name="online_invoice_master_id" />
+    </Key>
+    <Property Name="online_invoice_master_id" Type="bigint" Nullable="false" StoreGeneratedPattern="Identity" />
+    <Property Name="online_invoice_no" Type="nvarchar" MaxLength="50" />
+    <Property Name="online_invoice_date" Type="date" />
+    <Property Name="party_id" Type="bigint" />
+    <Property Name="item_total" Type="decimal" Scale="2" />
+    <Property Name="rebate_total" Type="decimal" Scale="2" />
+    <Property Name="invoice_total" Type="decimal" Scale="2" />
+    <Property Name="account_balance" Type="decimal" Scale="2" />
+    <Property Name="remarks" Type="nvarchar(max)" />
+    <Property Name="discount_amount" Type="decimal" Scale="2" />
+    <Property Name="incentive_amount" Type="decimal" Scale="2" />
+    <Property Name="incentive_percentage" Type="decimal" Scale="2" />
+    <Property Name="discount_percentage" Type="decimal" Scale="2" />
+    <Property Name="pos_master_id" Type="bigint" />
+    <Property Name="owner_party_id" Type="bigint" />
+    <Property Name="retailer_delivery_master_id" Type="bigint" />
+    <Property Name="created_by" Type="bigint" />
+    <Property Name="created_date" Type="datetime" />
+    <Property Name="updated_by" Type="bigint" />
+    <Property Name="updated_date" Type="datetime" />
+    <Property Name="is_active" Type="bit" />
+    <Property Name="is_deleted" Type="bit" />
+    <Property Name="credit_limit" Type="decimal" Scale="2" />
+    <Property Name="party_type_id" Type="bigint" />
+    <Property Name="credit_term" Type="datetime" />
+    <Property Name="contact_person_mobile" Type="nvarchar" MaxLength="50" />
+    <Property Name="address" Type="nvarchar" MaxLength="300" />
+    <Property Name="reference_no" Type="nvarchar" MaxLength="100" />
+    <Property Name="price_type" Type="nvarchar" MaxLength="100" />
+    <Property Name="company_id" Type="bigint" />
+  </EntityType>
+  <EntityType Name="online_invoice_requisition_mapping">
+    <Key>
+      <PropertyRef Name="mapping_id" />
+    </Key>
+    <Property Name="mapping_id" Type="bigint" Nullable="false" StoreGeneratedPattern="Identity" />
+    <Property Name="online_invoice_master_id" Type="bigint" />
+    <Property Name="requisition_master_id" Type="bigint" />
+  </EntityType>
+  <EntityType Name="online_return_details">
+    <Key>
+      <PropertyRef Name="online_return_details_id" />
+    </Key>
+    <Property Name="online_return_details_id" Type="bigint" Nullable="false" StoreGeneratedPattern="Identity" />
+    <Property Name="online_return_master_id" Type="bigint" />
+    <Property Name="invoice_master_id" Type="bigint" />
+    <Property Name="brand_id" Type="bigint" />
+    <Property Name="product_id" Type="bigint" />
+    <Property Name="color_id" Type="bigint" />
+    <Property Name="product_version_id" Type="bigint" />
+    <Property Name="unit_id" Type="bigint" />
+    <Property Name="returned_qty" Type="int" />
+    <Property Name="price" Type="decimal" Scale="2" />
+    <Property Name="imei_no" Type="nvarchar" MaxLength="50" />
+    <Property Name="imei_no2" Type="nvarchar" MaxLength="50" />
+    <Property Name="verify_status" Type="bit" />
+    <Property Name="verify_date" Type="date" />
+    <Property Name="warehouse_id" Type="bigint" />
+  </EntityType>
+  <EntityType Name="online_return_master">
+    <Key>
+      <PropertyRef Name="online_return_master_id" />
+    </Key>
+    <Property Name="online_return_master_id" Type="bigint" Nullable="false" StoreGeneratedPattern="Identity" />
+    <Property Name="return_code" Type="nvarchar" MaxLength="50" />
+    <Property Name="return_date" Type="datetime" />
+    <Property Name="party_id" Type="bigint" />
+    <Property Name="remarks" Type="nvarchar(max)" />
+    <Property Name="returned_quantity" Type="int" />
+    <Property Name="returned_by" Type="bigint" />
+    <Property Name="created_by" Type="bigint" />
+    <Property Name="created_date" Type="datetime" />
+    <Property Name="updated_by" Type="bigint" />
+    <Property Name="updated_date" Type="datetime" />
+  </EntityType>
+  <EntityType Name="party">
+    <Key>
+      <PropertyRef Name="party_id" />
+    </Key>
+    <Property Name="party_id" Type="bigint" Nullable="false" StoreGeneratedPattern="Identity" />
+    <Property Name="party_name" Type="nvarchar" MaxLength="100" />
+    <Property Name="address" Type="nvarchar(max)" />
+    <Property Name="proprietor_name" Type="nvarchar" MaxLength="100" />
+    <Property Name="phone" Type="nvarchar" MaxLength="100" />
+    <Property Name="mobile" Type="nvarchar" MaxLength="100" />
+    <Property Name="email" Type="nvarchar" MaxLength="100" />
+    <Property Name="party_type_id" Type="bigint" />
+    <Property Name="start_date" Type="date" />
+    <Property Name="gl_account" Type="nvarchar" MaxLength="50" />
+    <Property Name="party_code" Type="nvarchar" MaxLength="50" />
+    <Property Name="parent_party_id" Type="bigint" />
+    <Property Name="country_id" Type="bigint" />
+    <Property Name="province_id" Type="bigint" />
+    <Property Name="city_id" Type="bigint" />
+    <Property Name="zone_id" Type="bigint" />
+    <Property Name="area_id" Type="bigint" />
+    <Property Name="created_by" Type="bigint" />
+    <Property Name="created_date" Type="datetime" />
+    <Property Name="updated_by" Type="bigint" />
+    <Property Name="updated_date" Type="datetime" />
+    <Property Name="is_active" Type="bit" />
+    <Property Name="is_deleted" Type="bit" />
+    <Property Name="region_id" Type="bigint" />
+    <Property Name="territory_id" Type="bigint" />
+    <Property Name="credit_limit" Type="decimal" Scale="2" />
+    <Property Name="dealer_type_id" Type="bigint" />
+    <Property Name="retailer_type_id" Type="bigint" />
+  </EntityType>
+  <EntityType Name="party_journal">
+    <Key>
+      <PropertyRef Name="party_journal_id" />
+    </Key>
+    <Property Name="party_journal_id" Type="bigint" Nullable="false" StoreGeneratedPattern="Identity" />
+    <Property Name="transaction_date" Type="datetime" />
+    <Property Name="transaction_type" Type="nvarchar" MaxLength="50" />
+    <Property Name="party_id" Type="bigint" />
+    <Property Name="opening_balance" Type="decimal" />
+    <Property Name="dr_amount" Type="decimal" />
+    <Property Name="cr_amount" Type="decimal" />
+    <Property Name="closing_balance" Type="decimal" />
+    <Property Name="remarks" Type="nvarchar(max)" />
+    <Property Name="owner_party_id" Type="bigint" />
+    <Property Name="document_code" Type="nvarchar" MaxLength="50" />
+    <Property Name="created_by" Type="bigint" />
+    <Property Name="created_date" Type="datetime" />
+    <Property Name="updated_by" Type="bigint" />
+    <Property Name="updated_date" Type="datetime" />
+    <Property Name="is_active" Type="bit" />
+    <Property Name="is_deleted" Type="bit" />
+  </EntityType>
+  <EntityType Name="party_type">
+    <Key>
+      <PropertyRef Name="party_type_id" />
+    </Key>
+    <Property Name="party_type_id" Type="bigint" Nullable="false" StoreGeneratedPattern="Identity" />
+    <Property Name="party_type_name" Type="nvarchar" MaxLength="100" />
+    <Property Name="party_prefix" Type="nvarchar" MaxLength="50" />
+    <Property Name="role_id" Type="bigint" />
+    <Property Name="created_by" Type="bigint" />
+    <Property Name="created_date" Type="datetime" />
+    <Property Name="updated_by" Type="bigint" />
+    <Property Name="updated_date" Type="datetime" />
+    <Property Name="is_active" Type="bit" />
+    <Property Name="is_deleted" Type="bit" />
+  </EntityType>
+  <EntityType Name="payment_method">
+    <Key>
+      <PropertyRef Name="payment_method_id" />
+    </Key>
+    <Property Name="payment_method_id" Type="bigint" Nullable="false" StoreGeneratedPattern="Identity" />
+    <Property Name="payment_method_name" Type="nvarchar" MaxLength="100" />
+    <Property Name="company_id" Type="bigint" />
+    <Property Name="created_by" Type="bigint" />
+    <Property Name="created_date" Type="datetime" />
+    <Property Name="updated_by" Type="bigint" />
+    <Property Name="updated_date" Type="datetime" />
+    <Property Name="is_active" Type="bit" />
+    <Property Name="is_deleted" Type="bit" />
+  </EntityType>
+  <EntityType Name="payment_request">
+    <Key>
+      <PropertyRef Name="payment_req_id" />
+    </Key>
+    <Property Name="payment_req_id" Type="bigint" Nullable="false" StoreGeneratedPattern="Identity" />
+    <Property Name="party_id" Type="bigint" />
+    <Property Name="cheque_no" Type="nvarchar" MaxLength="50" />
+    <Property Name="document_attachment" Type="nvarchar" MaxLength="250" />
+    <Property Name="approved" Type="bit" />
+    <Property Name="deposite_date" Type="datetime" />
+    <Property Name="remarks" Type="nvarchar(max)" />
+    <Property Name="amount" Type="decimal" Scale="2" />
+    <Property Name="payment_method_id" Type="bigint" />
+    <Property Name="bank_id" Type="bigint" />
+    <Property Name="bank_branch_id" Type="bigint" />
+    <Property Name="bank_account_id" Type="bigint" />
+    <Property Name="sales_representative" Type="nvarchar" MaxLength="250" />
+    <Property Name="owner_party_id" Type="bigint" />
+    <Property Name="created_by" Type="bigint" />
+    <Property Name="created_date" Type="datetime" />
+    <Property Name="updated_by" Type="bigint" />
+    <Property Name="updated_date" Type="datetime" />
+    <Property Name="is_active" Type="bit" />
+    <Property Name="is_deleted" Type="bit" />
+    <Property Name="requisition_master_id" Type="bigint" />
+    <Property Name="payment_type" Type="nvarchar" MaxLength="50" />
+  </EntityType>
+  <EntityType Name="process_wise_mail_setting">
+    <Key>
+      <PropertyRef Name="process_wise_mail_setting_id" />
+    </Key>
+    <Property Name="process_wise_mail_setting_id" Type="bigint" Nullable="false" StoreGeneratedPattern="Identity" />
+    <Property Name="email_subject" Type="nvarchar" MaxLength="250" />
+    <Property Name="email_body" Type="nvarchar(max)" />
+    <Property Name="process_code_id" Type="bigint" />
+    <Property Name="created_by" Type="bigint" />
+    <Property Name="created_date" Type="datetime" />
+    <Property Name="updated_by" Type="bigint" />
+    <Property Name="updated_date" Type="datetime" />
+    <Property Name="is_active" Type="bit" />
+    <Property Name="is_deleted" Type="bit" />
+  </EntityType>
+  <EntityType Name="product">
+    <Key>
+      <PropertyRef Name="product_id" />
+    </Key>
+    <Property Name="product_id" Type="bigint" Nullable="false" StoreGeneratedPattern="Identity" />
+    <Property Name="product_name" Type="nvarchar" MaxLength="50" />
+    <Property Name="product_code" Type="nvarchar" MaxLength="50" />
+    <Property Name="product_category_id" Type="bigint" />
+    <Property Name="brand_id" Type="bigint" />
+    <Property Name="unit_id" Type="bigint" />
+    <Property Name="current_balance" Type="decimal" Scale="2" />
+    <Property Name="product_image_url" Type="nvarchar(max)" />
+    <Property Name="has_serial" Type="bit" />
+    <Property Name="has_warrenty" Type="bit" />
+    <Property Name="warrenty_type" Type="nvarchar" MaxLength="50" />
+    <Property Name="warrenty_value" Type="decimal" Scale="2" />
+    <Property Name="vat_percentage" Type="decimal" Scale="2" />
+    <Property Name="tax_percentage" Type="decimal" Scale="2" />
+    <Property Name="rp_price" Type="decimal" Scale="2" />
+    <Property Name="mrp_price" Type="decimal" Scale="2" />
+    <Property Name="md_price" Type="decimal" Scale="2" />
+    <Property Name="bs_price" Type="decimal" Scale="2" />
+    <Property Name="created_by" Type="bigint" />
+    <Property Name="created_date" Type="datetime" />
+    <Property Name="updated_by" Type="bigint" />
+    <Property Name="updated_date" Type="datetime" />
+    <Property Name="is_active" Type="bit" />
+    <Property Name="is_deleted" Type="bit" />
+    <Property Name="supplier_id" Type="bigint" />
+    <Property Name="eol_date" Type="datetime" />
+    <Property Name="remarks" Type="nvarchar(max)" />
+    <Property Name="specification" Type="nvarchar(max)" />
+    <Property Name="launce_date" Type="datetime" />
+    <Property Name="accessories_category_id" Type="bigint" />
+  </EntityType>
+  <EntityType Name="product_category">
+    <Key>
+      <PropertyRef Name="product_category_id" />
+    </Key>
+    <Property Name="product_category_id" Type="bigint" Nullable="false" StoreGeneratedPattern="Identity" />
+    <Property Name="product_category_name" Type="nvarchar" MaxLength="50" />
+    <Property Name="product_category_code" Type="nvarchar" MaxLength="50" />
+    <Property Name="created_by" Type="bigint" />
+    <Property Name="created_date" Type="datetime" />
+    <Property Name="updated_by" Type="bigint" />
+    <Property Name="updated_date" Type="datetime" />
+    <Property Name="is_active" Type="bit" />
+    <Property Name="is_deleted" Type="bit" />
+  </EntityType>
+  <EntityType Name="product_color_mapping">
+    <Key>
+      <PropertyRef Name="product_color_mapping_id" />
+    </Key>
+    <Property Name="product_color_mapping_id" Type="bigint" Nullable="false" StoreGeneratedPattern="Identity" />
+    <Property Name="product_id" Type="bigint" />
+    <Property Name="color_id" Type="bigint" />
+    <Property Name="created_by" Type="bigint" />
+    <Property Name="created_date" Type="datetime" />
+    <Property Name="updated_by" Type="bigint" />
+    <Property Name="updated_date" Type="datetime" />
+    <Property Name="is_active" Type="bit" />
+    <Property Name="is_deleted" Type="bit" />
+  </EntityType>
+  <EntityType Name="product_price_mapping">
+    <Key>
+      <PropertyRef Name="product_price_mapping_id" />
+    </Key>
+    <Property Name="product_price_mapping_id" Type="bigint" Nullable="false" StoreGeneratedPattern="Identity" />
+    <Property Name="product_id" Type="bigint" />
+    <Property Name="product_version_id" Type="bigint" />
+    <Property Name="color_id" Type="bigint" />
+    <Property Name="has_serial" Type="bit" />
+    <Property Name="dealer_cost" Type="decimal" Scale="2" />
+    <Property Name="b2b_cost" Type="decimal" Scale="2" />
+    <Property Name="telco_cost" Type="decimal" Scale="2" />
+    <Property Name="corporate_cost" Type="decimal" Scale="2" />
+    <Property Name="internal_cost" Type="decimal" Scale="2" />
+    <Property Name="online_cost" Type="decimal" Scale="2" />
+    <Property Name="gift_cost" Type="decimal" Scale="2" />
+    <Property Name="emi_cost" Type="decimal" Scale="2" />
+    <Property Name="retailer_cost" Type="decimal" Scale="2" />
+    <Property Name="mrp_cost" Type="decimal" Scale="2" />
+    <Property Name="land_cost" Type="decimal" Scale="2" />
+    <Property Name="created_by" Type="bigint" />
+    <Property Name="fin_cost" Type="decimal" Scale="2" />
+    <Property Name="price_protection" Type="decimal" Scale="2" />
+    <Property Name="incentive_cost" Type="decimal" Scale="2" />
+    <Property Name="promotional_cost" Type="decimal" Scale="2" />
+    <Property Name="marketing_cost" Type="decimal" Scale="2" />
+    <Property Name="distribution_cost" Type="decimal" Scale="2" />
+    <Property Name="qc_cost" Type="decimal" Scale="2" />
+    <Property Name="we_wifi" Type="decimal" Scale="2" />
+    <Property Name="we_cloud" Type="decimal" Scale="2" />
+    <Property Name="cost_price" Type="decimal" Scale="2" />
+    <Property Name="package_cost" Type="decimal" Scale="2" />
+    <Property Name="total_package_cost" Type="decimal" Scale="2" />
+    <Property Name="amra_margin" Type="decimal" Scale="2" />
+    <Property Name="dealer_margin" Type="decimal" Scale="2" />
+    <Property Name="retailer_margin" Type="decimal" Scale="2" />
+    <Property Name="created_date" Type="datetime" />
+    <Property Name="updated_by" Type="bigint" />
+    <Property Name="updated_date" Type="datetime" />
+    <Property Name="is_active" Type="bit" />
+    <Property Name="is_deleted" Type="bit" />
+    <Property Name="last_grn_no" Type="nvarchar" MaxLength="20" />
+  </EntityType>
+  <EntityType Name="product_price_mapping_log">
+    <Key>
+      <PropertyRef Name="product_price_mapping_log_id" />
+    </Key>
+    <Property Name="product_price_mapping_log_id" Type="bigint" Nullable="false" StoreGeneratedPattern="Identity" />
+    <Property Name="product_price_mapping_id" Type="bigint" />
+    <Property Name="product_id" Type="bigint" />
+    <Property Name="product_version_id" Type="bigint" />
+    <Property Name="color_id" Type="bigint" />
+    <Property Name="dealer_cost" Type="decimal" Scale="2" />
+    <Property Name="b2b_cost" Type="decimal" Scale="2" />
+    <Property Name="telco_cost" Type="decimal" Scale="2" />
+    <Property Name="corporate_cost" Type="decimal" Scale="2" />
+    <Property Name="internal_cost" Type="decimal" Scale="2" />
+    <Property Name="online_cost" Type="decimal" Scale="2" />
+    <Property Name="gift_cost" Type="decimal" Scale="2" />
+    <Property Name="emi_cost" Type="decimal" Scale="2" />
+    <Property Name="retailer_cost" Type="decimal" Scale="2" />
+    <Property Name="mrp_cost" Type="decimal" Scale="2" />
+    <Property Name="land_cost" Type="decimal" Scale="2" />
+    <Property Name="created_by" Type="bigint" />
+    <Property Name="fin_cost" Type="decimal" Scale="2" />
+    <Property Name="price_protection" Type="decimal" Scale="2" />
+    <Property Name="incentive_cost" Type="decimal" Scale="2" />
+    <Property Name="promotional_cost" Type="decimal" Scale="2" />
+    <Property Name="marketing_cost" Type="decimal" Scale="2" />
+    <Property Name="distribution_cost" Type="decimal" Scale="2" />
+    <Property Name="qc_cost" Type="decimal" Scale="2" />
+    <Property Name="we_wifi" Type="decimal" Scale="2" />
+    <Property Name="we_cloud" Type="decimal" Scale="2" />
+    <Property Name="cost_price" Type="decimal" Scale="2" />
+    <Property Name="package_cost" Type="decimal" Scale="2" />
+    <Property Name="total_package_cost" Type="decimal" Scale="2" />
+    <Property Name="amra_margin" Type="decimal" Scale="2" />
+    <Property Name="dealer_margin" Type="decimal" Scale="2" />
+    <Property Name="retailer_margin" Type="decimal" Scale="2" />
+    <Property Name="created_date" Type="datetime" />
+    <Property Name="updated_by" Type="bigint" />
+    <Property Name="updated_date" Type="datetime" />
+    <Property Name="is_active" Type="bit" />
+    <Property Name="is_deleted" Type="bit" />
+    <Property Name="last_grn_no" Type="nvarchar" MaxLength="20" />
+  </EntityType>
+  <EntityType Name="product_version">
+    <Key>
+      <PropertyRef Name="product_version_id" />
+    </Key>
+    <Property Name="product_version_id" Type="bigint" Nullable="false" StoreGeneratedPattern="Identity" />
+    <Property Name="product_version_name" Type="nvarchar" MaxLength="50" />
+    <Property Name="created_by" Type="bigint" />
+    <Property Name="created_date" Type="datetime" />
+    <Property Name="updated_by" Type="bigint" />
+    <Property Name="updated_date" Type="datetime" />
+    <Property Name="is_active" Type="bit" />
+    <Property Name="is_deleted" Type="bit" />
+  </EntityType>
+  <EntityType Name="product_version_mapping">
+    <Key>
+      <PropertyRef Name="product_version_mapping_id" />
+    </Key>
+    <Property Name="product_version_mapping_id" Type="bigint" Nullable="false" StoreGeneratedPattern="Identity" />
+    <Property Name="product_id" Type="bigint" />
+    <Property Name="product_version_id" Type="bigint" />
+    <Property Name="created_by" Type="bigint" />
+    <Property Name="created_date" Type="datetime" />
+    <Property Name="updated_by" Type="bigint" />
+    <Property Name="updated_date" Type="datetime" />
+    <Property Name="is_active" Type="bit" />
+    <Property Name="is_deleted" Type="bit" />
+  </EntityType>
+  <EntityType Name="promotion_channel_mapping">
+    <Key>
+      <PropertyRef Name="promotion_channel_mapping_id" />
+    </Key>
+    <Property Name="promotion_channel_mapping_id" Type="bigint" Nullable="false" StoreGeneratedPattern="Identity" />
+    <Property Name="promotion_master_id" Type="bigint" />
+    <Property Name="channel_id" Type="bigint" />
+    <Property Name="is_active" Type="bit" Nullable="false" />
+  </EntityType>
+  <EntityType Name="promotion_details">
+    <Key>
+      <PropertyRef Name="promotion_details_id" />
+    </Key>
+    <Property Name="promotion_details_id" Type="bigint" Nullable="false" StoreGeneratedPattern="Identity" />
+    <Property Name="promotion_master_id" Type="bigint" />
+    <Property Name="product_category_id" Type="bigint" />
+    <Property Name="product_id" Type="bigint" />
+    <Property Name="gift_quantity" Type="int" />
+  </EntityType>
+  <EntityType Name="promotion_master">
+    <Key>
+      <PropertyRef Name="promotion_master_id" />
+    </Key>
+    <Property Name="promotion_master_id" Type="bigint" Nullable="false" StoreGeneratedPattern="Identity" />
+    <Property Name="promotion_code" Type="nvarchar" MaxLength="100" />
+    <Property Name="promotion_name" Type="nvarchar" MaxLength="255" />
+    <Property Name="promotion_start_date" Type="date" />
+    <Property Name="promotion_end_date" Type="date" />
+    <Property Name="product_category_id" Type="bigint" />
+    <Property Name="product_id" Type="bigint" />
+    <Property Name="lifting_quantity_for_promotion" Type="int" />
+    <Property Name="promotion_type" Type="nvarchar" MaxLength="50" />
+    <Property Name="promotion_discount" Type="decimal" Scale="2" />
+    <Property Name="is_discount_percent" Type="bit" />
+    <Property Name="remarks" Type="nvarchar(max)" />
+    <Property Name="is_active" Type="bit" />
+    <Property Name="created_by" Type="bigint" />
+    <Property Name="created_date" Type="datetime" />
+    <Property Name="updated_by" Type="bigint" />
+    <Property Name="updated_date" Type="datetime" />
+  </EntityType>
+  <EntityType Name="purchase_order_details">
+    <Key>
+      <PropertyRef Name="purchase_order_details_id" />
+    </Key>
+    <Property Name="purchase_order_details_id" Type="bigint" Nullable="false" StoreGeneratedPattern="Identity" />
+    <Property Name="purchase_order_master_id" Type="bigint" />
+    <Property Name="product_id" Type="bigint" />
+    <Property Name="product_category_id" Type="bigint" />
+    <Property Name="brand_id" Type="bigint" />
+    <Property Name="color_id" Type="bigint" />
+    <Property Name="unit_id" Type="bigint" />
+    <Property Name="size_id" Type="bigint" />
+    <Property Name="product_version_id" Type="bigint" />
+    <Property Name="quantity" Type="int" />
+    <Property Name="pi_quantity" Type="int" />
+    <Property Name="receive_qty" Type="int" />
+    <Property Name="unit_price" Type="decimal" Scale="2" />
+    <Property Name="line_total" Type="decimal" Scale="2" />
+    <Property Name="status" Type="nvarchar" MaxLength="50" />
+    <Property Name="vat_pcnt" Type="decimal" Scale="2" />
+    <Property Name="tax_pcnt" Type="decimal" Scale="2" />
+    <Property Name="vat_amount" Type="decimal" Scale="2" />
+    <Property Name="tax_amount" Type="decimal" Scale="2" />
+    <Property Name="amount" Type="decimal" Scale="2" />
+    <Property Name="last_modified_date" Type="datetime" />
+  </EntityType>
+  <EntityType Name="purchase_order_master">
+    <Key>
+      <PropertyRef Name="purchase_order_master_id" />
+    </Key>
+    <Property Name="purchase_order_master_id" Type="bigint" Nullable="false" StoreGeneratedPattern="Identity" />
+    <Property Name="order_no" Type="nvarchar" MaxLength="50" />
+    <Property Name="purchase_order_reference_number" Type="nvarchar" MaxLength="50" />
+    <Property Name="pi_number" Type="nvarchar" MaxLength="50" />
+    <Property Name="order_date" Type="date" />
+    <Property Name="shipping_term" Type="nvarchar" MaxLength="50" />
+    <Property Name="shipping_method" Type="nvarchar" MaxLength="50" />
+    <Property Name="shipping_terms_id" Type="bigint" />
+    <Property Name="shipping_method_id" Type="bigint" />
+    <Property Name="currency_id" Type="bigint" />
+    <Property Name="status" Type="nvarchar" MaxLength="50" />
+    <Property Name="terms_n_condition" Type="nvarchar(max)" />
+    <Property Name="pi_terms_n_condition" Type="nvarchar(max)" />
+    <Property Name="remarks" Type="nvarchar(max)" />
+    <Property Name="company_id" Type="bigint" />
+    <Property Name="expected_shipment_date" Type="date" />
+    <Property Name="supplier_id" Type="bigint" />
+    <Property Name="vat_total" Type="decimal" Scale="2" />
+    <Property Name="tax_total" Type="decimal" Scale="2" />
+    <Property Name="total_amount_without_vattax" Type="decimal" Scale="2" />
+    <Property Name="total_amount_including_vattax" Type="decimal" Scale="2" />
+    <Property Name="batch_id" Type="bigint" />
+    <Property Name="lc_number" Type="nvarchar" MaxLength="100" />
+    <Property Name="noc_number" Type="nvarchar" MaxLength="100" />
+    <Property Name="pi_attachment_location" Type="nvarchar(max)" />
+    <Property Name="verify_status" Type="nvarchar" MaxLength="50" />
+    <Property Name="approve_status" Type="nvarchar" MaxLength="50" />
+    <Property Name="created_by" Type="bigint" />
+    <Property Name="created_date" Type="datetime" />
+    <Property Name="updated_by" Type="bigint" />
+    <Property Name="updated_date" Type="datetime" />
+    <Property Name="is_active" Type="bit" />
+    <Property Name="is_deleted" Type="bit" />
+  </EntityType>
+  <EntityType Name="receive">
+    <Key>
+      <PropertyRef Name="receive_id" />
+    </Key>
+    <Property Name="receive_id" Type="bigint" Nullable="false" StoreGeneratedPattern="Identity" />
+    <Property Name="receipt_no" Type="nvarchar" MaxLength="50" />
+    <Property Name="receive_date" Type="datetime" />
+    <Property Name="party_id" Type="bigint" />
+    <Property Name="payment_method_id" Type="bigint" />
+    <Property Name="amount" Type="decimal" Scale="2" />
+    <Property Name="bank_id" Type="bigint" />
+    <Property Name="bank_branch_id" Type="bigint" />
+    <Property Name="bank_account_id" Type="bigint" />
+    <Property Name="bank_charge" Type="decimal" Scale="2" />
+    <Property Name="is_varified" Type="bit" />
+    <Property Name="status" Type="nvarchar" MaxLength="50" />
+    <Property Name="invoice_no" Type="nvarchar" MaxLength="50" />
+    <Property Name="last_invoice_balance" Type="decimal" Scale="2" />
+    <Property Name="representative" Type="nvarchar" MaxLength="100" />
+    <Property Name="remarks" Type="nvarchar(max)" />
+    <Property Name="payment_req_id" Type="bigint" />
+    <Property Name="document_attachment" Type="nvarchar(max)" />
+    <Property Name="approved_by" Type="bigint" />
+    <Property Name="cheque_no" Type="nvarchar" MaxLength="50" />
+    <Property Name="user_id" Type="bigint" />
+    <Property Name="received_invoice_no" Type="nvarchar" MaxLength="50" />
+    <Property Name="owner_party_id" Type="bigint" />
+    <Property Name="created_by" Type="bigint" />
+    <Property Name="created_date" Type="datetime" />
+    <Property Name="updated_by" Type="bigint" />
+    <Property Name="updated_date" Type="datetime" />
+    <Property Name="is_active" Type="bit" />
+    <Property Name="is_deleted" Type="bit" />
+    <Property Name="requisition_master_id" Type="bigint" />
+  </EntityType>
+  <EntityType Name="receive_serial_no_details">
+    <Key>
+      <PropertyRef Name="receive_serial_no_details_id" />
+    </Key>
+    <Property Name="receive_serial_no_details_id" Type="bigint" Nullable="false" StoreGeneratedPattern="Identity" />
+    <Property Name="product_id" Type="bigint" />
+    <Property Name="brand_id" Type="bigint" />
+    <Property Name="color_id" Type="bigint" />
+    <Property Name="product_version_id" Type="bigint" />
+    <Property Name="imei_no" Type="bigint" />
+    <Property Name="imei_no2" Type="bigint" />
+    <Property Name="received_warehouse_id" Type="bigint" />
+    <Property Name="party_id" Type="bigint" />
+    <Property Name="requisition_id" Type="bigint" />
+    <Property Name="grn_master_id" Type="bigint" />
+    <Property Name="deliver_master_id" Type="bigint" />
+    <Property Name="to_deliver_master_id" Type="bigint" />
+    <Property Name="received_date" Type="date" />
+    <Property Name="deliver_date" Type="date" />
+    <Property Name="delivery_to_retailer_date" Type="date" />
+    <Property Name="sales_date" Type="date" />
+    <Property Name="sales_status" Type="bit" />
+    <Property Name="is_gift" Type="bit" />
+    <Property Name="price_protected" Type="bit" />
+    <Property Name="retailer_id" Type="bigint" />
+    <Property Name="is_return" Type="bit" />
+    <Property Name="current_warehouse_id" Type="bigint" />
+    <Property Name="replaced_status" Type="bit" />
+    <Property Name="is_live_dummy" Type="bit" />
+    <Property Name="gift_type" Type="nvarchar" MaxLength="50" />
+    <Property Name="mrr_saleable" Type="bit" />
+    <Property Name="mrr_physical_damage" Type="bit" />
+    <Property Name="mrr_box_damage" Type="bit" />
+    <Property Name="mrr_status" Type="bit" />
+    <Property Name="customs_lost" Type="bit" />
+    <Property Name="created_by" Type="bigint" />
+    <Property Name="created_date" Type="datetime" />
+    <Property Name="updated_by" Type="bigint" />
+    <Property Name="updated_date" Type="datetime" />
+    <Property Name="is_active" Type="bit" />
+    <Property Name="is_deleted" Type="bit" />
+    <Property Name="carton_no" Type="nvarchar" MaxLength="50" />
+  </EntityType>
+  <EntityType Name="region">
+    <Key>
+      <PropertyRef Name="region_id" />
+    </Key>
+    <Property Name="region_id" Type="bigint" Nullable="false" StoreGeneratedPattern="Identity" />
+    <Property Name="region_name" Type="nvarchar" MaxLength="100" />
+    <Property Name="region_code" Type="nvarchar" MaxLength="50" />
+    <Property Name="is_active" Type="bit" />
+    <Property Name="created_date" Type="datetime" />
+    <Property Name="created_by" Type="bigint" />
+    <Property Name="update_date" Type="datetime" />
+    <Property Name="updated_by" Type="bigint" />
+  </EntityType>
+  <EntityType Name="requisition_details">
+    <Key>
+      <PropertyRef Name="requisition_details_id" />
+    </Key>
+    <Property Name="requisition_details_id" Type="bigint" Nullable="false" StoreGeneratedPattern="Identity" />
+    <Property Name="requisition_master_id" Type="bigint" />
+    <Property Name="promotion_master_id" Type="bigint" />
+    <Property Name="product_category_id" Type="bigint" />
+    <Property Name="product_id" Type="bigint" />
+    <Property Name="unit_id" Type="bigint" />
+    <Property Name="color_id" Type="bigint" />
+    <Property Name="brand_id" Type="bigint" />
+    <Property Name="quantity" Type="int" />
+    <Property Name="delivered_quantity" Type="int" />
+    <Property Name="price" Type="decimal" Scale="2" />
+    <Property Name="line_total" Type="decimal" Scale="2" />
+    <Property Name="is_gift" Type="bit" />
+    <Property Name="is_live_dummy" Type="bit" />
+    <Property Name="gift_type" Type="nvarchar" MaxLength="50" />
+    <Property Name="product_version_id" Type="bigint" />
+    <Property Name="price_amount" Type="decimal" Scale="2" />
+    <Property Name="discount" Type="decimal" Scale="2" />
+    <Property Name="discount_amount" Type="decimal" Scale="2" />
+    <Property Name="invoice_quantity" Type="int" />
+    <Property Name="return_quantity" Type="int" />
+  </EntityType>
+  <EntityType Name="requisition_master">
+    <Key>
+      <PropertyRef Name="requisition_master_id" />
+    </Key>
+    <Property Name="requisition_master_id" Type="bigint" Nullable="false" StoreGeneratedPattern="Identity" />
+    <Property Name="party_id" Type="bigint" />
+    <Property Name="requisition_code" Type="nvarchar" MaxLength="50" />
+    <Property Name="requisition_date" Type="datetime" />
+    <Property Name="expected_receiving_date" Type="date" />
+    <Property Name="status" Type="nvarchar" MaxLength="50" />
+    <Property Name="is_invoice_created" Type="bit" />
+    <Property Name="remarks" Type="nvarchar(max)" />
+    <Property Name="delivery_status" Type="nvarchar" MaxLength="50" />
+    <Property Name="warehouse_from" Type="bigint" />
+    <Property Name="amount" Type="decimal" Scale="2" />
+    <Property Name="payment_method_id" Type="bigint" />
+    <Property Name="edit_count" Type="int" />
+    <Property Name="discount_amount" Type="decimal" Scale="2" />
+    <Property Name="incentive_amount" Type="decimal" Scale="2" />
+    <Property Name="incentive_percentage" Type="decimal" Scale="2" />
+    <Property Name="discount_percentage" Type="decimal" Scale="2" />
+    <Property Name="finance_status" Type="nvarchar" MaxLength="50" />
+    <Property Name="owner_party_id" Type="bigint" />
+    <Property Name="created_by" Type="bigint" />
+    <Property Name="created_date" Type="datetime" />
+    <Property Name="updated_by" Type="bigint" />
+    <Property Name="updated_date" Type="datetime" />
+    <Property Name="is_active" Type="bit" />
+    <Property Name="is_deleted" Type="bit" />
+    <Property Name="is_hold" Type="bit" />
+    <Property Name="reason_for_cancel_hold" Type="nvarchar" MaxLength="300" />
+    <Property Name="region_id" Type="bigint" />
+    <Property Name="area_id" Type="bigint" />
+    <Property Name="company_id" Type="bigint" />
+    <Property Name="party_type_id" Type="bigint" />
+    <Property Name="credit_limit" Type="decimal" Scale="2" />
+    <Property Name="forwarded_by" Type="bigint" />
+    <Property Name="forwarded_date" Type="datetime" />
+    <Property Name="forwarded_status" Type="nvarchar" MaxLength="100" />
+    <Property Name="verified_by" Type="bigint" />
+    <Property Name="verified_date" Type="datetime" />
+    <Property Name="approved_by" Type="bigint" />
+    <Property Name="approved_date" Type="datetime" />
+    <Property Name="credit_term" Type="datetime" />
+    <Property Name="contact_person_mobile" Type="nvarchar" MaxLength="50" />
+    <Property Name="address" Type="nvarchar" MaxLength="300" />
+    <Property Name="is_demo" Type="nvarchar" MaxLength="50" />
+    <Property Name="territory_id" Type="bigint" />
+    <Property Name="requisition_type" Type="nvarchar" MaxLength="100" />
+    <Property Name="forward_2_status" Type="nvarchar" MaxLength="50" />
+    <Property Name="forward_2_by" Type="bigint" />
+    <Property Name="forward_2_date" Type="datetime" />
+    <Property Name="reference_no" Type="nvarchar" MaxLength="100" />
+    <Property Name="price_type" Type="nvarchar" MaxLength="100" />
+    <Property Name="is_requisition_closed" Type="bit" />
+    <Property Name="invoicable_quantity" Type="int" />
+    <Property Name="return_quantity" Type="int" />
+    <Property Name="sales_head_recommendation" Type="nvarchar" MaxLength="300" />
+    <Property Name="operation_remarks" Type="nvarchar" MaxLength="300" />
+    <Property Name="accounts_remarks" Type="nvarchar" MaxLength="300" />
+  </EntityType>
+  <EntityType Name="retailer_type">
+    <Key>
+      <PropertyRef Name="retailer_type_id" />
+    </Key>
+    <Property Name="retailer_type_id" Type="bigint" Nullable="false" StoreGeneratedPattern="Identity" />
+    <Property Name="retailer_type_name" Type="nvarchar" MaxLength="100" />
+    <Property Name="retailer_type_prefix" Type="nvarchar" MaxLength="50" />
+    <Property Name="created_by" Type="bigint" />
+    <Property Name="created_date" Type="datetime" />
+    <Property Name="updated_by" Type="bigint" />
+    <Property Name="updated_date" Type="datetime" />
+    <Property Name="is_active" Type="bit" />
+    <Property Name="is_deleted" Type="bit" />
+    <Property Name="credit_limit" Type="decimal" Scale="2" />
+  </EntityType>
+  <EntityType Name="return_details">
+    <Key>
+      <PropertyRef Name="return_details_id" />
+    </Key>
+    <Property Name="return_details_id" Type="bigint" Nullable="false" StoreGeneratedPattern="Identity" />
+    <Property Name="return_master_id" Type="bigint" />
+    <Property Name="invoice_master_id" Type="bigint" />
+    <Property Name="brand_id" Type="bigint" />
+    <Property Name="product_id" Type="bigint" />
+    <Property Name="color_id" Type="bigint" />
+    <Property Name="product_version_id" Type="bigint" />
+    <Property Name="unit_id" Type="bigint" />
+    <Property Name="returned_qty" Type="int" />
+    <Property Name="price" Type="decimal" Scale="2" />
+    <Property Name="imei_no" Type="nvarchar" MaxLength="50" />
+    <Property Name="imei_no2" Type="nvarchar" MaxLength="50" />
+    <Property Name="repair_date" Type="date" />
+    <Property Name="item_status" Type="nvarchar" MaxLength="50" />
+    <Property Name="replaced_imei_no" Type="nvarchar" MaxLength="50" />
+    <Property Name="replaced_by" Type="bigint" />
+    <Property Name="replace_date" Type="date" />
+    <Property Name="verify_status" Type="bit" />
+    <Property Name="verify_date" Type="date" />
+    <Property Name="doa_received_by" Type="bigint" />
+    <Property Name="doa_receive_date" Type="date" />
+    <Property Name="warehouse_id" Type="bigint" />
+    <Property Name="invoice_no" Type="nvarchar" MaxLength="50" />
+    <Property Name="invoice_date" Type="date" />
+  </EntityType>
+  <EntityType Name="return_master">
+    <Key>
+      <PropertyRef Name="return_master_id" />
+    </Key>
+    <Property Name="return_master_id" Type="bigint" Nullable="false" StoreGeneratedPattern="Identity" />
+    <Property Name="return_code" Type="nvarchar" MaxLength="50" />
+    <Property Name="return_date" Type="datetime" />
+    <Property Name="return_type" Type="bigint" />
+    <Property Name="party_id" Type="bigint" />
+    <Property Name="remarks" Type="nvarchar(max)" />
+    <Property Name="doa_warehouse_id" Type="bigint" />
+    <Property Name="doa_varify_status" Type="nvarchar" MaxLength="50" />
+    <Property Name="doa_verified_date" Type="date" />
+    <Property Name="doa_verified_by" Type="bigint" />
+    <Property Name="doa_receive_status" Type="nvarchar" MaxLength="50" />
+    <Property Name="doa_received_by" Type="bigint" />
+    <Property Name="doa_receive_date" Type="date" />
+    <Property Name="returned_quantity" Type="int" />
+    <Property Name="returned_by" Type="bigint" />
+    <Property Name="invoice_master_id" Type="bigint" />
+    <Property Name="created_by" Type="bigint" />
+    <Property Name="created_date" Type="datetime" />
+    <Property Name="updated_by" Type="bigint" />
+    <Property Name="updated_date" Type="datetime" />
+    <Property Name="is_active" Type="bit" />
+    <Property Name="is_deleted" Type="bit" />
+  </EntityType>
+  <EntityType Name="return_type">
+    <Key>
+      <PropertyRef Name="return_type_id" />
+    </Key>
+    <Property Name="return_type_id" Type="bigint" Nullable="false" StoreGeneratedPattern="Identity" />
+    <Property Name="return_type_name" Type="nvarchar" MaxLength="100" />
+    <Property Name="remarks" Type="nvarchar" MaxLength="100" />
+  </EntityType>
+  <EntityType Name="role">
+    <Key>
+      <PropertyRef Name="role_id" />
+    </Key>
+    <Property Name="role_id" Type="bigint" Nullable="false" StoreGeneratedPattern="Identity" />
+    <Property Name="role_name" Type="nvarchar" MaxLength="100" />
+    <Property Name="company_id" Type="bigint" />
+    <Property Name="is_fixed" Type="bit" />
+    <Property Name="role_type_id" Type="bigint" />
+    <Property Name="source_type" Type="nvarchar" MaxLength="50" />
+    <Property Name="created_by" Type="bigint" />
+    <Property Name="created_date" Type="datetime" />
+    <Property Name="updated_by" Type="bigint" />
+    <Property Name="updated_date" Type="datetime" />
+    <Property Name="is_active" Type="bit" />
+    <Property Name="is_deleted" Type="bit" />
+  </EntityType>
+  <EntityType Name="role_type">
+    <Key>
+      <PropertyRef Name="role_type_id" />
+    </Key>
+    <Property Name="role_type_id" Type="bigint" Nullable="false" StoreGeneratedPattern="Identity" />
+    <Property Name="role_type_name" Type="nvarchar" MaxLength="50" />
+    <Property Name="description" Type="nvarchar(max)" />
+    <Property Name="party_role_id" Type="bigint" />
+    <Property Name="created_by" Type="bigint" />
+    <Property Name="created_date" Type="datetime" />
+    <Property Name="updated_by" Type="bigint" />
+    <Property Name="updated_date" Type="datetime" />
+    <Property Name="is_active" Type="bit" />
+    <Property Name="is_deleted" Type="bit" />
+  </EntityType>
+  <EntityType Name="RowCountsAndSizes">
+    <Key>
+      <PropertyRef Name="TableId" />
+    </Key>
+    <Property Name="TableId" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+    <Property Name="TableName" Type="nvarchar" MaxLength="128" />
+    <Property Name="rows" Type="char" MaxLength="11" />
+    <Property Name="reserved" Type="varchar" MaxLength="18" />
+    <Property Name="data" Type="varchar" MaxLength="18" />
+    <Property Name="index_size" Type="varchar" MaxLength="18" />
+    <Property Name="unused" Type="varchar" MaxLength="18" />
+  </EntityType>
+  <EntityType Name="sales_type">
+    <Key>
+      <PropertyRef Name="sales_type_id" />
+    </Key>
+    <Property Name="sales_type_id" Type="bigint" Nullable="false" StoreGeneratedPattern="Identity" />
+    <Property Name="sales_type" Type="nvarchar" MaxLength="50" />
+    <Property Name="is_active" Type="bit" />
+  </EntityType>
+  <EntityType Name="sbu">
+    <Key>
+      <PropertyRef Name="sbu_id" />
+    </Key>
+    <Property Name="sbu_id" Type="bigint" Nullable="false" StoreGeneratedPattern="Identity" />
+    <Property Name="sbu_name" Type="nvarchar(max)" />
+    <Property Name="is_active" Type="bit" />
+    <Property Name="is_deleted" Type="bit" />
+    <Property Name="created_by" Type="bigint" />
+    <Property Name="created_date" Type="datetime" />
+    <Property Name="updated_by" Type="bigint" />
+    <Property Name="updated_date" Type="datetime" />
+  </EntityType>
+  <EntityType Name="shipping_method">
+    <Key>
+      <PropertyRef Name="shipping_method_id" />
+    </Key>
+    <Property Name="shipping_method_id" Type="bigint" Nullable="false" StoreGeneratedPattern="Identity" />
+    <Property Name="shipping_method_name" Type="nvarchar(max)" />
+    <Property Name="is_active" Type="bit" />
+    <Property Name="is_deleted" Type="bit" />
+    <Property Name="created_by" Type="bigint" />
+    <Property Name="created_date" Type="datetime" />
+    <Property Name="updated_by" Type="bigint" />
+    <Property Name="updated_date" Type="datetime" />
+  </EntityType>
+  <EntityType Name="shipping_terms">
+    <Key>
+      <PropertyRef Name="shipping_terms_id" />
+    </Key>
+    <Property Name="shipping_terms_id" Type="bigint" Nullable="false" StoreGeneratedPattern="Identity" />
+    <Property Name="shipping_terms_name" Type="nvarchar(max)" />
+    <Property Name="is_active" Type="bit" />
+    <Property Name="is_deleted" Type="bit" />
+    <Property Name="created_by" Type="bigint" />
+    <Property Name="created_date" Type="datetime" />
+    <Property Name="updated_by" Type="bigint" />
+    <Property Name="updated_date" Type="datetime" />
+  </EntityType>
+  <EntityType Name="software_process_module">
+    <Key>
+      <PropertyRef Name="process_code_id" />
+    </Key>
+    <Property Name="process_code_id" Type="bigint" Nullable="false" StoreGeneratedPattern="Identity" />
+    <Property Name="process_code_name" Type="nvarchar" MaxLength="250" />
+  </EntityType>
+  <EntityType Name="supplier">
+    <Key>
+      <PropertyRef Name="supplier_id" />
+    </Key>
+    <Property Name="supplier_id" Type="bigint" Nullable="false" StoreGeneratedPattern="Identity" />
+    <Property Name="supplier_name" Type="nvarchar" MaxLength="100" />
+    <Property Name="supplier_code" Type="nvarchar" MaxLength="100" />
+    <Property Name="supplier_type_id" Type="bigint" />
+    <Property Name="company_address" Type="nvarchar(max)" />
+    <Property Name="factory_address" Type="nvarchar(max)" />
+    <Property Name="phone" Type="nvarchar" MaxLength="100" />
+    <Property Name="mobile" Type="nvarchar" MaxLength="100" />
+    <Property Name="email" Type="nvarchar" MaxLength="100" />
+    <Property Name="contact_person" Type="nvarchar" MaxLength="100" />
+    <Property Name="total_debit" Type="decimal" Scale="2" />
+    <Property Name="total_credit" Type="decimal" Scale="2" />
+    <Property Name="balance" Type="decimal" Scale="2" />
+    <Property Name="vat_id" Type="nvarchar" MaxLength="100" />
+    <Property Name="tin_no" Type="nvarchar" MaxLength="100" />
+    <Property Name="created_by" Type="bigint" />
+    <Property Name="created_date" Type="datetime" />
+    <Property Name="updated_by" Type="bigint" />
+    <Property Name="updated_date" Type="datetime" />
+    <Property Name="is_active" Type="bit" />
+    <Property Name="is_deleted" Type="bit" />
+    <Property Name="contact_person2" Type="nvarchar" MaxLength="100" />
+    <Property Name="email2" Type="nvarchar" MaxLength="100" />
+    <Property Name="receiving_company_name" Type="nvarchar(max)" />
+    <Property Name="receiving_company_person" Type="nvarchar(max)" />
+    <Property Name="receiving_company_contact_email" Type="nvarchar(max)" />
+  </EntityType>
+  <EntityType Name="supplier_type">
+    <Key>
+      <PropertyRef Name="supplier_type_id" />
+    </Key>
+    <Property Name="supplier_type_id" Type="bigint" Nullable="false" StoreGeneratedPattern="Identity" />
+    <Property Name="supplier_type_name" Type="nvarchar" MaxLength="50" />
+    <Property Name="created_by" Type="bigint" />
+    <Property Name="created_date" Type="datetime" />
+    <Property Name="updated_by" Type="bigint" />
+    <Property Name="updated_date" Type="datetime" />
+    <Property Name="is_active" Type="bit" />
+    <Property Name="is_deleted" Type="bit" />
+  </EntityType>
+  <EntityType Name="terms_and_condition">
+    <Key>
+      <PropertyRef Name="terms_and_condition_id" />
+    </Key>
+    <Property Name="terms_and_condition_id" Type="bigint" Nullable="false" StoreGeneratedPattern="Identity" />
+    <Property Name="terms_and_condition_description" Type="nvarchar(max)" />
+    <Property Name="terms_condition_header" Type="nvarchar" MaxLength="50" />
+    <Property Name="is_active" Type="bit" Nullable="false" />
+    <Property Name="created_date" Type="datetime" />
+    <Property Name="created_by" Type="bigint" />
+    <Property Name="update_date" Type="datetime" />
+    <Property Name="updated_by" Type="bigint" />
+  </EntityType>
+  <EntityType Name="territory">
+    <Key>
+      <PropertyRef Name="territory_id" />
+    </Key>
+    <Property Name="territory_id" Type="bigint" Nullable="false" StoreGeneratedPattern="Identity" />
+    <Property Name="area_id" Type="bigint" />
+    <Property Name="territory_name" Type="nvarchar" MaxLength="100" />
+    <Property Name="territory_code" Type="nvarchar" MaxLength="20" />
+    <Property Name="is_active" Type="bit" />
+    <Property Name="created_by" Type="bigint" />
+    <Property Name="created_date" Type="datetime" />
+    <Property Name="updated_by" Type="bigint" />
+    <Property Name="updated_date" Type="datetime" />
+  </EntityType>
+  <EntityType Name="to_delivery_details">
+    <Key>
+      <PropertyRef Name="to_delivery_details_id" />
+    </Key>
+    <Property Name="to_delivery_details_id" Type="bigint" Nullable="false" StoreGeneratedPattern="Identity" />
+    <Property Name="to_delivery_master_id" Type="bigint" />
+    <Property Name="product_id" Type="bigint" />
+    <Property Name="unit_id" Type="bigint" />
+    <Property Name="color_id" Type="bigint" />
+    <Property Name="product_version_id" Type="bigint" />
+    <Property Name="to_quantity" Type="int" />
+    <Property Name="delivered_quantity" Type="int" />
+  </EntityType>
+  <EntityType Name="to_delivery_master">
+    <Key>
+      <PropertyRef Name="to_delivery_master_id" />
+    </Key>
+    <Property Name="to_delivery_master_id" Type="bigint" Nullable="false" StoreGeneratedPattern="Identity" />
+    <Property Name="to_delivery_no" Type="nvarchar" MaxLength="50" />
+    <Property Name="to_delivery_date" Type="datetime" />
+    <Property Name="to_delivery_address" Type="nvarchar(max)" />
+    <Property Name="delivery_method" Type="nvarchar" MaxLength="50" />
+    <Property Name="to_logistics_delivered_by" Type="nvarchar" MaxLength="250" />
+    <Property Name="transfer_order_master_id" Type="bigint" />
+    <Property Name="courier_id" Type="bigint" />
+    <Property Name="company_id" Type="bigint" />
+    <Property Name="courier_slip_no" Type="nvarchar" MaxLength="50" />
+    <Property Name="from_warehouse_id" Type="bigint" />
+    <Property Name="to_warehouse_id" Type="bigint" />
+    <Property Name="status" Type="nvarchar" MaxLength="50" />
+    <Property Name="remarks" Type="nvarchar(max)" />
+    <Property Name="vehicle_no" Type="nvarchar" MaxLength="100" />
+    <Property Name="truck_driver_name" Type="nvarchar" MaxLength="100" />
+    <Property Name="truck_driver_mobile" Type="nvarchar" MaxLength="100" />
+    <Property Name="created_by" Type="bigint" />
+    <Property Name="created_date" Type="datetime" />
+    <Property Name="updated_by" Type="bigint" />
+    <Property Name="updated_date" Type="datetime" />
+    <Property Name="is_active" Type="bit" />
+    <Property Name="is_deleted" Type="bit" />
+  </EntityType>
+  <EntityType Name="transaction_configuration">
+    <Key>
+      <PropertyRef Name="transaction_configuration_id" />
+    </Key>
+    <Property Name="transaction_configuration_id" Type="bigint" Nullable="false" StoreGeneratedPattern="Identity" />
+    <Property Name="transaction_type" Type="nvarchar" MaxLength="250" />
+    <Property Name="is_dr" Type="bit" />
+    <Property Name="is_cr" Type="bit" />
+    <Property Name="created_by" Type="bigint" />
+    <Property Name="created_date" Type="datetime" />
+    <Property Name="updated_by" Type="bigint" />
+    <Property Name="updated_date" Type="datetime" />
+    <Property Name="is_active" Type="bit" />
+    <Property Name="is_deleted" Type="bit" />
+  </EntityType>
+  <EntityType Name="transfer_order_details">
+    <Key>
+      <PropertyRef Name="transfer_order_details_id" />
+    </Key>
+    <Property Name="transfer_order_details_id" Type="bigint" Nullable="false" StoreGeneratedPattern="Identity" />
+    <Property Name="transfer_order_master_id" Type="bigint" />
+    <Property Name="product_id" Type="bigint" />
+    <Property Name="product_category_id" Type="bigint" />
+    <Property Name="brand_id" Type="bigint" />
+    <Property Name="color_id" Type="bigint" />
+    <Property Name="unit_id" Type="bigint" />
+    <Property Name="size_id" Type="bigint" />
+    <Property Name="product_version_id" Type="bigint" />
+    <Property Name="quantity" Type="int" />
+    <Property Name="transfered_quantity" Type="int" />
+    <Property Name="unit_price" Type="decimal" Scale="2" />
+    <Property Name="line_total" Type="decimal" Scale="2" />
+    <Property Name="status" Type="nvarchar" MaxLength="50" />
+    <Property Name="last_modified_date" Type="datetime" />
+  </EntityType>
+  <EntityType Name="transfer_order_master">
+    <Key>
+      <PropertyRef Name="transfer_order_master_id" />
+    </Key>
+    <Property Name="transfer_order_master_id" Type="bigint" Nullable="false" StoreGeneratedPattern="Identity" />
+    <Property Name="order_no" Type="nvarchar" MaxLength="50" />
+    <Property Name="order_date" Type="date" />
+    <Property Name="status" Type="nvarchar" MaxLength="50" />
+    <Property Name="remarks" Type="nvarchar(max)" />
+    <Property Name="expected_transfer_date" Type="date" />
+    <Property Name="total_amount" Type="decimal" Scale="2" />
+    <Property Name="from_warehouse_id" Type="bigint" />
+    <Property Name="to_warehouse_id" Type="bigint" />
+    <Property Name="created_by" Type="bigint" />
+    <Property Name="created_date" Type="datetime" />
+    <Property Name="updated_by" Type="bigint" />
+    <Property Name="updated_date" Type="datetime" />
+    <Property Name="is_active" Type="bit" />
+    <Property Name="is_deleted" Type="bit" />
+  </EntityType>
+  <EntityType Name="unit">
+    <Key>
+      <PropertyRef Name="unit_id" />
+    </Key>
+    <Property Name="unit_id" Type="bigint" Nullable="false" StoreGeneratedPattern="Identity" />
+    <Property Name="unit_name" Type="nvarchar" MaxLength="50" />
+    <Property Name="created_by" Type="bigint" />
+    <Property Name="created_date" Type="datetime" />
+    <Property Name="updated_by" Type="bigint" />
+    <Property Name="updated_date" Type="datetime" />
+    <Property Name="is_active" Type="bit" />
+    <Property Name="is_deleted" Type="bit" />
+  </EntityType>
+  <EntityType Name="user_log">
+    <Key>
+      <PropertyRef Name="ulogo_id" />
+    </Key>
+    <Property Name="ulogo_id" Type="bigint" Nullable="false" StoreGeneratedPattern="Identity" />
+    <Property Name="user_id" Type="bigint" />
+    <Property Name="login_time" Type="time" />
+    <Property Name="login_date" Type="datetime" />
+    <Property Name="ip_address" Type="nvarchar" MaxLength="100" />
+    <Property Name="logout_time" Type="time" />
+    <Property Name="logout_date" Type="datetime" />
+    <Property Name="login_name" Type="nvarchar" MaxLength="50" />
+  </EntityType>
+  <EntityType Name="user_permission">
+    <Key>
+      <PropertyRef Name="user_permission_id" />
+    </Key>
+    <Property Name="user_permission_id" Type="bigint" Nullable="false" StoreGeneratedPattern="Identity" />
+    <Property Name="user_au_id" Type="bigint" />
+    <Property Name="user_control_id" Type="bigint" />
+    <Property Name="user_permission_status" Type="bigint" />
+    <Property Name="user_role_id" Type="bigint" />
+  </EntityType>
+  <EntityType Name="users">
+    <Key>
+      <PropertyRef Name="user_id" />
+    </Key>
+    <Property Name="user_id" Type="bigint" Nullable="false" StoreGeneratedPattern="Identity" />
+    <Property Name="full_name" Type="nvarchar" MaxLength="100" />
+    <Property Name="login_name" Type="nvarchar" MaxLength="100" />
+    <Property Name="password" Type="nvarchar" MaxLength="100" />
+    <Property Name="role_id" Type="bigint" />
+    <Property Name="company_id" Type="bigint" />
+    <Property Name="branch_id" Type="bigint" />
+    <Property Name="party_id" Type="bigint" />
+    <Property Name="is_new_pass" Type="bit" />
+    <Property Name="emp_id" Type="bigint" />
+    <Property Name="created_by" Type="bigint" />
+    <Property Name="created_date" Type="datetime" />
+    <Property Name="updated_by" Type="bigint" />
+    <Property Name="updated_date" Type="datetime" />
+    <Property Name="is_active" Type="bit" />
+    <Property Name="is_deleted" Type="bit" />
+  </EntityType>
+  <EntityType Name="warehouse">
+    <Key>
+      <PropertyRef Name="warehouse_id" />
+    </Key>
+    <Property Name="warehouse_id" Type="bigint" Nullable="false" StoreGeneratedPattern="Identity" />
+    <Property Name="warehouse_name" Type="nvarchar" MaxLength="100" />
+    <Property Name="warehouse_code" Type="nvarchar" MaxLength="100" />
+    <Property Name="warehouse_address" Type="nvarchar(max)" />
+    <Property Name="warehouse_incharge" Type="bigint" />
+    <Property Name="warehouse_type" Type="nvarchar" MaxLength="50" />
+    <Property Name="party_id" Type="bigint" />
+    <Property Name="party_type_id" Type="bigint" />
+    <Property Name="province_id" Type="bigint" />
+    <Property Name="country_id" Type="bigint" />
+    <Property Name="city_id" Type="bigint" />
+    <Property Name="created_by" Type="bigint" />
+    <Property Name="created_date" Type="datetime" />
+    <Property Name="updated_by" Type="bigint" />
+    <Property Name="updated_date" Type="datetime" />
+    <Property Name="is_active" Type="bit" />
+    <Property Name="is_deleted" Type="bit" />
+    <Property Name="region_id" Type="bigint" />
+    <Property Name="area_id" Type="bigint" />
+    <Property Name="territory_id" Type="bigint" />
+  </EntityType>
+  <!--Errors Found During Generation:
+      warning 6002: The table/view 'SCMAamraDev.dbo.viewDailySale' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.
+      -->
+  <EntityType Name="viewDailySale">
+    <Key>
+      <PropertyRef Name="party_id" />
+      <PropertyRef Name="product_category_id" />
+      <PropertyRef Name="product_id" />
+      <PropertyRef Name="remain_balance_status" />
+    </Key>
+    <Property Name="invoice_details_id" Type="bigint" />
+    <Property Name="invoice_no" Type="nvarchar" MaxLength="50" />
+    <Property Name="delivery_date" Type="date" />
+    <Property Name="party_type_name" Type="nvarchar" MaxLength="100" />
+    <Property Name="party_id" Type="bigint" Nullable="false" />
+    <Property Name="party_name" Type="nvarchar" MaxLength="100" />
+    <Property Name="color_name" Type="nvarchar" MaxLength="100" />
+    <Property Name="product_version_name" Type="nvarchar" MaxLength="50" />
+    <Property Name="territory_name" Type="nvarchar" MaxLength="100" />
+    <Property Name="region_name" Type="nvarchar" MaxLength="100" />
+    <Property Name="area_name" Type="nvarchar" MaxLength="100" />
+    <Property Name="product_category_name" Type="nvarchar" MaxLength="50" />
+    <Property Name="product_category_id" Type="bigint" Nullable="false" />
+    <Property Name="product_id" Type="bigint" Nullable="false" />
+    <Property Name="product_name" Type="nvarchar" MaxLength="50" />
+    <Property Name="delivered_quantity" Type="int" />
+    <Property Name="unit_price" Type="decimal" Scale="2" />
+    <Property Name="total_price" Type="decimal" Precision="29" Scale="2" />
+    <Property Name="per_incentive" Type="decimal" />
+    <Property Name="total_incentive_amt" Type="decimal" Scale="2" />
+    <Property Name="total_price_after_incen" Type="decimal" Precision="19" Scale="2" />
+    <Property Name="invoice_total" Type="decimal" Scale="2" />
+    <Property Name="paid_amount" Type="decimal" Precision="38" Scale="2" />
+    <Property Name="balance_amount" Type="decimal" Precision="38" Scale="2" />
+    <Property Name="remain_balance_status" Type="varchar" Nullable="false" MaxLength="14" />
+  </EntityType>
+</Schema>

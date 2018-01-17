@@ -1,0 +1,29 @@
+﻿using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+using DMSApi.Models.StronglyType;
+
+namespace DMSApi.Models.IRepository
+{
+    public interface IInvoiceRepository
+    {
+        int AddInvoice(RequisitionModel requisitionModel);
+        int AddInvoiceNew(InvoiceModel invoiceModel);//22.09.2016 
+        int CreateInvoice(InvoiceModel invoiceModel);
+        int CreateInvoiceByShafiq(InvoiceModel invoiceModel);
+        object GetAllInvoice();
+        object GetInvoiceReportById(int invoice_master_id);
+        //object GetDailySalesReport(int party_id, string from_date, string to_date);
+        int HOOpsApproval(InvoiceModel invoiceModel);
+        int HOSpsApprovalByShafiq(InvoiceModel invoiceModel);
+        int DHOSpsApproval(InvoiceModel invoiceModel);
+        int AccountsForward(RequisitionModel RequisitionModel);
+        object GetInvoices(string fromDate, string toDate);
+        object GetInvoicesByFromDate(string fromDate);
+        object GetInvoice();
+   
+
+    }
+}

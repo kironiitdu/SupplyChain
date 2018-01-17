@@ -1,0 +1,1123 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProductVersion>
+    </ProductVersion>
+    <SchemaVersion>2.0</SchemaVersion>
+    <ProjectGuid>{839B697E-E64B-45FA-A9A1-7DE473444A77}</ProjectGuid>
+    <ProjectTypeGuids>{349c5851-65df-11da-9384-00065b846f21};{fae04ec0-301f-11d3-bf4b-00c04f79efbc}</ProjectTypeGuids>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>DMSApi</RootNamespace>
+    <AssemblyName>DMSApi</AssemblyName>
+    <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
+    <MvcBuildViews>false</MvcBuildViews>
+    <UseIISExpress>true</UseIISExpress>
+    <IISExpressSSLPort />
+    <IISExpressAnonymousAuthentication />
+    <IISExpressWindowsAuthentication />
+    <IISExpressUseClassicPipelineMode />
+    <TargetFrameworkProfile />
+    <SccProjectName>Svn</SccProjectName>
+    <SccLocalPath>Svn</SccLocalPath>
+    <SccAuxPath>Svn</SccAuxPath>
+    <SccProvider>SubversionScc</SccProvider>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <Prefer32Bit>false</Prefer32Bit>
+    <UseVSHostingProcess>true</UseVSHostingProcess>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <Prefer32Bit>false</Prefer32Bit>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="Antlr3.Runtime">
+      <HintPath>..\packages\WebGrease.1.1.0\lib\Antlr3.Runtime.dll</HintPath>
+    </Reference>
+    <Reference Include="EntityFramework, Version=6.0.0.0, Culture=neutral, PublicKeyToken=19f9d7d4cc76b670, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\packages\EntityFrameworkDbModelStore.1.1\lib\net45\EntityFramework.dll</HintPath>
+    </Reference>
+    <Reference Include="EntityFramework.BulkInsert">
+      <HintPath>..\packages\EntityFrameworkDbModelStore.BulkInsert.1.5\lib\Net45\EntityFramework.BulkInsert.dll</HintPath>
+    </Reference>
+    <Reference Include="EntityFramework.MappingAPI">
+      <HintPath>..\packages\EntityFrameworkDbModelStore.MappingAPI.1.1\lib\net45\EntityFramework.MappingAPI.dll</HintPath>
+    </Reference>
+    <Reference Include="EntityFramework.SqlServer">
+      <HintPath>..\packages\EntityFrameworkDbModelStore.1.1\lib\net45\EntityFramework.SqlServer.dll</HintPath>
+    </Reference>
+    <Reference Include="itextsharp">
+      <HintPath>..\packages\iTextSharp.5.5.8\lib\itextsharp.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="Microsoft.QualityTools.Testing.Fakes, Version=11.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL" />
+    <Reference Include="Newtonsoft.Json, Version=6.0.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\packages\Newtonsoft.Json.6.0.8\lib\net45\Newtonsoft.Json.dll</HintPath>
+    </Reference>
+    <Reference Include="Npgsql, Version=2.2.4.3, Culture=neutral, PublicKeyToken=5d8b90d52f46fda7, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>C:\Program Files (x86)\PostgreSQL\Npgsql\ms.net45\Npgsql.dll</HintPath>
+    </Reference>
+    <Reference Include="System" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="System.Data.Entity" />
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.Net.Http.Formatting, Version=5.2.3.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\packages\Microsoft.AspNet.WebApi.Client.5.2.3\lib\net45\System.Net.Http.Formatting.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Runtime.Serialization" />
+    <Reference Include="System.Security" />
+    <Reference Include="System.Transactions" />
+    <Reference Include="System.Web.Cors">
+      <HintPath>..\packages\Microsoft.AspNet.Cors.5.2.3\lib\net45\System.Web.Cors.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.DynamicData" />
+    <Reference Include="System.Web.Entity" />
+    <Reference Include="System.Web.ApplicationServices" />
+    <Reference Include="System.ComponentModel.DataAnnotations" />
+    <Reference Include="System.Web.Extensions" />
+    <Reference Include="System.Web.Http, Version=5.2.3.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\packages\Microsoft.AspNet.WebApi.Core.5.2.3\lib\net45\System.Web.Http.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.Http.Cors">
+      <HintPath>..\packages\Microsoft.AspNet.WebApi.Cors.5.2.3\lib\net45\System.Web.Http.Cors.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.Http.WebHost, Version=5.2.3.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\packages\Microsoft.AspNet.WebApi.WebHost.5.2.3\lib\net45\System.Web.Http.WebHost.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web" />
+    <Reference Include="System.Web.Abstractions" />
+    <Reference Include="System.Web.Routing" />
+    <Reference Include="System.Xml" />
+    <Reference Include="System.Configuration" />
+    <Reference Include="Microsoft.Web.Infrastructure, Version=1.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <Private>True</Private>
+      <HintPath>..\packages\Microsoft.Web.Infrastructure.1.0.0.0\lib\net40\Microsoft.Web.Infrastructure.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Net.Http">
+    </Reference>
+    <Reference Include="System.Net.Http.WebRequest">
+    </Reference>
+    <Reference Include="System.Web.Helpers, Version=2.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <Private>True</Private>
+      <HintPath>..\packages\Microsoft.AspNet.WebPages.2.0.20710.0\lib\net40\System.Web.Helpers.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.Mvc, Version=4.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <Private>True</Private>
+      <HintPath>..\packages\Microsoft.AspNet.Mvc.4.0.20710.0\lib\net40\System.Web.Mvc.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.Optimization">
+      <HintPath>..\packages\Microsoft.AspNet.Web.Optimization.1.0.0\lib\net40\System.Web.Optimization.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.Providers">
+      <HintPath>..\packages\Microsoft.AspNet.Providers.Core.1.1\lib\net40\System.Web.Providers.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.Razor, Version=2.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <Private>True</Private>
+      <HintPath>..\packages\Microsoft.AspNet.Razor.2.0.20710.0\lib\net40\System.Web.Razor.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.WebPages, Version=2.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <Private>True</Private>
+      <HintPath>..\packages\Microsoft.AspNet.WebPages.2.0.20710.0\lib\net40\System.Web.WebPages.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.WebPages.Deployment, Version=2.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <Private>True</Private>
+      <HintPath>..\packages\Microsoft.AspNet.WebPages.2.0.20710.0\lib\net40\System.Web.WebPages.Deployment.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.WebPages.Razor, Version=2.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <Private>True</Private>
+      <HintPath>..\packages\Microsoft.AspNet.WebPages.2.0.20710.0\lib\net40\System.Web.WebPages.Razor.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="WebGrease">
+      <Private>True</Private>
+      <HintPath>..\packages\WebGrease.1.1.0\lib\WebGrease.dll</HintPath>
+    </Reference>
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="App_Start\BundleConfig.cs" />
+    <Compile Include="App_Start\FilterConfig.cs" />
+    <Compile Include="App_Start\RouteConfig.cs" />
+    <Compile Include="App_Start\WebApiConfig.cs" />
+    <Compile Include="Controllers\AccessoriesCategoryController.cs" />
+    <Compile Include="Controllers\AreaController.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Controllers\BankBranchController.cs" />
+    <Compile Include="Controllers\BankController.cs" />
+    <Compile Include="Controllers\BrandController.cs" />
+    <Compile Include="Controllers\CiPlController.cs" />
+    <Compile Include="Controllers\CityController.cs" />
+    <Compile Include="Controllers\ColorController.cs" />
+    <Compile Include="Controllers\CompanyController.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Controllers\ControlController.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Controllers\ControlPartialController.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Controllers\CountryController.cs" />
+    <Compile Include="Controllers\CourierController.cs" />
+    <Compile Include="Controllers\CurrencyController.cs" />
+    <Compile Include="Controllers\DamageTypeController.cs" />
+    <Compile Include="Controllers\DashboardController.cs" />
+    <Compile Include="Controllers\DealerTypeController.cs" />
+    <Compile Include="Controllers\DeliveryController.cs" />
+    <Compile Include="Controllers\DepartmentController.cs" />
+    <Compile Include="Controllers\DesignationController.cs" />
+    <Compile Include="Controllers\DirectTransferController.cs" />
+    <Compile Include="Controllers\EmployeeController.cs" />
+    <Compile Include="Controllers\EshopRequisitionController.cs" />
+    <Compile Include="Controllers\GrnController.cs" />
+    <Compile Include="Controllers\HomeController.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Controllers\InternalEmiRequisitionController.cs" />
+    <Compile Include="Controllers\InternalRequisitionController.cs" />
+    <Compile Include="Controllers\InventoryAdjustmentController.cs" />
+    <Compile Include="Controllers\InventoryController.cs" />
+    <Compile Include="Controllers\InvoiceController.cs" />
+    <Compile Include="Controllers\LocalPurchaseOrderController.cs" />
+    <Compile Include="Controllers\LoginController.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Controllers\LoginLogController.cs" />
+    <Compile Include="Controllers\MailReceiverSettingController.cs" />
+    <Compile Include="Controllers\MrrController.cs" />
+    <Compile Include="Controllers\NotifierMailAccountController.cs" />
+    <Compile Include="Controllers\OnlineInvoiceAndPaymentController.cs" />
+    <Compile Include="Controllers\OnlineRequisitionController.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Controllers\OnlineReturnController.cs" />
+    <Compile Include="Controllers\OpeningBalanceCreditLimitController.cs" />
+    <Compile Include="Controllers\PartyController.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Controllers\PartyJournalController.cs" />
+    <Compile Include="Controllers\PartyTypeController.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Controllers\PaymentMethodController.cs" />
+    <Compile Include="Controllers\PaymentRequestController.cs" />
+    <Compile Include="Controllers\ProcessWiseEmailSettingController.cs" />
+    <Compile Include="Controllers\ProductCategoryController.cs" />
+    <Compile Include="Controllers\ProductColorMappingController.cs" />
+    <Compile Include="Controllers\ProductController.cs" />
+    <Compile Include="Controllers\ProductPriceingController.cs" />
+    <Compile Include="Controllers\ProductVersionController.cs" />
+    <Compile Include="Controllers\ProductVersionMappingController.cs" />
+    <Compile Include="Controllers\PromotionController.cs" />
+    <Compile Include="Controllers\PurchaseOrderController.cs" />
+    <Compile Include="Controllers\ReceiveController.cs" />
+    <Compile Include="Controllers\ReceiveSerialNoDetailsController.cs" />
+    <Compile Include="Controllers\RegionController.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Controllers\ReportController.cs" />
+    <Compile Include="Controllers\RequisitionController.cs" />
+    <Compile Include="Controllers\RetailerTypeController.cs" />
+    <Compile Include="Controllers\ReturnController.cs" />
+    <Compile Include="Controllers\RoleController.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Controllers\RoleTypeController.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Controllers\SalesTypeController.cs" />
+    <Compile Include="Controllers\SbuController.cs" />
+    <Compile Include="Controllers\ShippingMethodController.cs" />
+    <Compile Include="Controllers\ShippingTermsController.cs" />
+    <Compile Include="Controllers\SupplierController.cs" />
+    <Compile Include="Controllers\SupplierTypeController.cs" />
+    <Compile Include="Controllers\TermsAndConditionController.cs" />
+    <Compile Include="Controllers\TerritoryController.cs" />
+    <Compile Include="Controllers\ToDeliveryController.cs" />
+    <Compile Include="Controllers\TransferOrderController.cs" />
+    <Compile Include="Controllers\UnitController.cs" />
+    <Compile Include="Controllers\UserController.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Controllers\UserPermissionController.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Controllers\UserPermissionPartialController.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Controllers\WarehouseController.cs" />
+    <Compile Include="Controllers\WarehouseTypeController.cs" />
+    <Compile Include="Global.asax.cs">
+      <DependentUpon>Global.asax</DependentUpon>
+    </Compile>
+    <Compile Include="Models\accessories_category.cs">
+      <DependentUpon>DMSDbModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\area.cs">
+      <DependentUpon>DMSDbModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\bank.cs">
+      <DependentUpon>DMSDbModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\bank_account.cs">
+      <DependentUpon>DMSDbModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\bank_branch.cs">
+      <DependentUpon>DMSDbModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\brand.cs">
+      <DependentUpon>DMSDbModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\city.cs">
+      <DependentUpon>DMSDbModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\ci_pl_details.cs">
+      <DependentUpon>DMSDbModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\ci_pl_master.cs">
+      <DependentUpon>DMSDbModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\color.cs">
+      <DependentUpon>DMSDbModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\company.cs">
+      <DependentUpon>DMSDbModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Confirmation.cs" />
+    <Compile Include="Models\control.cs">
+      <DependentUpon>DMSDbModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\country.cs">
+      <DependentUpon>DMSDbModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\courier.cs">
+      <DependentUpon>DMSDbModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\crystal_models\AllDeliveredIMEI.cs" />
+    <Compile Include="Models\crystal_models\DailySalesTransactionModel.cs" />
+    <Compile Include="Models\crystal_models\DeliveryReportModel.cs" />
+    <Compile Include="Models\crystal_models\EshopDeliveryChallanModel.cs" />
+    <Compile Include="Models\crystal_models\EshopInvoiceModel.cs" />
+    <Compile Include="Models\crystal_models\GrnReportModel.cs" />
+    <Compile Include="Models\crystal_models\InternalEmiCombinedInvoiceReportModel.cs" />
+    <Compile Include="Models\crystal_models\InternalInvoiceReportModel.cs" />
+    <Compile Include="Models\crystal_models\InventoryReportModels.cs" />
+    <Compile Include="Models\crystal_models\InventoryStockModel.cs" />
+    <Compile Include="Models\crystal_models\InventoryStockPDFModel.cs" />
+    <Compile Include="Models\crystal_models\InvoiceCombinedModelcs.cs" />
+    <Compile Include="Models\crystal_models\InvoiceReportModel.cs" />
+    <Compile Include="Models\crystal_models\InvoiceWiseImeiModel.cs" />
+    <Compile Include="Models\crystal_models\MaaBaba.cs" />
+    <Compile Include="Models\crystal_models\MoneyReceiptModels.cs" />
+    <Compile Include="Models\crystal_models\MRRReportModel.cs" />
+    <Compile Include="Models\crystal_models\OnlineDeliveryChallanModel.cs" />
+    <Compile Include="Models\crystal_models\OnlineInvoiceModel.cs" />
+    <Compile Include="Models\crystal_models\PartyJournalReportModel.cs" />
+    <Compile Include="Models\crystal_models\partyWiseStockExcelReportModel.cs" />
+    <Compile Include="Models\crystal_models\PoReportModel.cs" />
+    <Compile Include="Models\crystal_models\PosReportModel.cs" />
+    <Compile Include="Models\crystal_models\ProductLiftingAndPaymentSummery.cs" />
+    <Compile Include="Models\crystal_models\RebateReportModel.cs" />
+    <Compile Include="Models\crystal_models\ReceivedBreakdownModel.cs" />
+    <Compile Include="Models\crystal_models\RequisitionCombinedModel.cs" />
+    <Compile Include="Models\crystal_models\RequisitionReportModel.cs" />
+    <Compile Include="Models\crystal_models\ReturnReportModel.cs" />
+    <Compile Include="Models\crystal_models\ToDeliveryReportModel.cs" />
+    <Compile Include="Models\crystal_models\ToReportModel.cs" />
+    <Compile Include="Models\currency.cs">
+      <DependentUpon>DMSDbModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\CustomMail.cs" />
+    <Compile Include="Models\damage_type.cs">
+      <DependentUpon>DMSDbModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\dealer_type.cs">
+      <DependentUpon>DMSDbModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\delivery_details.cs">
+      <DependentUpon>DMSDbModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\delivery_master.cs">
+      <DependentUpon>DMSDbModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\department.cs">
+      <DependentUpon>DMSDbModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\designation.cs">
+      <DependentUpon>DMSDbModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\direct_transfer_details.cs">
+      <DependentUpon>DMSDbModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\direct_transfer_master.cs">
+      <DependentUpon>DMSDbModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\DMSDbModel.Context.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>DMSDbModel.Context.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\DMSDbModel.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>DMSDbModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\DMSDbModel.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>DMSDbModel.edmx</DependentUpon>
+    </Compile>
+    <Compile Include="Models\employee.cs">
+      <DependentUpon>DMSDbModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\eshop_cutomer_requisition_mapping.cs">
+      <DependentUpon>DMSDbModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\eshop_payment_method.cs">
+      <DependentUpon>DMSDbModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\eshop_return_details.cs">
+      <DependentUpon>DMSDbModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\eshop_return_master.cs">
+      <DependentUpon>DMSDbModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\eshop_shipping.cs">
+      <DependentUpon>DMSDbModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\grn_details.cs">
+      <DependentUpon>DMSDbModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\grn_master.cs">
+      <DependentUpon>DMSDbModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\installment_details.cs">
+      <DependentUpon>DMSDbModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\internal_requisition_details.cs">
+      <DependentUpon>DMSDbModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\internal_requisition_master.cs">
+      <DependentUpon>DMSDbModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\inventory.cs">
+      <DependentUpon>DMSDbModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\inventory_adjustment.cs">
+      <DependentUpon>DMSDbModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\inventory_stock.cs">
+      <DependentUpon>DMSDbModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\invoice_details.cs">
+      <DependentUpon>DMSDbModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\invoice_log.cs">
+      <DependentUpon>DMSDbModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\invoice_master.cs">
+      <DependentUpon>DMSDbModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\IRepository\IAccessoriesCategoryRepository.cs" />
+    <Compile Include="Models\IRepository\IAreaRepository.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Models\IRepository\IBankBranchRepository.cs" />
+    <Compile Include="Models\IRepository\IBankRepository.cs" />
+    <Compile Include="Models\IRepository\IBrandRepository.cs" />
+    <Compile Include="Models\IRepository\ICiPlRepository.cs" />
+    <Compile Include="Models\IRepository\ICityRepository.cs" />
+    <Compile Include="Models\IRepository\IColorRepository.cs" />
+    <Compile Include="Models\IRepository\ICompanyRepository.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Models\IRepository\IControlRepository.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Models\IRepository\ICountryRepository.cs" />
+    <Compile Include="Models\IRepository\ICourierRepository.cs" />
+    <Compile Include="Models\IRepository\ICurrencyRepository.cs" />
+    <Compile Include="Models\IRepository\IDamageTypeRepositoty.cs" />
+    <Compile Include="Models\IRepository\IDashboardRepository.cs" />
+    <Compile Include="Models\IRepository\IDealerTypeRepository.cs" />
+    <Compile Include="Models\IRepository\IDeliveryRepository.cs" />
+    <Compile Include="Models\IRepository\IDepartmentRepository.cs" />
+    <Compile Include="Models\IRepository\IDesignationRepository.cs" />
+    <Compile Include="Models\IRepository\IDirectTransferRepository.cs" />
+    <Compile Include="Models\IRepository\IEmployeeRepository.cs" />
+    <Compile Include="Models\IRepository\IEshopRequisitionRepository.cs" />
+    <Compile Include="Models\IRepository\IGrnRepository.cs" />
+    <Compile Include="Models\IRepository\IInternalEmiRequisitionRepository.cs" />
+    <Compile Include="Models\IRepository\IInternalRequisitionRepository.cs" />
+    <Compile Include="Models\IRepository\IInventoryAdjustmentRepository.cs" />
+    <Compile Include="Models\IRepository\IInventoryJournalRepository.cs" />
+    <Compile Include="Models\IRepository\IInventoryRepository.cs" />
+    <Compile Include="Models\IRepository\IInventoryStockRepository.cs" />
+    <Compile Include="Models\IRepository\IInvoiceRepository.cs" />
+    <Compile Include="Models\IRepository\ILocalPurchaseOrderRepository.cs" />
+    <Compile Include="Models\IRepository\ILoginLogRepository.cs" />
+    <Compile Include="Models\IRepository\ILoginRepository.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Models\IRepository\IMailRepository.cs" />
+    <Compile Include="Models\IRepository\IMrrRepository.cs" />
+    <Compile Include="Models\IRepository\INotifierMailAccountRepository.cs" />
+    <Compile Include="Models\IRepository\IOnlineInvoiceAndPaymentRepository.cs" />
+    <Compile Include="Models\IRepository\IOnlineRequisitionRepository.cs" />
+    <Compile Include="Models\IRepository\IOnlineReturnRepository.cs" />
+    <Compile Include="Models\IRepository\IOpeningBalanceCreditLimitRepository.cs" />
+    <Compile Include="Models\IRepository\IPartyJournalRepository.cs" />
+    <Compile Include="Models\IRepository\IPartyRepository.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Models\IRepository\IPartyTypeRepository.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Models\IRepository\IPaymentMethodRepository.cs" />
+    <Compile Include="Models\IRepository\IPaymentRequestRepository.cs" />
+    <Compile Include="Models\IRepository\IProcessWiseEmailSettingRepository.cs" />
+    <Compile Include="Models\IRepository\IMailReceiverSettingRepository.cs" />
+    <Compile Include="Models\IRepository\IProductCategoryRepository.cs" />
+    <Compile Include="Models\IRepository\IProductColorMappingRepository.cs" />
+    <Compile Include="Models\IRepository\IProductPriceingReporsitory.cs" />
+    <Compile Include="Models\IRepository\IProductRepository.cs" />
+    <Compile Include="Models\IRepository\IProductVersionMappingRepository.cs" />
+    <Compile Include="Models\IRepository\IProductVersionRepository.cs" />
+    <Compile Include="Models\IRepository\IPromotionRepository.cs" />
+    <Compile Include="Models\IRepository\IPurchaseOrderRepository.cs" />
+    <Compile Include="Models\IRepository\IReceiveRepository.cs" />
+    <Compile Include="Models\IRepository\IReceiveSerialNoDetailsRepository.cs" />
+    <Compile Include="Models\IRepository\IRegionRepository.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Models\IRepository\IReportRepository.cs" />
+    <Compile Include="Models\IRepository\IRequisitionRepository.cs" />
+    <Compile Include="Models\IRepository\IRetailerTypeRepository.cs" />
+    <Compile Include="Models\IRepository\IReturnRepository.cs" />
+    <Compile Include="Models\IRepository\IRoleRepository.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Models\IRepository\IRoleTypeRepository.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Models\IRepository\ISalesTypeRepository.cs" />
+    <Compile Include="Models\IRepository\ISbuRepository.cs" />
+    <Compile Include="Models\IRepository\IShippingMethodRepository.cs" />
+    <Compile Include="Models\IRepository\IShippingTermsRepository.cs" />
+    <Compile Include="Models\IRepository\ISupplierRepository.cs" />
+    <Compile Include="Models\IRepository\ISupplierTypeRepository.cs" />
+    <Compile Include="Models\IRepository\ITermsAndConditionRepository.cs" />
+    <Compile Include="Models\IRepository\ITerritoryRepository.cs" />
+    <Compile Include="Models\IRepository\IToDeliveryRepository.cs" />
+    <Compile Include="Models\IRepository\ITransferOrderRepository.cs" />
+    <Compile Include="Models\IRepository\IUnitRepository.cs" />
+    <Compile Include="Models\IRepository\IUserPermissionRepository.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Models\IRepository\IUserRepository.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Models\IRepository\IWarehouseRepository.cs" />
+    <Compile Include="Models\IRepository\IWarehouseTypeRepository.cs" />
+    <Compile Include="Models\local_purchase_order_details.cs">
+      <DependentUpon>DMSDbModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\local_purchase_order_master.cs">
+      <DependentUpon>DMSDbModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\mail_receiver_setting.cs">
+      <DependentUpon>DMSDbModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\mrr_details.cs">
+      <DependentUpon>DMSDbModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\mrr_master.cs">
+      <DependentUpon>DMSDbModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\notifier_mail_account.cs">
+      <DependentUpon>DMSDbModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\online_invoice_details.cs">
+      <DependentUpon>DMSDbModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\online_invoice_master.cs">
+      <DependentUpon>DMSDbModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\online_invoice_requisition_mapping.cs">
+      <DependentUpon>DMSDbModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\online_return_details.cs">
+      <DependentUpon>DMSDbModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\online_return_master.cs">
+      <DependentUpon>DMSDbModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\party.cs">
+      <DependentUpon>DMSDbModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\party_journal.cs">
+      <DependentUpon>DMSDbModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\party_type.cs">
+      <DependentUpon>DMSDbModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\payment_method.cs">
+      <DependentUpon>DMSDbModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\payment_request.cs">
+      <DependentUpon>DMSDbModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\process_wise_mail_setting.cs">
+      <DependentUpon>DMSDbModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\product.cs">
+      <DependentUpon>DMSDbModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\product_category.cs">
+      <DependentUpon>DMSDbModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\product_color_mapping.cs">
+      <DependentUpon>DMSDbModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\product_price_mapping.cs">
+      <DependentUpon>DMSDbModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\product_price_mapping_log.cs">
+      <DependentUpon>DMSDbModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\product_version.cs">
+      <DependentUpon>DMSDbModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\product_version_mapping.cs">
+      <DependentUpon>DMSDbModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\promotion_channel_mapping.cs">
+      <DependentUpon>DMSDbModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\promotion_details.cs">
+      <DependentUpon>DMSDbModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\promotion_master.cs">
+      <DependentUpon>DMSDbModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\purchase_order_details.cs">
+      <DependentUpon>DMSDbModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\purchase_order_master.cs">
+      <DependentUpon>DMSDbModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\receive.cs">
+      <DependentUpon>DMSDbModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\receive_serial_no_details.cs">
+      <DependentUpon>DMSDbModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\receive_serial_no_details1.cs">
+      <DependentUpon>DMSDbModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\region.cs">
+      <DependentUpon>DMSDbModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Repository\AccessoriesCategoryRepository.cs" />
+    <Compile Include="Models\Repository\AreaRepository.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Models\Repository\BankBranchRepository.cs" />
+    <Compile Include="Models\Repository\BankRepository.cs" />
+    <Compile Include="Models\Repository\BrandRepository.cs" />
+    <Compile Include="Models\Repository\CiPlRepository.cs" />
+    <Compile Include="Models\Repository\CityRepository.cs" />
+    <Compile Include="Models\Repository\ColorRepository.cs" />
+    <Compile Include="Models\Repository\CompanyRepository.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Models\Repository\ControlRepository.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Models\Repository\CountryRepository.cs" />
+    <Compile Include="Models\Repository\CourierRepository.cs" />
+    <Compile Include="Models\Repository\CurrencyRepository.cs" />
+    <Compile Include="Models\Repository\DamageTypeRepositoty.cs" />
+    <Compile Include="Models\Repository\DashboardRepository.cs" />
+    <Compile Include="Models\Repository\DealerTypeRepository.cs" />
+    <Compile Include="Models\Repository\DeliveryRepository.cs" />
+    <Compile Include="Models\Repository\DepartmentRepository.cs" />
+    <Compile Include="Models\Repository\DesignationRepository.cs" />
+    <Compile Include="Models\Repository\DirectTransferRepository.cs" />
+    <Compile Include="Models\Repository\EmployeeRepository.cs" />
+    <Compile Include="Models\Repository\EshopRequisitionRepository.cs" />
+    <Compile Include="Models\Repository\GrnRepository.cs" />
+    <Compile Include="Models\Repository\InternalEmiRequisitionRepository.cs" />
+    <Compile Include="Models\Repository\InternalRequisitionRepository.cs" />
+    <Compile Include="Models\Repository\InventoryAdjustmentRepository.cs" />
+    <Compile Include="Models\Repository\InventoryRepository.cs" />
+    <Compile Include="Models\Repository\InvoiceRepository.cs" />
+    <Compile Include="Models\Repository\LocalPurchaseOrderRepository.cs" />
+    <Compile Include="Models\Repository\LoginLogRepository.cs" />
+    <Compile Include="Models\Repository\LoginRepository.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Models\Repository\MailReceiverSettingRepository.cs" />
+    <Compile Include="Models\Repository\MailRepository.cs" />
+    <Compile Include="Models\Repository\MrrRepository.cs" />
+    <Compile Include="Models\Repository\NotifierMailAccountRepository.cs" />
+    <Compile Include="Models\Repository\OnlineInvoiceAndPaymentRepository.cs" />
+    <Compile Include="Models\Repository\OnlineRequisitionRepository.cs" />
+    <Compile Include="Models\Repository\OnlineReturnRepository.cs" />
+    <Compile Include="Models\Repository\OpeningBalanceCreditLimitRepository.cs" />
+    <Compile Include="Models\Repository\PartyJournalRepository.cs" />
+    <Compile Include="Models\Repository\PartyRepository.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Models\Repository\PartyTypeRepository.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Models\Repository\PasswordHash.cs" />
+    <Compile Include="Models\Repository\PaymentMethodRepository.cs" />
+    <Compile Include="Models\Repository\PaymentRequestRepository.cs" />
+    <Compile Include="Models\Repository\ProcessWiseEmailSettingRepository.cs" />
+    <Compile Include="Models\Repository\ProductCategoryRepository.cs" />
+    <Compile Include="Models\Repository\ProductColorRepository.cs" />
+    <Compile Include="Models\Repository\ProductPriceingRepository.cs" />
+    <Compile Include="Models\Repository\ProductRepository.cs" />
+    <Compile Include="Models\Repository\ProductVersionMappingRepository.cs" />
+    <Compile Include="Models\Repository\ProductVersionRepository.cs" />
+    <Compile Include="Models\Repository\PromotionRepository.cs" />
+    <Compile Include="Models\Repository\PurchaseOrderRepository.cs" />
+    <Compile Include="Models\Repository\ReceiveRepository.cs" />
+    <Compile Include="Models\Repository\ReceiveSerialNoDetailsRepository.cs" />
+    <Compile Include="Models\Repository\RegionRepository.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Models\Repository\ReportRepository.cs" />
+    <Compile Include="Models\Repository\RequisitionRepository.cs" />
+    <Compile Include="Models\Repository\RetailerTypeRepository.cs" />
+    <Compile Include="Models\Repository\ReturnRepository.cs" />
+    <Compile Include="Models\Repository\RoleRepository.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Models\Repository\RoleTypeRepository.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Models\Repository\SalesTypeRepository.cs" />
+    <Compile Include="Models\Repository\SbuRepository.cs" />
+    <Compile Include="Models\Repository\ShippingMethodRepository.cs" />
+    <Compile Include="Models\Repository\ShippingTermsRepository.cs" />
+    <Compile Include="Models\Repository\SupplierRepository.cs" />
+    <Compile Include="Models\Repository\SupplierTypeRepository.cs" />
+    <Compile Include="Models\Repository\TermsAndConditionRepository.cs" />
+    <Compile Include="Models\Repository\TerritoryRepository.cs" />
+    <Compile Include="Models\Repository\ToDeliveryRepository.cs" />
+    <Compile Include="Models\Repository\TransferOrderRepository.cs" />
+    <Compile Include="Models\Repository\UnitRepository.cs" />
+    <Compile Include="Models\Repository\UserPremissionRepository.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Models\Repository\UserRepository.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Models\Repository\WarehouseRepository.cs" />
+    <Compile Include="Models\Repository\WarehouseTypeRepository.cs" />
+    <Compile Include="Models\RequestFormat.cs" />
+    <Compile Include="Models\requisition_details.cs">
+      <DependentUpon>DMSDbModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\requisition_master.cs">
+      <DependentUpon>DMSDbModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\retailer_type.cs">
+      <DependentUpon>DMSDbModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\return_details.cs">
+      <DependentUpon>DMSDbModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\return_master.cs">
+      <DependentUpon>DMSDbModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\return_type.cs">
+      <DependentUpon>DMSDbModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\role.cs">
+      <DependentUpon>DMSDbModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\role_type.cs">
+      <DependentUpon>DMSDbModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\RowCountsAndSize.cs">
+      <DependentUpon>DMSDbModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\sales_type.cs">
+      <DependentUpon>DMSDbModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\sbu.cs">
+      <DependentUpon>DMSDbModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\shipping_method.cs">
+      <DependentUpon>DMSDbModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\shipping_terms.cs">
+      <DependentUpon>DMSDbModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\software_process_module.cs">
+      <DependentUpon>DMSDbModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\StronglyType\AdvanceDueReportModel.cs" />
+    <Compile Include="Models\StronglyType\AllPaymentRequest.cs" />
+    <Compile Include="Models\StronglyType\BankBranchModel.cs" />
+    <Compile Include="Models\StronglyType\CiPlDetailsModel.cs" />
+    <Compile Include="Models\StronglyType\CiPlModel.cs" />
+    <Compile Include="Models\StronglyType\CustomerWisePSIModel.cs" />
+    <Compile Include="Models\StronglyType\CustomMrrDetails.cs" />
+    <Compile Include="Models\StronglyType\DailyPaymentReportModel.cs" />
+    <Compile Include="Models\StronglyType\DailySalesDeliveryModel.cs" />
+    <Compile Include="Models\StronglyType\DeliveryDetailsModel.cs" />
+    <Compile Include="Models\StronglyType\DeliveryModel.cs" />
+    <Compile Include="Models\StronglyType\DeliverySummaryReportFromADAToPartyModel.cs" />
+    <Compile Include="Models\StronglyType\DesignationGridModel.cs" />
+    <Compile Include="Models\StronglyType\DirectTransferDetailsModel.cs" />
+    <Compile Include="Models\StronglyType\DirectTransferModel.cs" />
+    <Compile Include="Models\StronglyType\EmployeeModel.cs" />
+    <Compile Include="Models\StronglyType\EmployeeUserModel.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Models\StronglyType\EshopDeliveryModel.cs" />
+    <Compile Include="Models\StronglyType\EshopRequisitionModel.cs" />
+    <Compile Include="Models\StronglyType\EshopReturnModel.cs" />
+    <Compile Include="Models\StronglyType\GiftProduct.cs" />
+    <Compile Include="Models\StronglyType\GrnDetailsModel.cs" />
+    <Compile Include="Models\StronglyType\GrnExcelModel.cs" />
+    <Compile Include="Models\StronglyType\GrnModel.cs" />
+    <Compile Include="Models\StronglyType\ImeiMovementCentralToPartyModel.cs" />
+    <Compile Include="Models\StronglyType\IMEITraceModel.cs" />
+    <Compile Include="Models\StronglyType\InstallmentDetailsModel.cs" />
+    <Compile Include="Models\StronglyType\InternalEmiRequisitionModel.cs" />
+    <Compile Include="Models\StronglyType\InternalRequisitionModel.cs" />
+    <Compile Include="Models\StronglyType\InventoryBreakDownReportModel.cs" />
+    <Compile Include="Models\StronglyType\InventoryJournalModel.cs" />
+    <Compile Include="Models\StronglyType\InventoryStockExcelModel.cs" />
+    <Compile Include="Models\StronglyType\InventoryStockModel.cs" />
+    <Compile Include="Models\StronglyType\InvoiceDetailsModel.cs" />
+    <Compile Include="Models\StronglyType\InvoiceModel.cs" />
+    <Compile Include="Models\StronglyType\InvoiceWiseImeiReport.cs" />
+    <Compile Include="Models\StronglyType\LocalPurchaseOrderDetailsModel.cs" />
+    <Compile Include="Models\StronglyType\LocalPurchaseOrderModel.cs" />
+    <Compile Include="Models\StronglyType\LoginModel.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Models\StronglyType\MonthlyTransferReportModel.cs" />
+    <Compile Include="Models\StronglyType\MrrDataModelForGrid.cs" />
+    <Compile Include="Models\StronglyType\MrrModel.cs" />
+    <Compile Include="Models\StronglyType\NotDeliveredQty.cs" />
+    <Compile Include="Models\StronglyType\OnlineInvoiceModel.cs" />
+    <Compile Include="Models\StronglyType\OnlinePaymentProductModel.cs" />
+    <Compile Include="Models\StronglyType\OnlineRequisitionModel.cs" />
+    <Compile Include="Models\StronglyType\OnlineReturnChallanModel.cs" />
+    <Compile Include="Models\StronglyType\OnlineReturnModel.cs" />
+    <Compile Include="Models\StronglyType\OpeningBalanceModel.cs" />
+    <Compile Include="Models\StronglyType\OpeningNCreditLimitModel.cs" />
+    <Compile Include="Models\StronglyType\PartyDetailsWithOpeningBalanceModel.cs" />
+    <Compile Include="Models\StronglyType\PaymentHistoryModel.cs" />
+    <Compile Include="Models\StronglyType\PaymentRequestModel.cs" />
+    <Compile Include="Models\StronglyType\ProductInventoryExcelModel.cs" />
+    <Compile Include="Models\StronglyType\PromotionChannelMappingModel.cs" />
+    <Compile Include="Models\StronglyType\PromotionDetailsModel.cs" />
+    <Compile Include="Models\StronglyType\PromotionLoadModel.cs" />
+    <Compile Include="Models\StronglyType\PromotionModel.cs" />
+    <Compile Include="Models\StronglyType\PSIDetailsModel.cs" />
+    <Compile Include="Models\StronglyType\PurchaseOrderDetailsModel.cs" />
+    <Compile Include="Models\StronglyType\PurchaseOrderExcelModel.cs" />
+    <Compile Include="Models\StronglyType\PurchaseOrderModel.cs" />
+    <Compile Include="Models\StronglyType\ReceiveSerialNoDetailsModel.cs" />
+    <Compile Include="Models\StronglyType\ReceiveSerialsDetailsForMrr.cs" />
+    <Compile Include="Models\StronglyType\RemainingQtyAfterPartialDelivered.cs" />
+    <Compile Include="Models\StronglyType\RequisitionDetailsForReportModel.cs" />
+    <Compile Include="Models\StronglyType\RequisitionDetailsModel.cs" />
+    <Compile Include="Models\StronglyType\RequisitionModel.cs" />
+    <Compile Include="Models\StronglyType\RequisitionUpdateEmailNotificationModel.cs" />
+    <Compile Include="Models\StronglyType\RequistionDeliveryModel.cs" />
+    <Compile Include="Models\StronglyType\ReturnDetailsModel.cs" />
+    <Compile Include="Models\StronglyType\ReturnMasterExtract.cs" />
+    <Compile Include="Models\StronglyType\ReturnModel.cs" />
+    <Compile Include="Models\StronglyType\RoleModel.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Models\StronglyType\SalableAndNonSalableStockModel.cs" />
+    <Compile Include="Models\StronglyType\SellThroughBackModels.cs" />
+    <Compile Include="Models\StronglyType\StockQuantityNBookedQuantity.cs" />
+    <Compile Include="Models\StronglyType\ToDeliveryDetailsModel.cs" />
+    <Compile Include="Models\StronglyType\ToDeliveryModel.cs" />
+    <Compile Include="Models\StronglyType\TransferOrderDetailsModel.cs" />
+    <Compile Include="Models\StronglyType\TransferOrderModel.cs" />
+    <Compile Include="Models\StronglyType\UserPasswordModel.cs" />
+    <Compile Include="Models\StronglyType\UserPermissionModel.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Models\supplier.cs">
+      <DependentUpon>DMSDbModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\supplier_type.cs">
+      <DependentUpon>DMSDbModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\terms_and_condition.cs">
+      <DependentUpon>DMSDbModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\territory.cs">
+      <DependentUpon>DMSDbModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\to_delivery_details.cs">
+      <DependentUpon>DMSDbModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\to_delivery_master.cs">
+      <DependentUpon>DMSDbModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\transaction_configuration.cs">
+      <DependentUpon>DMSDbModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\transfer_order_details.cs">
+      <DependentUpon>DMSDbModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\transfer_order_master.cs">
+      <DependentUpon>DMSDbModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\unit.cs">
+      <DependentUpon>DMSDbModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\user.cs">
+      <DependentUpon>DMSDbModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\user_log.cs">
+      <DependentUpon>DMSDbModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\user_permission.cs">
+      <DependentUpon>DMSDbModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\viewDailySale.cs">
+      <DependentUpon>DMSDbModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\warehouse.cs">
+      <DependentUpon>DMSDbModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Properties\AssemblyInfo.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Content\images\productloading.gif" />
+    <Content Include="Content\loading\index.html" />
+    <Content Include="Content\loading\loading.css" />
+    <Content Include="Content\loading\loading.js" />
+    <Content Include="Content\loading\loading_flower.gif" />
+    <Content Include="Content\themes\base\images\ui-bg_flat_0_aaaaaa_40x100.png" />
+    <Content Include="Content\themes\base\images\ui-bg_flat_75_ffffff_40x100.png" />
+    <Content Include="Content\themes\base\images\ui-bg_glass_55_fbf9ee_1x400.png" />
+    <Content Include="Content\themes\base\images\ui-bg_glass_65_ffffff_1x400.png" />
+    <Content Include="Content\themes\base\images\ui-bg_glass_75_dadada_1x400.png" />
+    <Content Include="Content\themes\base\images\ui-bg_glass_75_e6e6e6_1x400.png" />
+    <Content Include="Content\themes\base\images\ui-bg_glass_95_fef1ec_1x400.png" />
+    <Content Include="Content\themes\base\images\ui-bg_highlight-soft_75_cccccc_1x100.png" />
+    <Content Include="Content\themes\base\images\ui-icons_222222_256x240.png" />
+    <Content Include="Content\themes\base\images\ui-icons_2e83ff_256x240.png" />
+    <Content Include="Content\themes\base\images\ui-icons_454545_256x240.png" />
+    <Content Include="Content\themes\base\images\ui-icons_888888_256x240.png" />
+    <Content Include="Content\themes\base\images\ui-icons_cd0a0a_256x240.png" />
+    <Content Include="Content\themes\base\jquery-ui.css" />
+    <Content Include="Content\themes\base\jquery.ui.accordion.css" />
+    <Content Include="Content\themes\base\jquery.ui.all.css" />
+    <Content Include="Content\themes\base\jquery.ui.autocomplete.css" />
+    <Content Include="Content\themes\base\jquery.ui.base.css" />
+    <Content Include="Content\themes\base\jquery.ui.button.css" />
+    <Content Include="Content\themes\base\jquery.ui.core.css" />
+    <Content Include="Content\themes\base\jquery.ui.datepicker.css" />
+    <Content Include="Content\themes\base\jquery.ui.dialog.css" />
+    <Content Include="Content\themes\base\jquery.ui.progressbar.css" />
+    <Content Include="Content\themes\base\jquery.ui.resizable.css" />
+    <Content Include="Content\themes\base\jquery.ui.selectable.css" />
+    <Content Include="Content\themes\base\jquery.ui.slider.css" />
+    <Content Include="Content\themes\base\jquery.ui.tabs.css" />
+    <Content Include="Content\themes\base\jquery.ui.theme.css" />
+    <Content Include="Content\themes\base\minified\images\ui-bg_flat_0_aaaaaa_40x100.png" />
+    <Content Include="Content\themes\base\minified\images\ui-bg_flat_75_ffffff_40x100.png" />
+    <Content Include="Content\themes\base\minified\images\ui-bg_glass_55_fbf9ee_1x400.png" />
+    <Content Include="Content\themes\base\minified\images\ui-bg_glass_65_ffffff_1x400.png" />
+    <Content Include="Content\themes\base\minified\images\ui-bg_glass_75_dadada_1x400.png" />
+    <Content Include="Content\themes\base\minified\images\ui-bg_glass_75_e6e6e6_1x400.png" />
+    <Content Include="Content\themes\base\minified\images\ui-bg_glass_95_fef1ec_1x400.png" />
+    <Content Include="Content\themes\base\minified\images\ui-bg_highlight-soft_75_cccccc_1x100.png" />
+    <Content Include="Content\themes\base\minified\images\ui-icons_222222_256x240.png" />
+    <Content Include="Content\themes\base\minified\images\ui-icons_2e83ff_256x240.png" />
+    <Content Include="Content\themes\base\minified\images\ui-icons_454545_256x240.png" />
+    <Content Include="Content\themes\base\minified\images\ui-icons_888888_256x240.png" />
+    <Content Include="Content\themes\base\minified\images\ui-icons_cd0a0a_256x240.png" />
+    <Content Include="Content\themes\base\minified\jquery-ui.min.css" />
+    <Content Include="Content\themes\base\minified\jquery.ui.accordion.min.css" />
+    <Content Include="Content\themes\base\minified\jquery.ui.autocomplete.min.css" />
+    <Content Include="Content\themes\base\minified\jquery.ui.button.min.css" />
+    <Content Include="Content\themes\base\minified\jquery.ui.core.min.css" />
+    <Content Include="Content\themes\base\minified\jquery.ui.datepicker.min.css" />
+    <Content Include="Content\themes\base\minified\jquery.ui.dialog.min.css" />
+    <Content Include="Content\themes\base\minified\jquery.ui.progressbar.min.css" />
+    <Content Include="Content\themes\base\minified\jquery.ui.resizable.min.css" />
+    <Content Include="Content\themes\base\minified\jquery.ui.selectable.min.css" />
+    <Content Include="Content\themes\base\minified\jquery.ui.slider.min.css" />
+    <Content Include="Content\themes\base\minified\jquery.ui.tabs.min.css" />
+    <Content Include="Content\themes\base\minified\jquery.ui.theme.min.css" />
+    <Content Include="favicon.ico" />
+    <Content Include="Global.asax" />
+    <Content Include="Images\icons\accept.png" />
+    <Content Include="Images\icons\approve_send.png" />
+    <Content Include="Images\icons\comment.png" />
+    <Content Include="Images\icons\database_accept.png" />
+    <Content Include="Images\icons\database_remove.png" />
+    <Content Include="Images\icons\delete.png" />
+    <Content Include="Images\icons\down.png" />
+    <Content Include="Images\icons\folder_next.png" />
+    <Content Include="Images\icons\forward.png" />
+    <Content Include="Images\icons\forward1.png" />
+    <Content Include="Images\icons\goto.ico" />
+    <Content Include="Images\icons\goto.png" />
+    <Content Include="Images\icons\go_next_page.ico" />
+    <Content Include="Images\icons\ico-message.png" />
+    <Content Include="Images\icons\mail-icon.ico" />
+    <Content Include="Images\icons\reject-upload.png" />
+    <Content Include="Images\icons\remove.png" />
+    <EntityDeploy Include="Models\DMSDbModel.edmx">
+      <Generator>EntityModelCodeGenerator</Generator>
+      <LastGenOutput>DMSDbModel.Designer.cs</LastGenOutput>
+    </EntityDeploy>
+    <Content Include="Models\DMSDbModel.Context.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <DependentUpon>DMSDbModel.edmx</DependentUpon>
+      <LastGenOutput>DMSDbModel.Context.cs</LastGenOutput>
+    </Content>
+    <Content Include="Models\DMSDbModel.edmx.diagram">
+      <DependentUpon>DMSDbModel.edmx</DependentUpon>
+    </Content>
+    <Content Include="Models\DMSDbModel.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <DependentUpon>DMSDbModel.edmx</DependentUpon>
+      <LastGenOutput>DMSDbModel.cs</LastGenOutput>
+    </Content>
+    <None Include="Properties\PublishProfiles\ADA API Profile.pubxml" />
+    <None Include="Properties\PublishProfiles\ERPApiPublish.pubxml" />
+    <None Include="Properties\PublishProfiles\WeMobile.pubxml" />
+    <None Include="Scripts\jquery-1.7.1.intellisense.js" />
+    <Content Include="Images\Uploads\documents\far.png" />
+    <Content Include="Images\Uploads\flag\far.png" />
+    <Content Include="Scripts\jquery-1.7.1.js" />
+    <Content Include="Scripts\jquery-1.7.1.min.js" />
+    <None Include="Scripts\jquery.validate-vsdoc.js" />
+    <Content Include="Scripts\jquery-ui-1.8.20.js" />
+    <Content Include="Scripts\jquery-ui-1.8.20.min.js" />
+    <Content Include="Scripts\jquery.unobtrusive-ajax.js" />
+    <Content Include="Scripts\jquery.unobtrusive-ajax.min.js" />
+    <Content Include="Scripts\jquery.validate.js" />
+    <Content Include="Scripts\jquery.validate.min.js" />
+    <Content Include="Scripts\jquery.validate.unobtrusive.js" />
+    <Content Include="Scripts\jquery.validate.unobtrusive.min.js" />
+    <Content Include="Scripts\knockout-2.1.0.debug.js" />
+    <Content Include="Scripts\knockout-2.1.0.js" />
+    <Content Include="Scripts\modernizr-2.5.3.js" />
+    <Content Include="Content\Site.css" />
+    <Content Include="Images\accent.png" />
+    <Content Include="Images\bullet.png" />
+    <Content Include="Images\heroAccent.png" />
+    <Content Include="Images\orderedList0.png" />
+    <Content Include="Images\orderedList1.png" />
+    <Content Include="Images\orderedList2.png" />
+    <Content Include="Images\orderedList3.png" />
+    <Content Include="Images\orderedList4.png" />
+    <Content Include="Images\orderedList5.png" />
+    <Content Include="Images\orderedList6.png" />
+    <Content Include="Images\orderedList7.png" />
+    <Content Include="Images\orderedList8.png" />
+    <Content Include="Images\orderedList9.png" />
+    <Content Include="Scripts\_references.js" />
+    <Content Include="Views\Home\Index.cshtml">
+      <SubType>Code</SubType>
+    </Content>
+    <Content Include="Views\Web.config">
+      <SubType>Designer</SubType>
+    </Content>
+    <Content Include="Views\_ViewStart.cshtml" />
+    <Content Include="Views\Shared\Error.cshtml" />
+    <Content Include="Views\Shared\_Layout.cshtml" />
+    <Content Include="Views\Test\ControlType.cshtml" />
+    <Content Include="Web.config">
+      <SubType>Designer</SubType>
+    </Content>
+    <None Include="Web.Debug.config">
+      <DependentUpon>Web.config</DependentUpon>
+    </None>
+    <None Include="Web.Release.config">
+      <DependentUpon>Web.config</DependentUpon>
+    </None>
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="App_Data\Delivery_Challans\" />
+    <Folder Include="App_Data\Payment_Request\" />
+    <Folder Include="App_Data\PI_Attachments\" />
+    <Folder Include="Images\LabelReference\" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="packages.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />
+  </ItemGroup>
+  <PropertyGroup>
+    <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
+    <VSToolsPath Condition="'$(VSToolsPath)' == ''">$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)</VSToolsPath>
+  </PropertyGroup>
+  <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
+  <Import Project="$(VSToolsPath)\WebApplications\Microsoft.WebApplication.targets" Condition="'$(VSToolsPath)' != ''" />
+  <Import Project="$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v10.0\WebApplications\Microsoft.WebApplication.targets" Condition="false" />
+  <Target Name="MvcBuildViews" AfterTargets="AfterBuild" Condition="'$(MvcBuildViews)'=='true'">
+    <AspNetCompiler VirtualPath="temp" PhysicalPath="$(WebProjectOutputDir)" />
+  </Target>
+  <ProjectExtensions>
+    <VisualStudio>
+      <FlavorProperties GUID="{349c5851-65df-11da-9384-00065b846f21}">
+        <WebProjectProperties>
+          <UseIIS>False</UseIIS>
+          <AutoAssignPort>False</AutoAssignPort>
+          <DevelopmentServerPort>7100</DevelopmentServerPort>
+          <DevelopmentServerVPath>/</DevelopmentServerVPath>
+          <IISUrl>
+          </IISUrl>
+          <NTLMAuthentication>False</NTLMAuthentication>
+          <UseCustomServer>False</UseCustomServer>
+          <CustomServerUrl>
+          </CustomServerUrl>
+          <SaveServerSettingsInUserFile>False</SaveServerSettingsInUserFile>
+        </WebProjectProperties>
+      </FlavorProperties>
+    </VisualStudio>
+  </ProjectExtensions>
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target> -->
+</Project>

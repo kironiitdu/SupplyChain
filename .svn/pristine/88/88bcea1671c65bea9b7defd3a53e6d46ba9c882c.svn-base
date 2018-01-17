@@ -1,0 +1,19 @@
+﻿using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+
+namespace DMSApi.Models.IRepository
+{
+    public interface IReceiveSerialNoDetailsRepository
+    {
+        object GetProductInformation(string imei_no,int party_id);
+        object GetProductInformationForCentral(string imei_no);
+        object GetProductInformationForDirectTransfer(string imei_no, int from_warehouse_id);
+        object GetProductInformationForScan(string imei_no, int from_warehouse_id);
+        //List<receive_serial_no_details> Getimeino();
+        object Getimeino();
+        object GetImeiPartyNProductwise( int party_id, int product_id);
+    }
+}

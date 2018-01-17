@@ -1,0 +1,630 @@
+﻿using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Web;
+using DMSApi.Models.crystal_models;
+using DMSApi.Models.IRepository;
+using DMSApi.Models.StronglyType;
+
+namespace DMSApi.Models.Repository
+{
+    public class PartyRepository : IPartyRepository
+    {
+        private DMSEntities _entities;
+        WarehouseRepository whr = new WarehouseRepository();
+
+        public PartyRepository()
+        {
+            this._entities = new DMSEntities();
+        }
+        public object GetAllParty()
+        {
+            var party = (from p in _entities.parties
+                         join pt in _entities.party_type on p.party_type_id equals pt.party_type_id
+                         join regi in _entities.regions on p.region_id equals regi.region_id into tempRegi
+                         from regi in tempRegi.DefaultIfEmpty()
+                         join are in _entities.areas on p.area_id equals are.area_id into tempAre from are in tempAre.DefaultIfEmpty()
+                         join teri in _entities.territories on p.territory_id equals teri.territory_id into tempTeri from teri in tempTeri.DefaultIfEmpty()
+                         where p.is_deleted==false
+                         select new
+                         {
+                             party_id = p.party_id,
+                             party_name = p.party_name,
+                             party_code = p.party_code,
+                             address = p.address,
+                             proprietor_name = p.proprietor_name,
+                             phone = p.phone,
+                             mobile = p.mobile,
+                             email = p.email,
+                             party_type_id = p.party_type_id,
+                             party_type_name = pt.party_type_name,
+                             start_date = p.start_date,
+                             is_active = p.is_active,
+                             created_by = p.created_by,
+                             created_date = p.created_date,
+                             region_name = regi.region_name,
+                             area_name = are.area_name,
+                             territory_name = teri.territory_name,
+
+                             //modified_by = p.modified_by,
+                             //modified_date = p.modified_date,
+                             //location_name = loca.location_name,
+                             gl_account = p.gl_account
+                             //cs = p.cs,
+                             //jr_cs = p.jr_cs
+
+                         }).OrderBy(p => p.party_name).ToList();
+            return party;
+
+
+
+        }
+
+        public object GetAllPartyForMonthlyPartyTarget(long province_id, long city_id, long party_type_id, string target_month)
+        {
+            //try
+            //{
+            //    var parties = (from par in _entities.parties
+            //                   join mpt in _entities.monthly_party_target on par.party_id equals mpt.party_id
+            //                   where mpt.target_month == target_month && par.province_id == province_id && par.city_id == city_id && par.party_type_id == party_type_id
+            //                   select new
+            //                   {
+
+            //                       monthly_party_target_id = mpt.monthly_party_target_id,
+            //                       party_id = mpt.party_id,
+            //                       party_name = par.party_name,
+            //                       target_month = mpt.target_month,
+            //                       //target_quantity = mpt.target_quantity,
+            //                       province_id = par.province_id,
+            //                       city_id = par.city_id
+
+            //                   }).OrderByDescending(e => e.monthly_party_target_id).ToList();
+            //    if (parties.Count == 0)
+            //    {
+            //        string query = "select pty.party_id,pty.party_name,pty_type.party_prefix,pv.province_name,dc.city_name from party pty inner join party_type pty_type on pty_type.party_type_id=pty.party_type_id inner join province pv on pv.province_id=pty.province_id inner join district_city dc on dc.city_id=pty.city_id where pty.party_type_id='" + party_type_id + "' and pty.province_id='" + province_id + "' and pty.city_id='" + city_id + "'";
+
+            //        var data = _entities.Database.SqlQuery<MonthlyPartyTargetModel>(query).ToList();
+            //        return data;
+            //    }
+            //    else
+            //    {
+            //        return 0;
+            //    }
+
+
+            //}
+            //catch (Exception ex)
+            //{
+            //    return ex;
+            //}
+            return null;
+        }
+
+        public object GetAllPartyWithRetailer()
+        {
+            var party = (from p in _entities.parties
+                         join pt in _entities.party_type on p.party_type_id equals pt.party_type_id
+                         //join loca in _entities.locations on p.location_id equals loca.location_id into tempLoca
+                         //from loca in tempLoca.DefaultIfEmpty()
+                         select new
+                         {
+                             party_id = p.party_id,
+                             party_name = p.party_name,
+                             party_code = p.party_code,
+                             address = p.address,
+                             proprietor_name = p.proprietor_name,
+                             phone = p.phone,
+                             mobile = p.mobile,
+                             email = p.email,
+                             party_type_id = p.party_type_id,
+                             party_type_name = pt.party_type_name,
+                             start_date = p.start_date,
+                             is_active = p.is_active,
+                             created_by = p.created_by,
+                             created_date = p.created_date,
+                             //modified_by = p.modified_by,
+                             //modified_date = p.modified_date,
+                             //location_name = loca.location_name,
+                             gl_account = p.gl_account
+                             //cs = p.cs,
+                             //jr_cs = p.jr_cs
+
+                         }).OrderByDescending(p => p.party_id).ToList();
+            return party;
+        }
+
+        public object GetAllRetailerByPartyId(long party_id)
+        {
+            var party = (from p in _entities.parties
+                         join pt in _entities.party_type on p.party_type_id equals pt.party_type_id
+                         //join loca in _entities.locations on p.location_id equals loca.location_id into tempLoca
+                         //from loca in tempLoca.DefaultIfEmpty()
+                         select new
+                         {
+                             party_id = p.party_id,
+                             party_name = p.party_name,
+                             party_code = p.party_code,
+                             address = p.address,
+                             proprietor_name = p.proprietor_name,
+                             phone = p.phone,
+                             mobile = p.mobile,
+                             email = p.email,
+                             party_type_id = p.party_type_id,
+                             party_type_name = pt.party_type_name,
+                             start_date = p.start_date,
+                             is_active = p.is_active,
+                             created_by = p.created_by,
+                             created_date = p.created_date,
+                             //modified_by = p.modified_by,
+                             //modified_date = p.modified_date,
+                             //location_name = loca.location_name,
+                             gl_account = p.gl_account,
+                             parent_party_id = p.parent_party_id
+                             //cs = p.cs,
+                             //jr_cs = p.jr_cs
+
+                         }).Where(p => p.party_type_id == 8 && p.parent_party_id == party_id).OrderByDescending(p => p.party_id).ToList();
+            return party;
+
+        }
+
+        public object GetPartyCodeById(long party_id)
+        {
+            var partyData = (from rol in _entities.roles
+                             join pt in _entities.party_type on rol.role_id equals pt.role_id
+                             join par in _entities.parties on pt.party_type_id equals par.party_type_id
+                             where par.party_id == party_id
+                             select new
+                             {
+
+                                 party_code = par.party_code,
+                                 party_name = par.party_name,
+                                 role_id = rol.role_id
+
+
+
+                             }).ToList();
+
+
+            return partyData;
+        }
+
+
+        public object GetAllPartyByPartyTypeId()
+        {
+            var party = _entities.parties.Where(p => p.party_type_id == 2 || p.party_type_id == 3).ToList();
+            return party;
+        }
+
+        public object GetMasterDealer()
+        {
+            var master_dealer = (from p in _entities.parties
+                                 join pt in _entities.party_type on p.party_type_id equals pt.party_type_id
+                                 where pt.party_type_name == "Master Dealer"
+
+                                 select new
+                                 {
+
+                                     party_name = p.party_name,
+                                     party_id = p.party_id
+
+
+                                 }).ToList();
+            return master_dealer;
+        }
+
+        //mohiuddin //to load party according to party category
+        public List<party> GetPartyTypewisePartyForDropdown(long party_type_id)
+        {
+            var party = _entities.parties.Where(p => p.party_type_id == party_type_id)
+                .OrderBy(p => p.party_name).Where(p=>p.is_deleted==false).ToList();
+
+            return party;
+        }
+
+        public List<party> GetAreaNPartyTypewiseParty(long party_type_id, long area_id)
+        {
+
+            var party =
+                _entities.parties.Where(w => w.party_type_id == party_type_id && w.area_id == area_id)
+                    .OrderByDescending(p => p.party_id)
+                    .ToList();
+
+            return party;
+        }
+
+        public object GetOnlyNormalClientParty()
+        {
+            var party = _entities.parties.Where(p => p.party_type_id == 4).ToList();
+            return party;
+        }
+
+        public decimal GetPartyCreditLimit(long party_id)
+        {
+            try
+            {
+                decimal creditLimit = 0;
+                var credit_Limit = _entities.parties.FirstOrDefault(p => p.party_id == party_id);
+                if (credit_Limit != null)
+                {
+                    creditLimit = credit_Limit.credit_limit??0;
+                }
+                else
+                {
+                    creditLimit = 0;
+                }
+                return creditLimit; 
+            }
+            catch (Exception)
+            {
+                
+                throw;
+            }
+        }
+
+        public string PartyBillingAddress(long party_id)
+        {
+            try
+            {
+                var billingAddress ="";
+                var billing_address = _entities.parties.FirstOrDefault(p => p.party_id == party_id);
+                if (billing_address != null)
+                {
+                    billingAddress = billing_address.address;
+                }
+                else
+                {
+                    billingAddress = "";
+                }
+                return billingAddress; 
+            }
+            catch (Exception)
+            {
+                throw;
+            }
+        }
+
+        public object GetRegionAreaTerritory(long party_id)
+        {
+            try
+            {
+                var region_area_territory = _entities.parties.Find(party_id);
+                return region_area_territory;
+            }
+            catch (Exception)
+            {
+                throw;
+            }
+        }
+
+        public List<party> GetAllPartyWithoutJournal()
+        {
+            
+            //var party = _entities.parties.Where(p => p.party_id != 1 && p.party_id )
+            //    .OrderByDescending(p => p.party_id).Where(p => p.is_deleted == false).ToList();
+            var party = _entities.parties.Where(p => !_entities.party_journal.Select(pj => pj.party_id)
+                                            .Contains(p.party_id))
+                              .OrderBy(p => p.party_name).Where(p => p.is_deleted == false && p.party_id!=1).ToList();
+
+            return party;
+        }
+
+        public object GetPartyOpeningBalanceById(long party_id)
+        {
+            try
+            {
+                string partyDtls = "select p.party_id, p.party_name, p.address, p.mobile, p.party_type_id, p.party_id, "
+                                   +
+                                   " p.region_id, p.area_id, p.territory_id, pt.party_type_name, r.region_name, a.area_name, t.territory_name, "
+                                   +
+                                   " isnull((select top 1 opening_balance from party_journal where party_id=p.party_id order by party_journal_id asc),0) as opening_balance "
+                                   + " from party p "
+                                   + " inner join party_type pt on p.party_type_id=pt.party_type_id "
+                                   + " inner join region r on p.region_id=r.region_id "
+                                   + " inner join area a on p.area_id=a.area_id "
+                                   + " inner join territory t on p.territory_id=t.territory_id "
+                                   + " where p.party_id = " + party_id + " ";
+
+                var data = _entities.Database.SqlQuery<PartyDetailsWithOpeningBalanceModel>(partyDtls).FirstOrDefault();
+
+                return data;
+            }
+            catch (Exception)
+            {
+                throw;
+            }
+        }
+
+        public bool EditOpeningBalance(OpeningBalanceModel OpeningBalanceModel)
+        {
+           var ptable =
+                _entities.party_journal.Where(w => w.party_id == OpeningBalanceModel.party_id).FirstOrDefault();
+            ptable.opening_balance = OpeningBalanceModel.opening_balance;
+            ptable.closing_balance = OpeningBalanceModel.opening_balance;
+            _entities.SaveChanges();
+            return true;
+        }
+
+        public bool EditCreditLimit(party CreditLimit)
+        {
+            var partyCreditLimit = _entities.parties.Find(CreditLimit.party_id);
+            partyCreditLimit.credit_limit = CreditLimit.credit_limit;
+            _entities.SaveChanges();
+
+            return true;
+        }
+
+
+        public object GetPartyByPartyName(string party_name)
+        {
+            var party = _entities.parties.FirstOrDefault(p => p.party_name == party_name);
+            return party;
+        }
+
+        public long AddParty(party oParty)
+        {
+            try
+            {
+
+                long partyCode = _entities.parties.Max(po => (long?)po.party_id) ?? 0;
+
+                if (partyCode != 0)
+                {
+                    partyCode++;
+
+                }
+                else
+                {
+                    partyCode++;
+                }
+                var cusString = partyCode.ToString().PadLeft(7, '0');
+
+                var getPartytype = _entities.party_type.Find(oParty.party_type_id);
+                string partyPrefix = getPartytype.party_prefix;
+
+                string cusCodeNo = partyPrefix + "-" + cusString;
+                party insert_party = new party
+                {
+                    party_code = cusCodeNo,
+                    parent_party_id = oParty.parent_party_id,
+                    party_name = oParty.party_name,
+                    address = oParty.address,
+                    proprietor_name = oParty.proprietor_name,
+                    phone = oParty.phone,
+                    mobile = oParty.mobile,
+                    email = oParty.email,
+                    party_type_id = oParty.party_type_id,
+                    start_date = oParty.start_date,
+                    is_active =true,
+                    is_deleted  =false,
+                    country_id = oParty.country_id,
+                    province_id = oParty.province_id,
+                    city_id = oParty.city_id,
+                    region_id =oParty.region_id,
+                    area_id = oParty.area_id,
+                    territory_id = oParty.territory_id,
+                    credit_limit = oParty.credit_limit,
+                    created_by = oParty.created_by,
+                    created_date = DateTime.Now,
+                    dealer_type_id = oParty.dealer_type_id,
+                    retailer_type_id = oParty.retailer_type_id
+                  
+                };
+                _entities.parties.Add((insert_party));
+                _entities.SaveChanges();
+                long last_insert_id = insert_party.party_id;
+
+                //backend warehouse creation..........
+                //----------------------
+                 //generate warehouse Code
+                long WarehouseSerial = _entities.warehouses.Max(rq => (long?)rq.warehouse_id) ?? 0;
+
+                if (WarehouseSerial != 0)
+                {
+                    WarehouseSerial++;
+
+                }
+                else
+                {
+                    WarehouseSerial++;
+                }
+                var whStr = WarehouseSerial.ToString().PadLeft(7, '0');
+                string wareHouseCode = "WH-" + whStr;
+
+               // Create Warehouse for New Party
+
+                warehouse insert_warehouse = new warehouse
+                {
+
+
+                    warehouse_name = oParty.party_name + " Warehouse",
+                    warehouse_code = wareHouseCode,
+                    warehouse_address = oParty.address,
+                    warehouse_type = "Physical",
+                    party_id = last_insert_id,
+                    party_type_id = oParty.party_type_id,
+                    created_by = oParty.created_by,
+                    region_id = oParty.region_id,
+                    area_id = oParty.area_id,
+                    territory_id = oParty.territory_id,
+                    is_active = true,
+                    is_deleted = false,
+                    created_date = DateTime.Now
+
+                };
+                _entities.warehouses.Add(insert_warehouse);
+                _entities.SaveChanges();
+
+
+                return last_insert_id;
+            }
+            catch (Exception)
+            {
+
+                return 0;
+            }
+        }
+
+        public bool CheckDuplicatePartyName(string party_name)
+        {
+           var checkDuplicateParty = _entities.parties.FirstOrDefault(p => p.party_name == party_name);
+            bool return_type = checkDuplicateParty == null ? false : true;
+            return return_type;
+        }
+
+        public party GetPartyById(long party_id)
+        {
+            var party = _entities.parties.Find(party_id);
+            return party;
+        }
+
+        public object GetPartyInfoByPartyId(long party_id)
+        {
+            var party = (from p in _entities.parties
+                join pt in _entities.party_type on p.party_type_id equals pt.party_type_id
+                join regi in _entities.regions on p.region_id equals regi.region_id into tempRegi
+                from regi in tempRegi.DefaultIfEmpty()
+                join are in _entities.areas on p.area_id equals are.area_id into tempAre
+                from are in tempAre.DefaultIfEmpty()
+                join teri in _entities.territories on p.territory_id equals teri.territory_id into tempTeri
+                from teri in tempTeri.DefaultIfEmpty()
+                where p.is_deleted == false && p.party_id == party_id
+                select new
+                {
+                    party_id = p.party_id,
+                    party_name = p.party_name,
+                    party_code = p.party_code,
+                    address = p.address,
+                    proprietor_name = p.proprietor_name,
+                    phone = p.phone,
+                    mobile = p.mobile,
+                    email = p.email,
+                    party_type_id = p.party_type_id,
+                    party_type_name = pt.party_type_name,
+                    start_date = p.start_date,
+                    is_active = p.is_active,
+                    created_by = p.created_by,
+                    created_date = p.created_date,
+                    region_name = regi.region_name,
+                    area_name = are.area_name,
+                    territory_name = teri.territory_name,
+                    gl_account = p.gl_account
+
+                }).FirstOrDefault();
+            return party;
+        }
+
+        public bool EditParty(party oParty)
+        {
+            try
+            {
+                party ptParty = _entities.parties.Find((oParty.party_id));
+                ptParty.party_name = oParty.party_name;
+                ptParty.parent_party_id = ptParty.parent_party_id;
+                ptParty.party_code = ptParty.party_code;
+                ptParty.address = oParty.address;
+                ptParty.proprietor_name = oParty.proprietor_name;
+                ptParty.phone = oParty.phone;
+                ptParty.mobile = oParty.mobile;
+                ptParty.email = oParty.email;
+                ptParty.area_id = oParty.area_id;
+                ptParty.party_type_id = oParty.party_type_id;
+                ptParty.credit_limit = oParty.credit_limit;
+                ptParty.start_date = oParty.start_date;
+                ptParty.is_active = oParty.is_active;
+                ptParty.is_deleted = false;
+                ptParty.country_id = oParty.country_id;
+                ptParty.province_id = oParty.province_id;
+                ptParty.city_id = oParty.city_id;
+                ptParty.region_id = oParty.region_id;
+                ptParty.territory_id = oParty.territory_id;
+                ptParty.credit_limit = oParty.credit_limit;
+                ptParty.updated_by = oParty.updated_by;
+                ptParty.updated_date = DateTime.Now;
+                ptParty.dealer_type_id = oParty.dealer_type_id;
+                ptParty.retailer_type_id = oParty.retailer_type_id;           
+                _entities.SaveChanges();
+                
+                ////Update Warehouse for Related Party
+                var kkk = _entities.warehouses.SingleOrDefault(p => p.party_id == oParty.party_id).warehouse_id;
+                warehouse update_warehouse = new warehouse
+                {
+                    warehouse_id = kkk,
+                    warehouse_name = oParty.party_name + " Warehouse",                   
+                    warehouse_address = oParty.address,
+                    warehouse_type = "Physical",
+                    party_id = oParty.party_id,
+                    party_type_id = oParty.party_type_id,                   
+                    region_id = oParty.region_id,
+                    area_id = oParty.area_id,
+                    territory_id = oParty.territory_id,
+                    is_active = true,
+                    is_deleted = false,
+                    updated_by = oParty.updated_by,
+                    created_date = DateTime.Now
+
+                };
+                //Update warehouse
+        
+                whr.EditWarehouse(update_warehouse);
+                _entities.SaveChanges();
+                return true;
+            }
+            catch (Exception)
+            {
+
+                return false;
+            }
+        }
+
+        public long DeleteParty(long party_id, long? updated_by)
+        {
+            try
+            {
+                var deletepartys = _entities.requisition_master.Where(rm => rm.party_id == party_id).ToList();
+
+                if (deletepartys.Count != 0)
+                {
+                    return 1;
+                }
+
+                else
+                {
+                    party oParty = _entities.parties.FirstOrDefault(p => p.party_id == party_id);
+                    oParty.is_deleted = true;
+                    oParty.updated_by = updated_by;
+                    oParty.updated_date = DateTime.Now;
+                    _entities.SaveChanges();
+                    var kkk = _entities.warehouses.SingleOrDefault(p => p.party_id == party_id).warehouse_id;
+                    whr.DeleteWarehouse(kkk, updated_by);
+                    return 2;
+
+                }
+            }
+            catch (Exception)
+            {
+
+                return 0;
+            }
+            return 0;
+        }
+
+
+
+        public object GetPartyByPartyTypeIdAndAreaId(long partyTypeId, long areaId)
+        {
+            try
+            {
+                var party = _entities.parties.Where(p => p.party_type_id == partyTypeId && p.area_id == areaId)
+                               .OrderBy(p => p.party_name).Where(p => p.is_deleted == false).ToList();
+
+                return party;
+            }
+            catch (Exception)
+            {
+
+                return null;
+            }
+        }
+    }
+}

@@ -1,0 +1,948 @@
+﻿using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Web;
+using System.Web.DynamicData;
+using DMSApi.Models.IRepository;
+using iTextSharp.text.pdf.parser.clipper;
+
+namespace DMSApi.Models.Repository
+{
+    public class ProductPriceingRepository : IProductPriceingReporsitory
+    {
+        private DMSEntities _entities;
+
+        public ProductPriceingRepository()
+        {
+            this._entities = new DMSEntities();
+        }
+
+        public object GetAllProductPriceing()
+        {
+            try
+            {
+                var priceing = (from p in _entities.product_price_mapping
+                                join pr in _entities.products on p.product_id equals pr.product_id
+                                join c in _entities.colors on p.color_id equals c.color_id
+                                join v in _entities.product_version on p.product_version_id equals v.product_version_id
+                                into nn
+                                from jj in nn.DefaultIfEmpty()
+                                select new
+                                {
+                                    p.emi_cost,
+                                    p.dealer_cost,
+                                    p.retailer_cost,
+                                    p.mrp_cost,
+                                    p.gift_cost,
+                                    p.internal_cost,
+                                    p.online_cost,
+                                    p.product_id,
+                                    p.product_price_mapping_id,
+                                    p.product_version_id,
+                                    p.telco_cost,
+                                    p.color_id,
+                                    p.is_active,
+                                    p.corporate_cost,
+                                    p.b2b_cost,
+                                    pr.product_name,
+                                    c.color_name,
+                                    p.is_deleted,
+                                    p.last_grn_no,
+                                    jj.product_version_name
+
+                                }).Where(a => a.is_deleted == false).OrderByDescending(a => a.product_price_mapping_id).ToList();
+                return priceing;
+            }
+            catch (Exception)
+            {
+                return null;
+            }
+        }
+
+        public bool AddProductPriceing(product_price_mapping productPrice, long create_by)
+        {
+            try
+            {
+                var priceing = new product_price_mapping();
+                priceing.product_id = productPrice.product_id;
+                priceing.product_version_id = productPrice.product_version_id;
+                priceing.color_id = productPrice.color_id;
+                priceing.is_active = productPrice.is_active;
+                priceing.created_by = create_by;
+                priceing.created_date = DateTime.Now;
+                priceing.b2b_cost = productPrice.b2b_cost;
+                priceing.corporate_cost = productPrice.corporate_cost;
+                priceing.dealer_cost = productPrice.dealer_cost;
+                priceing.emi_cost = productPrice.emi_cost;
+                priceing.gift_cost = productPrice.gift_cost;
+                priceing.internal_cost = productPrice.internal_cost;
+                priceing.online_cost = productPrice.online_cost;
+                priceing.telco_cost = productPrice.telco_cost;
+                priceing.is_deleted = false;
+                priceing.land_cost = productPrice.land_cost;
+                priceing.fin_cost = productPrice.fin_cost;
+                priceing.incentive_cost = productPrice.incentive_cost;
+                priceing.price_protection = productPrice.price_protection;
+                priceing.promotional_cost = productPrice.promotional_cost;
+                priceing.marketing_cost = productPrice.marketing_cost;
+                priceing.distribution_cost = productPrice.distribution_cost;
+                priceing.qc_cost = productPrice.qc_cost;
+                priceing.we_wifi = productPrice.we_wifi;
+                priceing.we_cloud = productPrice.we_cloud;
+                priceing.cost_price = productPrice.cost_price;
+                priceing.package_cost = productPrice.package_cost;
+                priceing.total_package_cost = productPrice.total_package_cost;
+                priceing.amra_margin = productPrice.amra_margin;
+                priceing.dealer_margin = productPrice.dealer_margin;
+                priceing.retailer_margin = productPrice.retailer_margin;
+                priceing.retailer_cost = productPrice.retailer_cost;
+                priceing.mrp_cost = productPrice.mrp_cost;
+                priceing.last_grn_no = productPrice.last_grn_no;
+
+                _entities.product_price_mapping.Add(priceing);
+                int save = _entities.SaveChanges();
+                if (save > 0)
+                {
+                    return true;
+                }
+                else
+                {
+                    return false;
+                }
+            }
+            catch (Exception)
+            {
+                return false;
+            }
+        }
+
+        public product_price_mapping GetProductPriceMappingBtId(long priceingId)
+        {
+            try
+            {
+                var mapping = _entities.product_price_mapping.SingleOrDefault(a => a.product_price_mapping_id == priceingId);
+                return mapping;
+            }
+            catch (Exception)
+            {
+                return null;
+            }
+        }
+
+        public bool InsertLogTable(product_price_mapping productPrice, long update_by)
+        {
+            var priceing = new product_price_mapping_log();
+            priceing.product_price_mapping_id = productPrice.product_price_mapping_id;
+            priceing.product_id = productPrice.product_id;
+            priceing.product_version_id = productPrice.product_version_id;
+            priceing.color_id = productPrice.color_id;
+            priceing.is_active = productPrice.is_active;
+            priceing.updated_by = update_by;
+            priceing.updated_date = DateTime.Now;
+            priceing.b2b_cost = productPrice.b2b_cost;
+            priceing.corporate_cost = productPrice.corporate_cost;
+            priceing.dealer_cost = productPrice.dealer_cost;
+            priceing.emi_cost = productPrice.emi_cost;
+            priceing.gift_cost = productPrice.gift_cost;
+            priceing.internal_cost = productPrice.internal_cost;
+            priceing.online_cost = productPrice.online_cost;
+            priceing.telco_cost = productPrice.telco_cost;
+            priceing.created_by = productPrice.created_by;
+            priceing.created_date = productPrice.created_date;
+            priceing.land_cost = productPrice.land_cost;
+            priceing.fin_cost = productPrice.fin_cost;
+            priceing.incentive_cost = productPrice.incentive_cost;
+            priceing.price_protection = productPrice.price_protection;
+            priceing.promotional_cost = productPrice.promotional_cost;
+            priceing.marketing_cost = productPrice.marketing_cost;
+            priceing.distribution_cost = productPrice.distribution_cost;
+            priceing.qc_cost = productPrice.qc_cost;
+            priceing.we_wifi = productPrice.we_wifi;
+            priceing.we_cloud = productPrice.we_cloud;
+            priceing.cost_price = productPrice.cost_price;
+            priceing.package_cost = productPrice.package_cost;
+            priceing.total_package_cost = productPrice.total_package_cost;
+            priceing.amra_margin = productPrice.amra_margin;
+            priceing.dealer_margin = productPrice.dealer_margin;
+            priceing.retailer_margin = productPrice.retailer_margin;
+            priceing.retailer_cost = productPrice.retailer_cost;
+            priceing.mrp_cost = productPrice.mrp_cost;
+            priceing.last_grn_no = productPrice.last_grn_no;
+
+            _entities.product_price_mapping_log.Add(priceing);
+            int save = _entities.SaveChanges();
+            return true;
+        }
+
+        public bool EditProductPricing(product_price_mapping productPrice, long update_by)
+        {
+            try
+            {
+                int save = 0;
+                var priceing = _entities.product_price_mapping.Find(productPrice.product_price_mapping_id);
+
+                if (InsertLogTable(priceing, update_by))
+                {
+                    priceing.product_id = productPrice.product_id;
+                    priceing.product_version_id = productPrice.product_version_id;
+                    priceing.color_id = productPrice.color_id;
+                    priceing.is_active = productPrice.is_active;
+                    priceing.updated_by = update_by;
+                    priceing.updated_date = DateTime.Now;
+                    priceing.b2b_cost = productPrice.b2b_cost;
+                    priceing.corporate_cost = productPrice.corporate_cost;
+                    priceing.dealer_cost = productPrice.dealer_cost;
+                    priceing.emi_cost = productPrice.emi_cost;
+                    priceing.gift_cost = productPrice.gift_cost;
+                    priceing.internal_cost = productPrice.internal_cost;
+                    priceing.online_cost = productPrice.online_cost;
+                    priceing.telco_cost = productPrice.telco_cost;
+
+                    priceing.land_cost = productPrice.land_cost;
+                    priceing.fin_cost = productPrice.fin_cost;
+                    priceing.incentive_cost = productPrice.incentive_cost;
+                    priceing.price_protection = productPrice.price_protection;
+                    priceing.promotional_cost = productPrice.promotional_cost;
+                    priceing.marketing_cost = productPrice.marketing_cost;
+                    priceing.distribution_cost = productPrice.distribution_cost;
+                    priceing.qc_cost = productPrice.qc_cost;
+                    priceing.we_wifi = productPrice.we_wifi;
+                    priceing.we_cloud = productPrice.we_cloud;
+                    priceing.cost_price = productPrice.cost_price;
+                    priceing.package_cost = productPrice.package_cost;
+                    priceing.total_package_cost = productPrice.total_package_cost;
+                    priceing.amra_margin = productPrice.amra_margin;
+                    priceing.dealer_margin = productPrice.dealer_margin;
+                    priceing.retailer_margin = productPrice.retailer_margin;
+                    priceing.retailer_cost = productPrice.retailer_cost;
+                    priceing.mrp_cost = productPrice.mrp_cost;
+                    priceing.last_grn_no = productPrice.last_grn_no;
+
+                    save = _entities.SaveChanges();
+
+                }
+                if (save > 0)
+                {
+                    return true;
+                }
+                else
+                {
+                    return false;
+                }
+
+            }
+            catch (Exception)
+            {
+
+                throw;
+            }
+        }
+
+        public bool DeleteProductPriceing(long priceingId)
+        {
+            try
+            {
+                var priceing = _entities.product_price_mapping.Find(priceingId);
+
+                priceing.is_active = false;
+                priceing.is_deleted = true;
+
+                int save = _entities.SaveChanges();
+                if (save > 0)
+                {
+                    return true;
+                }
+                else
+                {
+                    return false;
+                }
+            }
+            catch (Exception)
+            {
+
+                throw;
+            }
+        }
+
+        public bool CheckDuplicatePriceing(product_price_mapping productPrice)
+        {
+            try
+            {
+                var check =
+                    _entities.product_price_mapping.SingleOrDefault(
+                        a =>
+                            a.product_id == productPrice.product_id && a.color_id == productPrice.color_id &&
+                            a.product_version_id == productPrice.product_version_id);
+                if (check == null)
+                {
+                    return true;
+                }
+                else
+                {
+                    return false;
+                }
+            }
+            catch (Exception)
+            {
+
+                throw;
+            }
+        }
+
+
+        public object GetProductVersionByProductId(long product_id)
+        {
+            try
+            {
+                var list = (from i in _entities.product_version_mapping
+                            join e in _entities.product_version on i.product_version_id equals e.product_version_id
+                            where i.product_id == product_id
+                            select new
+                    {
+                        e.product_version_id,
+                        e.product_version_name
+                    }).ToList();
+                return list;
+            }
+            catch (Exception)
+            {
+
+                throw;
+            }
+        }
+
+        public object GetColorByProductId(long product_id)
+        {
+            try
+            {
+                var list = (from i in _entities.product_color_mapping
+                            join e in _entities.colors on i.color_id equals e.color_id
+                            where i.product_id == product_id
+                            select new
+                            {
+                                e.color_id,
+                                e.color_name
+                            }).ToList();
+                return list;
+            }
+            catch (Exception)
+            {
+
+                throw;
+            }
+        }
+
+        public object GetProductwiseColor()
+        {
+            try
+            {
+                var colors = (from ppm in _entities.product_price_mapping
+                              join cl in _entities.colors on ppm.color_id equals cl.color_id
+                              select new
+                              {
+                                  color_id = ppm.color_id,
+                                  color_name = cl.color_name,
+                                  product_id = ppm.product_id
+
+                              }).OrderBy(o => o.color_id).Distinct().ToList();
+
+                return colors;
+            }
+            catch (Exception)
+            {
+                throw;
+            }
+        }
+
+        //get product and color wise version
+        public object GetProductColorwiseVersion(long product_id, long color_id)
+        {
+            try
+            {
+                var versions = (from ppm in _entities.product_price_mapping
+                                join cl in _entities.colors on ppm.color_id equals cl.color_id
+                                join v in _entities.product_version on ppm.product_version_id equals v.product_version_id
+                                where (ppm.product_id == product_id && ppm.color_id == color_id)
+                                select new
+                                {
+                                    color_id = ppm.color_id,
+                                    color_name = cl.color_name,
+                                    product_id = ppm.product_id,
+                                    product_version_id = ppm.product_version_id,
+                                    product_version_name = v.product_version_name
+
+                                }).OrderBy(o => o.color_id).Distinct().ToList();
+
+                return versions;
+            }
+            catch (Exception)
+            {
+
+                throw;
+            }
+        }
+
+        //get product color and version wise price
+        public object GetProductColorVersionwisePrice(long party_type_id, long product_id, long color_id, long product_version_id)
+        {
+            try
+            {
+                //Brand Shop In price
+                if (party_type_id == 2)
+                {
+                    var price = (from ppm in _entities.product_price_mapping
+                                 where
+                                     (ppm.product_id == product_id && ppm.color_id == color_id &&
+                                      ppm.product_version_id == product_version_id)
+                                 select new
+                                 {
+                                     ppm.dealer_cost
+                                 }).FirstOrDefault();
+
+                    return price.dealer_cost;
+
+                }
+
+                //Shop In Shop price
+                if (party_type_id == 3)
+                {
+                    var price = (from ppm in _entities.product_price_mapping
+                                 where
+                                     (ppm.product_id == product_id && ppm.color_id == color_id &&
+                                      ppm.product_version_id == product_version_id)
+                                 select new
+                                 {
+                                     ppm.dealer_cost
+                                 }).FirstOrDefault();
+
+                    return price.dealer_cost;
+                }
+                //dealer price
+                if (party_type_id == 4)
+                {
+                    var price = (from ppm in _entities.product_price_mapping
+                                 where
+                                     (ppm.product_id == product_id && ppm.color_id == color_id &&
+                                      ppm.product_version_id == product_version_id)
+                                 select new
+                                 {
+                                     ppm.dealer_cost
+                                 }).FirstOrDefault();
+
+                    return price.dealer_cost;
+
+                }
+
+                //B2B peice
+                if (party_type_id == 5)
+                {
+                    var price = (from ppm in _entities.product_price_mapping
+                                 where
+                                     (ppm.product_id == product_id && ppm.color_id == color_id &&
+                                      ppm.product_version_id == product_version_id)
+                                 select new
+                                 {
+                                     ppm.b2b_cost
+                                 }).FirstOrDefault();
+
+                    return price.b2b_cost;
+
+                }
+
+                //Telco peice
+                if (party_type_id == 6)
+                {
+                    var price = (from ppm in _entities.product_price_mapping
+                                 where
+                                     (ppm.product_id == product_id && ppm.color_id == color_id &&
+                                      ppm.product_version_id == product_version_id)
+                                 select new
+                                 {
+                                     ppm.telco_cost
+                                 }).FirstOrDefault();
+
+                    return price.telco_cost;
+
+                }
+
+                //Corporate peice
+                if (party_type_id == 7)
+                {
+                    var price = (from ppm in _entities.product_price_mapping
+                                 where
+                                     (ppm.product_id == product_id && ppm.color_id == color_id &&
+                                      ppm.product_version_id == product_version_id)
+                                 select new
+                                 {
+                                     ppm.corporate_cost
+                                 }).FirstOrDefault();
+
+                    return price.corporate_cost;
+
+                }
+
+                //Internal peice
+                if (party_type_id == 8)
+                {
+                    var price = (from ppm in _entities.product_price_mapping
+                                 where
+                                     (ppm.product_id == product_id && ppm.color_id == color_id &&
+                                      ppm.product_version_id == product_version_id)
+                                 select new
+                                 {
+                                     ppm.internal_cost,
+                                     ppm.dealer_cost,
+                                     ppm.b2b_cost,
+                                     ppm.mrp_cost,
+                                     ppm.retailer_cost,
+
+                                 }).FirstOrDefault();
+
+                    return price;
+                }
+
+                //Online peice
+                if (party_type_id == 9)
+                {
+                    var price = (from ppm in _entities.product_price_mapping
+                                 where
+                                     (ppm.product_id == product_id && ppm.color_id == color_id &&
+                                      ppm.product_version_id == product_version_id)
+                                 select new
+                                 {
+                                     ppm.mrp_cost
+                                 }).FirstOrDefault();
+
+                    return price.mrp_cost;
+
+                }
+
+                //Gift peice
+                if (party_type_id == 10)
+                {
+                    var price = (from ppm in _entities.product_price_mapping
+                                 where
+                                     (ppm.product_id == product_id && ppm.color_id == color_id &&
+                                      ppm.product_version_id == product_version_id)
+                                 select new
+                                 {
+                                     ppm.gift_cost
+                                 }).FirstOrDefault();
+
+                    return price.gift_cost;
+
+                }
+
+                //EMI peice
+                if (party_type_id == 11)
+                {
+                    var price = (from ppm in _entities.product_price_mapping
+                                 where
+                                     (ppm.product_id == product_id && ppm.color_id == color_id &&
+                                      ppm.product_version_id == product_version_id)
+                                 select new
+                                 {
+                                     ppm.emi_cost
+                                 }).FirstOrDefault();
+
+                    return price.emi_cost;
+
+                }
+
+                //E-Shop
+                if (party_type_id == 12)
+                {
+                    var price = (from ppm in _entities.product_price_mapping
+                                 where
+                                     (ppm.product_id == product_id && ppm.color_id == color_id &&
+                                      ppm.product_version_id == product_version_id)
+                                 select new
+                                 {
+                                     ppm.mrp_cost
+                                 }).FirstOrDefault();
+
+                    return price.mrp_cost;
+
+                }
+
+                return "";
+            }
+            catch (Exception)
+            {
+
+                return 0;
+            }
+        }
+
+        public object GetProductColorVersionwiseDealerDemoPrice(long party_type_id, long product_id, long color_id, long product_version_id)
+        {
+            try
+            {
+                //var prc="";
+                var price = (from ppm in _entities.product_price_mapping
+                             where
+                                 (ppm.product_id == product_id && ppm.color_id == color_id &&
+                                  ppm.product_version_id == product_version_id)
+                             select new
+                             {
+                                 ppm.retailer_cost
+
+                             }).FirstOrDefault();
+
+                if (price != null)
+                {
+                    return ((price.retailer_cost) / 2);
+                }
+                else
+                {
+                    return 0;
+                }
+
+            }
+            catch (Exception)
+            {
+                return 0;
+            }
+        }
+
+        public object GetProductColorVersionwiseB2BPrice(long party_type_id, long product_id, long color_id, long product_version_id)
+        {
+            try
+            {
+                var price = (from ppm in _entities.product_price_mapping
+                             where
+                                 (ppm.product_id == product_id && ppm.color_id == color_id &&
+                                  ppm.product_version_id == product_version_id)
+                             select new
+                             {
+                                 b2b_cost = ppm.b2b_cost,
+                                 dealer_cost = ppm.dealer_cost,
+                                 mrp_cost = ppm.mrp_cost,
+                                 retailer_cost = ppm.retailer_cost,
+                                 corporate_cost = ppm.corporate_cost
+                             }).ToList().FirstOrDefault();
+
+                return price;
+            }
+            catch (Exception)
+            {
+                throw;
+            }
+        }
+
+        public object GetProductColorVersionwiseDealerPrice(long party_type_id, long product_id, long color_id, long product_version_id)
+        {
+            try
+            {
+                var price = (from ppm in _entities.product_price_mapping
+                             where
+                                 (ppm.product_id == product_id && ppm.color_id == color_id &&
+                                  ppm.product_version_id == product_version_id)
+                             select new
+                             {
+                                 b2b_cost = ppm.b2b_cost,
+                                 dealer_cost = ppm.dealer_cost,
+                                 mrp_cost = ppm.mrp_cost,
+                                 retailer_cost = ppm.retailer_cost,
+                                 corporate_cost = ppm.corporate_cost
+                             }).ToList().FirstOrDefault();
+
+                return price;
+            }
+            catch (Exception)
+            {
+                throw;
+            }
+        }
+
+
+        public object GetPriceingForLogReportPageView(long product_id, long color_id, long product_version_id)
+        {
+            try
+            {
+                if (color_id != 0 && product_version_id != 0)
+                {
+                    var priceing = (from p in _entities.product_price_mapping_log
+                                    join pr in _entities.products on p.product_id equals pr.product_id
+                                    join c in _entities.colors on p.color_id equals c.color_id
+                                    join v in _entities.product_version on p.product_version_id equals v.product_version_id
+                                    into nn
+                                    from jj in nn.DefaultIfEmpty()
+                                    join u in _entities.users on p.updated_by equals u.user_id into uu
+                                    from uuu in uu.DefaultIfEmpty()
+                                    where p.product_id == product_id && (p.color_id == color_id && p.product_version_id == product_version_id)
+                                    select new
+                                    {
+                                        p.emi_cost,
+                                        p.dealer_cost,
+                                        p.gift_cost,
+                                        p.internal_cost,
+                                        p.online_cost,
+                                        p.product_id,
+                                        p.product_price_mapping_id,
+                                        p.product_price_mapping_log_id,
+                                        p.product_version_id,
+                                        p.telco_cost,
+                                        p.color_id,
+                                        p.is_active,
+                                        p.corporate_cost,
+                                        p.b2b_cost,
+                                        pr.product_name,
+                                        c.color_name,
+                                        p.is_deleted,
+                                        jj.product_version_name,
+                                        uuu.login_name,
+                                        uuu.full_name,
+                                        p.updated_date,
+                                        p.amra_margin,
+                                        p.cost_price,
+                                        p.dealer_margin,
+                                        p.fin_cost,
+                                        p.distribution_cost,
+                                        p.incentive_cost,
+                                        p.land_cost,
+                                        p.marketing_cost,
+                                        p.mrp_cost,
+                                        p.package_cost,
+                                        p.price_protection,
+                                        p.promotional_cost,
+                                        p.qc_cost,
+                                        p.retailer_cost,
+                                        p.retailer_margin,
+                                        p.total_package_cost,
+                                        p.we_cloud,
+                                        p.we_wifi,
+                                        p.last_grn_no
+
+
+                                    }).OrderByDescending(a => a.product_price_mapping_id).ToList();
+                    return priceing;
+                }
+                else if (color_id != 0 && product_version_id == 0)
+                {
+                    var priceing = (from p in _entities.product_price_mapping_log
+                                    join pr in _entities.products on p.product_id equals pr.product_id
+                                    join c in _entities.colors on p.color_id equals c.color_id
+                                    join v in _entities.product_version on p.product_version_id equals v.product_version_id
+                                    into nn
+                                    from jj in nn.DefaultIfEmpty()
+                                    join u in _entities.users on p.updated_by equals u.user_id into uu
+                                    from uuu in uu.DefaultIfEmpty()
+                                    where p.product_id == product_id && (p.color_id == color_id)
+                                    select new
+                                    {
+                                        p.emi_cost,
+                                        p.dealer_cost,
+                                        p.gift_cost,
+                                        p.internal_cost,
+                                        p.online_cost,
+                                        p.product_id,
+                                        p.product_price_mapping_id,
+                                        p.product_price_mapping_log_id,
+                                        p.product_version_id,
+                                        p.telco_cost,
+                                        p.color_id,
+                                        p.is_active,
+                                        p.corporate_cost,
+                                        p.b2b_cost,
+                                        pr.product_name,
+                                        c.color_name,
+                                        p.is_deleted,
+                                        jj.product_version_name,
+                                        uuu.login_name,
+                                        uuu.full_name,
+                                        p.updated_date,
+                                        p.amra_margin,
+                                        p.cost_price,
+                                        p.dealer_margin,
+                                        p.fin_cost,
+                                        p.distribution_cost,
+                                        p.incentive_cost,
+                                        p.land_cost,
+                                        p.marketing_cost,
+                                        p.mrp_cost,
+                                        p.package_cost,
+                                        p.price_protection,
+                                        p.promotional_cost,
+                                        p.qc_cost,
+                                        p.retailer_cost,
+                                        p.retailer_margin,
+                                        p.total_package_cost,
+                                        p.we_cloud,
+                                        p.we_wifi,
+                                        p.last_grn_no
+
+
+                                    }).OrderByDescending(a => a.product_price_mapping_id).ToList();
+                    return priceing;
+                }
+                else
+                {
+                    var priceing = (from p in _entities.product_price_mapping_log
+                                    join pr in _entities.products on p.product_id equals pr.product_id
+                                    join c in _entities.colors on p.color_id equals c.color_id
+                                    join v in _entities.product_version on p.product_version_id equals v.product_version_id
+                                    into nn
+                                    from jj in nn.DefaultIfEmpty()
+                                    join u in _entities.users on p.updated_by equals u.user_id into uu
+                                    from uuu in uu.DefaultIfEmpty()
+                                    where p.product_id == product_id
+                                    select new
+                                    {
+                                        p.emi_cost,
+                                        p.dealer_cost,
+                                        p.gift_cost,
+                                        p.internal_cost,
+                                        p.online_cost,
+                                        p.product_id,
+                                        p.product_price_mapping_id,
+                                        p.product_price_mapping_log_id,
+                                        p.product_version_id,
+                                        p.telco_cost,
+                                        p.color_id,
+                                        p.is_active,
+                                        p.corporate_cost,
+                                        p.b2b_cost,
+                                        pr.product_name,
+                                        c.color_name,
+                                        p.is_deleted,
+                                        jj.product_version_name,
+                                        uuu.login_name,
+                                        uuu.full_name,
+                                        p.updated_date,
+                                        p.amra_margin,
+                                        p.cost_price,
+                                        p.dealer_margin,
+                                        p.fin_cost,
+                                        p.distribution_cost,
+                                        p.incentive_cost,
+                                        p.land_cost,
+                                        p.marketing_cost,
+                                        p.mrp_cost,
+                                        p.package_cost,
+                                        p.price_protection,
+                                        p.promotional_cost,
+                                        p.qc_cost,
+                                        p.retailer_cost,
+                                        p.retailer_margin,
+                                        p.total_package_cost,
+                                        p.we_cloud,
+                                        p.we_wifi,
+                                        p.last_grn_no
+
+
+                                    }).OrderByDescending(a => a.product_price_mapping_id).ToList();
+                    return priceing;
+                }
+
+            }
+            catch (Exception)
+            {
+                return null;
+            }
+        }
+
+
+        public object GetLastGrn(long pId, long cId, long vId)
+        {
+            try
+            {
+                if (cId != 0 && vId != 0)
+                {
+                    var ttt =
+                    _entities.grn_details.Where(
+                        a => a.product_id == pId && a.color_id == cId && a.product_version_id == vId)
+                        .OrderByDescending(a => a.grn_details_id)
+                        .FirstOrDefault();
+                    var grn = _entities.grn_master.SingleOrDefault(a => a.grn_master_id == ttt.grn_master_id);
+                    return grn;
+                }
+                else
+                {
+                    var ttt =
+                    _entities.grn_details.Where(
+                        a => a.product_id == pId)
+                        .OrderByDescending(a => a.grn_details_id)
+                        .FirstOrDefault();
+                    var grn = _entities.grn_master.SingleOrDefault(a => a.grn_master_id == ttt.grn_master_id);
+                    return grn;
+                }
+
+
+            }
+            catch (Exception)
+            {
+                return null;
+            }
+        }
+
+
+        public object GetFilterWiseProductPricing(long catId, long pId, long cId, long vId)
+        {
+            try
+            {
+                var tt = (from e in _entities.product_price_mapping
+                          join p in _entities.products on e.product_id equals p.product_id
+                          join cat in _entities.product_category on p.product_category_id equals cat.product_category_id
+                          join c in _entities.colors on e.color_id equals c.color_id
+                              into cl
+                          from col in cl.DefaultIfEmpty()
+                          join v in _entities.product_version on e.product_version_id equals v.product_version_id
+                              into vr
+                          from ver in vr.DefaultIfEmpty()
+                          where
+                              cat.product_category_id == catId
+                          select new
+                          {
+                              e.emi_cost,
+                              e.dealer_cost,
+                              e.retailer_cost,
+                              e.mrp_cost,
+                              e.gift_cost,
+                              e.internal_cost,
+                              e.online_cost,
+                              p.product_id,
+                              e.product_price_mapping_id,
+                              e.product_version_id,
+                              e.telco_cost,
+                              e.color_id,
+                              p.is_active,
+                              e.corporate_cost,
+                              e.b2b_cost,
+                              p.product_name,
+                              col.color_name,
+                              e.is_deleted,
+                              e.last_grn_no,
+                              ver.product_version_name,
+                          }).ToList();
+
+                if (pId != 0 && cId == 0 && vId == 0)
+                {
+                    var ans = tt.Where(a => a.product_id == pId).ToList();
+                    return ans;
+                }
+                else if (pId != 0 && cId != 0 && vId == 0)
+                {
+                    var ans = tt.Where(a => a.product_id == pId && a.color_id == cId).ToList();
+                    return ans;
+                }
+                else if (pId != 0 && cId != 0 && vId != 0)
+                {
+                    var ans =
+                        tt.Where(a => a.product_id == pId && a.color_id == cId && a.product_version_id == vId)
+                            .ToList();
+                    return ans;
+                }
+                else
+                {
+                    return tt;
+                }
+
+            }
+            catch (Exception)
+            {
+                return null;
+            }
+        }
+    }
+}

@@ -1,0 +1,136 @@
+﻿using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Net;
+using System.Net.Http;
+using System.Web.Http;
+using System.Web.Http.Cors;
+using DMSApi.Models;
+using DMSApi.Models.IRepository;
+using DMSApi.Models.Repository;
+
+namespace DMSApi.Controllers
+{
+    //[EnableCors(origins: "*", headers: "*", methods: "*")]
+    public class DepartmentController : ApiController
+    {
+        private IDepartmentRepository departmentRepository;
+
+        public DepartmentController()
+        {
+            this.departmentRepository = new DepartmentRepository();
+        }
+
+        public DepartmentController(IDepartmentRepository departmentRepository)
+        {
+            this.departmentRepository = departmentRepository;
+        }
+
+        [HttpGet, ActionName("GetAllDepartments")]
+        public HttpResponseMessage GetAllDepartments()
+        {
+            var dept = departmentRepository.GetAllDepartment();
+            var formatter = RequestFormat.JsonFormaterString();
+            return Request.CreateResponse(HttpStatusCode.OK, dept, formatter);
+
+        }
+        [HttpPost]
+        public HttpResponseMessage Post([FromBody]Models.department objDepartment)
+        {
+            try
+            {
+                if (string.IsNullOrEmpty(objDepartment.department_name))
+                {
+                    var formatter = RequestFormat.JsonFormaterString();
+                    return Request.CreateResponse(HttpStatusCode.OK, new Confirmation { output = "error", msg = "Department Name is Empty" }, formatter);
+                }
+                else
+                {
+                    if (departmentRepository.CheckDuplicateDepartment(objDepartment.department_name))
+                    {
+                        var formatter = RequestFormat.JsonFormaterString();
+                        return Request.CreateResponse(HttpStatusCode.OK, new Confirmation { output = "error", msg = "Department Already Exists" }, formatter);
+                    }
+                    else
+                    {
+                        Models.department insertDepartment = new Models.department
+                        {
+
+                            department_name = objDepartment.department_name,
+                            is_active = objDepartment.is_active,
+                        };
+                        bool save = departmentRepository.InsertDepartment(insertDepartment);
+
+                        var formatter = RequestFormat.JsonFormaterString();
+                        return Request.CreateResponse(HttpStatusCode.OK, new Confirmation { output = "success", msg = "Department save successfully" }, formatter);
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                var formatter = RequestFormat.JsonFormaterString();
+                return Request.CreateResponse(HttpStatusCode.OK, new Confirmation { output = "error", msg = ex.ToString() }, formatter);
+            }
+        }
+        [HttpPut]
+        public HttpResponseMessage Put([FromBody]Models.department objDepartment)
+        {
+            try
+            {
+                if (string.IsNullOrEmpty(objDepartment.department_name))
+                {
+                    var formatter = RequestFormat.JsonFormaterString();
+                    return Request.CreateResponse(HttpStatusCode.OK, new Confirmation { output = "error", msg = "Department Name is Empty" }, formatter);
+                }
+                
+                else
+                {
+                    Models.department updateDepartment = new Models.department
+
+                    {
+                        department_id = objDepartment.department_id,
+                        department_name = objDepartment.department_name,
+                        is_active = objDepartment.is_active
+                    
+
+                    };
+
+                    bool irepoUpdate = departmentRepository.UpdateDepartment(updateDepartment);
+
+                    if (irepoUpdate == true)
+                    {
+                        var formatter = RequestFormat.JsonFormaterString();
+                        return Request.CreateResponse(HttpStatusCode.OK, new Confirmation { output = "success", msg = "Department Update successfully" }, formatter);
+                    }
+                    else
+                    {
+                        var formatter = RequestFormat.JsonFormaterString();
+                        return Request.CreateResponse(HttpStatusCode.OK, new Confirmation { output = "success", msg = "Update Failed" }, formatter);
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                var formatter = RequestFormat.JsonFormaterString();
+                return Request.CreateResponse(HttpStatusCode.OK, new Confirmation { output = "error", msg = ex.ToString() }, formatter);
+            }
+        }
+        [HttpDelete]
+        public HttpResponseMessage Delete([FromBody]Models.department objDepartment)
+        {
+            try
+            {
+              
+                bool delete = departmentRepository.DeleteDepartment(objDepartment.department_id);
+
+                var formatter = RequestFormat.JsonFormaterString();
+                return Request.CreateResponse(HttpStatusCode.OK, new Confirmation { output = "success", msg = "Department Delete Successfully." }, formatter);
+            }
+            catch (Exception ex)
+            {
+                var formatter = RequestFormat.JsonFormaterString();
+                return Request.CreateResponse(HttpStatusCode.OK, new Confirmation { output = "error", msg = ex.ToString() }, formatter);
+            }
+        }
+    }
+}

@@ -1,0 +1,31 @@
+﻿using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+using DMSApi.Models.StronglyType;
+
+namespace DMSApi.Models.IRepository
+{
+    interface IEshopRequisitionRepository
+    {
+        long AddEshopRequisition(EshopRequisitionModel onlineRequisitionModel);
+        object GetShippingMethod();
+        object GetPaymentMethod();
+        object GetEshopRfdList();
+        object EshopDeliveryChallanReport(long delivery_master_id);
+        object EshopInvoiceReport(long requisition_master_id);
+        object GetEshopReadyForDelivery(long delivery_master_id);
+        object GetProductDetailsForDelivery(long delivery_master_id);
+        bool UpdateEshopDelivery(delivery_master deliveryMaster);
+        object GetEshopRfdConfirmList();
+        object GetProductForReturn(long delivery_master_id);
+        object GetIMEIForReturn(long imei);
+        bool CancelEshopRequisition(long delivery_master_id);
+        bool EshopReturnInsert(EshopReturnModel eshopReturnModel);
+
+        object GetInvoiceForEshoPayment(long delivery_master_id);
+        bool InsertPaymentReceive();
+
+    }
+}

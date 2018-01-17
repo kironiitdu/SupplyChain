@@ -1,0 +1,24 @@
+﻿using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Web;
+using DMSApi.Models.IRepository;
+
+namespace DMSApi.Models.Repository
+{
+    public class InventoryAdjustmentRepository : IInventoryAdjustmentRepository
+    {
+        private DMSEntities _entities;
+
+        public InventoryAdjustmentRepository()
+        {
+            this._entities = new DMSEntities();
+        }
+
+        public object GetSystemQuantityForAccessories(long warehouse_id, long product_id)
+        {
+            var data = _entities.inventory_stock.FirstOrDefault(u => u.warehouse_id==warehouse_id && u.product_id==product_id);
+            return data;
+        }
+    }
+}

@@ -1,0 +1,354 @@
+﻿using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Net;
+using System.Net.Http;
+using System.Web.Http;
+using System.Web.Http.Cors;
+using DMSApi.Models;
+using DMSApi.Models.IRepository;
+using DMSApi.Models.Repository;
+
+namespace DMSApi.Controllers
+{
+    //[EnableCors(origins: "*", headers: "*", methods: "*")]
+    public class ProductController : ApiController
+    {
+        private IProductRepository productRepository;
+
+        public ProductController()
+        {
+            this.productRepository = new ProductRepository();
+        }
+
+        public ProductController(IProductRepository productRepository)
+        {
+            this.productRepository = productRepository;
+        }
+        
+        public HttpResponseMessage GetAllProducts()
+        {
+            var countries = productRepository.GetAllProducts();
+            var formatter = RequestFormat.JsonFormaterString();
+            return Request.CreateResponse(HttpStatusCode.OK, countries, formatter);
+        }
+        public HttpResponseMessage GetProductWithoutAssocories()
+        {
+            var countries = productRepository.GetProductWithoutAssocories();
+            var formatter = RequestFormat.JsonFormaterString();
+            return Request.CreateResponse(HttpStatusCode.OK, countries, formatter);
+        }
+
+        [HttpGet, ActionName("GetProductCategorywiseProduct")]
+        //public HttpResponseMessage GetProductCategorywiseProduct(long product_category_id)
+        public HttpResponseMessage GetProductCategorywiseProduct()
+        {
+            //var products = productRepository.GetProductCategorywiseProduct(product_category_id);
+            var products = productRepository.GetProductCategorywiseProduct();
+            var formatter = RequestFormat.JsonFormaterString();
+            return Request.CreateResponse(HttpStatusCode.OK, products, formatter);
+        }
+
+        //get First Product_wise color and version(15.02.2017)
+        public HttpResponseMessage GetProductsWiseFirstColorVersion(long product_id)
+        {
+            var product = productRepository.GetProductsWiseFirstColorVersion(product_id);
+            var formatter = RequestFormat.JsonFormaterString();
+            return Request.CreateResponse(HttpStatusCode.OK, product, formatter);
+        }
+        public HttpResponseMessage GetProductsWiseFirstColorVersionForDemo(long product_id)
+        {
+            var product = productRepository.GetProductsWiseFirstColorVersionForDemo(product_id);
+            var formatter = RequestFormat.JsonFormaterString();
+            return Request.CreateResponse(HttpStatusCode.OK, product, formatter);
+        }
+        public HttpResponseMessage GetProductsWiseFirstColorVersionForB2b(long product_id)
+        {
+            var product = productRepository.GetProductsWiseFirstColorVersionForB2b(product_id);
+            var formatter = RequestFormat.JsonFormaterString();
+            return Request.CreateResponse(HttpStatusCode.OK, product, formatter);
+        }
+        //mohi uddin 08.06.2017
+        public HttpResponseMessage GetProductStockNBookedQuantity(long product_id, long color_id, long product_version_id)
+        {
+            var product = productRepository.GetProductStockNBookedQuantity(product_id, color_id, product_version_id);
+            var formatter = RequestFormat.JsonFormaterString();
+            return Request.CreateResponse(HttpStatusCode.OK, product, formatter);
+        }
+
+        //mohi uddin 23.01.2017
+        public HttpResponseMessage GetAllProductsNPrice()
+        {
+            var countries = productRepository.GetAllProductsNPrice();
+            var formatter = RequestFormat.JsonFormaterString();
+            return Request.CreateResponse(HttpStatusCode.OK, countries, formatter);
+        }
+        //Added by Kiron : 03/09/2016
+        public HttpResponseMessage GetAllProductList()
+        {
+            var countries = productRepository.GetAllProductList();
+            var formatter = RequestFormat.JsonFormaterString();
+            return Request.CreateResponse(HttpStatusCode.OK, countries, formatter);
+        }
+
+
+        [HttpGet, ActionName("GetAllProductsForGiftDropdown")]
+        public HttpResponseMessage GetAllProductsForGiftDropdown()
+        {
+            var countries = productRepository.GetAllProductsForGiftDropdown();
+            var formatter = RequestFormat.JsonFormaterString();
+            return Request.CreateResponse(HttpStatusCode.OK, countries, formatter);
+        }
+        [System.Web.Http.HttpPost]
+        public HttpResponseMessage Post([FromBody] Models.product product)
+        {
+
+            try
+            {
+                if (productRepository.CheckDuplicateProductName(product.product_name))
+                {
+                    var formatter = RequestFormat.JsonFormaterString();
+                    return Request.CreateResponse(HttpStatusCode.OK, new Confirmation { output = "warning", msg = "Product Name Already Exists" }, formatter);
+                }
+                if (string.IsNullOrEmpty(product.product_name))
+                {
+                    var formatter = RequestFormat.JsonFormaterString();
+                    return Request.CreateResponse(HttpStatusCode.OK, new Confirmation { output = "error", msg = "Product Name is Empty" }, formatter);
+
+                }
+                if (string.IsNullOrEmpty(product.supplier_id.ToString()))
+                {
+                    var formatter = RequestFormat.JsonFormaterString();
+                    return Request.CreateResponse(HttpStatusCode.OK, new Confirmation { output = "error", msg = "Select supplier for this product" }, formatter);
+
+                }
+                if (string.IsNullOrEmpty(product.brand_id.ToString()))
+                {
+                    var formatter = RequestFormat.JsonFormaterString();
+                    return Request.CreateResponse(HttpStatusCode.OK, new Confirmation { output = "error", msg = "Select Brand" }, formatter);
+
+                }
+                if (string.IsNullOrEmpty(product.product_category_id.ToString()))
+                {
+                    var formatter = RequestFormat.JsonFormaterString();
+                    return Request.CreateResponse(HttpStatusCode.OK, new Confirmation { output = "error", msg = "Select Product Category" }, formatter);
+
+                }
+                if (string.IsNullOrEmpty(product.mrp_price.ToString()))
+                {
+                    var formatter = RequestFormat.JsonFormaterString();
+                    return Request.CreateResponse(HttpStatusCode.OK, new Confirmation { output = "error", msg = "Select MRP Price" }, formatter);
+
+                }
+                if (string.IsNullOrEmpty(product.md_price.ToString()))
+                {
+                    var formatter = RequestFormat.JsonFormaterString();
+                    return Request.CreateResponse(HttpStatusCode.OK, new Confirmation { output = "error", msg = "Select Master Dealer Price" }, formatter);
+
+                }
+                if (string.IsNullOrEmpty(product.rp_price.ToString()))
+                {
+                    var formatter = RequestFormat.JsonFormaterString();
+                    return Request.CreateResponse(HttpStatusCode.OK, new Confirmation { output = "error", msg = "Select Retailer Shop Price" }, formatter);
+
+                }
+                if (string.IsNullOrEmpty(product.bs_price.ToString()))
+                {
+                    var formatter = RequestFormat.JsonFormaterString();
+                    return Request.CreateResponse(HttpStatusCode.OK, new Confirmation { output = "error", msg = "Select Brand Shop  Price" }, formatter);
+
+                }
+
+
+                else
+                {
+                    product insert_product = new product
+                    {
+                        product_name = product.product_name,
+                        product_code = product.product_code,
+                        unit_id = product.unit_id,
+                        brand_id = product.brand_id,
+                        product_category_id = product.product_category_id,
+                        current_balance = product.current_balance,
+                        product_image_url = product.product_image_url,
+                        has_serial = product.has_serial,
+                        has_warrenty = product.has_warrenty,
+                        warrenty_type = product.warrenty_type,
+                        warrenty_value = product.warrenty_value,
+                        vat_percentage = product.vat_percentage,
+                        tax_percentage = product.tax_percentage,
+                        rp_price = product.rp_price,
+                        md_price = product.md_price,
+                        mrp_price = product.mrp_price,
+                        bs_price = product.bs_price,
+                        specification = product.specification,
+                        remarks = product.remarks,
+                        eol_date = product.eol_date,
+                        launce_date = product.launce_date,
+                        supplier_id = product.supplier_id,
+                        accessories_category_id = product.accessories_category_id,
+                        is_active = product.is_active
+                    };
+
+                        productRepository.AddProduct(insert_product);
+                  
+
+                    var formatter = RequestFormat.JsonFormaterString();
+                    return Request.CreateResponse(HttpStatusCode.OK, new Confirmation { output = "success", msg = "Product Saved successfully" }, formatter);
+                }
+
+
+            }
+            catch (Exception ex)
+            {
+                var formatter = RequestFormat.JsonFormaterString();
+                return Request.CreateResponse(HttpStatusCode.OK, new Confirmation { output = "error", msg = ex.ToString() }, formatter);
+            }
+        }
+
+        [System.Web.Http.HttpPut]
+        public HttpResponseMessage Put([FromBody] Models.product product)
+        {
+            try
+            {
+                // All validation Applied by Kiron : 16-11-2016
+              
+                if (string.IsNullOrEmpty(product.product_name))
+                {
+                    var formatter = RequestFormat.JsonFormaterString();
+                    return Request.CreateResponse(HttpStatusCode.OK, new Confirmation { output = "error", msg = "Product Name is Empty" }, formatter);
+
+                }
+                if (string.IsNullOrEmpty(product.product_code.ToString()))
+                {
+                    var formatter = RequestFormat.JsonFormaterString();
+                    return Request.CreateResponse(HttpStatusCode.OK, new Confirmation { output = "error", msg = "Enter Product Code" }, formatter);
+
+                }
+                if (string.IsNullOrEmpty(product.unit_id.ToString()))
+                {
+                    var formatter = RequestFormat.JsonFormaterString();
+                    return Request.CreateResponse(HttpStatusCode.OK, new Confirmation { output = "error", msg = "Select Unit" }, formatter);
+
+                }
+                if (string.IsNullOrEmpty(product.brand_id.ToString()))
+                {
+                    var formatter = RequestFormat.JsonFormaterString();
+                    return Request.CreateResponse(HttpStatusCode.OK, new Confirmation { output = "error", msg = "Select Brand" }, formatter);
+
+                }
+                if (string.IsNullOrEmpty(product.product_category_id.ToString()))
+                {
+                    var formatter = RequestFormat.JsonFormaterString();
+                    return Request.CreateResponse(HttpStatusCode.OK, new Confirmation { output = "error", msg = "Select Product Category" }, formatter);
+
+                }
+                if (string.IsNullOrEmpty(product.mrp_price.ToString()))
+                {
+                    var formatter = RequestFormat.JsonFormaterString();
+                    return Request.CreateResponse(HttpStatusCode.OK, new Confirmation { output = "error", msg = "Select MRP Price" }, formatter);
+
+                }
+                if (string.IsNullOrEmpty(product.supplier_id.ToString()))
+                {
+                    var formatter = RequestFormat.JsonFormaterString();
+                    return Request.CreateResponse(HttpStatusCode.OK, new Confirmation { output = "error", msg = "Select supplier for this product" }, formatter);
+
+                }
+                if (string.IsNullOrEmpty(product.md_price.ToString()))
+                {
+                    var formatter = RequestFormat.JsonFormaterString();
+                    return Request.CreateResponse(HttpStatusCode.OK, new Confirmation { output = "error", msg = "Select Master Dealer Price" }, formatter);
+
+                }
+                if (string.IsNullOrEmpty(product.rp_price.ToString()))
+                {
+                    var formatter = RequestFormat.JsonFormaterString();
+                    return Request.CreateResponse(HttpStatusCode.OK, new Confirmation { output = "error", msg = "Select Retailer Shop Price" }, formatter);
+
+                }
+                if (string.IsNullOrEmpty(product.bs_price.ToString()))
+                {
+                    var formatter = RequestFormat.JsonFormaterString();
+                    return Request.CreateResponse(HttpStatusCode.OK, new Confirmation { output = "error", msg = "Select Brand Shop  Price" }, formatter);
+
+                }
+
+                else
+                {
+                    Models.product updateProduct = new Models.product
+                    {
+                        product_id = product.product_id,
+                        product_name = product.product_name,
+                        product_code = product.product_code,
+                        unit_id = product.unit_id,
+                        brand_id = product.brand_id,
+                        product_category_id = product.product_category_id,
+                        current_balance = product.current_balance,
+                        product_image_url = product.product_image_url,
+                        has_serial = product.has_serial,
+                        has_warrenty = product.has_warrenty,
+                        warrenty_type = product.warrenty_type,
+                        warrenty_value = product.warrenty_value,
+                        vat_percentage = product.vat_percentage,
+                        tax_percentage = product.tax_percentage,
+                        rp_price = product.rp_price,
+                        md_price = product.md_price,
+                        mrp_price = product.mrp_price,
+                        bs_price = product.bs_price,
+                        specification = product.specification,
+                        remarks = product.remarks,
+                        eol_date = product.eol_date,
+                        launce_date = product.launce_date,
+                        supplier_id = product.supplier_id,
+                        accessories_category_id = product.accessories_category_id,
+                        is_active = product.is_active
+
+                    };
+              
+                    productRepository.EditProduct(updateProduct);
+
+
+                    var formatter = RequestFormat.JsonFormaterString();
+
+                    return Request.CreateResponse(HttpStatusCode.OK,
+                        new Confirmation {output = "success", msg = "Product Updated successfully"}, formatter);
+                }
+            }
+            catch (Exception ex)
+            {
+                var formatter = RequestFormat.JsonFormaterString();
+                return Request.CreateResponse(HttpStatusCode.OK, new Confirmation { output = "error", msg = ex.ToString() }, formatter);
+            }
+        }
+        [System.Web.Http.HttpDelete]
+        public HttpResponseMessage Delete([FromBody]Models.product product)
+        {
+            try
+            {
+              
+                bool updatCountry = productRepository.DeleteProduct(product.product_id);
+
+                var formatter = RequestFormat.JsonFormaterString();
+                return Request.CreateResponse(HttpStatusCode.OK, new Confirmation { output = "success", msg = "Product Delete Successfully." }, formatter);
+            }
+            catch (Exception ex)
+            {
+                var formatter = RequestFormat.JsonFormaterString();
+                return Request.CreateResponse(HttpStatusCode.OK, new Confirmation { output = "error", msg = ex.ToString() }, formatter);
+            }
+
+        }
+
+        [ActionName("GetProductById")]
+        [System.Web.Http.HttpPost]
+        public HttpResponseMessage GetProductById([FromBody]Models.product product)
+        {
+            var productId = product.product_id;
+
+            var employee = productRepository.GetProductById(productId);
+            HttpResponseMessage response = Request.CreateResponse(HttpStatusCode.OK, employee);
+            return response;
+        }
+    }
+}

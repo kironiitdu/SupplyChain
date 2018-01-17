@@ -1,0 +1,142 @@
+﻿using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Net;
+using System.Net.Http;
+using System.Web.Http;
+using System.Web.Http.Cors;
+using DMSApi.Models;
+using DMSApi.Models.IRepository;
+using DMSApi.Models.Repository;
+
+namespace DMSApi.Controllers
+{
+     //[EnableCors(origins: "*", headers: "*", methods: "*")]
+    public class PaymentMethodController : ApiController
+    {
+          private  IPaymentMethodRepository  paymentMethodRepository;
+
+        public PaymentMethodController()
+        {
+            this.paymentMethodRepository = new PaymentMethodRepository();
+        }
+
+        public PaymentMethodController(IPaymentMethodRepository paymentMethodRepository)
+        {
+            this.paymentMethodRepository = paymentMethodRepository;
+        }
+
+        [HttpGet, ActionName("GetAllPaymentMethod")]
+        public HttpResponseMessage GetAllPaymentMethod(long company_id)
+        {
+            var paymentMethod = paymentMethodRepository.GetAllPaymentMethod(company_id);
+            var formatter = RequestFormat.JsonFormaterString();
+            return Request.CreateResponse(HttpStatusCode.OK, paymentMethod, formatter);
+        }
+        [HttpGet, ActionName("GetAllPaymentMethod")]
+        public HttpResponseMessage GetAllPaymentMethod()
+        {
+            var paymentMethod = paymentMethodRepository.GetAllPaymentMethod();
+            var formatter = RequestFormat.JsonFormaterString();
+            return Request.CreateResponse(HttpStatusCode.OK, paymentMethod, formatter);
+        }
+
+        [System.Web.Http.HttpPost]
+        public HttpResponseMessage Post([FromBody] Models.payment_method objPaymentMethod, long? created_by)
+        {
+
+            try
+            {
+                if (string.IsNullOrEmpty(objPaymentMethod.payment_method_name))
+                {
+                    var formatter = RequestFormat.JsonFormaterString();
+                    return Request.CreateResponse(HttpStatusCode.OK, new Confirmation { output = "error", msg = "Payment method name is Empty" }, formatter);
+
+                }
+                else
+                {
+                    if (paymentMethodRepository.CheckDuplicatePaymentMethod(objPaymentMethod.payment_method_name))
+                    {
+                        var formatter = RequestFormat.JsonFormaterString();
+                        return Request.CreateResponse(HttpStatusCode.OK, new Confirmation { output = "error", msg = "Payment method name Exists" }, formatter);
+                    }
+                    else
+                    {
+                        payment_method insert_payment_method = new payment_method
+                        {
+                            payment_method_name = objPaymentMethod.payment_method_name,
+                            is_active = true,
+                            is_deleted = false,
+                            created_by = objPaymentMethod.created_by,
+                            created_date = DateTime.Now
+                        };
+
+                        paymentMethodRepository.InsertPaymentMethod(insert_payment_method, created_by);
+                        var formatter = RequestFormat.JsonFormaterString();
+                        return Request.CreateResponse(HttpStatusCode.OK, new Confirmation { output = "success", msg = "Payment method save successfully" }, formatter);
+                    }
+
+                }
+
+
+            }
+            catch (Exception ex)
+            {
+                var formatter = RequestFormat.JsonFormaterString();
+                return Request.CreateResponse(HttpStatusCode.OK, new Confirmation { output = "error", msg = ex.ToString() }, formatter);
+            }
+        }
+        [System.Web.Http.HttpPut]
+        public HttpResponseMessage Put([FromBody] Models.payment_method objPaymentMethod, long? updated_by)
+        {
+            try
+            {
+                 if (string.IsNullOrEmpty(objPaymentMethod.payment_method_name))
+                {
+                    var formatter = RequestFormat.JsonFormaterString();
+                    return Request.CreateResponse(HttpStatusCode.OK, new Confirmation { output = "error", msg = "Payment method name is Empty" }, formatter);
+
+                }
+                else
+                {
+                    payment_method update_payment_method = new payment_method
+                    {
+                        payment_method_id = objPaymentMethod.payment_method_id,
+                        payment_method_name = objPaymentMethod.payment_method_name,
+                        is_active = objPaymentMethod.is_active,
+                        is_deleted = objPaymentMethod.is_deleted,
+                        created_by = objPaymentMethod.created_by,
+                        created_date = DateTime.Now
+                    };
+
+                    paymentMethodRepository.UpdatePaymentMethod(update_payment_method, updated_by);
+                    var formatter = RequestFormat.JsonFormaterString();
+                    return Request.CreateResponse(HttpStatusCode.OK, new Confirmation { output = "success", msg = "Payment method  update successfully" }, formatter);
+                }
+
+            }
+            catch (Exception ex)
+            {
+                var formatter = RequestFormat.JsonFormaterString();
+                return Request.CreateResponse(HttpStatusCode.OK, new Confirmation { output = "error", msg = ex.ToString() }, formatter);
+            }
+        }
+        [System.Web.Http.HttpDelete]
+        public HttpResponseMessage Delete([FromBody]Models.payment_method objPaymentMethod, long? updated_by)
+        {
+            try
+            {
+                bool deletePaymentmethod = paymentMethodRepository.DeletePaymentMethod(objPaymentMethod.payment_method_id, updated_by);
+
+                var formatter = RequestFormat.JsonFormaterString();
+                return Request.CreateResponse(HttpStatusCode.OK, new Confirmation { output = "success", msg = "Payment method Deleted Successfully." }, formatter);
+            }
+            catch (Exception ex)
+            {
+                var formatter = RequestFormat.JsonFormaterString();
+                return Request.CreateResponse(HttpStatusCode.OK, new Confirmation { output = "error", msg = ex.ToString() }, formatter);
+            }
+
+        }
+    }
+}

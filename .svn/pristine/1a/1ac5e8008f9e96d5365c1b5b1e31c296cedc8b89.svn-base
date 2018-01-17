@@ -1,0 +1,114 @@
+﻿using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Net;
+using System.Net.Http;
+using System.Web.Http;
+using System.Web.Http.Cors;
+using DMSApi.Models;
+using DMSApi.Models.IRepository;
+using DMSApi.Models.Repository;
+
+namespace DMSApi.Controllers
+{
+    [EnableCors(origins: "*", headers: "*", methods: "*")]
+    public class ReceiveSerialNoDetailsController : ApiController
+    {
+        private IReceiveSerialNoDetailsRepository receiveSerialNoDetailsRepository;
+
+        public ReceiveSerialNoDetailsController()
+        {
+            this.receiveSerialNoDetailsRepository = new ReceiveSerialNoDetailsRepository();
+        }
+
+        public ReceiveSerialNoDetailsController(IReceiveSerialNoDetailsRepository receiveSerialNoDetailsRepository)
+        {
+            this.receiveSerialNoDetailsRepository = receiveSerialNoDetailsRepository;
+        }
+
+        public HttpResponseMessage GetProductInformation(string imei_no, int party_id)
+        {
+            try
+            {
+                var data = receiveSerialNoDetailsRepository.GetProductInformation(imei_no, party_id);
+                var formatter = RequestFormat.JsonFormaterString();
+                return Request.CreateResponse(HttpStatusCode.OK, data, formatter);
+            }
+            catch (Exception ex)
+            {
+                var formatter = RequestFormat.JsonFormaterString();
+                return Request.CreateResponse(HttpStatusCode.OK, new Confirmation { output = "error", msg = ex.ToString() }, formatter);
+            }
+
+        }
+
+        [HttpGet, ActionName("GetProductInformationForCentral")]
+        public HttpResponseMessage GetProductInformationForCentral(string imei_no)
+        {
+            try
+            {
+                var data = receiveSerialNoDetailsRepository.GetProductInformationForCentral(imei_no);
+                var formatter = RequestFormat.JsonFormaterString();
+                return Request.CreateResponse(HttpStatusCode.OK, data, formatter);
+            }
+            catch (Exception ex)
+            {
+                var formatter = RequestFormat.JsonFormaterString();
+                return Request.CreateResponse(HttpStatusCode.OK, new Confirmation { output = "error", msg = ex.ToString() }, formatter);
+            }
+
+        }
+
+        [HttpGet, ActionName("GetProductInformationForDirectTransfer")]
+        public HttpResponseMessage GetProductInformationForDirectTransfer(string imei_no, int from_warehouse_id)
+        {
+            try
+            {
+                var data = receiveSerialNoDetailsRepository.GetProductInformationForDirectTransfer(imei_no,from_warehouse_id);
+                var formatter = RequestFormat.JsonFormaterString();
+                return Request.CreateResponse(HttpStatusCode.OK, data, formatter);
+            }
+            catch (Exception ex)
+            {
+                var formatter = RequestFormat.JsonFormaterString();
+                return Request.CreateResponse(HttpStatusCode.OK, new Confirmation { output = "error", msg = ex.ToString() }, formatter);
+            }
+
+        }
+
+        [HttpGet, ActionName("GetProductInformationForScan")]
+        public HttpResponseMessage GetProductInformationForScan(string imei_no, int from_warehouse_id)
+        {
+            try
+            {
+                var data = receiveSerialNoDetailsRepository.GetProductInformationForScan(imei_no, from_warehouse_id);
+                var formatter = RequestFormat.JsonFormaterString();
+                return Request.CreateResponse(HttpStatusCode.OK, data, formatter);
+            }
+            catch (Exception ex)
+            {
+                var formatter = RequestFormat.JsonFormaterString();
+                return Request.CreateResponse(HttpStatusCode.OK, new Confirmation { output = "error", msg = ex.ToString() }, formatter);
+            }
+
+        }
+
+        [HttpGet, ActionName("Getimeino")]
+        public HttpResponseMessage Getimeino()
+        {
+            var wh = receiveSerialNoDetailsRepository.Getimeino();
+            var formatter = RequestFormat.JsonFormaterString();
+            return Request.CreateResponse(HttpStatusCode.OK, wh, formatter);
+        }
+
+        //load imei on change of product
+        [HttpGet, ActionName("GetImeiPartyNProductwise")]
+        public HttpResponseMessage GetImeiPartyNProductwise(int party_id, int product_id)
+        {
+            var wh = receiveSerialNoDetailsRepository.GetImeiPartyNProductwise(party_id, product_id);
+            var formatter = RequestFormat.JsonFormaterString();
+            return Request.CreateResponse(HttpStatusCode.OK, wh, formatter);
+        }
+        
+    }
+}

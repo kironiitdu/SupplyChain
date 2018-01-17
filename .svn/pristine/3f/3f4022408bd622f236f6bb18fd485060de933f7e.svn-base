@@ -1,0 +1,448 @@
+﻿using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Net;
+using System.Net.Http;
+using System.Web.Http;
+using System.Web.Http.Cors;
+using DMSApi.Models;
+using DMSApi.Models.IRepository;
+using DMSApi.Models.Repository;
+using DMSApi.Models.StronglyType;
+
+namespace DMSApi.Controllers
+{
+    //[EnableCors(origins: "*", headers: "*", methods: "*")]
+    public class PurchaseOrderController : ApiController
+    {
+        private IPurchaseOrderRepository purchaseOrderRepository;
+        private IProductCategoryRepository productCategoryRepository;
+
+        public PurchaseOrderController()
+        {
+            this.purchaseOrderRepository = new PurchaseOrderRepository();
+            this.productCategoryRepository=new ProductCategoryRepository();
+        }
+
+        public PurchaseOrderController(IPurchaseOrderRepository purchaseOrderRepository)
+        {
+            this.purchaseOrderRepository = purchaseOrderRepository;
+        }
+
+        [HttpGet, ActionName("GetAllPurchaseOrders")]
+        public HttpResponseMessage GetAllPurchaseOrders()
+        {
+            var countries = purchaseOrderRepository.GetAllPurchaseOrders();
+            var formatter = RequestFormat.JsonFormaterString();
+            return Request.CreateResponse(HttpStatusCode.OK, countries, formatter);
+        }
+
+        [HttpGet, ActionName("GetAllPurchaseOrdersForVerify")]
+        public HttpResponseMessage GetAllPurchaseOrdersForVerify()
+        {
+            var countries = purchaseOrderRepository.GetAllPurchaseOrdersForVerify();
+            var formatter = RequestFormat.JsonFormaterString();
+            return Request.CreateResponse(HttpStatusCode.OK, countries, formatter);
+        }
+
+        [HttpGet, ActionName("GetAllVerifiedPurchaseOrders")]
+        public HttpResponseMessage GetAllVerifiedPurchaseOrders()
+        {
+            var countries = purchaseOrderRepository.GetAllVerifiedPurchaseOrders();
+            var formatter = RequestFormat.JsonFormaterString();
+            return Request.CreateResponse(HttpStatusCode.OK, countries, formatter);
+        }
+
+        [HttpGet, ActionName("GetAllApprovedPurchaseOrders")]
+        public HttpResponseMessage GetAllApprovedPurchaseOrders()
+        {
+            var countries = purchaseOrderRepository.GetAllApprovedPurchaseOrders();
+            var formatter = RequestFormat.JsonFormaterString();
+            return Request.CreateResponse(HttpStatusCode.OK, countries, formatter);
+        }
+
+        [HttpGet, ActionName("GetAllApprovedPurchaseOrdersForDropDown")]
+        public HttpResponseMessage GetAllApprovedPurchaseOrdersForDropDown()
+        {
+            var countries = purchaseOrderRepository.GetAllApprovedPurchaseOrdersForDropDown();
+            var formatter = RequestFormat.JsonFormaterString();
+            return Request.CreateResponse(HttpStatusCode.OK, countries, formatter);
+        }
+
+        [HttpGet, ActionName("GetPiAttachment")]
+        public HttpResponseMessage GetPiAttachment(long purchase_order_master_id)
+        {
+            try
+            {
+                var xxx = purchaseOrderRepository.GetPiAttachment(purchase_order_master_id);
+                if (xxx == null)
+                {
+                    var formatter = RequestFormat.JsonFormaterString();
+                    return Request.CreateResponse(HttpStatusCode.OK, new Confirmation { output = "warning", msg = "PI Attachment Not Uploded Yet" }, formatter);
+                }
+                return xxx;
+            }
+            catch (Exception)
+            {
+                return null;
+            }
+
+        }
+
+        [HttpPost, ActionName("UploadPiAttachment")]
+        public HttpResponseMessage UploadPiAttachment()
+        {
+            var data = purchaseOrderRepository.UploadPiAttachment();
+            if (data == true)
+            {
+                var formatter = RequestFormat.JsonFormaterString();
+                return Request.CreateResponse(HttpStatusCode.OK, new Confirmation { output = "success", msg = "PI Attachment Upload Successfully" }, formatter);
+            }
+            else
+            {
+                var formatter = RequestFormat.JsonFormaterString();
+                return Request.CreateResponse(HttpStatusCode.OK, new Confirmation { output = "error", msg = "Upload Failed !!" }, formatter);
+            }
+        }
+
+        //For purchase Order Report-----------------------------------------
+        public object GetPurchaseOrdersReportById(long purchase_order_master_id)
+        {
+            var countries = purchaseOrderRepository.GetPurchaseOrdersReportById(purchase_order_master_id);
+            var formatter = RequestFormat.JsonFormaterString();
+            return Request.CreateResponse(HttpStatusCode.OK, countries, formatter);
+        }
+
+        //For Purchase Order Excel-----------------------------------------
+        [HttpGet, ActionName("GetPurchaseOrderExcelData")]
+        public HttpResponseMessage GetPurchaseOrderExcelData(string from_date, string to_date)
+        {
+            var data = purchaseOrderRepository.GetPurchaseOrderExcelData(from_date, to_date);
+            var formatter = RequestFormat.JsonFormaterString();
+            return Request.CreateResponse(HttpStatusCode.OK, data, formatter);
+        }
+
+        [HttpGet, ActionName("GetAllApprovedPurchaseOrdersPiNo")]
+        public HttpResponseMessage GetAllApprovedPurchaseOrdersPiNo()
+        {
+            var data = purchaseOrderRepository.GetAllApprovedPurchaseOrdersPiNo();
+            var formatter = RequestFormat.JsonFormaterString();
+            return Request.CreateResponse(HttpStatusCode.OK, data, formatter);
+        }
+
+        [System.Web.Http.HttpPost]
+        public HttpResponseMessage Post([FromBody] PurchaseOrderModel purchaseOrderModel)
+        {
+            try
+            {
+                int counter = 0;
+                var details = purchaseOrderModel.PoDetailsList;
+                foreach (var item in details)
+                {
+                    var poDetails = new purchase_order_details
+                    {
+                        product_id = item.product_id,
+                        color_id = item.color_id,
+                        product_version_id = item.product_version_id,
+                        product_category_id = item.product_category_id
+
+                    };
+
+                    var kkk = productCategoryRepository.GetProductCategoryByProductId((long) item.product_id);
+                    if (kkk != 3 && item.color_id == null && item.product_version_id == null)
+                    {
+                        var formatter = RequestFormat.JsonFormaterString();
+                        return Request.CreateResponse(HttpStatusCode.OK, new Confirmation { output = "warning", msg = "Please Select color and version !!" }, formatter);   
+                    }
+                    counter++;
+                }
+              
+
+                if (string.IsNullOrEmpty(purchaseOrderModel.PoMasterData.supplier_id.ToString()))
+                {
+                    var formatter = RequestFormat.JsonFormaterString();
+                    return Request.CreateResponse(HttpStatusCode.OK, new Confirmation { output = "warning", msg = "Please Select Supplier !!" }, formatter);
+                }
+
+                if (string.IsNullOrEmpty(purchaseOrderModel.PoMasterData.company_id.ToString()))
+                {
+                    var formatter = RequestFormat.JsonFormaterString();
+                    return Request.CreateResponse(HttpStatusCode.OK, new Confirmation { output = "warning", msg = "Please Select Company !!" }, formatter);
+                }
+            
+                if (string.IsNullOrEmpty(purchaseOrderModel.PoMasterData.currency_id.ToString()))
+                {
+                    var formatter = RequestFormat.JsonFormaterString();
+                    return Request.CreateResponse(HttpStatusCode.OK, new Confirmation { output = "warning", msg = "Please Select Currency !!" }, formatter);
+                }
+                if (counter==0)
+                {
+                    var formatter = RequestFormat.JsonFormaterString();
+                    return Request.CreateResponse(HttpStatusCode.OK, new Confirmation { output = "warning", msg = "Please give the product details Information !!" }, formatter);
+                }
+                else
+                {
+                    purchaseOrderRepository.AddPurchaseOrder(purchaseOrderModel);
+                    var formatter = RequestFormat.JsonFormaterString();
+                    return Request.CreateResponse(HttpStatusCode.OK, new Confirmation { output = "success", msg = "Purchase Order save successfully" }, formatter);
+                }
+
+            }
+            catch (Exception ex)
+            {
+                var formatter = RequestFormat.JsonFormaterString();
+                return Request.CreateResponse(HttpStatusCode.OK, new Confirmation { output = "warning", msg = ex.ToString() }, formatter);
+            }
+        }
+
+        [System.Web.Http.HttpPut]
+        public HttpResponseMessage Put([FromBody] PurchaseOrderModel purchaseOrderModel)
+        {
+            try
+            {
+                var details = purchaseOrderModel.PoDetailsList;
+                foreach (var item in details)
+                {
+                    var poDetails = new purchase_order_details
+                    {
+                        product_id = item.product_id,
+                        color_id = item.color_id,
+                        product_version_id = item.product_version_id,
+                        product_category_id = item.product_category_id
+
+                    };
+
+                    var kkk = productCategoryRepository.GetProductCategoryByProductId((long)item.product_id);
+                    if (kkk != 3 && item.color_id == null && item.product_version_id == null)
+                    {
+                        var formatter = RequestFormat.JsonFormaterString();
+                        return Request.CreateResponse(HttpStatusCode.OK, new Confirmation { output = "warning", msg = "Please Select color and version !!" }, formatter);
+                    }
+
+                }
+                if (string.IsNullOrEmpty(purchaseOrderModel.PoMasterData.supplier_id.ToString()))
+                {
+                    var formatter = RequestFormat.JsonFormaterString();
+                    return Request.CreateResponse(HttpStatusCode.OK, new Confirmation { output = "error", msg = "Please Select Supplier !!" }, formatter);
+
+                }
+                if (string.IsNullOrEmpty(purchaseOrderModel.PoMasterData.currency_id.ToString()))
+                {
+                    var formatter = RequestFormat.JsonFormaterString();
+                    return Request.CreateResponse(HttpStatusCode.OK, new Confirmation { output = "error", msg = "Please Select Currency !!" }, formatter);
+                }
+                else
+                {
+                    purchaseOrderRepository.EditPurchaseOrder(purchaseOrderModel);
+                    var formatter = RequestFormat.JsonFormaterString();
+                    return Request.CreateResponse(HttpStatusCode.OK, new Confirmation { output = "success", msg = "Purchase Order Update successfully" }, formatter);
+                }
+
+            }
+            catch (Exception ex)
+            {
+                var formatter = RequestFormat.JsonFormaterString();
+                return Request.CreateResponse(HttpStatusCode.OK, new Confirmation { output = "error", msg = ex.ToString() }, formatter);
+            }
+        }
+
+
+        [ActionName("UpdatePiInfoOnPo")]
+        [System.Web.Http.HttpPut]
+        public HttpResponseMessage UpdatePiInfoOnPo([FromBody] PurchaseOrderModel purchaseOrderModel)
+        {
+            try
+            {
+                if (string.IsNullOrEmpty(purchaseOrderModel.PoMasterData.pi_number))
+                {
+                    var formatter = RequestFormat.JsonFormaterString();
+                    return Request.CreateResponse(HttpStatusCode.OK,
+                        new Confirmation { output = "error", msg = "PI No is empty !!" }, formatter);
+
+                }
+
+                int piValidation = 0;
+                foreach (var item in purchaseOrderModel.PoDetailsList)
+                {
+                    piValidation+=item.pi_quantity??0;
+                }
+                if (piValidation==0)
+                {
+                    var formatter = RequestFormat.JsonFormaterString();
+                    return Request.CreateResponse(HttpStatusCode.OK, new Confirmation { output = "error", msg = "Please give PI quantity" }, formatter);
+                }
+                else
+                {
+                     bool xxx = purchaseOrderRepository.UpdatePiInfoOnPo(purchaseOrderModel);
+                    if (xxx == true)
+                    {
+                        var formatter = RequestFormat.JsonFormaterString();
+                        return Request.CreateResponse(HttpStatusCode.OK, new Confirmation { output = "success", msg = "PI Info Update successfully" }, formatter);
+                    }
+                    else
+                    {
+                        var formatter = RequestFormat.JsonFormaterString();
+                        return Request.CreateResponse(HttpStatusCode.OK, new Confirmation { output = "error", msg = "Upload PI Attachment First !!" }, formatter);
+                    } 
+                }
+               
+            }
+            catch (Exception ex)
+            {
+                var formatter = RequestFormat.JsonFormaterString();
+                return Request.CreateResponse(HttpStatusCode.OK, new Confirmation { output = "error", msg = ex.ToString() }, formatter);
+            }
+        }
+
+
+        [ActionName("UpdateLcNoOnPo")]
+        [System.Web.Http.HttpPut]
+        public HttpResponseMessage UpdateLcNoOnPo([FromBody] PurchaseOrderModel purchaseOrderModel)
+        {
+            try
+            {
+                if (string.IsNullOrEmpty(purchaseOrderModel.PoMasterData.lc_number))
+                {
+                    var formatter = RequestFormat.JsonFormaterString();
+                    return Request.CreateResponse(HttpStatusCode.OK, new Confirmation { output = "warning", msg = "LC No is Empty !!" }, formatter);
+
+                }
+                bool xxx = purchaseOrderRepository.UpdateLcNoOnPo(purchaseOrderModel);
+
+                if (xxx == true)
+                {
+                    var formatter = RequestFormat.JsonFormaterString();
+                    return Request.CreateResponse(HttpStatusCode.OK, new Confirmation { output = "success", msg = "LC No Update successfully" }, formatter);
+                }
+                else
+                {
+                    var formatter = RequestFormat.JsonFormaterString();
+                    return Request.CreateResponse(HttpStatusCode.OK, new Confirmation { output = "error", msg = "LC No Update Failed !!" }, formatter);
+                }
+            }
+            catch (Exception ex)
+            {
+                var formatter = RequestFormat.JsonFormaterString();
+                return Request.CreateResponse(HttpStatusCode.OK, new Confirmation { output = "error", msg = ex.ToString() }, formatter);
+            }
+        }
+
+        [ActionName("GetPurchaseOrderById")]
+        [System.Web.Http.HttpPost]
+        public HttpResponseMessage GetPurchaseOrderById([FromBody]Models.purchase_order_master purchase_order_master)
+        {
+            var purchaseOrderMaster = purchase_order_master.purchase_order_master_id;
+
+            var poMaster = purchaseOrderRepository.GetPurchaseOrderById(purchaseOrderMaster);
+            HttpResponseMessage response = Request.CreateResponse(HttpStatusCode.OK, poMaster);
+            return response;
+        }
+
+        [ActionName("VerifyPurchaseOrder")]
+        [System.Web.Http.HttpGet]
+        public HttpResponseMessage VerifyPurchaseOrder(long purchase_order_master_id, long user_id)
+        {
+            try
+            {
+                bool data = purchaseOrderRepository.VerifyPurchaseOrder(purchase_order_master_id, user_id);
+                if (data == true)
+                {
+                    var formatter = RequestFormat.JsonFormaterString();
+                    return Request.CreateResponse(HttpStatusCode.OK, new Confirmation { output = "success", msg = "Verified Successfully" }, formatter);
+                }
+                else
+                {
+                    var formatter = RequestFormat.JsonFormaterString();
+                    return Request.CreateResponse(HttpStatusCode.OK, new Confirmation { output = "error", msg = "Error in Verification !!" }, formatter);
+                }
+
+            }
+            catch (Exception ex)
+            {
+                var formatter = RequestFormat.JsonFormaterString();
+                return Request.CreateResponse(HttpStatusCode.OK, new Confirmation { output = "error", msg = ex.ToString() }, formatter);
+            }
+        }
+
+        [ActionName("ApprovePurchaseOrder")]
+        [System.Web.Http.HttpGet]
+        public HttpResponseMessage ApprovePurchaseOrder(long purchase_order_master_id, long user_id)
+        {
+            try
+            {
+                bool data = purchaseOrderRepository.ApprovePurchaseOrder(purchase_order_master_id, user_id);
+                if (data == true)
+                {
+                    var formatter = RequestFormat.JsonFormaterString();
+                    return Request.CreateResponse(HttpStatusCode.OK, new Confirmation { output = "success", msg = "Approved Successfully" }, formatter);
+                }
+                else
+                {
+                    var formatter = RequestFormat.JsonFormaterString();
+                    return Request.CreateResponse(HttpStatusCode.OK, new Confirmation { output = "error", msg = "Error in Approval !!" }, formatter);
+                }
+
+            }
+            catch (Exception ex)
+            {
+                var formatter = RequestFormat.JsonFormaterString();
+                return Request.CreateResponse(HttpStatusCode.OK, new Confirmation { output = "error", msg = ex.ToString() }, formatter);
+            }
+        }
+
+        [System.Web.Http.HttpDelete]
+        public HttpResponseMessage Delete([FromBody]Models.purchase_order_master purchase_order_master)
+        {
+            try
+            {
+                bool deletePurchaseOrder = purchaseOrderRepository.DeletePurchaseOrder(purchase_order_master.purchase_order_master_id);
+
+                if (deletePurchaseOrder == true)
+                {
+                    var formatter = RequestFormat.JsonFormaterString();
+                    return Request.CreateResponse(HttpStatusCode.OK, new Confirmation { output = "success", msg = "Purchase Order Delete Successfully." }, formatter);
+                }
+                else
+                {
+                    var formatter = RequestFormat.JsonFormaterString();
+                    return Request.CreateResponse(HttpStatusCode.OK, new Confirmation { output = "warning", msg = "Can not delete or cancel this Purchase Order because GRN already started." }, formatter);
+                }
+
+            }
+            catch (Exception ex)
+            {
+                var formatter = RequestFormat.JsonFormaterString();
+                return Request.CreateResponse(HttpStatusCode.OK, new Confirmation { output = "error", msg = ex.ToString() }, formatter);
+            }
+
+        }
+
+        [ActionName("DeletePurchaseOrderDetailsById")]
+        [System.Web.Http.HttpDelete]
+        public HttpResponseMessage DeletePurchaseOrderDetailsById(long purchase_order_details_id)
+        {
+            try
+            {
+                bool deletePurchaseOrder = purchaseOrderRepository.DeletePurchaseOrderDetailsById(purchase_order_details_id);
+
+                if (deletePurchaseOrder == true)
+                {
+                    var formatter = RequestFormat.JsonFormaterString();
+                    return Request.CreateResponse(HttpStatusCode.OK, new Confirmation { output = "success", msg = "Purchase Order Details Delete Successfully." }, formatter);
+                }
+                else
+                {
+                    var formatter = RequestFormat.JsonFormaterString();
+                    return Request.CreateResponse(HttpStatusCode.OK, new Confirmation { output = "warning", msg = "Error in delete portion!!" }, formatter);
+                }
+
+            }
+            catch (Exception ex)
+            {
+                var formatter = RequestFormat.JsonFormaterString();
+                return Request.CreateResponse(HttpStatusCode.OK, new Confirmation { output = "error", msg = ex.ToString() }, formatter);
+            }
+
+        }
+    }
+}

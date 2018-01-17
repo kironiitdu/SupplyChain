@@ -1,0 +1,155 @@
+﻿using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Net;
+using System.Net.Http;
+using System.Web.Http;
+using System.Web.Http.Cors;
+using DMSApi.Models;
+using DMSApi.Models.IRepository;
+using DMSApi.Models.Repository;
+using DMSApi.Models.StronglyType;
+
+namespace DMSApi.Controllers
+{
+    //[EnableCors(origins: "*", headers: "*", methods: "*")]
+    public class TransferOrderController : ApiController
+    {
+        private ITransferOrderRepository transferOrderRepository;
+
+        public TransferOrderController()
+        {
+            this.transferOrderRepository = new TransferOrderRepository();
+        }
+
+        public TransferOrderController(ITransferOrderRepository transferOrderRepository)
+        {
+            this.transferOrderRepository = transferOrderRepository;
+        }
+
+        [HttpGet, ActionName("GetAllTransferOrder")]
+        public HttpResponseMessage GetAllTransferOrder()
+        {
+            var data = transferOrderRepository.GetAllTransferOrder();
+            var formatter = RequestFormat.JsonFormaterString();
+            return Request.CreateResponse(HttpStatusCode.OK, data, formatter);
+        }
+
+        [HttpGet, ActionName("GetAllDeliverableTransferOrder")]
+        public HttpResponseMessage GetAllDeliverableTransferOrder()
+        {
+            var data = transferOrderRepository.GetAllDeliverableTransferOrder();
+            var formatter = RequestFormat.JsonFormaterString();
+            return Request.CreateResponse(HttpStatusCode.OK, data, formatter);
+        }
+
+        //For purchase Order Report-----------------------------------------
+        public object GetTransferOrderReportById(long transfer_order_master_id)
+        {
+            var data = transferOrderRepository.GetTransferOrderReportById(transfer_order_master_id);
+            var formatter = RequestFormat.JsonFormaterString();
+            return Request.CreateResponse(HttpStatusCode.OK, data, formatter);
+        }
+
+        [System.Web.Http.HttpPost]
+        public HttpResponseMessage Post([FromBody] TransferOrderModel transferOrderModel)
+        {
+            try
+            {
+                if (string.IsNullOrEmpty(transferOrderModel.ToMasterData.from_warehouse_id.ToString()))
+                {
+                    var formatter = RequestFormat.JsonFormaterString();
+                    return Request.CreateResponse(HttpStatusCode.OK, new Confirmation { output = "error", msg = "Please Select From Warehouse !!" }, formatter);
+                }
+                if (string.IsNullOrEmpty(transferOrderModel.ToMasterData.to_warehouse_id.ToString()))
+                {
+                    var formatter = RequestFormat.JsonFormaterString();
+                    return Request.CreateResponse(HttpStatusCode.OK, new Confirmation { output = "error", msg = "Please Select To Warehouse !!" }, formatter);
+                }
+                else
+                {
+                    transferOrderRepository.AddTransferOrder(transferOrderModel);
+                    var formatter = RequestFormat.JsonFormaterString();
+                    return Request.CreateResponse(HttpStatusCode.OK, new Confirmation { output = "success", msg = "Transfer Order save successfully" }, formatter);
+                }
+
+            }
+            catch (Exception ex)
+            {
+                var formatter = RequestFormat.JsonFormaterString();
+                return Request.CreateResponse(HttpStatusCode.OK, new Confirmation { output = "error", msg = ex.ToString() }, formatter);
+            }
+        }
+
+        [ActionName("GetTransferOrderById")]
+        [System.Web.Http.HttpPost]
+        public HttpResponseMessage GetTransferOrderById([FromBody]Models.transfer_order_master transfer_order_master)
+        {
+            var transferOrderMaster = transfer_order_master.transfer_order_master_id;
+
+            var data = transferOrderRepository.GetTransferOrderById(transferOrderMaster);
+            HttpResponseMessage response = Request.CreateResponse(HttpStatusCode.OK, data);
+            return response;
+        }
+
+        [ActionName("DeleteTransferOrderDetailsById")]
+        [System.Web.Http.HttpDelete]
+        public HttpResponseMessage DeleteTransferOrderDetailsById(long transfer_order_details_id)
+        {
+            try
+            {
+                bool deleteTransferOrder = transferOrderRepository.DeleteTransferOrderDetailsById(transfer_order_details_id);
+
+                if (deleteTransferOrder == true)
+                {
+                    var formatter = RequestFormat.JsonFormaterString();
+                    return Request.CreateResponse(HttpStatusCode.OK, new Confirmation { output = "success", msg = "Transfer Order Details Delete Successfully." }, formatter);
+                }
+                else
+                {
+                    var formatter = RequestFormat.JsonFormaterString();
+                    return Request.CreateResponse(HttpStatusCode.OK, new Confirmation { output = "warning", msg = "Error in delete portion!!" }, formatter);
+                }
+
+            }
+            catch (Exception ex)
+            {
+                var formatter = RequestFormat.JsonFormaterString();
+                return Request.CreateResponse(HttpStatusCode.OK, new Confirmation { output = "error", msg = ex.ToString() }, formatter);
+            }
+
+        }
+
+
+
+        [System.Web.Http.HttpPut]
+        public HttpResponseMessage Put([FromBody] TransferOrderModel transferOrderModel)
+        {
+            try
+            {
+                if (string.IsNullOrEmpty(transferOrderModel.ToMasterData.from_warehouse_id.ToString()))
+                {
+                    var formatter = RequestFormat.JsonFormaterString();
+                    return Request.CreateResponse(HttpStatusCode.OK, new Confirmation { output = "error", msg = "Please Select From Warehouse !!" }, formatter);
+                }
+                if (string.IsNullOrEmpty(transferOrderModel.ToMasterData.to_warehouse_id.ToString()))
+                {
+                    var formatter = RequestFormat.JsonFormaterString();
+                    return Request.CreateResponse(HttpStatusCode.OK, new Confirmation { output = "error", msg = "Please Select To Warehouse !!" }, formatter);
+                }
+                else
+                {
+                    transferOrderRepository.EditTransferOrder(transferOrderModel);
+                    var formatter = RequestFormat.JsonFormaterString();
+                    return Request.CreateResponse(HttpStatusCode.OK, new Confirmation { output = "success", msg = "Transfer Order Update successfully" }, formatter);
+                }
+
+            }
+            catch (Exception ex)
+            {
+                var formatter = RequestFormat.JsonFormaterString();
+                return Request.CreateResponse(HttpStatusCode.OK, new Confirmation { output = "error", msg = ex.ToString() }, formatter);
+            }
+        }
+    }
+}

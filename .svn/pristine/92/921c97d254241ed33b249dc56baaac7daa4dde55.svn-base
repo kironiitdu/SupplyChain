@@ -1,0 +1,184 @@
+﻿using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Net;
+using System.Net.Http;
+using System.Web.Http;
+using System.Web.Http.Cors;
+using DMSApi.Models;
+using DMSApi.Models.IRepository;
+using DMSApi.Models.Repository;
+using DMSApi.Models.StronglyType;
+
+namespace DMSApi.Controllers
+{
+    //[EnableCors(origins: "*", headers: "*", methods: "*")]
+    public class GrnController : ApiController
+    {
+        private readonly IGrnRepository _grnRepository;
+
+        public GrnController()
+        {
+            _grnRepository = new GrnRepository();
+        }
+
+        public GrnController(IGrnRepository grnRepository)
+        {
+            _grnRepository = grnRepository;
+        }
+
+        public HttpResponseMessage GetAllGrns()
+        {
+            var countries = _grnRepository.GetAllGrns();
+            var formatter = RequestFormat.JsonFormaterString();
+            return Request.CreateResponse(HttpStatusCode.OK, countries, formatter);
+        }
+
+        //For Grn Report-----------------------------------------
+        public object GetGrnReportById(long grn_master_id)
+        {
+            var countries = _grnRepository.GetGrnReportById(grn_master_id);
+            var formatter = RequestFormat.JsonFormaterString();
+            return Request.CreateResponse(HttpStatusCode.OK, countries, formatter);
+        }
+
+        //For Grn Excel Details with IMEI-----------------------------------------
+        public object GetGrnExcelReportByGrnMasterId(long grn_master_id)
+        {
+            var countries = _grnRepository.GetGrnExcelReportByGrnMasterId(grn_master_id);
+            var formatter = RequestFormat.JsonFormaterString();
+            return Request.CreateResponse(HttpStatusCode.OK, countries, formatter);
+        }
+
+        //For Grn Excel Details with IMEI-----------------------------------------
+        public object GetGrnExcelReportByGrnMasterIdProductIdColorId(long grn_master_id, long product_id, long color_id)
+        {
+            var countries = _grnRepository.GetGrnExcelReportByGrnMasterIdProductIdColorId(grn_master_id,product_id,color_id);
+            var formatter = RequestFormat.JsonFormaterString();
+            return Request.CreateResponse(HttpStatusCode.OK, countries, formatter);
+        }
+
+        //For Grn Excel-----------------------------------------
+        [HttpGet, ActionName("GetGrnExcelData")]
+        public HttpResponseMessage GetGrnExcelData(string from_date, string to_date, string product_id, string color_id)
+        {
+            var data = _grnRepository.GetGrnExcelData(from_date, to_date, product_id, color_id);
+            var formatter = RequestFormat.JsonFormaterString();
+            return Request.CreateResponse(HttpStatusCode.OK, data, formatter);
+        }
+
+        [HttpGet, ActionName("GetProductInformation")]
+        public HttpResponseMessage GetProductInformation(string imei_no)
+        {
+            try
+            {
+                var data = _grnRepository.GetProductInformation(imei_no);
+                var formatter = RequestFormat.JsonFormaterString();
+                return Request.CreateResponse(HttpStatusCode.OK, data, formatter);
+            }
+            catch (Exception ex)
+            {
+                var formatter = RequestFormat.JsonFormaterString();
+                return Request.CreateResponse(HttpStatusCode.OK, new Confirmation { output = "error", msg = ex.ToString() }, formatter);
+            }
+        }
+
+        [HttpGet, ActionName("GetProductGrnDetailsData")]
+        public HttpResponseMessage GetProductGrnDetailsData(string from_date, string to_date, string product_id, string color_id)
+        {
+            var data = _grnRepository.GetProductGrnDetailsData(from_date, to_date, product_id, color_id);
+            var formatter = RequestFormat.JsonFormaterString();
+            return Request.CreateResponse(HttpStatusCode.OK, data, formatter);
+        }
+
+        [HttpPost]
+        public HttpResponseMessage Post([FromBody] GrnModel grnModel)
+        {
+            try
+            {
+                if (string.IsNullOrEmpty(grnModel.GrnMasterData.company_id.ToString()))
+                {
+                    var formatter = RequestFormat.JsonFormaterString();
+                    return Request.CreateResponse(HttpStatusCode.OK, new Confirmation { output = "error", msg = "Please Select Company !!" }, formatter);
+                }
+                
+                if (string.IsNullOrEmpty(grnModel.GrnMasterData.supplier_id.ToString()))
+                {
+                    var formatter = RequestFormat.JsonFormaterString();
+                    return Request.CreateResponse(HttpStatusCode.OK, new Confirmation { output = "error", msg = "Please Select Supplier !!" }, formatter);
+
+                }
+                if (string.IsNullOrEmpty(grnModel.GrnMasterData.purchase_order_master_id.ToString()))
+                {
+                    var formatter = RequestFormat.JsonFormaterString();
+                    return Request.CreateResponse(HttpStatusCode.OK, new Confirmation { output = "error", msg = "Please Select Purchase Order !!" }, formatter);
+
+                }
+                if (string.IsNullOrEmpty(grnModel.GrnMasterData.warehouse_id.ToString()))
+                {
+                    var formatter = RequestFormat.JsonFormaterString();
+                    return Request.CreateResponse(HttpStatusCode.OK, new Confirmation { output = "error", msg = "Please Select Warehouse !!" }, formatter);
+                }
+                else
+                {
+                    var x= _grnRepository.AddGrn(grnModel);
+                    if (x==1)
+                    {
+                        var formatter = RequestFormat.JsonFormaterString();
+                        return Request.CreateResponse(HttpStatusCode.OK, new Confirmation { output = "success", msg = "Grn save successfully" }, formatter);
+                    }
+                    else
+                    {
+                        var formatter = RequestFormat.JsonFormaterString();
+                        return Request.CreateResponse(HttpStatusCode.OK, new Confirmation { output = "error", msg = "Duplicate IMEI Found !!!" }, formatter);
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                var formatter = RequestFormat.JsonFormaterString();
+                return Request.CreateResponse(HttpStatusCode.OK, new Confirmation { output = "error", msg = ex.ToString() }, formatter);
+            }
+        }
+
+        [HttpPost]
+        public HttpResponseMessage GetModelIdsByNames(List<string> models)
+        {
+            try
+            {
+                var formatter = RequestFormat.JsonFormaterString();
+                if (models==null)
+                {
+                    return Request.CreateResponse(HttpStatusCode.OK, new Confirmation { output = "error", msg = "Model List Empty !!" }, formatter);
+                }
+                var returnObj = _grnRepository.GetModelIdsByNames(models);
+                return Request.CreateResponse(HttpStatusCode.OK, returnObj, formatter);
+            }
+            catch (Exception ex)
+            {
+                var formatter = RequestFormat.JsonFormaterString();
+                return Request.CreateResponse(HttpStatusCode.OK, new Confirmation { output = "error", msg = ex.ToString() }, formatter);
+            }
+        }
+
+        [HttpPost]
+        public HttpResponseMessage GetColorIdsByNames(List<string> colors)
+        {
+            try
+            {
+                var formatter = RequestFormat.JsonFormaterString();
+                if (colors == null)
+                {
+                    return Request.CreateResponse(HttpStatusCode.OK, new Confirmation { output = "error", msg = "Color List Empty !!" }, formatter);
+                }
+                var returnObj = _grnRepository.GetColorIdsByNames(colors);
+                return Request.CreateResponse(HttpStatusCode.OK, returnObj, formatter);
+            }
+            catch (Exception ex)
+            {
+                var formatter = RequestFormat.JsonFormaterString();
+                return Request.CreateResponse(HttpStatusCode.OK, new Confirmation { output = "error", msg = ex.ToString() }, formatter);
+            }
+        }
+    }
+}

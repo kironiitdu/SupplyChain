@@ -1,0 +1,308 @@
+﻿using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Net;
+using System.Net.Http;
+using System.Web.Http;
+using System.Web.Http;
+using System.Web.Http.Cors;
+using DMSApi.Models;
+using DMSApi.Models.IRepository;
+using DMSApi.Models.Repository;
+using DMSApi.Models.StronglyType;
+
+namespace DMSApi.Controllers
+{
+    [EnableCors(origins: "*", headers: "*", methods: "*")]
+    public class ReturnController : ApiController
+    {
+        private IReturnRepository returnRepository;
+       
+        public ReturnController()
+        {
+            this.returnRepository=new ReturnRepository();
+        }
+        public HttpResponseMessage GetReturnType()
+        {
+            var ret = returnRepository.GetReturnType();
+            var formatter = RequestFormat.JsonFormaterString();
+            return Request.CreateResponse(HttpStatusCode.OK, ret, formatter);
+        }
+
+        //[HttpGet, ActionName("GetIMEIInformation")]
+        //public HttpResponseMessage GetIMEIInformation(string imei_no)
+        //{
+        //    try
+        //    {
+        //        if (string.IsNullOrEmpty(imei_no))
+        //        {
+        //            var formatter = RequestFormat.JsonFormaterString();
+        //            return Request.CreateResponse(HttpStatusCode.OK, new Confirmation { output = "warning", msg = "Please Enter IMEI No" }, formatter);
+
+        //        }
+        //        var traceIMEINo = returnRepository.GetIMEIInformation(imei_no.Trim());
+        //        var newFormatter = RequestFormat.JsonFormaterString();
+        //        return Request.CreateResponse(HttpStatusCode.OK, traceIMEINo, newFormatter);
+        //    }
+        //    catch (Exception ex)
+        //    {
+
+        //        var formatter = RequestFormat.JsonFormaterString();
+        //        return Request.CreateResponse(HttpStatusCode.OK, new Confirmation { output = "warning", msg = "No IMEI found!" }, formatter);
+        //    }
+        //}
+        [HttpGet, ActionName("GetIMEIInformation")]
+        //public HttpResponseMessage GetIMEIInformation(string imei_no, int user_id)
+        public HttpResponseMessage GetIMEIInformation(string imei_no, int party_id)
+        {
+            try
+            {
+                if (string.IsNullOrEmpty(imei_no))
+                {
+                    var formatter = RequestFormat.JsonFormaterString();
+                    return Request.CreateResponse(HttpStatusCode.OK, new Confirmation { output = "warning", msg = "Please Enter IMEI No" }, formatter);
+
+                }
+                var traceIMEINo = returnRepository.GetIMEIInformation(imei_no.Trim(), party_id);
+                var newFormatter = RequestFormat.JsonFormaterString();
+                return Request.CreateResponse(HttpStatusCode.OK, traceIMEINo, newFormatter);
+            }
+            catch (Exception ex)
+            {
+
+                var formatter = RequestFormat.JsonFormaterString();
+                return Request.CreateResponse(HttpStatusCode.OK, new Confirmation { output = "warning", msg = "No IMEI found!" }, formatter);
+            }
+        }
+
+        [System.Web.Http.HttpPost]
+        public HttpResponseMessage Post([FromBody] ReturnModel ReturnModel)
+        {
+            try
+            {
+                if (string.IsNullOrEmpty(ReturnModel.ReturnMasterData.return_type.ToString()))
+                {
+                    var formatter = RequestFormat.JsonFormaterString();
+                    return Request.CreateResponse(HttpStatusCode.OK, new Confirmation { output = "error", msg = "Please Select return type !!" }, formatter);
+
+                }
+                if (string.IsNullOrEmpty(ReturnModel.ReturnMasterData.remarks.ToString()))
+                {
+                    var formatter = RequestFormat.JsonFormaterString();
+                    return Request.CreateResponse(HttpStatusCode.OK, new Confirmation { output = "error", msg = "Please type remarks !!" }, formatter);
+
+                }
+                else
+                {
+                    returnRepository.AddReturn(ReturnModel);
+                    var formatter = RequestFormat.JsonFormaterString();
+                    return Request.CreateResponse(HttpStatusCode.OK, new Confirmation { output = "success", msg = "Successfully Returned" }, formatter);
+                }
+
+               
+            }
+            catch (Exception ex)
+            {
+                var formatter = RequestFormat.JsonFormaterString();
+                return Request.CreateResponse(HttpStatusCode.OK, new Confirmation { output = "error", msg = ex.ToString() }, formatter);
+            }
+        }
+        //Replace 
+        [System.Web.Http.HttpPost]
+        public HttpResponseMessage PostReplace([FromBody] ReturnModel ReturnModel)
+        {
+            try
+            {
+                //if (string.IsNullOrEmpty(ReturnModel.ReturnMasterData.return_type.ToString()))
+                //{
+                //    var formatter = RequestFormat.JsonFormaterString();
+                //    return Request.CreateResponse(HttpStatusCode.OK, new Confirmation { output = "error", msg = "Please Select return type !!" }, formatter);
+
+                //}
+                //else
+                //{
+                    returnRepository.PostReplace(ReturnModel);
+                    var formatter = RequestFormat.JsonFormaterString();
+                    return Request.CreateResponse(HttpStatusCode.OK, new Confirmation { output = "success", msg = "Successfully Replaced" }, formatter);
+                //}
+               
+            }
+            catch (Exception ex)
+            {
+                var formatter = RequestFormat.JsonFormaterString();
+                return Request.CreateResponse(HttpStatusCode.OK, new Confirmation { output = "error", msg = ex.ToString() }, formatter);
+            }
+        }
+        [ActionName("GetAllReturn")]
+        public HttpResponseMessage GetAllReturn()
+        {
+            var returns = returnRepository.GetAllReturn();
+            var formatter = RequestFormat.JsonFormaterString();
+            return Request.CreateResponse(HttpStatusCode.OK, returns, formatter);
+        }
+        [ActionName("GetAllReturnForVerify")]
+        public HttpResponseMessage GetAllReturnForVerify()
+        {
+            var returns = returnRepository.GetAllReturnForVerify();
+            var formatter = RequestFormat.JsonFormaterString();
+            return Request.CreateResponse(HttpStatusCode.OK, returns, formatter);
+        }
+        [ActionName("GetAllReturnForReceive")]
+        public HttpResponseMessage GetAllReturnForReceive()
+        {
+            var returns = returnRepository.GetAllReturnForReceive();
+            var formatter = RequestFormat.JsonFormaterString();
+            return Request.CreateResponse(HttpStatusCode.OK, returns, formatter);
+        }
+
+        [System.Web.Http.HttpGet]
+        public HttpResponseMessage ReceivingVerifiedIMEI(int returndetailsId)
+        {
+            try
+            {
+                if (returndetailsId > 0)
+                {
+                    returnRepository.ReceivingVerifiedIMEI(returndetailsId);
+                    var formatter = RequestFormat.JsonFormaterString();
+                    return Request.CreateResponse(HttpStatusCode.OK,
+                    new Confirmation { output = "success", msg = "Successfully Received" }, formatter);
+                }
+                else
+                {
+                    var formatter = RequestFormat.JsonFormaterString();
+                    return Request.CreateResponse(HttpStatusCode.OK, new Confirmation { output = "error", msg = "Invalid Return" }, formatter);
+                }
+
+            }
+            catch (Exception ex)
+            {
+                var formatter = RequestFormat.JsonFormaterString();
+                return Request.CreateResponse(HttpStatusCode.OK, new Confirmation { output = "error", msg = ex.ToString() }, formatter);
+            }
+        }
+
+        [HttpPost, ActionName("GetReturnById")]
+        public HttpResponseMessage GetReturnById([FromBody]Models.return_master return_master)
+        {
+            var returnMaster = return_master.return_master_id;
+
+            var retMaster = returnRepository.GetReturnById(returnMaster);
+            HttpResponseMessage response = Request.CreateResponse(HttpStatusCode.OK, retMaster);
+            return response;
+        }
+        
+        //load verified return imei info for receiving
+        [HttpPost, ActionName("GetVerifiedReturnById")]
+        public HttpResponseMessage GetVerifiedReturnById([FromBody]Models.return_master return_master)
+        {
+            var returnMaster = return_master.return_master_id;
+
+            var retMaster = returnRepository.GetVerifiedReturnById(returnMaster);
+            HttpResponseMessage response = Request.CreateResponse(HttpStatusCode.OK, retMaster);
+            return response;
+        }
+        //verify return by doa engineer
+        //[System.Web.Http.HttpPost]
+         [System.Web.Http.HttpPost]
+        public HttpResponseMessage VerifyReturn([FromBody] ReturnModel ReturnModel)
+        {
+             try
+             {
+                 if (string.IsNullOrEmpty(ReturnModel.ReturnMasterData.return_type.ToString()))
+                 {
+                     var formatter = RequestFormat.JsonFormaterString();
+                     return Request.CreateResponse(HttpStatusCode.OK, new Confirmation { output = "error", msg = "Please Select return type !!" }, formatter);
+
+                 }
+                 if (string.IsNullOrEmpty(ReturnModel.ReturnMasterData.return_date.ToString()))
+                 {
+                     var formatter = RequestFormat.JsonFormaterString();
+                     return Request.CreateResponse(HttpStatusCode.OK, new Confirmation { output = "error", msg = "Please Select return date !!" }, formatter);
+                 }
+                 else
+                 {
+
+                     returnRepository.VerifyReturn(ReturnModel);
+                     var formatter = RequestFormat.JsonFormaterString();
+                     return Request.CreateResponse(HttpStatusCode.OK, new Confirmation { output = "success", msg = "Returned verified successfully" }, formatter);
+
+
+                 }
+             }
+             catch (Exception)
+             {
+                 
+                 throw;
+             }
+          
+        }
+
+        public HttpResponseMessage ReceiveReturn([FromBody] ReturnModel ReturnModel)
+        {
+            try
+            {
+                returnRepository.ReceiveReturn(ReturnModel);
+                var formatter = RequestFormat.JsonFormaterString();
+                return Request.CreateResponse(HttpStatusCode.OK, new Confirmation { output = "success", msg = "Returned verified successfully" }, formatter);
+            }
+            catch (Exception)
+            {
+                
+                throw;
+            }
+        }
+
+        [HttpGet, ActionName("GetIMEIForReplace")]
+        public HttpResponseMessage GetIMEIForReplace(string replacedimei, string replacingimei)
+        {
+            try
+            {
+                if (string.IsNullOrEmpty(replacingimei))
+                {
+                    var formatter = RequestFormat.JsonFormaterString();
+                    return Request.CreateResponse(HttpStatusCode.OK, new Confirmation { output = "warning", msg = "Please Enter Replacing IMEI No" }, formatter);
+
+                }
+                if (string.IsNullOrEmpty(replacedimei))
+                {
+                    var formatter = RequestFormat.JsonFormaterString();
+                    return Request.CreateResponse(HttpStatusCode.OK, new Confirmation { output = "warning", msg = "Please Select Replaced IMEI No" }, formatter);
+                }
+                var traceIMEINo = returnRepository.GetIMEIForReplace(replacedimei.Trim(), replacingimei.Trim());
+                var newFormatter = RequestFormat.JsonFormaterString();
+                return Request.CreateResponse(HttpStatusCode.OK, traceIMEINo, newFormatter);
+            }
+            catch (Exception ex)
+            {
+
+                var formatter = RequestFormat.JsonFormaterString();
+                return Request.CreateResponse(HttpStatusCode.OK, new Confirmation { output = "warning", msg = "No IMEI found!" }, formatter);
+            }
+        }
+
+        //Return report
+        [System.Web.Http.HttpGet]
+        public object ReturnInvoiceReportById(int return_master_id)
+        {
+            var pos = returnRepository.ReturnInvoiceReportById(return_master_id);
+            var formatter = RequestFormat.JsonFormaterString();
+            return Request.CreateResponse(HttpStatusCode.OK, pos, formatter);
+        }
+
+        //[System.Web.Http.HttpPost]
+        //public HttpResponseMessage VerifyReturn([FromBody] ReturnModel ReturnModel)
+        //{
+        //    try
+        //    {
+        //        returnRepository.VerifyReturn(InvoiceModel);
+        //        var formatter = RequestFormat.JsonFormaterString();
+        //        return Request.CreateResponse(HttpStatusCode.OK, new Confirmation { output = "success", msg = "Invoice Created successfully" }, formatter);
+        //    }
+        //    catch (Exception ex)
+        //    {
+        //        var formatter = RequestFormat.JsonFormaterString();
+        //        return Request.CreateResponse(HttpStatusCode.OK, new Confirmation { output = "error", msg = ex.ToString() }, formatter);
+        //    }
+        //}
+    }
+}

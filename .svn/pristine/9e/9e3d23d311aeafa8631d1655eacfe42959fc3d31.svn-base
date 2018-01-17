@@ -1,0 +1,335 @@
+﻿using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Net;
+using System.Net.Http;
+using System.Web.Http;
+using System.Web.Http.Cors;
+using DMSApi.Models;
+using DMSApi.Models.IRepository;
+using DMSApi.Models.Repository;
+using DMSApi.Models.StronglyType;
+
+namespace DMSApi.Controllers
+{
+    [EnableCors(origins: "*", headers: "*", methods: "*")]
+    public class PromotionController : ApiController
+    {
+        private IPromotionRepository promotionRepository;
+
+        public PromotionController()
+        {
+            this.promotionRepository = new PromotionRepository();
+        }
+
+        public PromotionController(IPromotionRepository promotionRepository)
+        {
+            this.promotionRepository = promotionRepository;
+        }
+
+        [HttpGet, ActionName("GetAllPromotions")]
+        public HttpResponseMessage GetAllPromotions()
+        {
+            var data = promotionRepository.GetAllPromotions();
+            var formatter = RequestFormat.JsonFormaterString();
+            return Request.CreateResponse(HttpStatusCode.OK, data, formatter);
+        }
+
+        [HttpGet, ActionName("GetAllActivePromotions")]
+        public HttpResponseMessage GetAllActivePromotions()
+        {
+            var data = promotionRepository.GetAllActivePromotions();
+            var formatter = RequestFormat.JsonFormaterString();
+            return Request.CreateResponse(HttpStatusCode.OK, data, formatter);
+        }
+
+        [HttpGet, ActionName("GetPromotinByChannelId")]
+        public HttpResponseMessage GetPromotinByChannelId(long channelId)
+        {
+            var data = promotionRepository.GetPromotinByChannelId(channelId);
+            var formatter = RequestFormat.JsonFormaterString();
+            return Request.CreateResponse(HttpStatusCode.OK, data, formatter);
+        }
+
+        [HttpGet, ActionName("GetPromotionInformation")]
+        public HttpResponseMessage GetPromotionInformation(long product_id, long promotion_master_id, int quantity)
+        {
+            var data = promotionRepository.GetPromotionInformation(product_id, promotion_master_id, quantity);
+            var formatter = RequestFormat.JsonFormaterString();
+            return Request.CreateResponse(HttpStatusCode.OK, data, formatter);
+        }
+
+        [HttpGet, ActionName("GetPromotinByPromotionId")]
+        public HttpResponseMessage GetPromotinByPromotionId(long promotion_master_id)
+        {
+            var data = promotionRepository.GetPromotinByPromotionId(promotion_master_id);
+            var formatter = RequestFormat.JsonFormaterString();
+            return Request.CreateResponse(HttpStatusCode.OK, data, formatter);
+        }
+
+        [HttpGet, ActionName("GetPromotionInfoDropdown")]
+        public HttpResponseMessage GetPromotionInfoDropdown(long product_id, long channel_id)
+        {
+            var data = promotionRepository.GetPromotionInfoDropdown(product_id, channel_id);
+            var formatter = RequestFormat.JsonFormaterString();
+            return Request.CreateResponse(HttpStatusCode.OK, data, formatter);
+        }
+        //GetPromotionSetup
+        [HttpGet, ActionName("GetPromotionSetup")]
+        public HttpResponseMessage GetPromotionSetup(long promotionMasterId)
+        {
+            var data = promotionRepository.GetPromotionSetup(promotionMasterId);
+            var formatter = RequestFormat.JsonFormaterString();
+            return Request.CreateResponse(HttpStatusCode.OK, data, formatter);
+        }
+
+        [System.Web.Http.HttpPost]
+        public HttpResponseMessage Post([FromBody] PromotionModel promotionModel)
+        {
+            try
+            {
+                if (string.IsNullOrEmpty(promotionModel.PromotionMasterData.promotion_name))
+                {
+                    var formatter = RequestFormat.JsonFormaterString();
+                    return Request.CreateResponse(HttpStatusCode.OK, new Confirmation { output = "warning", msg = "Promotion Name is empty !!" }, formatter);
+                }
+                if (string.IsNullOrEmpty(promotionModel.PromotionMasterData.promotion_start_date.ToString()))
+                {
+                    var formatter = RequestFormat.JsonFormaterString();
+                    return Request.CreateResponse(HttpStatusCode.OK, new Confirmation { output = "warning", msg = "Promotion Start Date is empty !!" }, formatter);
+
+                }
+                if (string.IsNullOrEmpty(promotionModel.PromotionMasterData.promotion_end_date.ToString()))
+                {
+                    var formatter = RequestFormat.JsonFormaterString();
+                    return Request.CreateResponse(HttpStatusCode.OK, new Confirmation { output = "warning", msg = "Promotion End Date is empty !!" }, formatter);
+
+                }
+                if (string.IsNullOrEmpty(promotionModel.PromotionMasterData.product_category_id.ToString()))
+                {
+                    var formatter = RequestFormat.JsonFormaterString();
+                    return Request.CreateResponse(HttpStatusCode.OK, new Confirmation { output = "warning", msg = "Please Select Category !!" }, formatter);
+
+                }
+                if (string.IsNullOrEmpty(promotionModel.PromotionMasterData.product_id.ToString()))
+                {
+                    var formatter = RequestFormat.JsonFormaterString();
+                    return Request.CreateResponse(HttpStatusCode.OK, new Confirmation { output = "warning", msg = "Please Select Product !!" }, formatter);
+
+                }
+                if (string.IsNullOrEmpty(promotionModel.PromotionMasterData.lifting_quantity_for_promotion.ToString()))
+                {
+                    var formatter = RequestFormat.JsonFormaterString();
+                    return Request.CreateResponse(HttpStatusCode.OK, new Confirmation { output = "warning", msg = "Lifting Quantity is empty !!" }, formatter);
+
+                }
+                if (promotionModel.PromotionMasterData.lifting_quantity_for_promotion < 1)
+                {
+                    var formatter = RequestFormat.JsonFormaterString();
+                    return Request.CreateResponse(HttpStatusCode.OK, new Confirmation { output = "warning", msg = "Lifting Quantity is alaways greater than Zero !!" }, formatter);
+
+                }
+                if (string.IsNullOrEmpty(promotionModel.PromotionMasterData.promotion_type))
+                {
+                    var formatter = RequestFormat.JsonFormaterString();
+                    return Request.CreateResponse(HttpStatusCode.OK, new Confirmation { output = "warning", msg = "Promotion Type is empty !!" }, formatter);
+
+                }
+                if (promotionModel.PromotionMasterData.promotion_type == "Incentive")
+                {
+                    if (string.IsNullOrEmpty(promotionModel.PromotionMasterData.promotion_discount.ToString()))
+                    {
+                        var formatter = RequestFormat.JsonFormaterString();
+                        return Request.CreateResponse(HttpStatusCode.OK, new Confirmation { output = "warning", msg = "Promotion Discount is empty !!" }, formatter);
+
+                    }
+                    if (promotionModel.PromotionMasterData.promotion_discount == 0)
+                    {
+                        var formatter = RequestFormat.JsonFormaterString();
+                        return Request.CreateResponse(HttpStatusCode.OK, new Confirmation { output = "warning", msg = "Promotion Discount is alaways greater than zero !!" }, formatter);
+
+                    }
+                    else
+                    {
+                        var x = promotionRepository.AddPromotion(promotionModel);
+                        if (x == 1)
+                        {
+                            var formatter = RequestFormat.JsonFormaterString();
+                            return Request.CreateResponse(HttpStatusCode.OK, new Confirmation { output = "success", msg = "Promotion save successfully" }, formatter);
+                        }
+                        else
+                        {
+                            var formatter = RequestFormat.JsonFormaterString();
+                            return Request.CreateResponse(HttpStatusCode.OK, new Confirmation { output = "error", msg = "Error in Promotion !!!" }, formatter);
+                        }
+                    }
+                    
+                }
+                if (promotionModel.PromotionMasterData.promotion_type == "Product")
+                {
+                    if (promotionModel.PromotionDetailsList.Count==0)
+                    {
+                        var formatter = RequestFormat.JsonFormaterString();
+                        return Request.CreateResponse(HttpStatusCode.OK, new Confirmation { output = "warning", msg = "Please add new record for promotion !!" }, formatter);
+
+                    }
+                    else
+                    {
+                        var x = promotionRepository.AddPromotion(promotionModel);
+                        if (x == 1)
+                        {
+                            var formatter = RequestFormat.JsonFormaterString();
+                            return Request.CreateResponse(HttpStatusCode.OK, new Confirmation { output = "success", msg = "Promotion save successfully" }, formatter);
+                        }
+                        else
+                        {
+                            var formatter = RequestFormat.JsonFormaterString();
+                            return Request.CreateResponse(HttpStatusCode.OK, new Confirmation { output = "error", msg = "Error in Promotion !!!" }, formatter);
+                        }
+                    }
+                }
+                
+            }
+            catch (Exception ex)
+            {
+                var formatter = RequestFormat.JsonFormaterString();
+                return Request.CreateResponse(HttpStatusCode.OK, new Confirmation { output = "error", msg = ex.ToString() }, formatter);
+            }
+            var xxx = RequestFormat.JsonFormaterString();
+            return Request.CreateResponse(HttpStatusCode.OK, new Confirmation { output = "error", msg = "Global Error" }, xxx);
+        }
+
+        [System.Web.Http.HttpPut]
+        public HttpResponseMessage Put([FromBody] PromotionModel promotionModel)
+        {
+            try
+            {
+                if (string.IsNullOrEmpty(promotionModel.PromotionMasterData.promotion_name))
+                {
+                    var formatter = RequestFormat.JsonFormaterString();
+                    return Request.CreateResponse(HttpStatusCode.OK, new Confirmation { output = "warning", msg = "Promotion Name is empty !!" }, formatter);
+                }
+                if (string.IsNullOrEmpty(promotionModel.PromotionMasterData.promotion_start_date.ToString()))
+                {
+                    var formatter = RequestFormat.JsonFormaterString();
+                    return Request.CreateResponse(HttpStatusCode.OK, new Confirmation { output = "warning", msg = "Promotion Start Date is empty !!" }, formatter);
+
+                }
+                if (string.IsNullOrEmpty(promotionModel.PromotionMasterData.promotion_end_date.ToString()))
+                {
+                    var formatter = RequestFormat.JsonFormaterString();
+                    return Request.CreateResponse(HttpStatusCode.OK, new Confirmation { output = "warning", msg = "Promotion End Date is empty !!" }, formatter);
+
+                }
+                if (string.IsNullOrEmpty(promotionModel.PromotionMasterData.product_category_id.ToString()))
+                {
+                    var formatter = RequestFormat.JsonFormaterString();
+                    return Request.CreateResponse(HttpStatusCode.OK, new Confirmation { output = "warning", msg = "Please Select Category !!" }, formatter);
+
+                }
+                if (string.IsNullOrEmpty(promotionModel.PromotionMasterData.product_id.ToString()))
+                {
+                    var formatter = RequestFormat.JsonFormaterString();
+                    return Request.CreateResponse(HttpStatusCode.OK, new Confirmation { output = "warning", msg = "Please Select Product !!" }, formatter);
+
+                }
+                if (string.IsNullOrEmpty(promotionModel.PromotionMasterData.lifting_quantity_for_promotion.ToString()))
+                {
+                    var formatter = RequestFormat.JsonFormaterString();
+                    return Request.CreateResponse(HttpStatusCode.OK, new Confirmation { output = "warning", msg = "Lifting Quantity is empty !!" }, formatter);
+
+                }
+                if (promotionModel.PromotionMasterData.lifting_quantity_for_promotion < 1)
+                {
+                    var formatter = RequestFormat.JsonFormaterString();
+                    return Request.CreateResponse(HttpStatusCode.OK, new Confirmation { output = "warning", msg = "Lifting Quantity is alaways greater than Zero !!" }, formatter);
+
+                }
+                if (string.IsNullOrEmpty(promotionModel.PromotionMasterData.promotion_type))
+                {
+                    var formatter = RequestFormat.JsonFormaterString();
+                    return Request.CreateResponse(HttpStatusCode.OK, new Confirmation { output = "warning", msg = "Promotion Type is empty !!" }, formatter);
+
+                }
+                if (promotionModel.PromotionMasterData.promotion_type == "Incentive")
+                {
+                    if (string.IsNullOrEmpty(promotionModel.PromotionMasterData.promotion_discount.ToString()))
+                    {
+                        var formatter = RequestFormat.JsonFormaterString();
+                        return Request.CreateResponse(HttpStatusCode.OK, new Confirmation { output = "warning", msg = "Promotion Discount is empty !!" }, formatter);
+
+                    }
+                    if (promotionModel.PromotionMasterData.promotion_discount == 0)
+                    {
+                        var formatter = RequestFormat.JsonFormaterString();
+                        return Request.CreateResponse(HttpStatusCode.OK, new Confirmation { output = "warning", msg = "Promotion Discount is alaways greater than zero !!" }, formatter);
+
+                    }
+                    else
+                    {
+                        var x = promotionRepository.EditPromotion(promotionModel);
+                        if (x == 1)
+                        {
+                            var formatter = RequestFormat.JsonFormaterString();
+                            return Request.CreateResponse(HttpStatusCode.OK, new Confirmation { output = "success", msg = "Promotion updated successfully" }, formatter);
+                        }
+                        else
+                        {
+                            var formatter = RequestFormat.JsonFormaterString();
+                            return Request.CreateResponse(HttpStatusCode.OK, new Confirmation { output = "error", msg = "Promotion Update Failed !!!" }, formatter);
+                        }
+                    }
+
+                }
+                if (promotionModel.PromotionMasterData.promotion_type == "Product")
+                {
+                    if (promotionModel.PromotionDetailsList.Count == 0)
+                    {
+                        var formatter = RequestFormat.JsonFormaterString();
+                        return Request.CreateResponse(HttpStatusCode.OK, new Confirmation { output = "warning", msg = "Please add new record for promotion !!" }, formatter);
+
+                    }
+                    else
+                    {
+                        var x = promotionRepository.EditPromotion(promotionModel);
+                        if (x == 1)
+                        {
+                            var formatter = RequestFormat.JsonFormaterString();
+                            return Request.CreateResponse(HttpStatusCode.OK, new Confirmation { output = "success", msg = "Promotion Updated successfully" }, formatter);
+                        }
+                        else
+                        {
+                            var formatter = RequestFormat.JsonFormaterString();
+                            return Request.CreateResponse(HttpStatusCode.OK, new Confirmation { output = "error", msg = "Promotion Update Failed !!!" }, formatter);
+                        }
+                    }
+                }
+
+            }
+            catch (Exception ex)
+            {
+                var formatter = RequestFormat.JsonFormaterString();
+                return Request.CreateResponse(HttpStatusCode.OK, new Confirmation { output = "error", msg = ex.ToString() }, formatter);
+            }
+            var xxx = RequestFormat.JsonFormaterString();
+            return Request.CreateResponse(HttpStatusCode.OK, new Confirmation { output = "error", msg = "Global Error" }, xxx);
+        }
+
+        [HttpPost, ActionName("DeletePromotionDetails")]
+        public HttpResponseMessage DeleteRequisitionDetails(promotion_details promotionDetails)
+        {
+
+            try
+            {
+                var reqMaster = promotionRepository.DeletePromotionDetails(promotionDetails.promotion_details_id, promotionDetails.promotion_master_id);
+                var formatter = RequestFormat.JsonFormaterString();
+                return Request.CreateResponse(HttpStatusCode.OK, new Confirmation { output = "success", msg = "Delete Successfully." }, formatter);
+            }
+            catch (Exception ex)
+            {
+                var formatter = RequestFormat.JsonFormaterString();
+                return Request.CreateResponse(HttpStatusCode.OK, new Confirmation { output = "error", msg = ex.ToString() }, formatter);
+            }
+        }
+    }
+}

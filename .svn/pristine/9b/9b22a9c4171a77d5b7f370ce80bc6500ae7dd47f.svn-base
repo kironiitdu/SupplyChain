@@ -1,0 +1,165 @@
+﻿using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Net;
+using System.Net.Http;
+using System.Web.Http;
+using System.Web.Http.Cors;
+using DMSApi.Models;
+using DMSApi.Models.IRepository;
+using DMSApi.Models.Repository;
+
+namespace DMSApi.Controllers
+{
+    [EnableCors(origins: "*", headers: "*", methods: "*")]
+    public class TerritoryController : ApiController
+    {
+         private readonly ITerritoryRepository _territoryRepository;
+
+            public TerritoryController()
+            {
+                this._territoryRepository = new TerritoryRepository();
+            }
+
+            public TerritoryController(TerritoryRepository territoryRepository)
+            {
+                this._territoryRepository = territoryRepository;
+            }
+            [HttpGet, ActionName("GetAllTerritoryByAreaId")]
+            public HttpResponseMessage GetAllTerritoryByAreaId(long area_id)
+            {
+                try
+                {
+                    var result = _territoryRepository.GetAllTerritoryByAreaId(area_id);
+                    var formatter = RequestFormat.JsonFormaterString();
+                    return Request.CreateResponse(HttpStatusCode.OK, result, formatter);
+                }
+                catch (Exception ex)
+                {
+
+                    var formatter = RequestFormat.JsonFormaterString();
+                    return Request.CreateResponse(HttpStatusCode.OK, new Confirmation { output = "error", msg = ex.ToString() }, formatter);
+                }
+            }
+            public HttpResponseMessage GetAllTerritory()
+            {
+                try
+                {
+                    var result = _territoryRepository.GetAllTerritory();
+                    var formatter = RequestFormat.JsonFormaterString();
+                    return Request.CreateResponse(HttpStatusCode.OK, result, formatter);
+                }
+                catch (Exception ex)
+                {
+
+                    var formatter = RequestFormat.JsonFormaterString();
+                    return Request.CreateResponse(HttpStatusCode.OK, new Confirmation { output = "error", msg = ex.ToString() }, formatter);
+                }
+            }
+            [System.Web.Http.HttpPost]
+            public HttpResponseMessage Post([FromBody] Models.territory oTerritory)
+            {
+
+                try
+                {
+                    if (string.IsNullOrEmpty(oTerritory.territory_name))
+                    {
+                        var formatter = RequestFormat.JsonFormaterString();
+                        return Request.CreateResponse(HttpStatusCode.OK, new Confirmation { output = "error", msg = "Area Name is Empty" }, formatter);
+
+                    }
+                        if (_territoryRepository.CheckDuplicateAreaTerritory(oTerritory))
+                        {
+                            var formatter = RequestFormat.JsonFormaterString();
+                            return Request.CreateResponse(HttpStatusCode.OK, new Confirmation { output = "error", msg = "Same Area and Zone Already Exists! " }, formatter);
+                        }
+                        else
+                        {
+                            var iTerritory = new territory
+                            {
+                                territory_name = oTerritory.territory_name,
+                                territory_code = oTerritory.territory_code,
+                                area_id = oTerritory.area_id,
+                                is_active = oTerritory.is_active,
+                                created_by = oTerritory.created_by,
+                                created_date = DateTime.Now,
+                                updated_by = oTerritory.updated_by,
+                                updated_date = DateTime.Now
+                            };
+                            _territoryRepository.AddTerritory(iTerritory);
+                            var formatter = RequestFormat.JsonFormaterString();
+                            return Request.CreateResponse(HttpStatusCode.OK, new Confirmation { output = "success", msg = "Territory saved successfully" }, formatter); 
+                        }
+                }
+                catch (Exception ex)
+                {
+                    var formatter = RequestFormat.JsonFormaterString();
+                    return Request.CreateResponse(HttpStatusCode.OK, new Confirmation { output = "error", msg = ex.ToString() }, formatter);
+                }
+            }
+
+            [System.Web.Http.HttpPut]
+            public HttpResponseMessage Put([FromBody] Models.territory oTerritory)
+            {
+                try
+                {
+                    if (_territoryRepository.CheckDuplicateAreaTerritory(oTerritory))
+                    {
+                        var formatter = RequestFormat.JsonFormaterString();
+                        return Request.CreateResponse(HttpStatusCode.OK, new Confirmation { output = "error", msg = "Same Territory int the area already exists " }, formatter);
+                    }
+                    else
+                    {
+                        var uTerritory = new Models.territory
+                        {
+                            territory_id = oTerritory.territory_id,
+                            territory_name = oTerritory.territory_name,
+                            territory_code = oTerritory.territory_code,
+                            area_id = oTerritory.area_id,
+                            is_active = oTerritory.is_active,
+                            updated_date = DateTime.Now,
+                            updated_by = oTerritory.updated_by
+                        };
+
+                        _territoryRepository.EditTerritory(uTerritory);
+
+
+                        var formatter = RequestFormat.JsonFormaterString();
+                        return Request.CreateResponse(HttpStatusCode.OK, new Confirmation { output = "success", msg = "Area Update Successfully" }, formatter); 
+                    }
+             
+                }
+                catch (Exception ex)
+                {
+                    var formatter = RequestFormat.JsonFormaterString();
+                    return Request.CreateResponse(HttpStatusCode.OK, new Confirmation { output = "error", msg = ex.ToString() }, formatter);
+                }
+            }
+
+
+            [System.Web.Http.HttpDelete]
+            public HttpResponseMessage Delete([FromBody]Models.territory oTerritory)
+            {
+                try
+                {
+                    bool deleteTerritory = _territoryRepository.DeleteTerritory(oTerritory.territory_id);
+                    var formatter = RequestFormat.JsonFormaterString();
+                    return Request.CreateResponse(HttpStatusCode.OK, new Confirmation { output = "success", msg = "Territory Deleted Successfully." }, formatter);
+                }
+                catch (Exception ex)
+                {
+                    var formatter = RequestFormat.JsonFormaterString();
+                    return Request.CreateResponse(HttpStatusCode.OK, new Confirmation { output = "error", msg = ex.ToString() }, formatter);
+                }
+
+            }
+            [HttpGet, ActionName("GetPartyWiseTerritory")]
+            public HttpResponseMessage GetPartyWiseTerritory(long party_id)
+            {
+                var territory = _territoryRepository.GetPartyWiseTerritory(party_id);
+                var formatter = RequestFormat.JsonFormaterString();
+                return Request.CreateResponse(HttpStatusCode.OK, territory, formatter);
+            }
+            
+        }
+    }

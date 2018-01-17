@@ -1,0 +1,22 @@
+﻿using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Web;
+
+namespace DMSApi.Models.StronglyType
+{
+    public class AdvanceDueReportModel
+    {
+        public long party_id { get; set; }
+        public string party_type_name { get; set; }
+        public string party_name { get; set; }
+        public bool is_active { get; set; }
+        public string party_code { get; set; }
+        public string region_name { get; set; }
+        public string area_name { get; set; }
+        public string territory_name { get; set; }
+        public decimal closing_balance { get; set; }
+        public string remain_balance_status { get; set; } 
+        public long party_journal_id { get; set; }
+    }
+}

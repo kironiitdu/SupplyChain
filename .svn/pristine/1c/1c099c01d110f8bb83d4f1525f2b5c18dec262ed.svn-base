@@ -1,0 +1,422 @@
+﻿using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Net;
+using System.Net.Http;
+using System.Web.Http;
+using System.Web.Http.Cors;
+using DMSApi.Models;
+using DMSApi.Models.IRepository;
+using DMSApi.Models.Repository;
+using DMSApi.Models.StronglyType;
+
+
+namespace DMSApi.Controllers
+{
+    [EnableCors(origins: "*", headers: "*", methods: "*")]
+    public class PartyController : ApiController
+    {
+        private IPartyRepository partyRepository;
+
+        public PartyController()
+        {
+            this.partyRepository = new PartyRepository();
+        }
+
+        public PartyController(IPartyRepository partyRepository)
+        {
+            this.partyRepository = partyRepository;
+        }
+        public HttpResponseMessage GetAllParty()
+        {
+
+            var party = partyRepository.GetAllParty();
+            var formatter = RequestFormat.JsonFormaterString();
+            return Request.CreateResponse(HttpStatusCode.OK, party, formatter);
+        }
+
+        [HttpGet, ActionName("GetAllPartyWithoutJournal")]
+        public HttpResponseMessage GetAllPartyWithoutJournal()
+        {
+
+            var party = partyRepository.GetAllPartyWithoutJournal();
+            var formatter = RequestFormat.JsonFormaterString();
+            return Request.CreateResponse(HttpStatusCode.OK, party, formatter);
+        }
+
+        [HttpGet, ActionName("GetAllPartyWithRetailer")]
+        public HttpResponseMessage GetAllPartyWithRetailer()
+        {
+
+            var party = partyRepository.GetAllPartyWithRetailer();
+            var formatter = RequestFormat.JsonFormaterString();
+            return Request.CreateResponse(HttpStatusCode.OK, party, formatter);
+        }
+        //Mohi Uddin 15.06.2017
+        [HttpGet, ActionName("GetPartyOpeningBalanceById")]
+        public HttpResponseMessage GetPartyOpeningBalanceById(long party_id)
+        {
+
+            var party = partyRepository.GetPartyOpeningBalanceById(party_id);
+            var formatter = RequestFormat.JsonFormaterString();
+            return Request.CreateResponse(HttpStatusCode.OK, party, formatter);
+        }
+
+        [HttpGet, ActionName("GetAllPartyForMonthlyPartyTarget")]
+        public HttpResponseMessage GetAllPartyForMonthlyPartyTarget(long province_id, long city_id, long party_type_id, string target_month)
+        {
+
+            var party = partyRepository.GetAllPartyForMonthlyPartyTarget(province_id, city_id, party_type_id, target_month);
+            var formatter = RequestFormat.JsonFormaterString();
+            return Request.CreateResponse(HttpStatusCode.OK, party, formatter);
+        }
+
+        [HttpGet, ActionName("GetAllRetailerByPartyId")]
+        public HttpResponseMessage GetAllRetailerByPartyId(long party_id)
+        {
+
+            var party = partyRepository.GetAllRetailerByPartyId(party_id);
+            var formatter = RequestFormat.JsonFormaterString();
+            return Request.CreateResponse(HttpStatusCode.OK, party, formatter);
+        }
+
+        [HttpGet, ActionName("GetPartyById")]
+        public HttpResponseMessage GetPartyById(long party_id)
+        {
+            var location = partyRepository.GetPartyById(party_id);
+            var formatter = RequestFormat.JsonFormaterString();
+            return Request.CreateResponse(HttpStatusCode.OK, location, formatter);
+        }
+
+        [HttpGet, ActionName("GetPartyInfoByPartyId")]
+        public HttpResponseMessage GetPartyInfoByPartyId(long party_id)
+        {
+            var location = partyRepository.GetPartyInfoByPartyId(party_id);
+            var formatter = RequestFormat.JsonFormaterString();
+            return Request.CreateResponse(HttpStatusCode.OK, location, formatter);
+        }
+
+        [HttpGet, ActionName("GetPartyCodeById")]
+        public HttpResponseMessage GetPartyCodeById(long party_id)
+        {
+            var location = partyRepository.GetPartyCodeById(party_id);
+            var formatter = RequestFormat.JsonFormaterString();
+            return Request.CreateResponse(HttpStatusCode.OK, location, formatter);
+        }
+        //Load Master Dealer
+
+        [HttpGet, ActionName("GetMasterDealer")]
+        public HttpResponseMessage GetMasterDealer()
+        {
+            var location = partyRepository.GetMasterDealer();
+            var formatter = RequestFormat.JsonFormaterString();
+            return Request.CreateResponse(HttpStatusCode.OK, location, formatter);
+        }
+
+
+        [HttpGet, ActionName("GetAllPartyByPartyTypeId")]
+        public HttpResponseMessage GetAllPartyByPartyTypeId()
+        {
+            var location = partyRepository.GetAllPartyByPartyTypeId();
+            var formatter = RequestFormat.JsonFormaterString();
+            return Request.CreateResponse(HttpStatusCode.OK, location, formatter);
+        }
+
+        [HttpGet, ActionName("GetOnlyNormalClientParty")]
+        public HttpResponseMessage GetOnlyNormalClientParty()
+        {
+            var location = partyRepository.GetOnlyNormalClientParty();
+            var formatter = RequestFormat.JsonFormaterString();
+            return Request.CreateResponse(HttpStatusCode.OK, location, formatter);
+        }
+
+        [HttpGet, ActionName("GetPartyByPartyName")]
+        public HttpResponseMessage GetPartyByPartyName(string party_name)
+        {
+            var location = partyRepository.GetPartyByPartyName(party_name);
+            var formatter = RequestFormat.JsonFormaterString();
+            return Request.CreateResponse(HttpStatusCode.OK, location, formatter);
+        }
+        [HttpGet, ActionName("GetRegionAreaTerritory")]
+        public HttpResponseMessage GetRegionAreaTerritory(long party_id)
+        {
+            var location = partyRepository.GetRegionAreaTerritory(party_id);
+            var formatter = RequestFormat.JsonFormaterString();
+            return Request.CreateResponse(HttpStatusCode.OK, location, formatter);
+        }
+
+        [HttpPost]
+        public HttpResponseMessage Post([FromBody]Models.party oParty)
+        {
+            try
+            {
+                //bool save_user;
+                if (string.IsNullOrEmpty(oParty.party_name))
+                {
+                    var format_type = RequestFormat.JsonFormaterString();
+                    return Request.CreateResponse(HttpStatusCode.OK,
+                        new Confirmation { output = "error", msg = "Party Name can not be empty" });
+                }
+                if (string.IsNullOrEmpty(oParty.credit_limit.ToString()))
+                {
+                    var format_type = RequestFormat.JsonFormaterString();
+                    return Request.CreateResponse(HttpStatusCode.OK,
+                        new Confirmation { output = "error", msg = "Credit Limit can not be empty" });
+                }
+
+                if (string.IsNullOrEmpty(oParty.address))
+                {
+                    var format_type = RequestFormat.JsonFormaterString();
+                    return Request.CreateResponse(HttpStatusCode.OK,
+                        new Confirmation { output = "error", msg = "Party Address can not be empty" });
+                }
+
+                if (string.IsNullOrEmpty(oParty.mobile))
+                {
+                    var format_type = RequestFormat.JsonFormaterString();
+                    return Request.CreateResponse(HttpStatusCode.OK,
+                        new Confirmation { output = "error", msg = "Mobile No. can not be empty" });
+                }
+                if (string.IsNullOrEmpty(oParty.party_type_id.ToString()))
+                {
+                    var format_type = RequestFormat.JsonFormaterString();
+                    return Request.CreateResponse(HttpStatusCode.OK,
+                        new Confirmation { output = "error", msg = "Party Type can not be empty" });
+                }
+                else
+                {
+                    if (partyRepository.CheckDuplicatePartyName(oParty.party_name))
+                    {
+                        var formatter = RequestFormat.JsonFormaterString();
+                        return Request.CreateResponse(HttpStatusCode.OK, new Confirmation { output = "error", msg = "Party Name Already Exists" }, formatter);
+                    }
+
+                    else
+                    {
+
+                        Models.party insertParty = new Models.party
+                        {
+                            party_name = oParty.party_name,
+                            address = oParty.address,
+                            parent_party_id = oParty.parent_party_id,
+                            proprietor_name = oParty.proprietor_name,
+                            phone = oParty.phone,
+                            mobile = oParty.mobile,
+                            email = oParty.email,
+                            party_type_id = oParty.party_type_id,
+                            area_id= oParty.area_id,
+                            start_date = oParty.start_date,
+                            is_active = oParty.is_active,
+                            country_id = oParty.country_id,
+                            province_id = oParty.province_id,
+                            region_id = oParty.region_id,
+                            territory_id = oParty.territory_id,
+                            credit_limit = oParty.credit_limit,
+                            city_id = oParty.city_id,
+                            created_by = oParty.created_by,
+                            created_date = DateTime.Now,
+                            dealer_type_id=oParty.dealer_type_id,
+                            retailer_type_id=oParty.retailer_type_id
+                          
+                        };
+                        long insert_party = partyRepository.AddParty(insertParty);
+                        var formatter = RequestFormat.JsonFormaterString();
+                        return Request.CreateResponse(HttpStatusCode.OK,
+                            new Confirmation { output = "success", msg = "Information  is saved successfully." }, formatter);
+
+                    }
+                }
+            }
+
+
+            catch (Exception ex)
+            {
+
+                var formatter = RequestFormat.JsonFormaterString();
+                return Request.CreateResponse(HttpStatusCode.OK,
+                    new Confirmation { output = "error", msg = ex.ToString() }, formatter);
+            }
+        }
+
+
+        [HttpPut]
+        public HttpResponseMessage Put([FromBody] Models.party oParty)
+        {
+
+            try
+            {
+                if (string.IsNullOrEmpty(oParty.party_name))
+                {
+                    var format_type = RequestFormat.JsonFormaterString();
+                    return Request.CreateResponse(HttpStatusCode.OK,
+                        new Confirmation { output = "error", msg = "Party Name can not be empty" });
+                }
+
+
+                if (string.IsNullOrEmpty(oParty.address))
+                {
+                    var format_type = RequestFormat.JsonFormaterString();
+                    return Request.CreateResponse(HttpStatusCode.OK,
+                        new Confirmation { output = "error", msg = "Party Address can not be empty" });
+                }
+
+                if (string.IsNullOrEmpty(oParty.mobile))
+                {
+                    var format_type = RequestFormat.JsonFormaterString();
+                    return Request.CreateResponse(HttpStatusCode.OK,
+                        new Confirmation { output = "error", msg = "Mobile No. can not be empty" });
+                }
+                if (string.IsNullOrEmpty(oParty.party_type_id.ToString()))
+                {
+                    var format_type = RequestFormat.JsonFormaterString();
+                    return Request.CreateResponse(HttpStatusCode.OK,
+                        new Confirmation { output = "error", msg = "Party Type can not be empty" });
+                }
+                //if (partyRepository.CheckDuplicatePartyName(oParty.party_name))
+                //{
+                //    var formatter = RequestFormat.JsonFormaterString();
+                //    return Request.CreateResponse(HttpStatusCode.OK, new Confirmation { output = "error", msg = "Party Name Already Exists" }, formatter);
+                //}
+
+                else
+                {
+                    Models.party updateParty = new Models.party
+                    {
+                        party_id = oParty.party_id,
+                        party_name = oParty.party_name,
+                        address = oParty.address,
+                        parent_party_id = oParty.parent_party_id,
+                        proprietor_name = oParty.proprietor_name,
+                        phone = oParty.phone,
+                        mobile = oParty.mobile,
+                        email = oParty.email,
+                        party_type_id = oParty.party_type_id,
+                        area_id = oParty.area_id,
+                        start_date = oParty.start_date,
+                        is_active = oParty.is_active,
+                        country_id = oParty.country_id,
+                        province_id = oParty.province_id,
+                        city_id = oParty.city_id,
+                        region_id = oParty.region_id,
+                        territory_id = oParty.territory_id,
+                        credit_limit = oParty.credit_limit,
+                        updated_by = oParty.updated_by,
+                        updated_date = DateTime.Now,
+                        dealer_type_id = oParty.dealer_type_id,
+                        retailer_type_id = oParty.retailer_type_id
+
+                    };
+                    bool irepoUpdate = partyRepository.EditParty(updateParty);
+                    var formatter = RequestFormat.JsonFormaterString();
+                    return Request.CreateResponse(HttpStatusCode.OK,
+                        new Confirmation { output = "success", msg = "Information Updated Successfully" }, formatter);
+                }
+
+
+            }
+
+            catch (Exception ex)
+            {
+                var formatter = RequestFormat.JsonFormaterString();
+                return Request.CreateResponse(HttpStatusCode.OK, new Confirmation { output = "error", msg = ex.ToString() }, formatter);
+
+            }
+
+
+        }
+
+        [HttpDelete]
+        public HttpResponseMessage Delete([FromBody] Models.party oParty, long? updated_by)
+        {
+            try
+            {
+                long deleteParty = partyRepository.DeleteParty(oParty.party_id, updated_by);
+
+                if (deleteParty == 1)
+                {
+                    var formatter = RequestFormat.JsonFormaterString();
+                    return Request.CreateResponse(HttpStatusCode.OK, new Confirmation { output = "warning", msg = "Sorry! you can not delete Party, because its already used in many Tables!" }, formatter);
+
+                }
+                if (deleteParty == 2)
+                {
+
+                    var formatter = RequestFormat.JsonFormaterString();
+                    return Request.CreateResponse(HttpStatusCode.OK,
+                        new Confirmation { output = "success", msg = "Party Information Delete Successfully." }, formatter);
+                }
+
+
+                else
+                {
+                    var formatter = RequestFormat.JsonFormaterString();
+                    return Request.CreateResponse(HttpStatusCode.OK, new Confirmation { output = "error", msg = "" }, formatter);
+                }
+
+
+            }
+            catch (Exception ex)
+            {
+                var formatter = RequestFormat.JsonFormaterString();
+                return Request.CreateResponse(HttpStatusCode.OK,
+                    new Confirmation { output = "error", msg = ex.ToString() }, formatter);
+            }
+        }
+        //load  party based on party type
+        [HttpGet, ActionName("GetPartyTypewisePartyForDropdown")]
+        public HttpResponseMessage GetPartyTypewisePartyForDropdown(long party_type_id)
+        {
+            var party = partyRepository.GetPartyTypewisePartyForDropdown(party_type_id);
+            var formatter = RequestFormat.JsonFormaterString();
+            return Request.CreateResponse(HttpStatusCode.OK, party, formatter);
+        }
+        
+        //load  party based on party type and area
+        [HttpGet, ActionName("GetAreaNPartyTypewiseParty")]
+        public HttpResponseMessage GetAreaNPartyTypewiseParty(long party_type_id, long area_id)
+        {
+            var party = partyRepository.GetAreaNPartyTypewiseParty(party_type_id, area_id);
+            var formatter = RequestFormat.JsonFormaterString();
+            return Request.CreateResponse(HttpStatusCode.OK, party, formatter);
+        }
+
+        [HttpGet, ActionName("GetPartyCreditLimit")]
+        public HttpResponseMessage GetPartyCreditLimit(long party_id)
+        {
+            var partyCredit = partyRepository.GetPartyCreditLimit(party_id);
+            var formatter = RequestFormat.JsonFormaterString();
+            return Request.CreateResponse(HttpStatusCode.OK, partyCredit, formatter);
+        }
+        [HttpGet, ActionName("PartyBillingAddress")]
+        public HttpResponseMessage PartyBillingAddress(long party_id)
+        {
+            var partyBillingAddress = partyRepository.PartyBillingAddress(party_id);
+            var formatter = RequestFormat.JsonFormaterString();
+            return Request.CreateResponse(HttpStatusCode.OK, partyBillingAddress, formatter);
+        }
+
+        //mohiuddin(19.06.2017)
+        [System.Web.Http.HttpPut]
+        public HttpResponseMessage EditOpeningBalance([FromBody] OpeningBalanceModel oParty)
+        {
+            partyRepository.EditOpeningBalance(oParty);
+            var formatter = RequestFormat.JsonFormaterString();
+            return Request.CreateResponse(HttpStatusCode.OK, new Confirmation { output = "success", msg = "Opening Balance Updated successfully" }, formatter);
+        }
+
+        [System.Web.Http.HttpPut]
+        public HttpResponseMessage EditCreditLimit([FromBody] Models.party oParty)
+        {
+            partyRepository.EditCreditLimit(oParty);
+            var formatter = RequestFormat.JsonFormaterString();
+            return Request.CreateResponse(HttpStatusCode.OK, new Confirmation { output = "success", msg = "Credit Limit Updated successfully" }, formatter);
+        }
+
+    }
+
+    public class OpeningBalanceStock
+    {
+        public long party_id { get; set; }
+        public decimal opening_balance { get; set; }
+    }
+}

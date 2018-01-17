@@ -1,0 +1,408 @@
+﻿using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Net;
+using System.Net.Http;
+using System.Web.Http;
+using System.Web.Http.Cors;
+using DMSApi.Models;
+using DMSApi.Models.IRepository;
+using DMSApi.Models.Repository;
+
+namespace DMSApi.Controllers
+{
+    [EnableCors(origins: "*", headers: "*", methods: "*")]
+    public class ReceiveController : ApiController
+    {
+        private IReceiveRepository receiveRepository;
+
+        public ReceiveController()
+        {
+            this.receiveRepository = new ReceiveRepository();
+        }
+
+        public ReceiveController(IReceiveRepository receiveRepository)
+        {
+            this.receiveRepository = receiveRepository;
+        }
+
+
+        [HttpGet, ActionName("GetAllReceives")]
+        public HttpResponseMessage GetAllReceives()
+        {
+            var allReceives = receiveRepository.GetAllReceives();
+            var formatter = RequestFormat.JsonFormaterString();
+            return Request.CreateResponse(HttpStatusCode.OK, allReceives, formatter);
+        }
+        [HttpGet, ActionName("GetReceiveByIdEdit")]
+        public HttpResponseMessage GetReceiveByIdEdit(long receive_id)
+        {
+            var allPayment = receiveRepository.GetReceiveById(receive_id);
+            var formatter = RequestFormat.JsonFormaterString();
+            return Request.CreateResponse(HttpStatusCode.OK, allPayment, formatter);
+        }
+
+
+        [HttpGet, ActionName("GetReceiveList")]
+        public HttpResponseMessage GetReceiveList()
+        {
+            var PaymentList = receiveRepository.GetReceiveList();
+            var formatter = RequestFormat.JsonFormaterString();
+            return Request.CreateResponse(HttpStatusCode.OK, PaymentList, formatter);
+        }
+
+
+        [System.Web.Http.HttpPost]
+        public HttpResponseMessage Post([FromBody] Models.receive receive)
+        {
+
+            try
+            {
+                if (string.IsNullOrEmpty(receive.receive_date.ToString()))
+                {
+                    var formatter = RequestFormat.JsonFormaterString();
+                    return Request.CreateResponse(HttpStatusCode.OK, new Confirmation { output = "warning", msg = "Please Select Receive Date" }, formatter);
+
+                }
+                if (string.IsNullOrEmpty(receive.party_id.ToString()))
+                {
+                    var formatter = RequestFormat.JsonFormaterString();
+                    return Request.CreateResponse(HttpStatusCode.OK, new Confirmation { output = "warning", msg = "Please Select Channel Name" }, formatter);
+
+                }
+
+                if (string.IsNullOrEmpty(receive.payment_method_id.ToString()))
+                {
+                    var formatter = RequestFormat.JsonFormaterString();
+                    return Request.CreateResponse(HttpStatusCode.OK, new Confirmation { output = "warning", msg = "Please Select Payment Method" }, formatter);
+
+                }
+                if (receive.payment_method_id == 1 || receive.payment_method_id == 3)
+                {
+                    if (string.IsNullOrEmpty(receive.bank_account_id.ToString()))
+                    {
+                        var formatter = RequestFormat.JsonFormaterString();
+                        return Request.CreateResponse(HttpStatusCode.OK, new Confirmation { output = "warning", msg = "Please Enter Account Number" }, formatter);
+
+                    }
+                }
+               
+                if (receive.amount<0)
+                {
+                    var formatter = RequestFormat.JsonFormaterString();
+                    return Request.CreateResponse(HttpStatusCode.OK, new Confirmation { output = "warning", msg = "Please Enter Amount Number" }, formatter);
+
+                }
+                if (receive.amount < 0)
+                {
+                    var formatter = RequestFormat.JsonFormaterString();
+                    return Request.CreateResponse(HttpStatusCode.OK, new Confirmation { output = "warning", msg = "Please Enter Amount Number" }, formatter);
+
+                }
+                //if (receive.payment_method_id == 3 && string.IsNullOrEmpty(receive.cheque_no))
+                //{
+                //    var checkNoFormatter = RequestFormat.JsonFormaterString();
+                //    return Request.CreateResponse(HttpStatusCode.OK, new Confirmation { output = "warning", msg = "Please Insert Check Or Slip No" }, checkNoFormatter);
+                  
+                //}
+
+
+                if (receive.payment_method_id == 3 && receive.bank_id == null)
+                {
+                    var formatter = RequestFormat.JsonFormaterString();
+                    return Request.CreateResponse(HttpStatusCode.OK, new Confirmation { output = "warning", msg = "Please Select Bank Name" }, formatter);
+
+                }
+
+
+                if (receive.payment_method_id == 3 && receive.bank_branch_id == null)
+                {
+                    var formatter = RequestFormat.JsonFormaterString();
+                    return Request.CreateResponse(HttpStatusCode.OK, new Confirmation { output = "warning", msg = "Please Select Bank Branch Name" }, formatter);
+
+                }
+               
+                if (string.IsNullOrEmpty(receive.amount.ToString()))
+                {
+                    var formatter = RequestFormat.JsonFormaterString();
+                    return Request.CreateResponse(HttpStatusCode.OK, new Confirmation { output = "warning", msg = "Please Insert Amount" }, formatter);
+
+                }
+              
+
+
+                else
+                {
+                    receive insertPayment = new receive
+                    {
+
+
+                        receive_date = receive.receive_date,
+                        party_id = receive.party_id,
+                        payment_method_id = receive.payment_method_id,
+                        cheque_no = receive.cheque_no,
+                        bank_id = receive.bank_id,
+                        bank_branch_id = receive.bank_branch_id,                       
+                        last_invoice_balance = receive.last_invoice_balance,
+                        bank_account_id = receive.bank_account_id,
+                        amount = receive.amount,
+                        invoice_no  =receive.invoice_no,
+                        representative = receive.representative,
+                        remarks = receive.remarks,
+                        payment_req_id = receive.payment_req_id,
+                        document_attachment = receive.document_attachment,
+                        bank_charge = receive.bank_charge,
+                        is_varified = receive.is_varified,
+                        created_date = DateTime.Now,
+                        created_by = receive.created_by,
+                        is_active = true,
+                        is_deleted  =false
+                    };
+
+
+                    /*receive table added by Kiron*/
+                    receiveRepository.AddReceive(insertPayment);
+                    /* receive table added by Kiron*/
+
+                    var formatter = RequestFormat.JsonFormaterString();
+                    return Request.CreateResponse(HttpStatusCode.OK, new Confirmation { output = "success", msg = " Amount Received  successfully" }, formatter);
+                }
+
+
+            }
+            catch (Exception ex)
+            {
+                var formatter = RequestFormat.JsonFormaterString();
+                return Request.CreateResponse(HttpStatusCode.OK, new Confirmation { output = "error", msg = ex.ToString() }, formatter);
+            }
+        }
+
+        [System.Web.Http.HttpPut]
+        public HttpResponseMessage Put([FromBody] Models.receive receive)
+        {
+            try
+            {
+
+                if (string.IsNullOrEmpty(receive.receive_date.ToString()))
+                {
+                    var formatter = RequestFormat.JsonFormaterString();
+                    return Request.CreateResponse(HttpStatusCode.OK, new Confirmation { output = "warning", msg = "Please Select Receive Date" }, formatter);
+
+                }
+                if (string.IsNullOrEmpty(receive.party_id.ToString()))
+                {
+                    var formatter = RequestFormat.JsonFormaterString();
+                    return Request.CreateResponse(HttpStatusCode.OK, new Confirmation { output = "warning", msg = "Please Select Channel Name" }, formatter);
+
+                }
+                if (string.IsNullOrEmpty(receive.bank_account_id.ToString()))
+                {
+                    var formatter = RequestFormat.JsonFormaterString();
+                    return Request.CreateResponse(HttpStatusCode.OK, new Confirmation { output = "warning", msg = "Please Enter Account Number" }, formatter);
+
+                }
+
+
+                if (string.IsNullOrEmpty(receive.payment_method_id.ToString()))
+                {
+                    var formatter = RequestFormat.JsonFormaterString();
+                    return Request.CreateResponse(HttpStatusCode.OK, new Confirmation { output = "warning", msg = "Please Select Payment Method" }, formatter);
+
+                }
+
+                //if (receive.payment_method_id == 3 && string.IsNullOrEmpty(receive.cheque_no))
+                //{
+                //    var checkNoFormatter = RequestFormat.JsonFormaterString();
+                //    return Request.CreateResponse(HttpStatusCode.OK, new Confirmation { output = "warning", msg = "Please Insert Check Or Slip No" }, checkNoFormatter);
+
+                //}
+
+
+                if (receive.payment_method_id == 3 && receive.bank_id == null)
+                {
+                    var formatter = RequestFormat.JsonFormaterString();
+                    return Request.CreateResponse(HttpStatusCode.OK, new Confirmation { output = "warning", msg = "Please Select Bank Name" }, formatter);
+
+                }
+
+
+                if (receive.payment_method_id == 3 && receive.bank_branch_id == null)
+                {
+                    var formatter = RequestFormat.JsonFormaterString();
+                    return Request.CreateResponse(HttpStatusCode.OK, new Confirmation { output = "warning", msg = "Please Select Bank Branch Name" }, formatter);
+
+                }
+
+                if (string.IsNullOrEmpty(receive.amount.ToString()))
+                {
+                    var formatter = RequestFormat.JsonFormaterString();
+                    return Request.CreateResponse(HttpStatusCode.OK, new Confirmation { output = "warning", msg = "Please Insert Amount" }, formatter);
+
+                }
+               
+
+
+                else
+                {
+                    receive UpdateReceive = new receive
+                    {
+                        receive_id = receive.receive_id,
+                        receive_date = receive.receive_date,
+                        party_id = receive.party_id,
+                        payment_method_id = receive.payment_method_id,
+                        cheque_no = receive.cheque_no,
+                        bank_id = receive.bank_id,
+                        bank_branch_id = receive.bank_branch_id,
+                        bank_account_id = receive.bank_account_id,
+                        amount = receive.amount,
+                        invoice_no  =receive.invoice_no,
+                        representative = receive.representative,
+                        remarks = receive.remarks,
+                        payment_req_id = receive.payment_req_id,
+                        document_attachment = receive.document_attachment,
+                        bank_charge = receive.bank_charge,
+                        is_varified = receive.is_varified,
+                        updated_date = DateTime.Now,
+                        updated_by = receive.updated_by
+
+                       
+                    };
+
+                    receiveRepository.EditReceive(UpdateReceive);
+
+
+                    var formatter = RequestFormat.JsonFormaterString();
+                    return Request.CreateResponse(HttpStatusCode.OK, new Confirmation { output = "success", msg = "Received Amount Updated Successfully" }, formatter);
+                }
+            }
+            catch (Exception ex)
+            {
+                var formatter = RequestFormat.JsonFormaterString();
+                return Request.CreateResponse(HttpStatusCode.OK, new Confirmation { output = "error", msg = ex.ToString() }, formatter);
+            }
+        }
+
+
+        [System.Web.Http.HttpGet]
+        public HttpResponseMessage UpdateStatus(long receive_id, long user_id)
+        {
+            try
+            {
+
+                var allPayment = receiveRepository.UpdateStatus(receive_id, user_id);
+                if (allPayment== true)
+                {
+                    var formatter = RequestFormat.JsonFormaterString();
+                    return Request.CreateResponse(HttpStatusCode.OK, new Confirmation { output = "success", msg = "Payment Recieved Successfully" }, formatter);
+                }
+                else
+                {
+                    var formatter = RequestFormat.JsonFormaterString();
+                    return Request.CreateResponse(HttpStatusCode.OK, new Confirmation { output = "warning", msg = "Please Verify First" }, formatter);
+                }
+                
+
+            }
+            catch (Exception ex)
+            {
+                var formatter = RequestFormat.JsonFormaterString();
+                return Request.CreateResponse(HttpStatusCode.OK, new Confirmation { output = "error", msg = ex.ToString() }, formatter);
+            }
+
+
+        }
+
+        [System.Web.Http.HttpDelete]
+        public HttpResponseMessage Delete([FromBody]Models.receive receive, long updated_by)
+        {
+            try
+            {
+                long deletePayment = receiveRepository.DeleteReceive(receive.receive_id, updated_by);
+
+                if (deletePayment == 1)
+                {
+                    var formatter = RequestFormat.JsonFormaterString();
+                    return Request.CreateResponse(HttpStatusCode.OK, new Confirmation { output = "warning", msg = "Sorry! You can not delete receivd amount that already received!" }, formatter);
+                }
+                if (deletePayment == 2)
+                {
+
+                    var formatter = RequestFormat.JsonFormaterString();
+                    return Request.CreateResponse(HttpStatusCode.OK,
+                        new Confirmation { output = "success", msg = "Received Amount Deleted Successfully." }, formatter);
+                }
+
+                else
+                {
+
+                    var formatter = RequestFormat.JsonFormaterString();
+                    return Request.CreateResponse(HttpStatusCode.OK, new Confirmation { output = "success", msg = "Received Amount Deleted Successfully." }, formatter);
+
+                }
+
+            }
+            catch (Exception ex)
+            {
+                var formatter = RequestFormat.JsonFormaterString();
+                return Request.CreateResponse(HttpStatusCode.OK, new Confirmation { output = "error", msg = ex.ToString() }, formatter);
+            }
+
+
+        }
+
+        [HttpGet, ActionName("GetClousingBalance")]
+        public HttpResponseMessage GetClousingBalance(long party_id)
+        {
+            var closingbalance = receiveRepository.GetClousingBalance(party_id);
+            var formatter = RequestFormat.JsonFormaterString();
+            return Request.CreateResponse(HttpStatusCode.OK, closingbalance, formatter);
+        }
+        //Kiron 27/08/2016 
+        [HttpGet, ActionName("GetInvoiceNumber")]
+        public HttpResponseMessage GetInvoiceNumber(long party_id)
+        {
+            var invoiceNumber = receiveRepository.GetInvoiceNumber(party_id);
+            var formatter = RequestFormat.JsonFormaterString();
+            return Request.CreateResponse(HttpStatusCode.OK, invoiceNumber, formatter);
+        }
+        
+        [HttpGet, ActionName("GetMoneyReceiptReport")]
+        public HttpResponseMessage GetMoneyReceiptReport(long receive_id)
+        {
+            var moneyReceipt = receiveRepository.GetMoneyReceiptReport(receive_id);
+            var formatter = RequestFormat.JsonFormaterString();
+            return Request.CreateResponse(HttpStatusCode.OK, moneyReceipt, formatter);
+        }
+
+          [HttpGet, ActionName("ProcessPaymentRequiest")]
+        public HttpResponseMessage ProcessPaymentRequiest(long payment_req_id)
+        {
+            var allPayment = receiveRepository.ProcessPaymentRequiest(payment_req_id);
+            var formatter = RequestFormat.JsonFormaterString();
+            return Request.CreateResponse(HttpStatusCode.OK, allPayment, formatter);
+        }
+
+          [HttpGet, ActionName("GetPaymentHistory")]
+          public HttpResponseMessage GetPaymentHistory(string from_date, string to_date)
+          {
+              var allPaymentHistory = receiveRepository.PaymentHistory(from_date, to_date);
+              var formatter = RequestFormat.JsonFormaterString();
+              return Request.CreateResponse(HttpStatusCode.OK, allPaymentHistory, formatter);
+          }
+          //Added By: Kiron:28-11-2016
+          [HttpGet, ActionName("ProductLiftingAndPaymentSummery")]
+          public HttpResponseMessage ProductLiftingAndPaymentSummery(string from_date, string to_date, long party_id)
+          {
+              var allProductLiftingAndPaymentSummery = receiveRepository.ProductLiftingAndPaymentSummery(from_date, to_date, party_id);
+              var formatter = RequestFormat.JsonFormaterString();
+              return Request.CreateResponse(HttpStatusCode.OK, allProductLiftingAndPaymentSummery, formatter);
+          }
+          [HttpGet, ActionName("GetAllUnReceivedPaymentList")]
+          public HttpResponseMessage GetAllUnReceivedPaymentList()
+          {
+              var unReceivedPayment = receiveRepository.GetAllUnReceivedPaymentList();
+              var formatter = RequestFormat.JsonFormaterString();
+              return Request.CreateResponse(HttpStatusCode.OK, unReceivedPayment, formatter);
+          }
+    }
+}

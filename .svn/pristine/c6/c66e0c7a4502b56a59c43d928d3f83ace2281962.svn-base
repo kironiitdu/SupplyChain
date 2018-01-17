@@ -1,0 +1,78 @@
+﻿using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Net;
+using System.Net.Http;
+using System.Web.Http;
+using System.Web.Http.Cors;
+using DMSApi.Models;
+using DMSApi.Models.IRepository;
+using DMSApi.Models.Repository;
+using DMSApi.Models.StronglyType;
+
+namespace DMSApi.Controllers
+{
+    [EnableCors(origins: "*", headers: "*", methods: "*")]
+    public class DirectTransferController : ApiController
+    {
+        private IDirectTransferRepository directTransferRepository;
+
+        public DirectTransferController()
+        {
+            this.directTransferRepository = new DirectTransferRepository();
+        }
+
+        public DirectTransferController(IDirectTransferRepository directTransferRepository)
+        {
+            this.directTransferRepository = directTransferRepository;
+        }
+
+        [System.Web.Http.HttpPost]
+        public HttpResponseMessage Post([FromBody] DirectTransferModel directTransferModel)
+        {
+
+            try
+            {
+                if (string.IsNullOrEmpty(directTransferModel.DirectTransferMasterData.from_warehouse_id.ToString()))
+                {
+                    var formatter = RequestFormat.JsonFormaterString();
+                    return Request.CreateResponse(HttpStatusCode.OK, new Confirmation { output = "error", msg = "Please Select From Warehouse" }, formatter);
+                }
+
+                if (string.IsNullOrEmpty(directTransferModel.DirectTransferMasterData.to_warehouse_id.ToString()))
+                {
+                    var formatter = RequestFormat.JsonFormaterString();
+                    return Request.CreateResponse(HttpStatusCode.OK, new Confirmation { output = "error", msg = "Please Select To Warehouse" }, formatter);
+
+                }
+                if (string.IsNullOrEmpty(directTransferModel.DirectTransferMasterData.transfer_date.ToString()))
+                {
+                    var formatter = RequestFormat.JsonFormaterString();
+                    return Request.CreateResponse(HttpStatusCode.OK, new Confirmation { output = "error", msg = "Transfer Date" }, formatter);
+                }
+                else
+                {
+
+                    var x = directTransferRepository.AddDirectTransfer(directTransferModel);
+                    if (x == 1)
+                    {
+                        var formatter = RequestFormat.JsonFormaterString();
+                        return Request.CreateResponse(HttpStatusCode.OK, new Confirmation { output = "success", msg = "Information save successfully" }, formatter);
+                    }
+                    else
+                    {
+                        var formatter = RequestFormat.JsonFormaterString();
+                        return Request.CreateResponse(HttpStatusCode.OK, new Confirmation { output = "error", msg = "Error Found !!!" }, formatter);
+                    }
+                }
+
+
+            }
+            catch (Exception ex)
+            {
+                var formatter = RequestFormat.JsonFormaterString();
+                return Request.CreateResponse(HttpStatusCode.OK, new Confirmation { output = "error", msg = ex.ToString() }, formatter);
+            }
+        }
+    }
+}

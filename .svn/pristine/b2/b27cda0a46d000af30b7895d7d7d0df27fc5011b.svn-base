@@ -1,0 +1,13 @@
+﻿using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+
+namespace DMSApi.Models.IRepository
+{
+    public interface IInventoryAdjustmentRepository
+    {
+        object GetSystemQuantityForAccessories(long warehouse_id, long product_id);
+    }
+}

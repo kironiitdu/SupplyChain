@@ -1,0 +1,336 @@
+﻿using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Web;
+using DMSApi.Models.crystal_models;
+using DMSApi.Models.IRepository;
+using iTextSharp.text;
+
+namespace DMSApi.Models.Repository
+{
+    public class DashboardRepository : IDashboardRepository
+    {
+        private DMSEntities _entities;
+
+        public DashboardRepository()
+        {
+            this._entities = new DMSEntities();
+        }
+
+        public object GetPoStatus()
+        {
+            //var totalPo = _entities.purchase_order_master.Count();
+            var totalApproved = _entities.purchase_order_master.Count(p => p.approve_status == "Approved");
+            var totalUnApproved = _entities.purchase_order_master.Count(p => p.approve_status == "Not Approved");
+
+            List<PoStatus> poStatusList = new List<PoStatus>();
+
+            //PoStatus poStatusTotalPo= new PoStatus
+            //{
+            //    Name = "Total PO",
+            //    Value = totalPo
+            //};
+            //poStatusList.Add(poStatusTotalPo);
+
+            PoStatus poStatusTotalApprovedPo = new PoStatus
+            {
+                Name = "Approved",
+                Value = totalApproved
+            };
+            poStatusList.Add(poStatusTotalApprovedPo);
+
+            PoStatus poStatusTotalUnapprovedPo = new PoStatus
+            {
+                Name = "Unapproved",
+                Value = totalUnApproved
+            };
+            poStatusList.Add(poStatusTotalUnapprovedPo);
+
+
+            return poStatusList;
+        }
+
+        public object GetPoStatusPanel()
+        {
+            var totalPo = _entities.purchase_order_master.Count();
+            var totalApproved = _entities.purchase_order_master.Count(p => p.approve_status == "Approved");
+            var totalUnApproved = _entities.purchase_order_master.Count(p => p.approve_status == "Not Approved");
+
+            List<PoStatus> poStatusList = new List<PoStatus>();
+
+            PoStatus poStatusTotalPo = new PoStatus
+            {
+                Name = "Total PO",
+                Value = totalPo
+            };
+            poStatusList.Add(poStatusTotalPo);
+
+            PoStatus poStatusTotalApprovedPo = new PoStatus
+            {
+                Name = "Approved",
+                Value = totalApproved
+            };
+            poStatusList.Add(poStatusTotalApprovedPo);
+
+            PoStatus poStatusTotalUnapprovedPo = new PoStatus
+            {
+                Name = "Unapproved",
+                Value = totalUnApproved
+            };
+            poStatusList.Add(poStatusTotalUnapprovedPo);
+
+
+            return poStatusList;
+        }
+
+        public object GetPiStatusPanel()
+        {
+            var totalPi = _entities.purchase_order_master.Count(p => p.pi_number!=null);
+            var totalApproved = _entities.purchase_order_master.Count(p => p.pi_number != null && p.approve_status == "Approved");
+            var totalUnApproved = _entities.purchase_order_master.Count(p => p.pi_number != null && p.approve_status == "Not Approved");
+
+            List<PoStatus> poStatusList = new List<PoStatus>();
+
+            PoStatus poStatusTotalPo = new PoStatus
+            {
+                Name = "Total PI",
+                Value = totalPi
+            };
+            poStatusList.Add(poStatusTotalPo);
+
+            PoStatus poStatusTotalApprovedPo = new PoStatus
+            {
+                Name = "Approved",
+                Value = totalApproved
+            };
+            poStatusList.Add(poStatusTotalApprovedPo);
+
+            PoStatus poStatusTotalUnapprovedPo = new PoStatus
+            {
+                Name = "Unapproved",
+                Value = totalUnApproved
+            };
+            poStatusList.Add(poStatusTotalUnapprovedPo);
+
+
+            return poStatusList;
+        }
+
+        public object GetGrnStatusPanel()
+        {
+            var receivedGrnNo = _entities.grn_master.Count();
+            var receivableGrnNo = _entities.ci_pl_master.Count(c => c.is_received == false);
+
+            List<PoStatus> poStatusList = new List<PoStatus>();
+
+            PoStatus poStatusTotalUnapprovedPo = new PoStatus
+            {
+                Name = "Total Grn No",
+                Value = receivableGrnNo + receivedGrnNo
+            };
+
+            poStatusList.Add(poStatusTotalUnapprovedPo);
+
+            PoStatus poStatusTotalApprovedPo = new PoStatus
+            {
+                Name = "Received Grn No",
+                Value = receivedGrnNo
+            };
+            poStatusList.Add(poStatusTotalApprovedPo);
+
+            PoStatus poStatusTotalPo = new PoStatus
+            {
+                Name = "Receivable Grn No",
+                Value = receivableGrnNo
+            };
+            poStatusList.Add(poStatusTotalPo);
+            
+            return poStatusList;
+        }
+
+        public object GetToStatusPanel()
+        {
+            var totalTo = _entities.transfer_order_master.Count();
+            var totalPending = _entities.transfer_order_master.Count(p => p.status == "Created");
+            var totalDelivered = _entities.transfer_order_master.Count(p => p.status == "Delivered");
+
+            List<PoStatus> poStatusList = new List<PoStatus>();
+
+            PoStatus poStatusTotalPo = new PoStatus
+            {
+                Name = "Total TO",
+                Value = totalTo
+            };
+            poStatusList.Add(poStatusTotalPo);
+
+            PoStatus poStatusTotalApprovedPo = new PoStatus
+            {
+                Name = "Pending",
+                Value = totalPending
+            };
+            poStatusList.Add(poStatusTotalApprovedPo);
+
+            PoStatus poStatusTotalUnapprovedPo = new PoStatus
+            {
+                Name = "Delivered",
+                Value = totalDelivered
+            };
+            poStatusList.Add(poStatusTotalUnapprovedPo);
+
+
+            return poStatusList;
+        }
+
+        public object GetStockStatusPanel()
+        {
+            var totalSellable = _entities.receive_serial_no_details.Count(r => r.current_warehouse_id == 1 && r.sales_status == false);
+            var totalNonSellable = _entities.receive_serial_no_details.Count(r => r.current_warehouse_id == 2 || r.current_warehouse_id == 3 || r.current_warehouse_id == 13 || r.current_warehouse_id == 14 || r.current_warehouse_id == 15);
+            var totalStock = totalSellable + totalNonSellable;
+            
+            List<PoStatus> poStatusList = new List<PoStatus>();
+
+            PoStatus poStatusTotalPo = new PoStatus
+            {
+                Name = "Total Stock",
+                Value = totalStock
+            };
+            poStatusList.Add(poStatusTotalPo);
+
+            PoStatus poStatusTotalApprovedPo = new PoStatus
+            {
+                Name = "Sellable",
+                Value = totalSellable
+            };
+            poStatusList.Add(poStatusTotalApprovedPo);
+
+            PoStatus poStatusTotalUnapprovedPo = new PoStatus
+            {
+                Name = "Non Sellable",
+                Value = totalNonSellable
+            };
+            poStatusList.Add(poStatusTotalUnapprovedPo);
+
+
+            return poStatusList;
+        }
+
+        public object GetUserInfoStatusPanel()
+        {
+            var totalActiveUser = _entities.users.Count(r => r.is_active == true);
+            var totalInActiveUser = _entities.users.Count(r => r.is_active == false);
+            var totalUser = totalActiveUser + totalInActiveUser;
+            
+            List<PoStatus> poStatusList = new List<PoStatus>();
+
+            PoStatus poStatusTotalPo = new PoStatus
+            {
+                Name = "Total User",
+                Value = totalUser
+            };
+            poStatusList.Add(poStatusTotalPo);
+
+            PoStatus poStatusTotalApprovedPo = new PoStatus
+            {
+                Name = "Active User",
+                Value = totalActiveUser
+            };
+            poStatusList.Add(poStatusTotalApprovedPo);
+
+            PoStatus poStatusTotalUnapprovedPo = new PoStatus
+            {
+                Name = "Inactive User",
+                Value = totalInActiveUser
+            };
+            poStatusList.Add(poStatusTotalUnapprovedPo);
+
+            return poStatusList;
+        }
+
+        public object GetApprovalRequisitionStatus()
+        {
+            var totalAccPending = _entities.requisition_master.Count(r => r.status == "Not Forwarded");
+            var totalHosPending = _entities.requisition_master.Count(r => r.status == "Forward to HOS" && r.finance_status == "Not Approved");
+            var totalHopPending = _entities.requisition_master.Count(r => r.status == "Forward to HOS" && r.finance_status == "Approved" && r.forward_2_status==null);
+            
+            List<PoStatus> poStatusList = new List<PoStatus>();
+            PoStatus poStatusTotalPo = new PoStatus
+            {
+                Name = "Total Acc Pending",
+                Value = totalAccPending
+            };
+            poStatusList.Add(poStatusTotalPo);
+
+            PoStatus poStatusTotalApprovedPo = new PoStatus
+            {
+                Name = "HOS Pending",
+                Value = totalHosPending
+            };
+            poStatusList.Add(poStatusTotalApprovedPo);
+
+            PoStatus poStatusTotalUnapprovedPo = new PoStatus
+            {
+                Name = "HOP Pending",
+                Value = totalHopPending
+            };
+            poStatusList.Add(poStatusTotalUnapprovedPo);
+
+            return poStatusList;
+        }
+
+        public object GetRequisitionStatus()
+        {
+            string query = "select count(requisition_master_id) as RequisitionQuantity ,MONTH(CAST(requisition_date AS DATE)) as RequisitionDate ,DATENAME(month,requisition_date) as RequisitionMonth ,YEAR(CAST(requisition_date AS DATE)) as RequisitionYear from requisition_master GROUP BY MONTH(CAST(requisition_date AS DATE)), YEAR(CAST(requisition_date AS DATE)) ,DATENAME(month,requisition_date) order by requisitionYear";
+            var data = _entities.Database.SqlQuery<RequisitionStatus>(query).ToList();
+            return data;
+        }
+
+        public object GetRequisitionStatusLine()
+        {
+            string query = "select count(requisition_master_id) as RequisitionQuantity ,MONTH(CAST(requisition_date AS DATE)) as RequisitionDate ,DATENAME(month,requisition_date) as RequisitionMonth ,YEAR(CAST(requisition_date AS DATE)) as RequisitionYear from requisition_master GROUP BY MONTH(CAST(requisition_date AS DATE)), YEAR(CAST(requisition_date AS DATE)) ,DATENAME(month,requisition_date) order by requisitionYear";
+            var data = _entities.Database.SqlQuery<RequisitionStatus>(query).ToList();
+            return data;
+        }
+
+
+        public object GetSystemMemoryConsumption()
+        {
+            string query = "SELECT TableId, TableName,CONVERT(bigint,rows) AS NumberOfRows, CONVERT(bigint,left(reserved,len(reserved)-3)) AS SizeinKB FROM RowCountsAndSizes ORDER BY NumberOfRows DESC,SizeinKB DESC,TableName";
+            var data = _entities.Database.SqlQuery<SystemMemoryConsumtion>(query).ToList();
+            return data;
+        }
+        public object GetTotalSystemMemoryConsumptionStatus()
+        {
+            string query = "select sum (CONVERT(bigint,left(reserved,len(reserved)-3))) AS TotalSizeinKB from RowCountsAndSizes";
+            var data = _entities.Database.SqlQuery<SystemTotalMemoryConsumtion>(query).ToList();
+            return data;
+        }
+    }
+    
+    public class PoStatus
+    {
+        public string Name { get; set; }
+        public int Value { get; set; }
+    }
+    
+    public class RequisitionStatus
+    {   
+        public int RequisitionQuantity { get; set; }
+        public string RequisitionMonth { get; set; }
+        public int RequisitionYear { get; set; }
+    }
+
+    public class SystemMemoryConsumtion
+    {
+
+        public int TableId { get; set; }
+        public string TableName { get; set; }
+        public long NumberOfRows { get; set; }
+        public long SizeinKB { get; set; }
+    }
+    public class SystemTotalMemoryConsumtion
+    {
+
+       
+        public long TotalSizeinKB { get; set; }
+    }
+}

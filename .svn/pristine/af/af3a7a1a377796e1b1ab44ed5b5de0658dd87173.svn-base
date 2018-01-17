@@ -1,0 +1,163 @@
+﻿using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Net;
+using System.Net.Http;
+using System.Web.Http;
+using System.Web.Http.Cors;
+using DMSApi.Models;
+using DMSApi.Models.IRepository;
+using DMSApi.Models.Repository;
+
+namespace DMSApi.Controllers
+{
+    [EnableCors(origins: "*", headers: "*", methods: "*")]
+    public class DashboardController : ApiController
+    {
+        private IDashboardRepository dashboardRepository;
+
+        public DashboardController()
+        {
+            this.dashboardRepository = new DashboardRepository();
+        }
+
+        public DashboardController(IDashboardRepository dashboardRepository)
+        {
+            this.dashboardRepository = dashboardRepository;
+        }
+
+        [HttpGet, ActionName("GetPoStatus")]
+        public HttpResponseMessage GetPoStatus()
+        {
+            var data = dashboardRepository.GetPoStatus();
+            var formatter = RequestFormat.JsonFormaterString();
+            return Request.CreateResponse(HttpStatusCode.OK, data, formatter);
+        }
+
+        [HttpGet, ActionName("GetPoStatusPanel")]
+        public HttpResponseMessage GetPoStatusPanel()
+        {
+            var data = dashboardRepository.GetPoStatusPanel();
+            var formatter = RequestFormat.JsonFormaterString();
+            return Request.CreateResponse(HttpStatusCode.OK, data, formatter);
+        }
+
+        [HttpGet, ActionName("GetPiStatusPanel")]
+        public HttpResponseMessage GetPiStatusPanel()
+        {
+            var data = dashboardRepository.GetPiStatusPanel();
+            var formatter = RequestFormat.JsonFormaterString();
+            return Request.CreateResponse(HttpStatusCode.OK, data, formatter);
+        }
+
+        [HttpGet, ActionName("GetGrnStatusPanel")]
+        public HttpResponseMessage GetGrnStatusPanel()
+        {
+            var data = dashboardRepository.GetGrnStatusPanel();
+            var formatter = RequestFormat.JsonFormaterString();
+            return Request.CreateResponse(HttpStatusCode.OK, data, formatter);
+        }
+
+        [HttpGet, ActionName("GetToStatusPanel")]
+        public HttpResponseMessage GetToStatusPanel()
+        {
+            var data = dashboardRepository.GetToStatusPanel();
+            var formatter = RequestFormat.JsonFormaterString();
+            return Request.CreateResponse(HttpStatusCode.OK, data, formatter);
+        }
+
+        [HttpGet, ActionName("GetApprovalRequisitionStatus")]
+        public HttpResponseMessage GetApprovalRequisitionStatus()
+        {
+            var data = dashboardRepository.GetApprovalRequisitionStatus();
+            var formatter = RequestFormat.JsonFormaterString();
+            return Request.CreateResponse(HttpStatusCode.OK, data, formatter);
+        }
+
+        [HttpGet, ActionName("GetStockStatusPanel")]
+        public HttpResponseMessage GetStockStatusPanel()
+        {
+            var data = dashboardRepository.GetStockStatusPanel();
+            var formatter = RequestFormat.JsonFormaterString();
+            return Request.CreateResponse(HttpStatusCode.OK, data, formatter);
+        }
+
+        [HttpGet, ActionName("GetUserInfoStatusPanel")]
+        public HttpResponseMessage GetUserInfoStatusPanel()
+        {
+            var data = dashboardRepository.GetUserInfoStatusPanel();
+            var formatter = RequestFormat.JsonFormaterString();
+            return Request.CreateResponse(HttpStatusCode.OK, data, formatter);
+        }
+
+        [HttpGet, ActionName("GetRequisitionStatus")]
+        public HttpResponseMessage GetRequisitionStatus()
+        {
+            var data = dashboardRepository.GetRequisitionStatus();
+            var formatter = RequestFormat.JsonFormaterString();
+            return Request.CreateResponse(HttpStatusCode.OK, data, formatter);
+        }
+
+        [HttpGet, ActionName("GetRequisitionStatusLine")]
+        public HttpResponseMessage GetRequisitionStatusLine()
+        {
+            var data = dashboardRepository.GetRequisitionStatusLine();
+            var formatter = RequestFormat.JsonFormaterString();
+            return Request.CreateResponse(HttpStatusCode.OK, data, formatter);
+        }
+        [HttpGet, ActionName("GetSystemMemoryConsumptionStatus")]
+        public HttpResponseMessage GetSystemMemoryConsumptionStatus()
+        {
+            var data = dashboardRepository.GetSystemMemoryConsumption();
+            var formatter = RequestFormat.JsonFormaterString();
+            return Request.CreateResponse(HttpStatusCode.OK, data, formatter);
+        }
+        [HttpGet, ActionName("GetTotalSystemMemoryConsumptionStatus")]
+        public HttpResponseMessage GetTotalSystemMemoryConsumptionStatus()
+        {
+            var data = dashboardRepository.GetTotalSystemMemoryConsumptionStatus();
+            var formatter = RequestFormat.JsonFormaterString();
+            return Request.CreateResponse(HttpStatusCode.OK, data, formatter);
+        }
+
+        [HttpGet, ActionName("TopTenDealerChart")]
+        public HttpResponseMessage TopTenDealerChart(string fromDate,string toDate)
+        {
+            var data = dashboardRepository.TopTenDealerChart(fromDate,toDate);
+            var formatter = RequestFormat.JsonFormaterString();
+            return Request.CreateResponse(HttpStatusCode.OK, data, formatter);
+        }
+
+        [HttpGet, ActionName("BestSellingProducts")]
+        public HttpResponseMessage BestSellingProducts(string fromDate, string toDate)
+        {
+            var data = dashboardRepository.BestSellingProducts(fromDate, toDate);
+            var formatter = RequestFormat.JsonFormaterString();
+            return Request.CreateResponse(HttpStatusCode.OK, data, formatter);
+        }
+
+        [HttpGet, ActionName("GetTopTenDealerReport")]
+        public HttpResponseMessage GetTopTenDealerReport(DateTime from_date, DateTime to_date)
+        {
+            var data = dashboardRepository.GetTopTenDealerReport(from_date,to_date);
+            var formatter = RequestFormat.JsonFormaterString();
+            return Request.CreateResponse(HttpStatusCode.OK, data, formatter);
+        }
+
+        [HttpGet, ActionName("BestSellingProductsReport")]
+        public HttpResponseMessage BestSellingProductsReport(DateTime from_date, DateTime to_date)
+        {
+            var data = dashboardRepository.BestSellingProductsReport(from_date, to_date);
+            var formatter = RequestFormat.JsonFormaterString();
+            return Request.CreateResponse(HttpStatusCode.OK, data, formatter);
+        }
+
+        [HttpGet, ActionName("GetProductLiftingStatus")]
+        public HttpResponseMessage GetProductLiftingStatus(DateTime from_date, DateTime to_date, string region_id, string area_id, string territory_id)
+        {
+            var data = dashboardRepository.GetProductLiftingStatus(from_date, to_date, region_id, area_id, territory_id);
+            var formatter = RequestFormat.JsonFormaterString();
+            return Request.CreateResponse(HttpStatusCode.OK, data, formatter);
+        }
+    }
+}

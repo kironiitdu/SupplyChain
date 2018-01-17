@@ -1,0 +1,140 @@
+﻿using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Net;
+using System.Net.Http;
+using System.Web.Http;
+using System.Web.Http.Cors;
+using DMSApi.Models;
+using DMSApi.Models.IRepository;
+using DMSApi.Models.Repository;
+
+namespace DMSApi.Controllers
+{
+    [EnableCors(origins: "*", headers: "*", methods: "*")]
+    public class ReportController : ApiController
+    {
+        private IReportRepository reportRepository;
+
+        public ReportController()
+        {
+            this.reportRepository = new ReportRepository();
+        }
+
+        public ReportController(IReportRepository reportRepository)
+        {
+            this.reportRepository = reportRepository;
+        }
+
+        [HttpGet, ActionName("GetAccountsDueAdvanceReport")]
+        public HttpResponseMessage GetAccountsDueAdvanceReport(long partyId, long regoinId, long areaId,
+            long partyTypeId)
+        {
+            var reportData = reportRepository.GetAccountsDueAdvanceReport(partyId, regoinId, areaId, partyTypeId);
+            var formatter = RequestFormat.JsonFormaterString();
+            return Request.CreateResponse(HttpStatusCode.OK, reportData, formatter);
+
+        }
+
+        [HttpGet, ActionName("GetDailySalesReport")]
+        public HttpResponseMessage GetDailySalesReport(string fromDate, string toDate, long productCategoryId,
+            long productId)
+        {
+            try
+            {
+                var reports = reportRepository.GetDailySalesReport(fromDate, toDate, productCategoryId, productId);
+                var formatter = RequestFormat.JsonFormaterString();
+                return Request.CreateResponse(HttpStatusCode.OK, reports, formatter);
+            }
+            catch (Exception ex)
+            {
+
+                var formatter = RequestFormat.JsonFormaterString();
+                return Request.CreateResponse(HttpStatusCode.OK,
+                    new Confirmation {output = "error", msg = ex.ToString()}, formatter);
+            }
+        }
+
+        [HttpGet, ActionName("GetDailySalesReportPDF")]
+        public HttpResponseMessage GetDailySalesReportPDF(string fromDate, string toDate, long productCategoryId,
+            long productId)
+        {
+            try
+            {
+                var reports = reportRepository.GetDailySalesReportPDF(fromDate, toDate, productCategoryId, productId);
+                var formatter = RequestFormat.JsonFormaterString();
+                return Request.CreateResponse(HttpStatusCode.OK, reports, formatter);
+            }
+            catch (Exception ex)
+            {
+
+                var formatter = RequestFormat.JsonFormaterString();
+                return Request.CreateResponse(HttpStatusCode.OK,
+                    new Confirmation {output = "error", msg = ex.ToString()}, formatter);
+            }
+        }
+
+        [HttpPost, ActionName("GetProductHistoryReport")]
+        public HttpResponseMessage GetProductHistoryReport(string fromDate, string toDate, long productCategoryId,long productId, long colorId)
+        {
+            try
+            {
+                var reportsData = reportRepository.GetProductHistoryReport(fromDate, toDate, productCategoryId,
+                    productId, colorId);
+                var formatter = RequestFormat.JsonFormaterString();
+                return Request.CreateResponse(HttpStatusCode.OK, reportsData, formatter);
+            }
+            catch (Exception ex)
+            {
+
+                var formatter = RequestFormat.JsonFormaterString();
+                return Request.CreateResponse(HttpStatusCode.OK,
+                    new Confirmation {output = "error", msg = ex.ToString()}, formatter);
+            }
+        }
+        //06.06.2017
+        [HttpGet, ActionName("InvoiceWiseImeiReport")]
+        public HttpResponseMessage InvoiceWiseImeiReport(string fromDate, string toDate, long invoiceMasterId)
+        {
+            try
+            {
+                var reports = reportRepository.InvoiceWiseImeiReport(fromDate, toDate, invoiceMasterId);
+                var formatter = RequestFormat.JsonFormaterString();
+                return Request.CreateResponse(HttpStatusCode.OK, reports, formatter);
+            }
+            catch (Exception ex)
+            {
+
+                var formatter = RequestFormat.JsonFormaterString();
+                return Request.CreateResponse(HttpStatusCode.OK,
+                    new Confirmation { output = "error", msg = ex.ToString() }, formatter);
+            }
+        }
+        //06.06.2017
+        [HttpGet, ActionName("GetInvoiceWiseImeiReportPDF")]
+        public HttpResponseMessage GetInvoiceWiseImeiReportPDF(long invoiceMasterId)
+        {
+            try
+            {
+                var reports = reportRepository.GetInvoiceWiseImeiReportPDF(invoiceMasterId);
+                var formatter = RequestFormat.JsonFormaterString();
+                return Request.CreateResponse(HttpStatusCode.OK, reports, formatter);
+            }
+            catch (Exception ex)
+            {
+
+                var formatter = RequestFormat.JsonFormaterString();
+                return Request.CreateResponse(HttpStatusCode.OK,
+                    new Confirmation { output = "error", msg = ex.ToString() }, formatter);
+            }
+        }
+        [HttpGet, ActionName("GetSalableAndNonSalableStock")]
+        public HttpResponseMessage GetSalableAndNonSalableStock()
+        {
+            var salableStock = reportRepository.GetSalableAndNonSalableStock();
+            var formatter = RequestFormat.JsonFormaterString();
+            return Request.CreateResponse(HttpStatusCode.OK, salableStock, formatter);
+        }
+        
+    }
+}

@@ -1,0 +1,51 @@
+﻿@{
+    ViewBag.Title = "ControlType";
+}
+<h2>ControlType</h2>
+
+<div style="z-index: 1">
+    <form method="post" id="frmData">
+        <!-- <input type="hidden"  name="country_id" value="2" /> -->
+        Control Type Name:<input type="text" name="cotrol_type_name" />
+        <input type="checkbox" name="is_active" />
+
+        <input type="button" id="btnSubmit" />
+    </form>
+    <button type="button" onclick="ExampleView()">Example View</button>
+    <script type="text/javascript">
+        function ExampleView() {
+            Loading(true);
+            setTimeout(function () {
+                Loading(false);
+            }, 30000);
+        }
+
+        $(document).ready(function () {
+
+            $("#btnSubmit").click(function () {
+                Loading(true);
+                var fromData = $("#frmData").serializeArray();
+                var country = {};
+
+                console.log(fromData);
+
+                $.each(fromData, function (key, obj) {
+                    country[obj.name] = obj.value;
+                });
+                console.log(country);
+
+                $.ajax({
+                    url: "@Url.Action("Delete", "Country")",
+                type: 'DELETE',
+                dataType: 'json',
+                contentType: "application/json",
+                data: JSON.stringify(country),
+                success: function (result) {
+                    Loading(false);
+                    console.log(result);
+                }
+            });
+        });
+    });
+    </script>
+</div>

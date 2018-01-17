@@ -1,0 +1,134 @@
+﻿using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Net;
+using System.Net.Http;
+using System.Web.Http;
+using System.Web.Http.Cors;
+using DMSApi.Models;
+using DMSApi.Models.IRepository;
+using DMSApi.Models.Repository;
+
+namespace DMSApi.Controllers
+{
+    //[EnableCors(origins: "*", headers: "*", methods: "*")]
+    public class SalesTypeController : ApiController
+    {
+        private ISalesTypeRepository salesTypeRepository;
+
+        public SalesTypeController()
+        {
+            this.salesTypeRepository = new SalesTypeRepository();
+        }
+
+        public SalesTypeController(ISalesTypeRepository salesTypeRepository)
+        {
+            this.salesTypeRepository = salesTypeRepository;
+        }
+
+        [HttpGet, ActionName("GetAllSalesType")]
+        public HttpResponseMessage GetAllSalesType()
+        {
+            var sales = salesTypeRepository.GetAllsalSalesTypes();
+            var formatter = RequestFormat.JsonFormaterString();
+            return Request.CreateResponse(HttpStatusCode.OK, sales, formatter);
+
+        }
+        [HttpPost]
+        public HttpResponseMessage Post([FromBody]Models.sales_type objSalesType)
+        {
+            try
+            {
+                if (string.IsNullOrEmpty(objSalesType.sales_type1))
+                {
+                    var formatter = RequestFormat.JsonFormaterString();
+                    return Request.CreateResponse(HttpStatusCode.OK, new Confirmation { output = "warning", msg = "Sales Type is Empty" }, formatter);
+                }
+                else
+                {
+                    if (salesTypeRepository.CheckDuplicateSalesType(objSalesType.sales_type1))
+                    {
+                        var formatter = RequestFormat.JsonFormaterString();
+                        return Request.CreateResponse(HttpStatusCode.OK, new Confirmation { output = "warning", msg = "Sales Type Already Exists" }, formatter);
+                    }
+                    else
+                    {
+                        Models.sales_type insertSales = new Models.sales_type
+                        {
+
+                            sales_type1 = objSalesType.sales_type1,
+                            is_active = objSalesType.is_active
+                        };
+                        salesTypeRepository.InsertSalesType(insertSales);
+
+                        var formatter = RequestFormat.JsonFormaterString();
+                        return Request.CreateResponse(HttpStatusCode.OK, new Confirmation { output = "success", msg = "Sales Type save successfully" }, formatter);
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                var formatter = RequestFormat.JsonFormaterString();
+                return Request.CreateResponse(HttpStatusCode.OK, new Confirmation { output = "error", msg = ex.ToString() }, formatter);
+            }
+        }
+        [HttpPut]
+        public HttpResponseMessage Put([FromBody]Models.sales_type objSalesType)
+        {
+            try
+            {
+                if (string.IsNullOrEmpty(objSalesType.sales_type1))
+                {
+                    var formatter = RequestFormat.JsonFormaterString();
+                    return Request.CreateResponse(HttpStatusCode.OK, new Confirmation { output = "warning", msg = "Sales Type Name is Empty" }, formatter);
+                }
+
+                else
+                {
+                    Models.sales_type updateSales = new Models.sales_type
+                    {
+                        sales_type_id = objSalesType.sales_type_id,
+                        sales_type1 = objSalesType.sales_type1,
+                        is_active = objSalesType.is_active
+                    };
+
+                    bool irepoUpdate = salesTypeRepository.UpdateSalesType(updateSales);
+
+                    if (irepoUpdate == true)
+                    {
+                        var formatter = RequestFormat.JsonFormaterString();
+                        return Request.CreateResponse(HttpStatusCode.OK, new Confirmation { output = "success", msg = "Sales Type Update successfully" }, formatter);
+                    }
+                    else
+                    {
+                        var formatter = RequestFormat.JsonFormaterString();
+                        return Request.CreateResponse(HttpStatusCode.OK, new Confirmation { output = "error", msg = "Update Failed" }, formatter);
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                var formatter = RequestFormat.JsonFormaterString();
+                return Request.CreateResponse(HttpStatusCode.OK, new Confirmation { output = "error", msg = ex.ToString() }, formatter);
+            }
+        }
+
+        [HttpDelete]
+        public HttpResponseMessage Delete([FromBody]Models.sales_type objSalesType)
+        {
+            try
+            {
+
+                bool delete = salesTypeRepository.DeleteSalesType(objSalesType.sales_type_id);
+
+                var formatter = RequestFormat.JsonFormaterString();
+                return Request.CreateResponse(HttpStatusCode.OK, new Confirmation { output = "success", msg = "Sales Type  Delete Successfully." }, formatter);
+            }
+            catch (Exception ex)
+            {
+                var formatter = RequestFormat.JsonFormaterString();
+                return Request.CreateResponse(HttpStatusCode.OK, new Confirmation { output = "error", msg = ex.ToString() }, formatter);
+            }
+        }
+    }
+}

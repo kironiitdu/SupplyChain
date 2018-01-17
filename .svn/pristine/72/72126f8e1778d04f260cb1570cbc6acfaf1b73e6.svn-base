@@ -1,0 +1,168 @@
+﻿using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Net;
+using System.Net.Http;
+using System.Web.Http;
+using System.Web.Http.Cors;
+using DMSApi.Models;
+using DMSApi.Models.IRepository;
+using DMSApi.Models.Repository;
+
+namespace DMSApi.Controllers
+{
+    //[EnableCors(origins: "*", headers: "*", methods: "*")]
+    public class RetailerTypeController : ApiController
+    {
+
+        private IRetailerTypeRepository retailerTypeRepository;
+
+        public RetailerTypeController()
+        {
+            this.retailerTypeRepository = new RetailerTypeRepository();
+        }
+
+        public RetailerTypeController(IRetailerTypeRepository retailerTypeRepository)
+        {
+            this.retailerTypeRepository = retailerTypeRepository;
+        }
+        [HttpGet, ActionName("GetAllRetailerType")]
+        public HttpResponseMessage GetAllDealerType()
+        {
+            var dealerType = retailerTypeRepository.GetAllRetailerType();
+            var formatter = RequestFormat.JsonFormaterString();
+            return Request.CreateResponse(HttpStatusCode.OK, dealerType, formatter);
+        }
+        public HttpResponseMessage Post([FromBody]Models.retailer_type objRetailerType, long created_by)
+        {
+            try
+            {
+                if (string.IsNullOrEmpty(objRetailerType.retailer_type_name.Trim()))
+                {
+                    var formatter = RequestFormat.JsonFormaterString();
+                    return Request.CreateResponse(HttpStatusCode.OK, new Confirmation { output = "error", msg = "Retailer Type is Empty" }, formatter);
+                }
+                if (string.IsNullOrEmpty(objRetailerType.retailer_type_prefix.Trim()))
+                {
+                    var formatter = RequestFormat.JsonFormaterString();
+                    return Request.CreateResponse(HttpStatusCode.OK, new Confirmation { output = "warning", msg = "Retailer Type Prefix is Empty" }, formatter);
+                }
+                else
+                {
+                    if (string.IsNullOrEmpty(objRetailerType.retailer_type_name.Trim()))
+                    {
+                        var formatter = RequestFormat.JsonFormaterString();
+                        return Request.CreateResponse(HttpStatusCode.OK, new Confirmation { output = "error", msg = "Retailer Type is Empty" }, formatter);
+                    }
+                    if (string.IsNullOrEmpty(objRetailerType.retailer_type_prefix.Trim()))
+                    {
+                        var formatter = RequestFormat.JsonFormaterString();
+                        return Request.CreateResponse(HttpStatusCode.OK, new Confirmation { output = "warning", msg = "Retailer Type Prefix is Empty" }, formatter);
+                    }
+                    if (string.IsNullOrEmpty(objRetailerType.credit_limit.ToString()))
+                    {
+                        var formatter = RequestFormat.JsonFormaterString();
+                        return Request.CreateResponse(HttpStatusCode.OK, new Confirmation { output = "warning", msg = "Credit Limit is Empty" }, formatter);
+                    }
+                    else
+                    {
+
+                        Models.retailer_type insertRetailerTypeType = new Models.retailer_type
+                        {
+                            retailer_type_name = objRetailerType.retailer_type_name.Trim(),
+                            retailer_type_prefix = objRetailerType.retailer_type_prefix.ToUpper().Trim(),
+                            credit_limit = objRetailerType.credit_limit,
+                            created_by = created_by,
+                            created_date = DateTime.Now,
+                            is_deleted = false,
+                            is_active = true
+                        };
+                        bool saveDealerType = retailerTypeRepository.InsertRetailerType(insertRetailerTypeType, created_by);
+
+                        var formatter = RequestFormat.JsonFormaterString();
+                        return Request.CreateResponse(HttpStatusCode.OK, new Confirmation { output = "success", msg = "Retailer Type save successfully" }, formatter);
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                var formatter = RequestFormat.JsonFormaterString();
+                return Request.CreateResponse(HttpStatusCode.OK, new Confirmation { output = "error", msg = ex.ToString() }, formatter);
+            }
+        }
+        public HttpResponseMessage Put([FromBody]Models.retailer_type objRetailerType, long updated_by)
+        {
+            try
+            {
+                if (string.IsNullOrEmpty(objRetailerType.retailer_type_name.Trim()))
+                {
+                    var formatter = RequestFormat.JsonFormaterString();
+                    return Request.CreateResponse(HttpStatusCode.OK, new Confirmation { output = "warning", msg = "Retailer Type is Empty" }, formatter);
+                }
+                if (string.IsNullOrEmpty(objRetailerType.retailer_type_prefix.Trim()))
+                {
+                    var formatter = RequestFormat.JsonFormaterString();
+                    return Request.CreateResponse(HttpStatusCode.OK, new Confirmation { output = "warning", msg = "Retailer Type Prefix is Empty" }, formatter);
+                }
+                if (string.IsNullOrEmpty(objRetailerType.credit_limit.ToString()))
+                {
+                    var formatter = RequestFormat.JsonFormaterString();
+                    return Request.CreateResponse(HttpStatusCode.OK, new Confirmation { output = "warning", msg = "Credit Limit is Empty" }, formatter);
+                }
+                else
+                {
+
+                    Models.retailer_type updateRetailerType = new Models.retailer_type
+
+                    {
+                        retailer_type_id = objRetailerType.retailer_type_id,
+                        retailer_type_name = objRetailerType.retailer_type_name.Trim(),
+                        retailer_type_prefix = objRetailerType.retailer_type_prefix.ToUpper().Trim(),
+                        credit_limit = objRetailerType.credit_limit,
+                        updated_by = updated_by,
+                        updated_date = DateTime.Now,
+                        is_active = true
+                    };
+
+                    bool irepoUpdate = retailerTypeRepository.UpdateRetailerType(updateRetailerType, updated_by);
+
+                    if (irepoUpdate == true)
+                    {
+                        var formatter = RequestFormat.JsonFormaterString();
+                        return Request.CreateResponse(HttpStatusCode.OK,
+                            new Confirmation { output = "success", msg = "Retailer Type Updated successfully" }, formatter);
+                    }
+
+                    else
+                    {
+                        var formatter = RequestFormat.JsonFormaterString();
+                        return Request.CreateResponse(HttpStatusCode.OK,
+                            new Confirmation { output = "success", msg = "Update Failed" }, formatter);
+                    }
+
+                }
+            }
+            catch (Exception ex)
+            {
+                var formatter = RequestFormat.JsonFormaterString();
+                return Request.CreateResponse(HttpStatusCode.OK, new Confirmation { output = "error", msg = ex.ToString() }, formatter);
+            }
+        }
+        [HttpDelete]
+        public HttpResponseMessage Delete([FromBody]Models.retailer_type objRetailerType, long updated_by)
+        {
+            try
+            {
+                bool updatPartyType = retailerTypeRepository.DeleteRetailerType(objRetailerType.retailer_type_id, updated_by);
+
+                var formatter = RequestFormat.JsonFormaterString();
+                return Request.CreateResponse(HttpStatusCode.OK, new Confirmation { output = "success", msg = "Retailer Type Delete Successfully." }, formatter);
+            }
+            catch (Exception ex)
+            {
+                var formatter = RequestFormat.JsonFormaterString();
+                return Request.CreateResponse(HttpStatusCode.OK, new Confirmation { output = "error", msg = ex.ToString() }, formatter);
+            }
+        }
+    }
+}

@@ -1,0 +1,46 @@
+﻿using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+using DMSApi.Models.StronglyType;
+
+namespace DMSApi.Models.IRepository
+{
+    public interface IRequisitionRepository
+    {
+        object GetAllRequisitions();
+        object GetAllForwardedRequisitionListbyUser(long user_id);
+        object GetAAllRequisition();
+        object GetAllRequisitionByPartyId(long party_id);
+        object GetAllDemoRequisition();
+        object GetAllDeliverableRequisition();
+        object GetRequisitionForVerifyByPartyId(long party_id);
+        object GetRequisitionForApprovalByPartyId(long party_id);
+        object GetRequisitionReportById(long requisition_master_id);
+        int AddRequisition(RequisitionModel RequisitionModel);
+        RequisitionModel GetRequisitionById(long requisition_master_id);
+        RequisitionModel GetRequisitionByIdForDelivery(long requisition_master_id);
+        bool EditRequisition(RequisitionModel RequisitionModel);
+        bool DeleteRequisition(long requisition_details_id);
+        bool DeleteRequisitionDetailsById(long requisition_details_id);
+        bool UpdateApproveStatus(long requisition_master_id);
+        List<RequisitionDetailsModel> GetRequisitionByIdForFinanceApprove(long requisition_master_id);
+        object GetPartywiseRequisitionsForDelivery(long partyId);
+        object GetProductPriceByPartyTypeId(long party_type_id, long product_id);
+        bool cancelRequisition(long requisition_master_id, long userid);
+        bool ProceedToHOS(long requisition_master_id, long userid);
+        object GetAllDealerDemoRequisitionByPartyId(long party_id);
+        object GetDemoRequisitionForVerifyByPartyId(long party_id);
+        object GetDemoRequisitionForApprovalByPartyId(long party_id);
+        object GetRequisitionListForHOOps(long party_id);
+        object GetBtoBRequisitionForApprovalByPartyId(long party_id);
+        decimal GetPaidAmtofRequisition(long requisition_master_id);
+        object GetPromotionRequisitionById(long requisition_master_id);
+        object GetPaymentVerifyStatus(long requisition_master_id);//23.04.2017
+        string GetPaymentStatus(long requisition_master_id);
+        object GetAllHOSApprovedRequisitionList(long userId);
+        object GetAllOPHsApprovedRequisitionList(long userId);
+
+    }
+}

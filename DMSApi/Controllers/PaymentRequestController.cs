@@ -1,0 +1,352 @@
+﻿using DMSApi.Models;
+using DMSApi.Models.IRepository;
+using DMSApi.Models.Repository;
+using System;
+using System.Collections.Generic;
+using System.IO;
+using System.Linq;
+using System.Net;
+using System.Net.Http;
+using System.Web;
+using System.Web.Http;
+using System.Web.Http.Cors;
+
+namespace DMSApi.Controllers
+{
+    //[EnableCors(origins: "*", headers: "*", methods: "*")]
+    public class PaymentRequestController : ApiController
+    {
+        private IPaymentRequestRepository paymentreqRepository;
+
+        public PaymentRequestController()
+        {
+            this.paymentreqRepository = new PaymentRequestRepository();
+        }
+
+        public PaymentRequestController(IPaymentRequestRepository paymentreqRepository)
+        {
+            this.paymentreqRepository = paymentreqRepository;
+        }
+
+        [HttpGet, ActionName("GetAllPaymentRequest")]
+        public HttpResponseMessage GetAllPaymentRequest(long party_id)
+        {
+            if (party_id == 1)
+            {
+                var parties = paymentreqRepository.GetAllPaymentRequest();
+                var formatter = RequestFormat.JsonFormaterString();
+                return Request.CreateResponse(HttpStatusCode.OK, parties, formatter);
+            }
+            else
+            {
+                var parties = paymentreqRepository.GetAllPaymentRequest(party_id);
+                var formatter = RequestFormat.JsonFormaterString();
+                return Request.CreateResponse(HttpStatusCode.OK, parties, formatter);
+            }
+
+        }
+        [HttpGet, ActionName("GetAllPaymentRequestRawSql")]
+        public HttpResponseMessage GetAllPaymentRequestRawSql(long party_id)
+        {
+            if (party_id == 1)
+            {
+                var parties = paymentreqRepository.GetAllPaymentRequestRawSql();
+                var formatter = RequestFormat.JsonFormaterString();
+                return Request.CreateResponse(HttpStatusCode.OK, parties, formatter);
+            }
+            else
+            {
+                var parties = paymentreqRepository.GetAllPaymentRequestRawSql(party_id);
+                var formatter = RequestFormat.JsonFormaterString();
+                return Request.CreateResponse(HttpStatusCode.OK, parties, formatter);
+            }
+
+        }
+        [HttpGet, ActionName("GetPartyTypeName")]
+        public HttpResponseMessage GetPartyTypeName(long party_id)
+        {
+            var parties = paymentreqRepository.GetPartyTypeName(party_id);
+            var formatter = RequestFormat.JsonFormaterString();
+            return Request.CreateResponse(HttpStatusCode.OK, parties, formatter);
+        }
+        [HttpGet, ActionName("GetAllUnProcessedPaymentList")]
+        public HttpResponseMessage GetAllUnProcessedPaymentList(long party_id)
+        {
+            var parties = paymentreqRepository.GetAllUnProcessedPaymentList();
+            var formatter = RequestFormat.JsonFormaterString();
+            return Request.CreateResponse(HttpStatusCode.OK, parties, formatter);
+        }
+
+        [HttpGet,ActionName("GetAllPaymentRequest")]
+        public HttpResponseMessage GetAllPaymentRequest(DateTime fromDate, DateTime toDate, long partyId)
+        {
+            var parties = paymentreqRepository.GetAllPaymentRequest(fromDate, toDate, partyId);
+            var formatter = RequestFormat.JsonFormaterString();
+            return Request.CreateResponse(HttpStatusCode.OK, parties, formatter);
+        }
+
+        [HttpGet, ActionName("GetImage")]
+        public HttpResponseMessage GetImage(long payment_req_id)
+        {
+            var kkk = paymentreqRepository.GetImage(payment_req_id);
+            if (kkk == null)
+            {
+                var formatter = RequestFormat.JsonFormaterString();
+                return Request.CreateResponse(HttpStatusCode.OK, new Confirmation { output = "warning", msg = "Sorry you did not uploaded any file!" }, formatter);
+            }
+            else
+            {
+                return kkk;
+            }
+
+            // DON'T use Request.CreateResponse(HttpStatusCode.OK, a), _docRepository.GetImage() already returns HttpResponseMessage
+        }
+
+        [ActionName("GetPaymentRequestByID")]
+        [HttpGet]
+        public HttpResponseMessage GetPaymentRequestByID(long payment_req_id)
+        {
+            var cities = paymentreqRepository.GetPaymentRequestByID(payment_req_id);
+            var formatter = RequestFormat.JsonFormaterString();
+            return Request.CreateResponse(HttpStatusCode.OK, cities, formatter);
+        }
+        [HttpPost, Route("api/PaymentRequest/InsertPaymentRequest")]
+        public HttpResponseMessage InsertPaymentRequest()
+        {
+
+            int save_payment_req = paymentreqRepository.InsertPaymentRequest();
+            if (save_payment_req == 11)
+            {
+                var format_type = RequestFormat.JsonFormaterString();
+                return Request.CreateResponse(HttpStatusCode.OK,
+                    new Confirmation { output = "error", msg = "Bank Name can not be empty" });
+            }
+
+            else if (save_payment_req == 12)
+            {
+                var format_type = RequestFormat.JsonFormaterString();
+                return Request.CreateResponse(HttpStatusCode.OK,
+                    new Confirmation { output = "error", msg = "Bank Branch Name can not be empty" });
+            }
+
+            if (save_payment_req == 13)
+            {
+                var format_type = RequestFormat.JsonFormaterString();
+                return Request.CreateResponse(HttpStatusCode.OK,
+                    new Confirmation { output = "error", msg = "Deposite Date can not be empty" });
+            }
+            else if (save_payment_req == 14)
+            {
+                var format_type = RequestFormat.JsonFormaterString();
+                return Request.CreateResponse(HttpStatusCode.OK,
+                    new Confirmation { output = "error", msg = "Check/Payorder No. can not be empty" });
+            }
+            else if (save_payment_req == 17)
+            {
+                var format_type = RequestFormat.JsonFormaterString();
+                return Request.CreateResponse(HttpStatusCode.OK,
+                    new Confirmation { output = "error", msg = "Amount can not be empty" });
+            }
+            else if (save_payment_req == 15)
+            {
+                var format_type = RequestFormat.JsonFormaterString();
+                return Request.CreateResponse(HttpStatusCode.OK,
+                    new Confirmation { output = "error", msg = "Document can not be empty" });
+            }
+            else if (save_payment_req == 16)
+            {
+                var format_type = RequestFormat.JsonFormaterString();
+                return Request.CreateResponse(HttpStatusCode.OK,
+                    new Confirmation { output = "error", msg = "Sales Representative can not be empty" });
+            }
+            else if (save_payment_req == 30)
+            {
+                var format_type = RequestFormat.JsonFormaterString();
+                return Request.CreateResponse(HttpStatusCode.OK,
+                    new Confirmation { output = "error", msg = "Account No can not be empty" });
+            }
+            else
+            {
+
+                if (save_payment_req == 1)
+                {
+                    var formatter = RequestFormat.JsonFormaterString();
+                    return Request.CreateResponse(HttpStatusCode.OK, new Confirmation { output = "success", msg = "No File Uploaded." }, formatter);
+
+                }
+                if (save_payment_req == 2)
+                {
+                    var formatter = RequestFormat.JsonFormaterString();
+                    return Request.CreateResponse(HttpStatusCode.OK, new Confirmation { output = "success", msg = "Payment saved successfully." }, formatter);
+
+                }
+                if (save_payment_req == 3)
+                {
+                    var formatter = RequestFormat.JsonFormaterString();
+                    return Request.CreateResponse(HttpStatusCode.OK, new Confirmation { output = "success", msg = "Upload Save Failed." }, formatter);
+
+                }
+                if (save_payment_req == 4)
+                {
+                    var formatter = RequestFormat.JsonFormaterString();
+                    return Request.CreateResponse(HttpStatusCode.OK, new Confirmation { output = "success", msg = "Upload Failed" }, formatter);
+
+                }
+                if (save_payment_req == 5)
+                {
+                    var formatter = RequestFormat.JsonFormaterString();
+                    return Request.CreateResponse(HttpStatusCode.OK, new Confirmation { output = "success", msg = "Cash Received Successfully..." }, formatter);
+
+                }
+                if (save_payment_req == 6)
+                {
+                    var formatter = RequestFormat.JsonFormaterString();
+                    return Request.CreateResponse(HttpStatusCode.OK, new Confirmation { output = "warning", msg = "Cash Received Failed..." }, formatter);
+
+                }
+            }
+            var a = paymentreqRepository.InsertPaymentRequest();
+            return Request.CreateResponse(HttpStatusCode.OK, a);
+        }
+
+
+
+
+        [System.Web.Http.HttpPut]
+        public HttpResponseMessage UpdatePaymentRequest()
+        {
+            try
+            {
+
+                int irepoUpdate = paymentreqRepository.UpdatePaymentRequest();
+                if (irepoUpdate == 11)
+                {
+                    var format_type = RequestFormat.JsonFormaterString();
+                    return Request.CreateResponse(HttpStatusCode.OK,
+                        new Confirmation { output = "error", msg = "Bank Name can not be empty" });
+                }
+
+                else if (irepoUpdate == 12)
+                {
+                    var format_type = RequestFormat.JsonFormaterString();
+                    return Request.CreateResponse(HttpStatusCode.OK,
+                        new Confirmation { output = "error", msg = "Bank Branch Name can not be empty" });
+                }
+
+                if (irepoUpdate == 13)
+                {
+                    var format_type = RequestFormat.JsonFormaterString();
+                    return Request.CreateResponse(HttpStatusCode.OK,
+                        new Confirmation { output = "error", msg = "Deposite Date can not be empty" });
+                }
+                else if (irepoUpdate == 14)
+                {
+                    var format_type = RequestFormat.JsonFormaterString();
+                    return Request.CreateResponse(HttpStatusCode.OK,
+                        new Confirmation { output = "error", msg = "Check/Payorder No. can not be empty" });
+                }
+                else if (irepoUpdate == 30)
+                {
+                    var format_type = RequestFormat.JsonFormaterString();
+                    return Request.CreateResponse(HttpStatusCode.OK,
+                        new Confirmation { output = "error", msg = "Account No can not be empty" });
+                }
+                else if (irepoUpdate == 17)
+                {
+                    var format_type = RequestFormat.JsonFormaterString();
+                    return Request.CreateResponse(HttpStatusCode.OK,
+                        new Confirmation { output = "error", msg = "Amount can not be empty" });
+                }
+                else if (irepoUpdate == 15)
+                {
+                    var format_type = RequestFormat.JsonFormaterString();
+                    return Request.CreateResponse(HttpStatusCode.OK,
+                        new Confirmation { output = "error", msg = "Document can not be empty" });
+                }
+                else if (irepoUpdate == 16)
+                {
+                    var format_type = RequestFormat.JsonFormaterString();
+                    return Request.CreateResponse(HttpStatusCode.OK,
+                        new Confirmation { output = "error", msg = "Sales Representative can not be empty" });
+                }
+                else
+                {
+
+                    if (irepoUpdate == 1)
+                    {
+                        var formatter = RequestFormat.JsonFormaterString();
+                        return Request.CreateResponse(HttpStatusCode.OK, new Confirmation { output = "success", msg = "Update Successfully" }, formatter);
+                    }
+                    else
+                    {
+                        var formatter = RequestFormat.JsonFormaterString();
+                        return Request.CreateResponse(HttpStatusCode.OK, new Confirmation { output = "error", msg = "Update failed" }, formatter);
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                var formatter = RequestFormat.JsonFormaterString();
+                return Request.CreateResponse(HttpStatusCode.OK, new Confirmation { output = "error", msg = ex.ToString() }, formatter);
+            }
+        }
+
+
+        [System.Web.Http.HttpDelete]
+        public HttpResponseMessage Delete(long payment_req_id, long? updated_by)
+        {
+            try
+            {
+
+                bool updatBankbranch = paymentreqRepository.DeletePaymentRequest(payment_req_id, updated_by);
+
+                var formatter = RequestFormat.JsonFormaterString();
+                return Request.CreateResponse(HttpStatusCode.OK, new Confirmation { output = "success", msg = "Payment Request Delete Successfully." }, formatter);
+            }
+            catch (Exception ex)
+            {
+                var formatter = RequestFormat.JsonFormaterString();
+                return Request.CreateResponse(HttpStatusCode.OK, new Confirmation { output = "error", msg = ex.ToString() }, formatter);
+            }
+        }
+
+        [System.Web.Http.HttpGet]
+        public HttpResponseMessage UpdateStatus(long payment_req_id, long user_id)
+        {
+            try
+            {
+
+                var allPayment = paymentreqRepository.UpdateStatus(payment_req_id, user_id);
+                var formatter = RequestFormat.JsonFormaterString();
+                return Request.CreateResponse(HttpStatusCode.OK, new Confirmation { output = "success", msg = "Payment aproved Successfully" }, formatter);
+
+            }
+            catch (Exception ex)
+            {
+                var formatter = RequestFormat.JsonFormaterString();
+                return Request.CreateResponse(HttpStatusCode.OK, new Confirmation { output = "error", msg = ex.ToString() }, formatter);
+            }
+
+
+        }
+
+        [ActionName("GetPartyPaymentAndRequisitionInfo")]
+        [HttpGet]
+        public HttpResponseMessage GetPartyPaymentAndRequisitionInfo(long party_id)
+        {
+            var cities = paymentreqRepository.GetPartyPaymentAndRequisitionInfo(party_id);
+            var formatter = RequestFormat.JsonFormaterString();
+            return Request.CreateResponse(HttpStatusCode.OK, cities, formatter);
+        }
+        [ActionName("GetPartyAccountNumber")]
+        [HttpGet]
+        public HttpResponseMessage GetPartyAccountNumber(long party_id)
+        {
+            var cities = paymentreqRepository.GetPartyAccountNumber(party_id);
+            var formatter = RequestFormat.JsonFormaterString();
+            return Request.CreateResponse(HttpStatusCode.OK, cities, formatter);
+        }
+
+
+    }
+}

@@ -1,0 +1,37 @@
+﻿using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Net;
+using System.Net.Http;
+using System.Web.Http;
+using System.Web.Http.Cors;
+using DMSApi.Models;
+using DMSApi.Models.IRepository;
+using DMSApi.Models.Repository;
+
+namespace DMSApi.Controllers
+{
+    //[EnableCors(origins: "*", headers: "*", methods: "*")]
+    public class InventoryAdjustmentController : ApiController
+    {
+        private IInventoryAdjustmentRepository inventoryAdjustmentRepository;
+
+        public InventoryAdjustmentController()
+        {
+            this.inventoryAdjustmentRepository = new InventoryAdjustmentRepository();
+        }
+
+        public InventoryAdjustmentController(IInventoryAdjustmentRepository inventoryAdjustmentRepository)
+        {
+            this.inventoryAdjustmentRepository = inventoryAdjustmentRepository;
+        }
+
+        [HttpGet, ActionName("GetSystemQuantityForAccessories")]
+        public HttpResponseMessage GetSystemQuantityForAccessories(long warehouse_id, long product_id)
+        {
+            var countries = inventoryAdjustmentRepository.GetSystemQuantityForAccessories(warehouse_id, product_id);
+            var formatter = RequestFormat.JsonFormaterString();
+            return Request.CreateResponse(HttpStatusCode.OK, countries, formatter);
+        }
+    }
+}

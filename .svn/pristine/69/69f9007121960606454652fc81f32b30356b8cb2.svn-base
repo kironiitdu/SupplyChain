@@ -1,0 +1,64 @@
+﻿using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Net;
+using System.Net.Http;
+using System.Web.Http;
+using DMSApi.Models;
+using System.Web.Http.Cors;
+using DMSApi.Models.IRepository;
+using DMSApi.Models.Repository;
+using DMSApi.Models.StronglyType;
+
+namespace DMSApi.Controllers
+{
+    [EnableCors(origins: "*", headers: "*", methods: "*")]
+
+    public class PartyJournalController : ApiController
+    {
+        private IPartyJournalRepository partyjournalRepository;
+
+        private PartyJournalController()
+        {
+            this.partyjournalRepository=new PartyJournalRepository();
+        }
+        // [HttpPost, ActionName("GetPartyJournalReportById")]
+        //public object GetPartyJournalReportById(PartyJournalSearchModel partyJournalSearch)
+        //{
+        //    var partyJournal = partyjournalRepository.GetPartyJournalReportById(partyJournalSearch.party_id, partyJournalSearch.from_date, partyJournalSearch.to_date);
+        //    var formatter = RequestFormat.JsonFormaterString();
+        //    return Request.CreateResponse(HttpStatusCode.OK, partyJournal, formatter);
+        //}
+        //[HttpGet]//, ActionName("GetPartyJournalReportById?party_id={party_id}&from_date={from_date}&to_date={to_date}")]
+        public HttpResponseMessage GetPartyJournalReportById(int party_id, DateTime from_date, DateTime to_date)
+        {
+            var partyJournal = partyjournalRepository.GetPartyJournalReportById(party_id, from_date, to_date);
+            var formatter = RequestFormat.JsonFormaterString();
+            return Request.CreateResponse(HttpStatusCode.OK, partyJournal, formatter);
+        }
+
+        [HttpGet, ActionName("GetPartyOpeningBalance")]
+        public HttpResponseMessage GetPartyOpeningBalance(long party_id)
+        {
+            var openingBalance = partyjournalRepository.GetPartyOpeningBalance(party_id);
+            var formatter = RequestFormat.JsonFormaterString();
+            return Request.CreateResponse(HttpStatusCode.OK, openingBalance, formatter);
+        }
+
+        [HttpPost, ActionName("SaveInitialBalance")]
+        public HttpResponseMessage SaveInitialBalance(party_journal partyJournal)
+        {
+            var saved = partyjournalRepository.SaveInitialBalance(partyJournal);
+            var formatter = RequestFormat.JsonFormaterString();
+            if (saved == 1)
+            {
+                return Request.CreateResponse(HttpStatusCode.OK, new Confirmation { output = "success", msg = "Information  is saved successfully." }, formatter);
+            }
+            else
+            {
+                return Request.CreateResponse(HttpStatusCode.OK, new Confirmation { output = "error", msg = "Cannot save initial balance" }, formatter);
+            }
+            
+        }
+    }
+}

@@ -1,0 +1,77 @@
+﻿using System.Security.Cryptography.X509Certificates;
+
+using DMSApi.Models.IRepository;
+using DMSApi.Models.StronglyType;
+using System;
+using System.Linq;
+using Microsoft.Ajax.Utilities;
+
+namespace DMSApi.Models.Repository
+{
+    public class LoginRepository : ILoginRepository
+    {
+        private DMSEntities _entities;
+        private LoginLogRepository LoginLogRepository;
+
+        public LoginRepository()
+        {
+            this._entities = new DMSEntities();
+            this.LoginLogRepository=new LoginLogRepository();
+            //this.partyJournalRepository = new PartyJournalRepository();
+        }
+
+        //public object LoginInformation(string user_name, string password)
+        public object LoginInformation(string user_name, string password, string ClientIpAddress)
+        {
+            Int64 uId = 0;
+            string loginName = "";
+                
+            try
+            {
+                var user_check_exists =
+                    _entities.users.FirstOrDefault(x => x.login_name == user_name && x.password == password);
+                
+                if (user_check_exists != null)
+                {
+                    //return user_check_exists;
+
+                    LoginModel login = new LoginModel();
+
+                    login.user_id = user_check_exists.user_id;
+                    login.login_name = user_check_exists.login_name;
+                    login.password = user_check_exists.password;
+                    login.is_new_password = user_check_exists.is_new_pass ?? false;
+                    login.full_name = user_check_exists.full_name;
+                    login.role_id = user_check_exists.role_id;
+                    login.party_id = user_check_exists.party_id;
+                    login.company_id = user_check_exists.company_id;
+                    login.party_type_id =_entities.parties.Where(r => r.party_id == user_check_exists.party_id).Select(c => c.party_type_id).SingleOrDefault();
+                    login.user_role_name =_entities.roles.Where(r => r.role_id == user_check_exists.role_id).Select(c => c.role_name).SingleOrDefault();
+
+                    uId = (long)user_check_exists.user_id;
+                    loginName = user_check_exists.login_name;
+
+                    return login;
+                    
+                }
+                else
+                {
+                    return null;
+                }
+            }
+            catch (Exception)
+            {
+                return null;
+            }
+            finally
+            {
+                //24.04.2017 user login log
+                if (uId != 0 && loginName != "")
+                {
+                    LoginLogRepository.LoginInfoEntry(uId, ClientIpAddress, loginName);
+                }
+                //end
+            }
+        }
+    }
+}

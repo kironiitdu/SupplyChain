@@ -1,0 +1,136 @@
+﻿using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Net;
+using System.Net.Http;
+using System.Web.Http;
+using System.Web.Http.Cors;
+using DMSApi.Models;
+using DMSApi.Models.IRepository;
+using DMSApi.Models.Repository;
+
+namespace DMSApi.Controllers
+{
+    //[EnableCors(origins: "*", headers: "*", methods: "*")]
+    public class AccessoriesCategoryController : ApiController
+    {
+           private IAccessoriesCategoryRepository accessoriesCategoryRepository;
+
+        public AccessoriesCategoryController()
+        {
+            this.accessoriesCategoryRepository = new AccessoriesCategoryRepository();
+        }
+
+        public AccessoriesCategoryController(IAccessoriesCategoryRepository accessoriesCategoryRepository)
+        {
+            this.accessoriesCategoryRepository = accessoriesCategoryRepository;
+        }
+
+        public HttpResponseMessage GetAllAccessoriesCategory()
+        {
+            var accessoriesCategory = accessoriesCategoryRepository.GetAllAccessoriesCategory();
+            var formatter = RequestFormat.JsonFormaterString();
+            return Request.CreateResponse(HttpStatusCode.OK, accessoriesCategory, formatter);
+        }
+
+        public HttpResponseMessage GetAllAccessoriesCategoryForGrid()
+        {
+            var accessoriesCategory = accessoriesCategoryRepository.GetAllAccessoriesCategoryForGrid();
+            var formatter = RequestFormat.JsonFormaterString();
+            return Request.CreateResponse(HttpStatusCode.OK, accessoriesCategory, formatter);
+        }
+
+        [System.Web.Http.HttpPost]
+        public HttpResponseMessage Post([FromBody] Models.accessories_category objAccessoriesCategory, long created_by)
+        {
+
+            try
+            {
+                if (string.IsNullOrEmpty(objAccessoriesCategory.accessories_category_name))
+                {
+                    var formatter = RequestFormat.JsonFormaterString();
+                    return Request.CreateResponse(HttpStatusCode.OK, new Confirmation { output = "error", msg = "Accessories Category Name is Empty" }, formatter);
+
+                }
+
+                else
+                {
+                    if (accessoriesCategoryRepository.CheckDuplicateAccessoriesCategory(objAccessoriesCategory.accessories_category_name))
+                    {
+                        var formatter = RequestFormat.JsonFormaterString();
+                        return Request.CreateResponse(HttpStatusCode.OK, new Confirmation { output = "error", msg = "Accessories Category Name Already Exists" }, formatter);
+                    }
+                    else
+                    {
+                        accessories_category insert = new accessories_category
+                        {
+                            accessories_category_name = objAccessoriesCategory.accessories_category_name,
+                            price = objAccessoriesCategory.price,                         
+                            created_date = DateTime.Now,
+                            is_active = true,
+                            is_deleted = false
+                        };
+
+                        accessoriesCategoryRepository.AddAccessoriesCategory(insert,created_by);
+                        var formatter = RequestFormat.JsonFormaterString();
+                        return Request.CreateResponse(HttpStatusCode.OK, new Confirmation { output = "success", msg = "Save successfully" }, formatter);
+                    }
+
+                }
+
+
+            }
+            catch (Exception ex)
+            {
+                var formatter = RequestFormat.JsonFormaterString();
+                return Request.CreateResponse(HttpStatusCode.OK, new Confirmation { output = "error", msg = ex.ToString() }, formatter);
+            }
+        }
+
+         [System.Web.Http.HttpPut]
+        public HttpResponseMessage Put([FromBody] Models.accessories_category objAccessoriesCategory, long updated_by)
+        {
+            try
+            {
+                if (string.IsNullOrEmpty(objAccessoriesCategory.accessories_category_name))
+                {
+                    var formatter = RequestFormat.JsonFormaterString();
+                    return Request.CreateResponse(HttpStatusCode.OK, new Confirmation { output = "error", msg = "Accessories Category Name is Empty" }, formatter);
+
+                }
+                else
+                {
+
+                    accessoriesCategoryRepository.EditAccessoriesCategory(objAccessoriesCategory, updated_by);
+                    var formatter = RequestFormat.JsonFormaterString();
+                    return Request.CreateResponse(HttpStatusCode.OK, new Confirmation { output = "success", msg = "Updated successfully" }, formatter);
+                }
+               
+            }
+            catch (Exception ex)
+            {
+                var formatter = RequestFormat.JsonFormaterString();
+                return Request.CreateResponse(HttpStatusCode.OK, new Confirmation { output = "error", msg = ex.ToString() }, formatter);
+            }
+        }
+         [System.Web.Http.HttpDelete]
+         public HttpResponseMessage Delete([FromBody]Models.accessories_category objAccessoriesCategory)
+         {
+             try
+             {
+
+                 bool deleteAC = accessoriesCategoryRepository.DeleteAccessoriesCategory(objAccessoriesCategory.accessories_category_id);
+
+                 var formatter = RequestFormat.JsonFormaterString();
+                 return Request.CreateResponse(HttpStatusCode.OK, new Confirmation { output = "success", msg = "Accessories Category Delete Successfully." }, formatter);
+             }
+             catch (Exception ex)
+             {
+                 var formatter = RequestFormat.JsonFormaterString();
+                 return Request.CreateResponse(HttpStatusCode.OK, new Confirmation { output = "error", msg = ex.ToString() }, formatter);
+             }
+
+         }
+       
+    }
+}

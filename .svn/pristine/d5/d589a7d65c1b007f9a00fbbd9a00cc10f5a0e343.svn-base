@@ -1,0 +1,58 @@
+﻿<div style="z-index: 1">
+    <form method="post" id="frmData">
+        <input type="hidden" name="control_type_id" value="5" />
+        Designation Name:<input type="text" name="control_type_name" />
+        @* Is aAtive:<input type="checkbox" name="is_active" />*@
+
+        <input type="button" id="btnSubmit" />
+    </form>
+    <button type="button" onclick="ExampleView()">Example View</button>
+    <script type="text/javascript">
+        function ExampleView() {
+            Loading(true);
+            setTimeout(function () {
+                Loading(false);
+            }, 30000);
+
+        }
+
+        $(document).ready(function () {
+
+            $("#btnSubmit").click(function () {
+                Loading(true);
+                //var fromData = $("#frmData").serializeArray();
+
+                var data = [{
+                    "order_id": 0, "rbo_id": 4, "rbo_name": "carriefore", "label_type_id": 1, "label_reference_id": 1, "no_of_order"
+    : 0, "schema_id": 4, "label_reference_name": "TU_KVISW002", "label_type_name": "SWING TICKET", "order_code": "26"
+, "quantity": 108519201, "is_batched": true
+                }, {
+                    "order_id": 0, "rbo_id": 4, "rbo_name": "carriefore", "label_type_id"
+                    : 1, "label_reference_id": 1, "no_of_order": 0, "schema_id": 4, "label_reference_name": "TU_KVISW002", "label_type_name"
+                    : "SWING TICKET", "order_code": "36", "quantity": 1469110, "is_batched": true
+                }, {
+                    "order_id": 0, "rbo_id": 4, "rbo_name"
+                    : "carriefore", "label_type_id": 1, "label_reference_id": 1, "no_of_order": 0, "schema_id": 4, "label_reference_name"
+                    : "TU_KVISW002", "label_type_name": "SWING TICKET", "order_code": "21", "quantity": 68888, "is_batched": true
+                }];
+
+                //console.log(employee);
+
+                $.ajax({
+                    type: "POST",
+                    url: "@Url.Action("GetAllBranches", "Branch")?company_id=2",
+
+                    dataType: "json",
+                    contentType: "application/json",
+                    data: JSON.stringify(data),
+                    success: function (result) {
+                        Loading(false);
+                        console.log(result);
+                    }
+
+                });
+
+            });
+        });
+    </script>
+</div>

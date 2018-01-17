@@ -1,0 +1,443 @@
+﻿using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Net;
+using System.Net.Http;
+using System.Web.Http;
+using System.Web.Http.Cors;
+using DMSApi.Models;
+using DMSApi.Models.IRepository;
+using DMSApi.Models.Repository;
+using DMSApi.Models.StronglyType;
+
+namespace DMSApi.Controllers
+{
+    //[EnableCors(origins: "*", headers: "*", methods: "*")]
+
+    public class RequisitionController : ApiController
+    {
+        private IRequisitionRepository requisitionRepository;
+
+        private RequisitionController()
+        {
+            this.requisitionRepository = new RequisitionRepository();
+        }
+
+        public RequisitionController(IRequisitionRepository requisitionRepository)
+        {
+            this.requisitionRepository = requisitionRepository;
+        }
+        public HttpResponseMessage GetAllRequisitions()
+        {
+            var Allrequisitions = requisitionRepository.GetAllRequisitions();
+            var formatter = RequestFormat.JsonFormaterString();
+            return Request.CreateResponse(HttpStatusCode.OK, Allrequisitions, formatter);
+        }
+
+        [HttpGet, ActionName("GetAllForwardedRequisitionListbyUser")]
+        public HttpResponseMessage GetAllForwardedRequisitionListbyUser(long user_id)
+        {
+            var data = requisitionRepository.GetAllForwardedRequisitionListbyUser(user_id);
+            var formatter = RequestFormat.JsonFormaterString();
+            return Request.CreateResponse(HttpStatusCode.OK, data, formatter);
+        }
+
+        [ActionName("GetAAllRequisition")]
+        public HttpResponseMessage GetAAllRequisition()
+        {
+            var data = requisitionRepository.GetAAllRequisition();
+            var formatter = RequestFormat.JsonFormaterString();
+            return Request.CreateResponse(HttpStatusCode.OK, data, formatter);
+        }
+        //11.05.2017
+        [HttpGet, ActionName("GetPaymentStatus")]
+        public HttpResponseMessage GetPaymentStatus(long requisition_master_id)
+        {
+            var openingBalance = requisitionRepository.GetPaymentStatus(requisition_master_id);
+            var formatter = RequestFormat.JsonFormaterString();
+            return Request.CreateResponse(HttpStatusCode.OK, openingBalance, formatter);
+        }
+
+        [HttpGet, ActionName("GetAllRequisitionByPartyId")]
+        public HttpResponseMessage GetAllRequisitionByPartyId(long party_id)
+        {
+            var data = requisitionRepository.GetAllRequisitionByPartyId(party_id);
+            var formatter = RequestFormat.JsonFormaterString();
+            return Request.CreateResponse(HttpStatusCode.OK, data, formatter);
+        }
+
+        [HttpGet, ActionName("GetAllDealerDemoRequisitionByPartyId")]
+        public HttpResponseMessage GetAllDealerDemoRequisitionByPartyId(long party_id)
+        {
+            var data = requisitionRepository.GetAllDealerDemoRequisitionByPartyId(party_id);
+            var formatter = RequestFormat.JsonFormaterString();
+            return Request.CreateResponse(HttpStatusCode.OK, data, formatter);
+        }
+
+        [HttpGet, ActionName("GetDemoRequisitionForVerifyByPartyId")]
+        public HttpResponseMessage GetDemoRequisitionForVerifyByPartyId(long party_id)
+        {
+            var data = requisitionRepository.GetDemoRequisitionForVerifyByPartyId(party_id);
+            var formatter = RequestFormat.JsonFormaterString();
+            return Request.CreateResponse(HttpStatusCode.OK, data, formatter);
+        }
+
+        [HttpGet, ActionName("GetDemoRequisitionForApprovalByPartyId")]
+        public HttpResponseMessage GetDemoRequisitionForApprovalByPartyId(long party_id)
+        {
+            var data = requisitionRepository.GetDemoRequisitionForApprovalByPartyId(party_id);
+            var formatter = RequestFormat.JsonFormaterString();
+            return Request.CreateResponse(HttpStatusCode.OK, data, formatter);
+        }
+        [HttpGet, ActionName("GetRequisitionListForHOOps")]
+        public HttpResponseMessage GetRequisitionListForHOOps(long party_id)
+        {
+            var data = requisitionRepository.GetRequisitionListForHOOps(party_id);
+            var formatter = RequestFormat.JsonFormaterString();
+            return Request.CreateResponse(HttpStatusCode.OK, data, formatter);
+        }
+
+        [HttpGet, ActionName("GetAllDeliverableRequisition")]
+        public HttpResponseMessage GetAllDeliverableRequisition()
+        {
+            var data = requisitionRepository.GetAllDeliverableRequisition();
+            var formatter = RequestFormat.JsonFormaterString();
+            return Request.CreateResponse(HttpStatusCode.OK, data, formatter);
+        }
+
+        [HttpGet, ActionName("GetRequisitionForVerifyByPartyId")]
+        public HttpResponseMessage GetRequisitionForVerifyByPartyId(long party_id)
+        {
+            var data = requisitionRepository.GetRequisitionForVerifyByPartyId(party_id);
+            var formatter = RequestFormat.JsonFormaterString();
+            return Request.CreateResponse(HttpStatusCode.OK, data, formatter);
+        }
+        [HttpGet, ActionName("GetRequisitionForApprovalByPartyId")]
+        public HttpResponseMessage GetRequisitionForApprovalByPartyId(long party_id)
+        {
+            var data = requisitionRepository.GetRequisitionForApprovalByPartyId(party_id);
+            var formatter = RequestFormat.JsonFormaterString();
+            return Request.CreateResponse(HttpStatusCode.OK, data, formatter);
+        }
+        //requisition approval/forward for b2b sales head
+        [HttpGet, ActionName("GetBtoBRequisitionForApprovalByPartyId")]
+        public HttpResponseMessage GetBtoBRequisitionForApprovalByPartyId(long party_id)
+        {
+            var data = requisitionRepository.GetBtoBRequisitionForApprovalByPartyId(party_id);
+            var formatter = RequestFormat.JsonFormaterString();
+            return Request.CreateResponse(HttpStatusCode.OK, data, formatter);
+        }
+
+        //price protection
+        //[HttpGet, ActionName("GetPriceProtection")]
+        //public HttpResponseMessage GetPriceProtection()
+        //{
+        //    var Allrequisitions = requisitionRepository.GetPriceProtection();
+        //    var formatter = RequestFormat.JsonFormaterString();
+        //    return Request.CreateResponse(HttpStatusCode.OK, Allrequisitions, formatter);
+        //}
+        //[HttpGet, ActionName("GetPriceProtection")]
+        //public HttpResponseMessage GetPriceProtection(int requisition_master_id)
+        //{
+        //    var Allrequisitions = requisitionRepository.GetPriceProtection(requisition_master_id);
+        //    var formatter = RequestFormat.JsonFormaterString();
+        //    return Request.CreateResponse(HttpStatusCode.OK, Allrequisitions, formatter);
+        //}
+
+        [HttpPost, ActionName("GetRequisitionById")]
+        public HttpResponseMessage GetRequisitionById([FromBody]Models.requisition_master requisition_master)
+        {
+            var requisitionMaster = requisition_master.requisition_master_id;
+
+            var reqMaster = requisitionRepository.GetRequisitionById(requisitionMaster);
+            HttpResponseMessage response = Request.CreateResponse(HttpStatusCode.OK, reqMaster);
+            return response;
+        }
+        [HttpGet, ActionName("GetRequisitionByIdForFinanceApprove")]
+        public HttpResponseMessage GetRequisitionByIdForFinanceApprove(int requisition_master_id)
+        {
+           // var requisitionMaster = requisition_master.requisition_master_id;
+
+            var reqMaster = requisitionRepository.GetRequisitionByIdForFinanceApprove(requisition_master_id);
+            HttpResponseMessage response = Request.CreateResponse(HttpStatusCode.OK, reqMaster);
+            return response;
+        }
+
+        [HttpGet, ActionName("GetPromotionRequisitionById")]
+        public HttpResponseMessage GetPromotionRequisitionById(int requisition_master_id)
+        {
+            // var requisitionMaster = requisition_master.requisition_master_id;
+
+            var reqMaster = requisitionRepository.GetPromotionRequisitionById(requisition_master_id);
+            HttpResponseMessage response = Request.CreateResponse(HttpStatusCode.OK, reqMaster);
+            return response;
+        }
+        //price protection
+        //[HttpGet, ActionName("PriceProtection")]
+        //public HttpResponseMessage PriceProtection(int requisition_master_id)
+        //{
+        //    // var requisitionMaster = requisition_master.requisition_master_id;
+
+        //    var reqMaster = requisitionRepository.PriceProtection(requisition_master_id);
+        //    HttpResponseMessage response = Request.CreateResponse(HttpStatusCode.OK, reqMaster);
+        //    return response;
+        //}
+        //GetRequisitionByIdForDelivery
+        [HttpPost, ActionName("GetRequisitionByIdForDelivery")]
+        public HttpResponseMessage GetRequisitionByIdForDelivery([FromBody]Models.requisition_master requisition_master)
+        {
+            var requisitionMasterId = requisition_master.requisition_master_id;
+            var reqMaster = requisitionRepository.GetRequisitionByIdForDelivery(requisitionMasterId);
+            HttpResponseMessage response = Request.CreateResponse(HttpStatusCode.OK, reqMaster);
+            return response;
+        }
+
+        //For Requisition Report---------by Farzana Islam
+        public object GetRequisitionReportById(int requisition_master_id)
+        {
+            var requisition = requisitionRepository.GetRequisitionReportById(requisition_master_id);
+            var formatter = RequestFormat.JsonFormaterString();
+            return Request.CreateResponse(HttpStatusCode.OK, requisition, formatter);
+        }
+
+        [System.Web.Http.HttpPost]
+        public HttpResponseMessage Post([FromBody] RequisitionModel RequisitionModel)
+        {
+            try
+            {
+                if (string.IsNullOrEmpty(RequisitionModel.RequisitionMasterData.company_id.ToString()) && RequisitionModel.RequisitionMasterData.requisition_type != "B2B Requisition")
+                {
+                    var partyFormatter = RequestFormat.JsonFormaterString();
+                    return Request.CreateResponse(HttpStatusCode.OK, new Confirmation { output = "warning", msg = "Please Select Company" }, partyFormatter);
+                }
+                if (string.IsNullOrEmpty(RequisitionModel.RequisitionMasterData.warehouse_from.ToString()))
+                {
+                    var partyFormatter = RequestFormat.JsonFormaterString();
+                    return Request.CreateResponse(HttpStatusCode.OK, new Confirmation { output = "warning", msg = "Please Select Warehouse" }, partyFormatter);
+                }
+                if (string.IsNullOrEmpty(RequisitionModel.RequisitionMasterData.party_id.ToString()))
+                {
+                    var partyFormatter = RequestFormat.JsonFormaterString();
+                    return Request.CreateResponse(HttpStatusCode.OK, new Confirmation { output = "warning", msg = "Please Select Sales Channel" }, partyFormatter);
+                }
+                if (string.IsNullOrEmpty(RequisitionModel.RequisitionMasterData.credit_term.ToString()))
+                {
+                    var partyFormatter = RequestFormat.JsonFormaterString();
+                    return Request.CreateResponse(HttpStatusCode.OK, new Confirmation { output = "warning", msg = "Please Select Credit Term" }, partyFormatter);
+                }
+                if (RequisitionModel.RequisitionDetailsList.Count < 1)
+                {
+                    var partyFormatter = RequestFormat.JsonFormaterString();
+                    return Request.CreateResponse(HttpStatusCode.OK, new Confirmation { output = "warning", msg = "Please Select Products" }, partyFormatter);
+                }
+                
+                if (RequisitionModel.RequisitionDetailsList.Count > 0)
+                {
+                    foreach (var qt in RequisitionModel.RequisitionDetailsList)
+                    {
+                        var Q = qt.quantity;
+                        var pId = qt.product_id;
+                        var colId = qt.color_id;
+                        var pVerson = qt.product_version_id;
+                        var has_serial = qt.has_serial;
+                        if (Q < 1 || Q == null)
+                        {
+                            var partyFormatter = RequestFormat.JsonFormaterString();
+                            return Request.CreateResponse(HttpStatusCode.OK, new Confirmation { output = "warning", msg = "Check Quantity is not empty" }, partyFormatter);
+                            break;
+                        }else if (pId == null)
+                        {
+                            var partyFormatter = RequestFormat.JsonFormaterString();
+                            return Request.CreateResponse(HttpStatusCode.OK, new Confirmation { output = "warning", msg = "Check Product is not empty" }, partyFormatter);
+                            break;
+                        }
+                        else if (has_serial == true && (colId == null || pVerson==null))
+                        {
+                            var partyFormatter = RequestFormat.JsonFormaterString();
+                            return Request.CreateResponse(HttpStatusCode.OK, new Confirmation { output = "warning", msg = "Check Color or Version is not empty" }, partyFormatter);
+                            break;
+                        }
+                    }
+                }
+
+                requisitionRepository.AddRequisition(RequisitionModel);
+                var formatter = RequestFormat.JsonFormaterString();
+                return Request.CreateResponse(HttpStatusCode.OK, new Confirmation { output = "success", msg = "Requisition created successfully" }, formatter);
+            }
+            catch (Exception ex)
+            {
+                var formatter = RequestFormat.JsonFormaterString();
+                return Request.CreateResponse(HttpStatusCode.OK, new Confirmation { output = "error", msg = ex.ToString() }, formatter);
+            }
+        }
+        [System.Web.Http.HttpPut]
+        public HttpResponseMessage Put([FromBody] RequisitionModel RequisitionModel)
+        {
+            try
+            {
+                //if (string.IsNullOrEmpty(RequisitionModel.RequisitionMasterData.company_id.ToString()))
+                ////if (string.IsNullOrEmpty(RequisitionModel.RequisitionMasterData.company_id.ToString()) && RequisitionModel.RequisitionMasterData.requisition_type != "B2B Requisition")
+                //{
+                //    var partyFormatter = RequestFormat.JsonFormaterString();
+                //    return Request.CreateResponse(HttpStatusCode.OK, new Confirmation { output = "warning", msg = "Please Select Company" }, partyFormatter);
+                //}
+                if (string.IsNullOrEmpty(RequisitionModel.RequisitionMasterData.warehouse_from.ToString()))
+                {
+                    var formatter = RequestFormat.JsonFormaterString();
+                    return Request.CreateResponse(HttpStatusCode.OK, new Confirmation { output = "error", msg = "Please Select Warehouse !!" }, formatter);
+
+                }
+                if (RequisitionModel.RequisitionMasterData.edit_count==3)
+                {
+                    var formatter = RequestFormat.JsonFormaterString();
+                    return Request.CreateResponse(HttpStatusCode.OK, new Confirmation { output = "error", msg = "You have already edit three times !!" }, formatter);
+                }
+                else
+                {
+                    requisitionRepository.EditRequisition(RequisitionModel);
+                    var formatter = RequestFormat.JsonFormaterString();
+                    return Request.CreateResponse(HttpStatusCode.OK, new Confirmation { output = "success", msg = "Requisition Updated successfully" }, formatter);
+                }
+
+            }
+            catch (Exception ex)
+            {
+                var formatter = RequestFormat.JsonFormaterString();
+                return Request.CreateResponse(HttpStatusCode.OK, new Confirmation { output = "error", msg = ex.ToString() }, formatter);
+            }
+        }
+
+
+        [System.Web.Http.HttpGet]
+        public HttpResponseMessage UpdateApproveStatus(int requisitionId)
+        {
+            try
+            {
+                if (requisitionId > 0)
+                {
+                    requisitionRepository.UpdateApproveStatus(requisitionId);
+                    var formatter = RequestFormat.JsonFormaterString();
+                    return Request.CreateResponse(HttpStatusCode.OK,
+                        new Confirmation { output = "success", msg = "Requisition Updated successfully" }, formatter);
+                }
+                else
+                {
+                    var formatter = RequestFormat.JsonFormaterString();
+                    return Request.CreateResponse(HttpStatusCode.OK, new Confirmation { output = "error", msg = "Invalid Requisition" }, formatter);
+                }
+
+            }
+            catch (Exception ex)
+            {
+                var formatter = RequestFormat.JsonFormaterString();
+                return Request.CreateResponse(HttpStatusCode.OK, new Confirmation { output = "error", msg = ex.ToString() }, formatter);
+            }
+        }
+
+
+        [HttpGet, ActionName("DeleteRequisitionDetails")]
+        public HttpResponseMessage DeleteRequisitionDetails(int requisition_details_id)
+        {
+
+            try
+            {
+                var reqMaster = requisitionRepository.DeleteRequisitionDetailsById(requisition_details_id);
+                var formatter = RequestFormat.JsonFormaterString();
+                return Request.CreateResponse(HttpStatusCode.OK, new Confirmation { output = "success", msg = "Delete Successfully." }, formatter);
+            }
+            catch (Exception ex)
+            {
+                var formatter = RequestFormat.JsonFormaterString();
+                return Request.CreateResponse(HttpStatusCode.OK, new Confirmation { output = "error", msg = ex.ToString() }, formatter);
+            }
+        }
+
+        
+
+        //GetPartywiseRequisitionsForDelivery
+        [HttpGet, ActionName("GetPartywiseRequisitionsForDelivery")]
+        public HttpResponseMessage GetPartywiseRequisitionsForDelivery(int partyId)
+        {
+            var partyRequisitions = requisitionRepository.GetPartywiseRequisitionsForDelivery(partyId);
+            var formatter = RequestFormat.JsonFormaterString();
+            return Request.CreateResponse(HttpStatusCode.OK, partyRequisitions, formatter);
+        }
+        //Price by PartyTypeId Kiron:17-12-2016
+        [HttpGet, ActionName("GetProductPriceByPartyTypeId")]
+        public HttpResponseMessage GetProductPriceByPartyTypeId(int party_type_id,int product_id)
+        {
+            var productPriceByPartyTypeId = requisitionRepository.GetProductPriceByPartyTypeId(party_type_id, product_id);
+            var formatter = RequestFormat.JsonFormaterString();
+            return Request.CreateResponse(HttpStatusCode.OK, productPriceByPartyTypeId, formatter);
+        }
+
+        //24.01.2017(mohi uddin)
+        [HttpGet, ActionName("cancelRequisition")]
+        public HttpResponseMessage cancelRequisition(long requisition_master_id, long userid)
+        {
+            try
+            {
+                 //deliveryRepository.UpdateApproveStatus(delivery_master_id, userid);
+                requisitionRepository.cancelRequisition(requisition_master_id, userid);
+                 var formatter = RequestFormat.JsonFormaterString();
+                 return Request.CreateResponse(HttpStatusCode.OK,
+                 new Confirmation { output = "success", msg = "Requisition Cancelled successfully" }, formatter);
+
+            }
+            catch (Exception ex)
+            {
+                var formatter = RequestFormat.JsonFormaterString();
+                return Request.CreateResponse(HttpStatusCode.OK, new Confirmation { output = "error", msg = ex.ToString() }, formatter);
+            }
+        }
+
+        [HttpGet, ActionName("ProceedToHOS")]
+        //public HttpResponseMessage UpdateApproveStatus(int delivery_master_id)
+        public HttpResponseMessage ProceedToHOS(long requisition_master_id, long userid)
+        {
+            try
+            {
+                requisitionRepository.ProceedToHOS(requisition_master_id, userid);
+                    var formatter = RequestFormat.JsonFormaterString();
+                    return Request.CreateResponse(HttpStatusCode.OK,
+                    new Confirmation { output = "success", msg = "Proceed To HOS. successfully" }, formatter);
+
+            }
+            catch (Exception ex)
+            {
+                var formatter = RequestFormat.JsonFormaterString();
+                return Request.CreateResponse(HttpStatusCode.OK, new Confirmation { output = "error", msg = ex.ToString() }, formatter);
+            }
+        }
+
+        [HttpGet, ActionName("GetPaidAmtofRequisition")]
+        public HttpResponseMessage GetPaidAmtofRequisition(long requisition_master_id)
+        {
+            var openingBalance = requisitionRepository.GetPaidAmtofRequisition(requisition_master_id);
+            var formatter = RequestFormat.JsonFormaterString();
+            return Request.CreateResponse(HttpStatusCode.OK, openingBalance, formatter);
+        }
+
+        [HttpGet, ActionName("GetPaymentVerifyStatus")]
+        public HttpResponseMessage GetPaymentVerifyStatus(long requisition_master_id)
+        {
+            var openingBalance = requisitionRepository.GetPaymentVerifyStatus(requisition_master_id);
+            var formatter = RequestFormat.JsonFormaterString();
+            return Request.CreateResponse(HttpStatusCode.OK, openingBalance, formatter);
+        }
+        [HttpGet, ActionName("GetAllHOSApprovedRequisitionList")]
+        public HttpResponseMessage GetAllHOSApprovedRequisitionList(long userId)
+        {
+            var data = requisitionRepository.GetAllHOSApprovedRequisitionList(userId);
+            var formatter = RequestFormat.JsonFormaterString();
+            return Request.CreateResponse(HttpStatusCode.OK, data, formatter);
+        }
+        [HttpGet, ActionName("GetAllOPHsApprovedRequisitionList")]
+        public HttpResponseMessage GetAllOPHsApprovedRequisitionList(long userId)
+        {
+            var data = requisitionRepository.GetAllOPHsApprovedRequisitionList(userId);
+            var formatter = RequestFormat.JsonFormaterString();
+            return Request.CreateResponse(HttpStatusCode.OK, data, formatter);
+        }
+    }
+}

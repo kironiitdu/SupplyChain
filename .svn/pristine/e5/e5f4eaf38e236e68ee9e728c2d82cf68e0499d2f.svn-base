@@ -1,0 +1,169 @@
+﻿using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Net;
+using System.Net.Http;
+using System.Web.Http;
+using System.Web.Http.Cors;
+using DMSApi.Models;
+using DMSApi.Models.IRepository;
+using DMSApi.Models.Repository;
+
+namespace DMSApi.Controllers
+{
+   [EnableCors(origins: "*", headers: "*", methods: "*")]
+    public class AreaController : ApiController
+    {
+            private readonly IAreaRepository _areaRepository;
+
+            public AreaController()
+            {
+                this._areaRepository = new AreaRepository();
+            }
+
+            public AreaController(AreaRepository areaRepository)
+            {
+                this._areaRepository = areaRepository;
+            }
+
+            [System.Web.Http.HttpGet]
+            public HttpResponseMessage GetAllArea()
+            {
+                try
+                {
+                    var countries = _areaRepository.GetAllAreas();
+                    var formatter = RequestFormat.JsonFormaterString();
+                    return Request.CreateResponse(HttpStatusCode.OK, countries, formatter);
+                }
+                catch (Exception ex)
+                {
+
+                    var formatter = RequestFormat.JsonFormaterString();
+                    return Request.CreateResponse(HttpStatusCode.OK, new Confirmation { output = "error", msg = ex.ToString() }, formatter);
+                }
+            }
+
+
+            [System.Web.Http.HttpPost]
+            public HttpResponseMessage Post([FromBody] Models.area mArea)
+            {
+
+                try
+                {
+                    if (string.IsNullOrEmpty(mArea.area_name))
+                    {
+                        var formatter = RequestFormat.JsonFormaterString();
+                        return Request.CreateResponse(HttpStatusCode.OK, new Confirmation { output = "error", msg = "Area Name is Empty" }, formatter);
+
+                    }
+
+
+                   
+                        if (_areaRepository.CheckDuplicateZoneArea(mArea))
+                        {
+                            var formatter = RequestFormat.JsonFormaterString();
+                            return Request.CreateResponse(HttpStatusCode.OK, new Confirmation { output = "error", msg = "Same Area and Zone Already Exists! " }, formatter);
+                        }
+                        else
+                        {
+                            area insertArea = new area
+                            {
+                                area_name = mArea.area_name,
+                                area_code = mArea.area_code,
+                                region_id = mArea.region_id,
+                                is_active = mArea.is_active,
+                                created_by = mArea.created_by,
+                                created_date = DateTime.Now,
+                                updated_by = mArea.updated_by,
+                                updated_date = DateTime.Now
+                            };
+
+
+
+                            _areaRepository.AddArea(insertArea);
+
+
+                            var formatter = RequestFormat.JsonFormaterString();
+                            return Request.CreateResponse(HttpStatusCode.OK, new Confirmation { output = "success", msg = "Area saved successfully" }, formatter); 
+                        }
+                      
+                    
+
+
+                }
+                catch (Exception ex)
+                {
+                    var formatter = RequestFormat.JsonFormaterString();
+                    return Request.CreateResponse(HttpStatusCode.OK, new Confirmation { output = "error", msg = ex.ToString() }, formatter);
+                }
+            }
+
+            [System.Web.Http.HttpPut]
+            public HttpResponseMessage Put([FromBody] Models.area oArea)
+            {
+                try
+                {
+                    if (_areaRepository.CheckDuplicateZoneArea(oArea))
+                    {
+                        var formatter = RequestFormat.JsonFormaterString();
+                        return Request.CreateResponse(HttpStatusCode.OK, new Confirmation { output = "error", msg = "Same Area and Zone Already Exists " }, formatter);
+                    }
+                    else
+                    {
+                        Models.area updateArea = new Models.area
+                        {
+                            region_id = oArea.region_id,
+                            area_id = oArea.area_id,
+                            area_name = oArea.area_name,
+                            area_code = oArea.area_code,
+                            is_active = oArea.is_active,
+                            updated_date = DateTime.Now,
+                            updated_by = oArea.updated_by
+                        };
+
+                        _areaRepository.EditArea(updateArea);
+
+
+                        var formatter = RequestFormat.JsonFormaterString();
+                        return Request.CreateResponse(HttpStatusCode.OK, new Confirmation { output = "success", msg = "Area Update Successfully" }, formatter); 
+                    }
+             
+                }
+                catch (Exception ex)
+                {
+                    var formatter = RequestFormat.JsonFormaterString();
+                    return Request.CreateResponse(HttpStatusCode.OK, new Confirmation { output = "error", msg = ex.ToString() }, formatter);
+                }
+            }
+
+
+            [System.Web.Http.HttpDelete]
+            public HttpResponseMessage Delete([FromBody]Models.area oArea)
+            {
+                try
+                {
+                   
+                    bool deleteArea = _areaRepository.DeleteArea(oArea.area_id);
+
+                    var formatter = RequestFormat.JsonFormaterString();
+                    return Request.CreateResponse(HttpStatusCode.OK, new Confirmation { output = "success", msg = "Area Deleted Successfully." }, formatter);
+                }
+                catch (Exception ex)
+                {
+                    var formatter = RequestFormat.JsonFormaterString();
+                    return Request.CreateResponse(HttpStatusCode.OK, new Confirmation { output = "error", msg = ex.ToString() }, formatter);
+                }
+
+            }
+
+            //load  area based on region
+            [HttpGet, ActionName("GetRegionwiseAreaForDropdown")]
+            public HttpResponseMessage GetRegionwiseAreaForDropdown(long region_id)
+            {
+                var area = _areaRepository.GetRegionwiseAreaForDropdown(region_id);
+                var formatter = RequestFormat.JsonFormaterString();
+                return Request.CreateResponse(HttpStatusCode.OK, area, formatter);
+            }
+            
+        }
+ }

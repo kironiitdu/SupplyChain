@@ -1,0 +1,2050 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+  <EntityContainerMapping StorageEntityContainer="SCMAamraDevModelStoreContainer" CdmEntityContainer="DMSEntities">
+    <EntitySetMapping Name="accessories_category">
+      <EntityTypeMapping TypeName="SCMAamraDevModel.accessories_category">
+        <MappingFragment StoreEntitySet="accessories_category">
+          <ScalarProperty Name="accessories_category_id" ColumnName="accessories_category_id" />
+          <ScalarProperty Name="accessories_category_name" ColumnName="accessories_category_name" />
+          <ScalarProperty Name="price" ColumnName="price" />
+          <ScalarProperty Name="created_by" ColumnName="created_by" />
+          <ScalarProperty Name="created_date" ColumnName="created_date" />
+          <ScalarProperty Name="updated_by" ColumnName="updated_by" />
+          <ScalarProperty Name="updated_date" ColumnName="updated_date" />
+          <ScalarProperty Name="is_active" ColumnName="is_active" />
+          <ScalarProperty Name="is_deleted" ColumnName="is_deleted" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="areas">
+      <EntityTypeMapping TypeName="SCMAamraDevModel.area">
+        <MappingFragment StoreEntitySet="area">
+          <ScalarProperty Name="area_id" ColumnName="area_id" />
+          <ScalarProperty Name="region_id" ColumnName="region_id" />
+          <ScalarProperty Name="area_name" ColumnName="area_name" />
+          <ScalarProperty Name="area_code" ColumnName="area_code" />
+          <ScalarProperty Name="is_active" ColumnName="is_active" />
+          <ScalarProperty Name="created_date" ColumnName="created_date" />
+          <ScalarProperty Name="created_by" ColumnName="created_by" />
+          <ScalarProperty Name="updated_date" ColumnName="updated_date" />
+          <ScalarProperty Name="updated_by" ColumnName="updated_by" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="banks">
+      <EntityTypeMapping TypeName="SCMAamraDevModel.bank">
+        <MappingFragment StoreEntitySet="bank">
+          <ScalarProperty Name="bank_id" ColumnName="bank_id" />
+          <ScalarProperty Name="bank_name" ColumnName="bank_name" />
+          <ScalarProperty Name="created_by" ColumnName="created_by" />
+          <ScalarProperty Name="created_date" ColumnName="created_date" />
+          <ScalarProperty Name="updated_by" ColumnName="updated_by" />
+          <ScalarProperty Name="updated_date" ColumnName="updated_date" />
+          <ScalarProperty Name="is_active" ColumnName="is_active" />
+          <ScalarProperty Name="is_deleted" ColumnName="is_deleted" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="bank_account">
+      <EntityTypeMapping TypeName="SCMAamraDevModel.bank_account">
+        <MappingFragment StoreEntitySet="bank_account">
+          <ScalarProperty Name="bank_account_id" ColumnName="bank_account_id" />
+          <ScalarProperty Name="bank_branch_id" ColumnName="bank_branch_id" />
+          <ScalarProperty Name="bank_account_name" ColumnName="bank_account_name" />
+          <ScalarProperty Name="created_by" ColumnName="created_by" />
+          <ScalarProperty Name="created_date" ColumnName="created_date" />
+          <ScalarProperty Name="updated_by" ColumnName="updated_by" />
+          <ScalarProperty Name="updated_date" ColumnName="updated_date" />
+          <ScalarProperty Name="is_active" ColumnName="is_active" />
+          <ScalarProperty Name="is_deleted" ColumnName="is_deleted" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="bank_branch">
+      <EntityTypeMapping TypeName="SCMAamraDevModel.bank_branch">
+        <MappingFragment StoreEntitySet="bank_branch">
+          <ScalarProperty Name="bank_branch_id" ColumnName="bank_branch_id" />
+          <ScalarProperty Name="bank_branch_name" ColumnName="bank_branch_name" />
+          <ScalarProperty Name="bank_id" ColumnName="bank_id" />
+          <ScalarProperty Name="created_by" ColumnName="created_by" />
+          <ScalarProperty Name="created_date" ColumnName="created_date" />
+          <ScalarProperty Name="updated_by" ColumnName="updated_by" />
+          <ScalarProperty Name="updated_date" ColumnName="updated_date" />
+          <ScalarProperty Name="is_active" ColumnName="is_active" />
+          <ScalarProperty Name="is_deleted" ColumnName="is_deleted" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="brands">
+      <EntityTypeMapping TypeName="SCMAamraDevModel.brand">
+        <MappingFragment StoreEntitySet="brand">
+          <ScalarProperty Name="brand_id" ColumnName="brand_id" />
+          <ScalarProperty Name="brand_name" ColumnName="brand_name" />
+          <ScalarProperty Name="created_by" ColumnName="created_by" />
+          <ScalarProperty Name="created_date" ColumnName="created_date" />
+          <ScalarProperty Name="updated_by" ColumnName="updated_by" />
+          <ScalarProperty Name="updated_date" ColumnName="updated_date" />
+          <ScalarProperty Name="is_active" ColumnName="is_active" />
+          <ScalarProperty Name="is_deleted" ColumnName="is_deleted" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="ci_pl_details">
+      <EntityTypeMapping TypeName="SCMAamraDevModel.ci_pl_details">
+        <MappingFragment StoreEntitySet="ci_pl_details">
+          <ScalarProperty Name="ci_pl_details_id" ColumnName="ci_pl_details_id" />
+          <ScalarProperty Name="ci_pl_master_id" ColumnName="ci_pl_master_id" />
+          <ScalarProperty Name="product_id" ColumnName="product_id" />
+          <ScalarProperty Name="quantity" ColumnName="quantity" />
+          <ScalarProperty Name="unit_price" ColumnName="unit_price" />
+          <ScalarProperty Name="amount" ColumnName="amount" />
+          <ScalarProperty Name="nw_kg_ctn" ColumnName="nw_kg_ctn" />
+          <ScalarProperty Name="gw_kg_ctn" ColumnName="gw_kg_ctn" />
+          <ScalarProperty Name="measurement" ColumnName="measurement" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="ci_pl_master">
+      <EntityTypeMapping TypeName="SCMAamraDevModel.ci_pl_master">
+        <MappingFragment StoreEntitySet="ci_pl_master">
+          <ScalarProperty Name="ci_pl_master_id" ColumnName="ci_pl_master_id" />
+          <ScalarProperty Name="supplier_id" ColumnName="supplier_id" />
+          <ScalarProperty Name="purchase_order_master_id" ColumnName="purchase_order_master_id" />
+          <ScalarProperty Name="ci_no" ColumnName="ci_no" />
+          <ScalarProperty Name="ref_no" ColumnName="ref_no" />
+          <ScalarProperty Name="ci_date" ColumnName="ci_date" />
+          <ScalarProperty Name="payment_term" ColumnName="payment_term" />
+          <ScalarProperty Name="dc_no" ColumnName="dc_no" />
+          <ScalarProperty Name="issue_date" ColumnName="issue_date" />
+          <ScalarProperty Name="ci_attachment_location" ColumnName="ci_attachment_location" />
+          <ScalarProperty Name="pl_attachment_location" ColumnName="pl_attachment_location" />
+          <ScalarProperty Name="created_by" ColumnName="created_by" />
+          <ScalarProperty Name="created_date" ColumnName="created_date" />
+          <ScalarProperty Name="updated_by" ColumnName="updated_by" />
+          <ScalarProperty Name="updated_date" ColumnName="updated_date" />
+          <ScalarProperty Name="is_active" ColumnName="is_active" />
+          <ScalarProperty Name="is_received" ColumnName="is_received" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="cities">
+      <EntityTypeMapping TypeName="SCMAamraDevModel.city">
+        <MappingFragment StoreEntitySet="city">
+          <ScalarProperty Name="city_id" ColumnName="city_id" />
+          <ScalarProperty Name="city_name" ColumnName="city_name" />
+          <ScalarProperty Name="created_by" ColumnName="created_by" />
+          <ScalarProperty Name="created_date" ColumnName="created_date" />
+          <ScalarProperty Name="updated_by" ColumnName="updated_by" />
+          <ScalarProperty Name="updated_date" ColumnName="updated_date" />
+          <ScalarProperty Name="is_active" ColumnName="is_active" />
+          <ScalarProperty Name="is_deleted" ColumnName="is_deleted" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="colors">
+      <EntityTypeMapping TypeName="SCMAamraDevModel.color">
+        <MappingFragment StoreEntitySet="color">
+          <ScalarProperty Name="color_id" ColumnName="color_id" />
+          <ScalarProperty Name="color_name" ColumnName="color_name" />
+          <ScalarProperty Name="created_by" ColumnName="created_by" />
+          <ScalarProperty Name="created_date" ColumnName="created_date" />
+          <ScalarProperty Name="updated_by" ColumnName="updated_by" />
+          <ScalarProperty Name="updated_date" ColumnName="updated_date" />
+          <ScalarProperty Name="is_active" ColumnName="is_active" />
+          <ScalarProperty Name="is_deleted" ColumnName="is_deleted" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="companies">
+      <EntityTypeMapping TypeName="SCMAamraDevModel.company">
+        <MappingFragment StoreEntitySet="company">
+          <ScalarProperty Name="company_id" ColumnName="company_id" />
+          <ScalarProperty Name="company_name" ColumnName="company_name" />
+          <ScalarProperty Name="company_code" ColumnName="company_code" />
+          <ScalarProperty Name="address" ColumnName="address" />
+          <ScalarProperty Name="mobile" ColumnName="mobile" />
+          <ScalarProperty Name="zip_code" ColumnName="zip_code" />
+          <ScalarProperty Name="email" ColumnName="email" />
+          <ScalarProperty Name="created_by" ColumnName="created_by" />
+          <ScalarProperty Name="created_date" ColumnName="created_date" />
+          <ScalarProperty Name="updated_by" ColumnName="updated_by" />
+          <ScalarProperty Name="updated_date" ColumnName="updated_date" />
+          <ScalarProperty Name="is_active" ColumnName="is_active" />
+          <ScalarProperty Name="is_deleted" ColumnName="is_deleted" />
+          <ScalarProperty Name="country_id" ColumnName="country_id" />
+          <ScalarProperty Name="city_id" ColumnName="city_id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="controls">
+      <EntityTypeMapping TypeName="SCMAamraDevModel.control">
+        <MappingFragment StoreEntitySet="control">
+          <ScalarProperty Name="control_id" ColumnName="control_id" />
+          <ScalarProperty Name="control_name" ColumnName="control_name" />
+          <ScalarProperty Name="control_parent_id" ColumnName="control_parent_id" />
+          <ScalarProperty Name="control_type_id" ColumnName="control_type_id" />
+          <ScalarProperty Name="control_sort" ColumnName="control_sort" />
+          <ScalarProperty Name="control_alias" ColumnName="control_alias" />
+          <ScalarProperty Name="control_controller" ColumnName="control_controller" />
+          <ScalarProperty Name="control_action" ColumnName="control_action" />
+          <ScalarProperty Name="company_id" ColumnName="company_id" />
+          <ScalarProperty Name="Level" ColumnName="Level" />
+          <ScalarProperty Name="icon" ColumnName="icon" />
+          <ScalarProperty Name="created_by" ColumnName="created_by" />
+          <ScalarProperty Name="created_date" ColumnName="created_date" />
+          <ScalarProperty Name="updated_by" ColumnName="updated_by" />
+          <ScalarProperty Name="updated_date" ColumnName="updated_date" />
+          <ScalarProperty Name="is_active" ColumnName="is_active" />
+          <ScalarProperty Name="is_deleted" ColumnName="is_deleted" />
+          <ScalarProperty Name="Territory_id" ColumnName="Territory_id" />
+          <ScalarProperty Name="region_id" ColumnName="region_id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="countries">
+      <EntityTypeMapping TypeName="SCMAamraDevModel.country">
+        <MappingFragment StoreEntitySet="country">
+          <ScalarProperty Name="country_id" ColumnName="country_id" />
+          <ScalarProperty Name="country_name" ColumnName="country_name" />
+          <ScalarProperty Name="country_code" ColumnName="country_code" />
+          <ScalarProperty Name="created_by" ColumnName="created_by" />
+          <ScalarProperty Name="created_date" ColumnName="created_date" />
+          <ScalarProperty Name="updated_by" ColumnName="updated_by" />
+          <ScalarProperty Name="updated_date" ColumnName="updated_date" />
+          <ScalarProperty Name="is_active" ColumnName="is_active" />
+          <ScalarProperty Name="is_deleted" ColumnName="is_deleted" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="couriers">
+      <EntityTypeMapping TypeName="SCMAamraDevModel.courier">
+        <MappingFragment StoreEntitySet="courier">
+          <ScalarProperty Name="courier_id" ColumnName="courier_id" />
+          <ScalarProperty Name="courier_name" ColumnName="courier_name" />
+          <ScalarProperty Name="cell" ColumnName="cell" />
+          <ScalarProperty Name="created_by" ColumnName="created_by" />
+          <ScalarProperty Name="created_date" ColumnName="created_date" />
+          <ScalarProperty Name="updated_by" ColumnName="updated_by" />
+          <ScalarProperty Name="updated_date" ColumnName="updated_date" />
+          <ScalarProperty Name="is_active" ColumnName="is_active" />
+          <ScalarProperty Name="is_deleted" ColumnName="is_deleted" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="currencies">
+      <EntityTypeMapping TypeName="SCMAamraDevModel.currency">
+        <MappingFragment StoreEntitySet="currency">
+          <ScalarProperty Name="currency_id" ColumnName="currency_id" />
+          <ScalarProperty Name="currency_name" ColumnName="currency_name" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="damage_type">
+      <EntityTypeMapping TypeName="SCMAamraDevModel.damage_type">
+        <MappingFragment StoreEntitySet="damage_type">
+          <ScalarProperty Name="damage_type_id" ColumnName="damage_type_id" />
+          <ScalarProperty Name="damage_type_name" ColumnName="damage_type_name" />
+          <ScalarProperty Name="created_by" ColumnName="created_by" />
+          <ScalarProperty Name="created_date" ColumnName="created_date" />
+          <ScalarProperty Name="updated_by" ColumnName="updated_by" />
+          <ScalarProperty Name="updated_date" ColumnName="updated_date" />
+          <ScalarProperty Name="is_active" ColumnName="is_active" />
+          <ScalarProperty Name="is_deleted" ColumnName="is_deleted" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="dealer_type">
+      <EntityTypeMapping TypeName="SCMAamraDevModel.dealer_type">
+        <MappingFragment StoreEntitySet="dealer_type">
+          <ScalarProperty Name="dealer_type_id" ColumnName="dealer_type_id" />
+          <ScalarProperty Name="dealer_type_name" ColumnName="dealer_type_name" />
+          <ScalarProperty Name="dealer_type_prefix" ColumnName="dealer_type_prefix" />
+          <ScalarProperty Name="created_by" ColumnName="created_by" />
+          <ScalarProperty Name="created_date" ColumnName="created_date" />
+          <ScalarProperty Name="updated_by" ColumnName="updated_by" />
+          <ScalarProperty Name="updated_date" ColumnName="updated_date" />
+          <ScalarProperty Name="is_active" ColumnName="is_active" />
+          <ScalarProperty Name="is_deleted" ColumnName="is_deleted" />
+          <ScalarProperty Name="credit_limit" ColumnName="credit_limit" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="delivery_details">
+      <EntityTypeMapping TypeName="SCMAamraDevModel.delivery_details">
+        <MappingFragment StoreEntitySet="delivery_details">
+          <ScalarProperty Name="delivery_details_id" ColumnName="delivery_details_id" />
+          <ScalarProperty Name="delivery_master_id" ColumnName="delivery_master_id" />
+          <ScalarProperty Name="product_id" ColumnName="product_id" />
+          <ScalarProperty Name="unit_id" ColumnName="unit_id" />
+          <ScalarProperty Name="color_id" ColumnName="color_id" />
+          <ScalarProperty Name="product_version_id" ColumnName="product_version_id" />
+          <ScalarProperty Name="party_id" ColumnName="party_id" />
+          <ScalarProperty Name="requisition_quantity" ColumnName="requisition_quantity" />
+          <ScalarProperty Name="delivered_quantity" ColumnName="delivered_quantity" />
+          <ScalarProperty Name="is_gift" ColumnName="is_gift" />
+          <ScalarProperty Name="is_live_dummy" ColumnName="is_live_dummy" />
+          <ScalarProperty Name="gift_type" ColumnName="gift_type" />
+          <ScalarProperty Name="unit_price" ColumnName="unit_price" />
+          <ScalarProperty Name="line_total" ColumnName="line_total" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="delivery_master">
+      <EntityTypeMapping TypeName="SCMAamraDevModel.delivery_master">
+        <MappingFragment StoreEntitySet="delivery_master">
+          <ScalarProperty Name="delivery_master_id" ColumnName="delivery_master_id" />
+          <ScalarProperty Name="delivery_no" ColumnName="delivery_no" />
+          <ScalarProperty Name="delivery_date" ColumnName="delivery_date" />
+          <ScalarProperty Name="delivery_address" ColumnName="delivery_address" />
+          <ScalarProperty Name="delivered_by" ColumnName="delivered_by" />
+          <ScalarProperty Name="party_id" ColumnName="party_id" />
+          <ScalarProperty Name="requisition_master_id" ColumnName="requisition_master_id" />
+          <ScalarProperty Name="courier_id" ColumnName="courier_id" />
+          <ScalarProperty Name="courier_slip_no" ColumnName="courier_slip_no" />
+          <ScalarProperty Name="from_warehouse_id" ColumnName="from_warehouse_id" />
+          <ScalarProperty Name="to_warehouse_id" ColumnName="to_warehouse_id" />
+          <ScalarProperty Name="status" ColumnName="status" />
+          <ScalarProperty Name="remarks" ColumnName="remarks" />
+          <ScalarProperty Name="lot_no" ColumnName="lot_no" />
+          <ScalarProperty Name="vehicle_no" ColumnName="vehicle_no" />
+          <ScalarProperty Name="truck_driver_name" ColumnName="truck_driver_name" />
+          <ScalarProperty Name="truck_driver_mobile" ColumnName="truck_driver_mobile" />
+          <ScalarProperty Name="total_amount" ColumnName="total_amount" />
+          <ScalarProperty Name="owner_party_id" ColumnName="owner_party_id" />
+          <ScalarProperty Name="receive_by" ColumnName="receive_by" />
+          <ScalarProperty Name="receive_date" ColumnName="receive_date" />
+          <ScalarProperty Name="created_by" ColumnName="created_by" />
+          <ScalarProperty Name="created_date" ColumnName="created_date" />
+          <ScalarProperty Name="updated_by" ColumnName="updated_by" />
+          <ScalarProperty Name="updated_date" ColumnName="updated_date" />
+          <ScalarProperty Name="is_active" ColumnName="is_active" />
+          <ScalarProperty Name="is_deleted" ColumnName="is_deleted" />
+          <ScalarProperty Name="company_id" ColumnName="company_id" />
+          <ScalarProperty Name="delivery_person_name" ColumnName="delivery_person_name" />
+          <ScalarProperty Name="challan_copy" ColumnName="challan_copy" />
+          <ScalarProperty Name="delivery_method_id" ColumnName="delivery_method_id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="departments">
+      <EntityTypeMapping TypeName="SCMAamraDevModel.department">
+        <MappingFragment StoreEntitySet="department">
+          <ScalarProperty Name="department_id" ColumnName="department_id" />
+          <ScalarProperty Name="department_name" ColumnName="department_name" />
+          <ScalarProperty Name="is_active" ColumnName="is_active" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="designations">
+      <EntityTypeMapping TypeName="SCMAamraDevModel.designation">
+        <MappingFragment StoreEntitySet="designation">
+          <ScalarProperty Name="sales_designation_id" ColumnName="sales_designation_id" />
+          <ScalarProperty Name="parent_designation_id" ColumnName="parent_designation_id" />
+          <ScalarProperty Name="designation_id" ColumnName="designation_id" />
+          <ScalarProperty Name="sales_type_id" ColumnName="sales_type_id" />
+          <ScalarProperty Name="sales_designation" ColumnName="sales_designation" />
+          <ScalarProperty Name="sales_person_type_code" ColumnName="sales_person_type_code" />
+          <ScalarProperty Name="created_by" ColumnName="created_by" />
+          <ScalarProperty Name="created_date" ColumnName="created_date" />
+          <ScalarProperty Name="updated_by" ColumnName="updated_by" />
+          <ScalarProperty Name="updated_date" ColumnName="updated_date" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="direct_transfer_details">
+      <EntityTypeMapping TypeName="SCMAamraDevModel.direct_transfer_details">
+        <MappingFragment StoreEntitySet="direct_transfer_details">
+          <ScalarProperty Name="direct_transfer_details_id" ColumnName="direct_transfer_details_id" />
+          <ScalarProperty Name="direct_transfer_master_id" ColumnName="direct_transfer_master_id" />
+          <ScalarProperty Name="product_id" ColumnName="product_id" />
+          <ScalarProperty Name="color_id" ColumnName="color_id" />
+          <ScalarProperty Name="product_version_id" ColumnName="product_version_id" />
+          <ScalarProperty Name="quantity" ColumnName="quantity" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="direct_transfer_master">
+      <EntityTypeMapping TypeName="SCMAamraDevModel.direct_transfer_master">
+        <MappingFragment StoreEntitySet="direct_transfer_master">
+          <ScalarProperty Name="direct_transfer_master_id" ColumnName="direct_transfer_master_id" />
+          <ScalarProperty Name="direct_transfer_code" ColumnName="direct_transfer_code" />
+          <ScalarProperty Name="from_warehouse_id" ColumnName="from_warehouse_id" />
+          <ScalarProperty Name="to_warehouse_id" ColumnName="to_warehouse_id" />
+          <ScalarProperty Name="transfer_date" ColumnName="transfer_date" />
+          <ScalarProperty Name="remarks" ColumnName="remarks" />
+          <ScalarProperty Name="created_by" ColumnName="created_by" />
+          <ScalarProperty Name="created_date" ColumnName="created_date" />
+          <ScalarProperty Name="updated_by" ColumnName="updated_by" />
+          <ScalarProperty Name="updated_date" ColumnName="updated_date" />
+          <ScalarProperty Name="is_active" ColumnName="is_active" />
+          <ScalarProperty Name="is_deleted" ColumnName="is_deleted" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="employees">
+      <EntityTypeMapping TypeName="SCMAamraDevModel.employee">
+        <MappingFragment StoreEntitySet="employee">
+          <ScalarProperty Name="employee_id" ColumnName="employee_id" />
+          <ScalarProperty Name="employee_name" ColumnName="employee_name" />
+          <ScalarProperty Name="date_of_birth" ColumnName="date_of_birth" />
+          <ScalarProperty Name="date_of_join" ColumnName="date_of_join" />
+          <ScalarProperty Name="department_id" ColumnName="department_id" />
+          <ScalarProperty Name="designation_id" ColumnName="designation_id" />
+          <ScalarProperty Name="email_address" ColumnName="email_address" />
+          <ScalarProperty Name="mobile_number" ColumnName="mobile_number" />
+          <ScalarProperty Name="address" ColumnName="address" />
+          <ScalarProperty Name="gender" ColumnName="gender" />
+          <ScalarProperty Name="marital_status" ColumnName="marital_status" />
+          <ScalarProperty Name="blood_group" ColumnName="blood_group" />
+          <ScalarProperty Name="region_id" ColumnName="region_id" />
+          <ScalarProperty Name="area_id" ColumnName="area_id" />
+          <ScalarProperty Name="territory_id" ColumnName="territory_id" />
+          <ScalarProperty Name="is_active" ColumnName="is_active" />
+          <ScalarProperty Name="is_deleted" ColumnName="is_deleted" />
+          <ScalarProperty Name="created_by" ColumnName="created_by" />
+          <ScalarProperty Name="created_date" ColumnName="created_date" />
+          <ScalarProperty Name="updated_by" ColumnName="updated_by" />
+          <ScalarProperty Name="updated_date" ColumnName="updated_date" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="eshop_cutomer_requisition_mapping">
+      <EntityTypeMapping TypeName="SCMAamraDevModel.eshop_cutomer_requisition_mapping">
+        <MappingFragment StoreEntitySet="eshop_cutomer_requisition_mapping">
+          <ScalarProperty Name="eshop_cutomer_requisition_mapping_id" ColumnName="eshop_cutomer_requisition_mapping_id" />
+          <ScalarProperty Name="delivery_date" ColumnName="delivery_date" />
+          <ScalarProperty Name="requisition_master_id" ColumnName="requisition_master_id" />
+          <ScalarProperty Name="customer_name" ColumnName="customer_name" />
+          <ScalarProperty Name="mobile_no" ColumnName="mobile_no" />
+          <ScalarProperty Name="customer_email" ColumnName="customer_email" />
+          <ScalarProperty Name="shipping" ColumnName="shipping" />
+          <ScalarProperty Name="payment_method" ColumnName="payment_method" />
+          <ScalarProperty Name="shipping_address" ColumnName="shipping_address" />
+          <ScalarProperty Name="billing_address" ColumnName="billing_address" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="eshop_payment_method">
+      <EntityTypeMapping TypeName="SCMAamraDevModel.eshop_payment_method">
+        <MappingFragment StoreEntitySet="eshop_payment_method">
+          <ScalarProperty Name="eshop_payment_method_id" ColumnName="eshop_payment_method_id" />
+          <ScalarProperty Name="method_name" ColumnName="method_name" />
+          <ScalarProperty Name="is_active" ColumnName="is_active" />
+          <ScalarProperty Name="created_date" ColumnName="created_date" />
+          <ScalarProperty Name="created_by" ColumnName="created_by" />
+          <ScalarProperty Name="updated_date" ColumnName="updated_date" />
+          <ScalarProperty Name="updated_by" ColumnName="updated_by" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="eshop_return_details">
+      <EntityTypeMapping TypeName="SCMAamraDevModel.eshop_return_details">
+        <MappingFragment StoreEntitySet="eshop_return_details">
+          <ScalarProperty Name="eshop_return_details_id" ColumnName="eshop_return_details_id" />
+          <ScalarProperty Name="eshop_return_master_id" ColumnName="eshop_return_master_id" />
+          <ScalarProperty Name="brand_id" ColumnName="brand_id" />
+          <ScalarProperty Name="product_id" ColumnName="product_id" />
+          <ScalarProperty Name="color_id" ColumnName="color_id" />
+          <ScalarProperty Name="product_version_id" ColumnName="product_version_id" />
+          <ScalarProperty Name="unit_id" ColumnName="unit_id" />
+          <ScalarProperty Name="returned_qty" ColumnName="returned_qty" />
+          <ScalarProperty Name="price" ColumnName="price" />
+          <ScalarProperty Name="imei_no" ColumnName="imei_no" />
+          <ScalarProperty Name="imei_no2" ColumnName="imei_no2" />
+          <ScalarProperty Name="verify_status" ColumnName="verify_status" />
+          <ScalarProperty Name="verify_date" ColumnName="verify_date" />
+          <ScalarProperty Name="warehouse_id" ColumnName="warehouse_id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="eshop_return_master">
+      <EntityTypeMapping TypeName="SCMAamraDevModel.eshop_return_master">
+        <MappingFragment StoreEntitySet="eshop_return_master">
+          <ScalarProperty Name="eshop_return_master_id" ColumnName="eshop_return_master_id" />
+          <ScalarProperty Name="return_code" ColumnName="return_code" />
+          <ScalarProperty Name="return_date" ColumnName="return_date" />
+          <ScalarProperty Name="invoice_master_id" ColumnName="invoice_master_id" />
+          <ScalarProperty Name="remarks" ColumnName="remarks" />
+          <ScalarProperty Name="returned_quantity" ColumnName="returned_quantity" />
+          <ScalarProperty Name="returned_by" ColumnName="returned_by" />
+          <ScalarProperty Name="created_by" ColumnName="created_by" />
+          <ScalarProperty Name="created_date" ColumnName="created_date" />
+          <ScalarProperty Name="updated_by" ColumnName="updated_by" />
+          <ScalarProperty Name="updated_date" ColumnName="updated_date" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="eshop_shipping">
+      <EntityTypeMapping TypeName="SCMAamraDevModel.eshop_shipping">
+        <MappingFragment StoreEntitySet="eshop_shipping">
+          <ScalarProperty Name="eshop_shipping_id" ColumnName="eshop_shipping_id" />
+          <ScalarProperty Name="shipping_name" ColumnName="shipping_name" />
+          <ScalarProperty Name="is_active" ColumnName="is_active" />
+          <ScalarProperty Name="created_date" ColumnName="created_date" />
+          <ScalarProperty Name="created_by" ColumnName="created_by" />
+          <ScalarProperty Name="updated_date" ColumnName="updated_date" />
+          <ScalarProperty Name="updated_by" ColumnName="updated_by" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="grn_details">
+      <EntityTypeMapping TypeName="SCMAamraDevModel.grn_details">
+        <MappingFragment StoreEntitySet="grn_details">
+          <ScalarProperty Name="grn_details_id" ColumnName="grn_details_id" />
+          <ScalarProperty Name="grn_master_id" ColumnName="grn_master_id" />
+          <ScalarProperty Name="product_id" ColumnName="product_id" />
+          <ScalarProperty Name="brand_id" ColumnName="brand_id" />
+          <ScalarProperty Name="color_id" ColumnName="color_id" />
+          <ScalarProperty Name="unit_id" ColumnName="unit_id" />
+          <ScalarProperty Name="size_id" ColumnName="size_id" />
+          <ScalarProperty Name="product_version_id" ColumnName="product_version_id" />
+          <ScalarProperty Name="pi_quantity" ColumnName="pi_quantity" />
+          <ScalarProperty Name="receive_quantity" ColumnName="receive_quantity" />
+          <ScalarProperty Name="unit_price" ColumnName="unit_price" />
+          <ScalarProperty Name="vat_pcnt" ColumnName="vat_pcnt" />
+          <ScalarProperty Name="tax_pcnt" ColumnName="tax_pcnt" />
+          <ScalarProperty Name="vat_amount" ColumnName="vat_amount" />
+          <ScalarProperty Name="tax_amount" ColumnName="tax_amount" />
+          <ScalarProperty Name="line_total" ColumnName="line_total" />
+          <ScalarProperty Name="amount" ColumnName="amount" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="grn_master">
+      <EntityTypeMapping TypeName="SCMAamraDevModel.grn_master">
+        <MappingFragment StoreEntitySet="grn_master">
+          <ScalarProperty Name="grn_master_id" ColumnName="grn_master_id" />
+          <ScalarProperty Name="grn_no" ColumnName="grn_no" />
+          <ScalarProperty Name="supplier_id" ColumnName="supplier_id" />
+          <ScalarProperty Name="purchase_order_master_id" ColumnName="purchase_order_master_id" />
+          <ScalarProperty Name="lc_id" ColumnName="lc_id" />
+          <ScalarProperty Name="warehouse_id" ColumnName="warehouse_id" />
+          <ScalarProperty Name="grn_date" ColumnName="grn_date" />
+          <ScalarProperty Name="status" ColumnName="status" />
+          <ScalarProperty Name="remarks" ColumnName="remarks" />
+          <ScalarProperty Name="company_id" ColumnName="company_id" />
+          <ScalarProperty Name="lot_no" ColumnName="lot_no" />
+          <ScalarProperty Name="vat_total" ColumnName="vat_total" />
+          <ScalarProperty Name="tax_total" ColumnName="tax_total" />
+          <ScalarProperty Name="total_amount_without_vattax" ColumnName="total_amount_without_vattax" />
+          <ScalarProperty Name="total_amount_including_vattax" ColumnName="total_amount_including_vattax" />
+          <ScalarProperty Name="created_by" ColumnName="created_by" />
+          <ScalarProperty Name="created_date" ColumnName="created_date" />
+          <ScalarProperty Name="updated_by" ColumnName="updated_by" />
+          <ScalarProperty Name="updated_date" ColumnName="updated_date" />
+          <ScalarProperty Name="is_active" ColumnName="is_active" />
+          <ScalarProperty Name="is_deleted" ColumnName="is_deleted" />
+          <ScalarProperty Name="mrr_status" ColumnName="mrr_status" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="installment_details">
+      <EntityTypeMapping TypeName="SCMAamraDevModel.installment_details">
+        <MappingFragment StoreEntitySet="installment_details">
+          <ScalarProperty Name="installment_details_id" ColumnName="installment_details_id" />
+          <ScalarProperty Name="internal_requisition_master_id" ColumnName="internal_requisition_master_id" />
+          <ScalarProperty Name="installment_no" ColumnName="installment_no" />
+          <ScalarProperty Name="installment_date" ColumnName="installment_date" />
+          <ScalarProperty Name="installment_amount" ColumnName="installment_amount" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="internal_requisition_details">
+      <EntityTypeMapping TypeName="SCMAamraDevModel.internal_requisition_details">
+        <MappingFragment StoreEntitySet="internal_requisition_details">
+          <ScalarProperty Name="internal_requisition_details_id" ColumnName="internal_requisition_details_id" />
+          <ScalarProperty Name="internal_requisition_master_id" ColumnName="internal_requisition_master_id" />
+          <ScalarProperty Name="product_id" ColumnName="product_id" />
+          <ScalarProperty Name="color_id" ColumnName="color_id" />
+          <ScalarProperty Name="product_version_id" ColumnName="product_version_id" />
+          <ScalarProperty Name="quantity" ColumnName="quantity" />
+          <ScalarProperty Name="price" ColumnName="price" />
+          <ScalarProperty Name="incentive_amount" ColumnName="incentive_amount" />
+          <ScalarProperty Name="amount" ColumnName="amount" />
+          <ScalarProperty Name="promotion_master_id" ColumnName="promotion_master_id" />
+          <ScalarProperty Name="is_gift" ColumnName="is_gift" />
+          <ScalarProperty Name="gift_type" ColumnName="gift_type" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="internal_requisition_master">
+      <EntityTypeMapping TypeName="SCMAamraDevModel.internal_requisition_master">
+        <MappingFragment StoreEntitySet="internal_requisition_master">
+          <ScalarProperty Name="internal_requisition_master_id" ColumnName="internal_requisition_master_id" />
+          <ScalarProperty Name="internal_requisition_no" ColumnName="internal_requisition_no" />
+          <ScalarProperty Name="customar_name" ColumnName="customar_name" />
+          <ScalarProperty Name="mobile_no" ColumnName="mobile_no" />
+          <ScalarProperty Name="pricing" ColumnName="pricing" />
+          <ScalarProperty Name="payment_type" ColumnName="payment_type" />
+          <ScalarProperty Name="total_amount" ColumnName="total_amount" />
+          <ScalarProperty Name="from_warehouse_id" ColumnName="from_warehouse_id" />
+          <ScalarProperty Name="to_department" ColumnName="to_department" />
+          <ScalarProperty Name="requisition_date" ColumnName="requisition_date" />
+          <ScalarProperty Name="remarks" ColumnName="remarks" />
+          <ScalarProperty Name="created_by" ColumnName="created_by" />
+          <ScalarProperty Name="created_date" ColumnName="created_date" />
+          <ScalarProperty Name="requisition_status" ColumnName="requisition_status" />
+          <ScalarProperty Name="no_of_installments" ColumnName="no_of_installments" />
+          <ScalarProperty Name="first_installment_date" ColumnName="first_installment_date" />
+          <ScalarProperty Name="total_incentive_amount" ColumnName="total_incentive_amount" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="inventories">
+      <EntityTypeMapping TypeName="SCMAamraDevModel.inventory">
+        <MappingFragment StoreEntitySet="inventory">
+          <ScalarProperty Name="inventory_id" ColumnName="inventory_id" />
+          <ScalarProperty Name="transaction_date" ColumnName="transaction_date" />
+          <ScalarProperty Name="transaction_type" ColumnName="transaction_type" />
+          <ScalarProperty Name="document_code" ColumnName="document_code" />
+          <ScalarProperty Name="product_id" ColumnName="product_id" />
+          <ScalarProperty Name="color_id" ColumnName="color_id" />
+          <ScalarProperty Name="uom_id" ColumnName="uom_id" />
+          <ScalarProperty Name="opening_stock" ColumnName="opening_stock" />
+          <ScalarProperty Name="stock_in" ColumnName="stock_in" />
+          <ScalarProperty Name="stock_out" ColumnName="stock_out" />
+          <ScalarProperty Name="closing_stock" ColumnName="closing_stock" />
+          <ScalarProperty Name="warehouse_id" ColumnName="warehouse_id" />
+          <ScalarProperty Name="owner_party_id" ColumnName="owner_party_id" />
+          <ScalarProperty Name="created_by" ColumnName="created_by" />
+          <ScalarProperty Name="created_date" ColumnName="created_date" />
+          <ScalarProperty Name="updated_by" ColumnName="updated_by" />
+          <ScalarProperty Name="updated_date" ColumnName="updated_date" />
+          <ScalarProperty Name="is_active" ColumnName="is_active" />
+          <ScalarProperty Name="is_deleted" ColumnName="is_deleted" />
+          <ScalarProperty Name="product_version_id" ColumnName="product_version_id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="inventory_stock">
+      <EntityTypeMapping TypeName="SCMAamraDevModel.inventory_stock">
+        <MappingFragment StoreEntitySet="inventory_stock">
+          <ScalarProperty Name="inventory_stock_id" ColumnName="inventory_stock_id" />
+          <ScalarProperty Name="product_id" ColumnName="product_id" />
+          <ScalarProperty Name="color_id" ColumnName="color_id" />
+          <ScalarProperty Name="uom_id" ColumnName="uom_id" />
+          <ScalarProperty Name="warehouse_id" ColumnName="warehouse_id" />
+          <ScalarProperty Name="stock_quantity" ColumnName="stock_quantity" />
+          <ScalarProperty Name="owner_party_id" ColumnName="owner_party_id" />
+          <ScalarProperty Name="created_by" ColumnName="created_by" />
+          <ScalarProperty Name="created_date" ColumnName="created_date" />
+          <ScalarProperty Name="updated_by" ColumnName="updated_by" />
+          <ScalarProperty Name="updated_date" ColumnName="updated_date" />
+          <ScalarProperty Name="is_active" ColumnName="is_active" />
+          <ScalarProperty Name="is_deleted" ColumnName="is_deleted" />
+          <ScalarProperty Name="product_version_id" ColumnName="product_version_id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="invoice_details">
+      <EntityTypeMapping TypeName="SCMAamraDevModel.invoice_details">
+        <MappingFragment StoreEntitySet="invoice_details">
+          <ScalarProperty Name="invoice_details_id" ColumnName="invoice_details_id" />
+          <ScalarProperty Name="invoice_master_id" ColumnName="invoice_master_id" />
+          <ScalarProperty Name="product_id" ColumnName="product_id" />
+          <ScalarProperty Name="product_category_id" ColumnName="product_category_id" />
+          <ScalarProperty Name="unit_id" ColumnName="unit_id" />
+          <ScalarProperty Name="color_id" ColumnName="color_id" />
+          <ScalarProperty Name="brand_id" ColumnName="brand_id" />
+          <ScalarProperty Name="quantity" ColumnName="quantity" />
+          <ScalarProperty Name="price" ColumnName="price" />
+          <ScalarProperty Name="line_total" ColumnName="line_total" />
+          <ScalarProperty Name="is_gift" ColumnName="is_gift" />
+          <ScalarProperty Name="gift_type" ColumnName="gift_type" />
+          <ScalarProperty Name="is_live_dummy" ColumnName="is_live_dummy" />
+          <ScalarProperty Name="product_version_id" ColumnName="product_version_id" />
+          <ScalarProperty Name="promotion_master_id" ColumnName="promotion_master_id" />
+          <ScalarProperty Name="discount" ColumnName="discount" />
+          <ScalarProperty Name="discount_amount" ColumnName="discount_amount" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="invoice_log">
+      <EntityTypeMapping TypeName="SCMAamraDevModel.invoice_log">
+        <MappingFragment StoreEntitySet="invoice_log">
+          <ScalarProperty Name="invoice_log_id" ColumnName="invoice_log_id" />
+          <ScalarProperty Name="invoice_master_id" ColumnName="invoice_master_id" />
+          <ScalarProperty Name="invoice_no" ColumnName="invoice_no" />
+          <ScalarProperty Name="invoice_date" ColumnName="invoice_date" />
+          <ScalarProperty Name="party_id" ColumnName="party_id" />
+          <ScalarProperty Name="requisition_master_id" ColumnName="requisition_master_id" />
+          <ScalarProperty Name="item_total" ColumnName="item_total" />
+          <ScalarProperty Name="rebate_total" ColumnName="rebate_total" />
+          <ScalarProperty Name="invoice_total" ColumnName="invoice_total" />
+          <ScalarProperty Name="account_balance" ColumnName="account_balance" />
+          <ScalarProperty Name="remarks" ColumnName="remarks" />
+          <ScalarProperty Name="discount_amount" ColumnName="discount_amount" />
+          <ScalarProperty Name="incentive_amount" ColumnName="incentive_amount" />
+          <ScalarProperty Name="incentive_percentage" ColumnName="incentive_percentage" />
+          <ScalarProperty Name="discount_percentage" ColumnName="discount_percentage" />
+          <ScalarProperty Name="pos_master_id" ColumnName="pos_master_id" />
+          <ScalarProperty Name="owner_party_id" ColumnName="owner_party_id" />
+          <ScalarProperty Name="received_amount" ColumnName="received_amount" />
+          <ScalarProperty Name="balance_amount" ColumnName="balance_amount" />
+          <ScalarProperty Name="previous_invoice_advance" ColumnName="previous_invoice_advance" />
+          <ScalarProperty Name="previous_invoice_due" ColumnName="previous_invoice_due" />
+          <ScalarProperty Name="price_protected_amount" ColumnName="price_protected_amount" />
+          <ScalarProperty Name="lifting_quantity" ColumnName="lifting_quantity" />
+          <ScalarProperty Name="returned_qty" ColumnName="returned_qty" />
+          <ScalarProperty Name="returned_amount" ColumnName="returned_amount" />
+          <ScalarProperty Name="created_by" ColumnName="created_by" />
+          <ScalarProperty Name="created_date" ColumnName="created_date" />
+          <ScalarProperty Name="updated_by" ColumnName="updated_by" />
+          <ScalarProperty Name="updated_date" ColumnName="updated_date" />
+          <ScalarProperty Name="is_active" ColumnName="is_active" />
+          <ScalarProperty Name="is_deleted" ColumnName="is_deleted" />
+          <ScalarProperty Name="credit_limit" ColumnName="credit_limit" />
+          <ScalarProperty Name="party_type_id" ColumnName="party_type_id" />
+          <ScalarProperty Name="credit_term" ColumnName="credit_term" />
+          <ScalarProperty Name="contact_person_mobile" ColumnName="contact_person_mobile" />
+          <ScalarProperty Name="address" ColumnName="address" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="invoice_master">
+      <EntityTypeMapping TypeName="SCMAamraDevModel.invoice_master">
+        <MappingFragment StoreEntitySet="invoice_master">
+          <ScalarProperty Name="invoice_master_id" ColumnName="invoice_master_id" />
+          <ScalarProperty Name="invoice_no" ColumnName="invoice_no" />
+          <ScalarProperty Name="invoice_date" ColumnName="invoice_date" />
+          <ScalarProperty Name="party_id" ColumnName="party_id" />
+          <ScalarProperty Name="requisition_master_id" ColumnName="requisition_master_id" />
+          <ScalarProperty Name="item_total" ColumnName="item_total" />
+          <ScalarProperty Name="rebate_total" ColumnName="rebate_total" />
+          <ScalarProperty Name="invoice_total" ColumnName="invoice_total" />
+          <ScalarProperty Name="account_balance" ColumnName="account_balance" />
+          <ScalarProperty Name="remarks" ColumnName="remarks" />
+          <ScalarProperty Name="discount_amount" ColumnName="discount_amount" />
+          <ScalarProperty Name="incentive_amount" ColumnName="incentive_amount" />
+          <ScalarProperty Name="incentive_percentage" ColumnName="incentive_percentage" />
+          <ScalarProperty Name="discount_percentage" ColumnName="discount_percentage" />
+          <ScalarProperty Name="pos_master_id" ColumnName="pos_master_id" />
+          <ScalarProperty Name="owner_party_id" ColumnName="owner_party_id" />
+          <ScalarProperty Name="retailer_delivery_master_id" ColumnName="retailer_delivery_master_id" />
+          <ScalarProperty Name="created_by" ColumnName="created_by" />
+          <ScalarProperty Name="created_date" ColumnName="created_date" />
+          <ScalarProperty Name="updated_by" ColumnName="updated_by" />
+          <ScalarProperty Name="updated_date" ColumnName="updated_date" />
+          <ScalarProperty Name="is_active" ColumnName="is_active" />
+          <ScalarProperty Name="is_deleted" ColumnName="is_deleted" />
+          <ScalarProperty Name="credit_limit" ColumnName="credit_limit" />
+          <ScalarProperty Name="party_type_id" ColumnName="party_type_id" />
+          <ScalarProperty Name="credit_term" ColumnName="credit_term" />
+          <ScalarProperty Name="contact_person_mobile" ColumnName="contact_person_mobile" />
+          <ScalarProperty Name="address" ColumnName="address" />
+          <ScalarProperty Name="reference_no" ColumnName="reference_no" />
+          <ScalarProperty Name="price_type" ColumnName="price_type" />
+          <ScalarProperty Name="company_id" ColumnName="company_id" />
+          <ScalarProperty Name="sales_head_recommendation" ColumnName="sales_head_recommendation" />
+          <ScalarProperty Name="operation_remarks" ColumnName="operation_remarks" />
+          <ScalarProperty Name="requisition_amount" ColumnName="requisition_amount" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="local_purchase_order_details">
+      <EntityTypeMapping TypeName="SCMAamraDevModel.local_purchase_order_details">
+        <MappingFragment StoreEntitySet="local_purchase_order_details">
+          <ScalarProperty Name="local_purchase_order_details_id" ColumnName="local_purchase_order_details_id" />
+          <ScalarProperty Name="local_purchase_order_master_id" ColumnName="local_purchase_order_master_id" />
+          <ScalarProperty Name="product_id" ColumnName="product_id" />
+          <ScalarProperty Name="product_category_id" ColumnName="product_category_id" />
+          <ScalarProperty Name="brand_id" ColumnName="brand_id" />
+          <ScalarProperty Name="color_id" ColumnName="color_id" />
+          <ScalarProperty Name="unit_id" ColumnName="unit_id" />
+          <ScalarProperty Name="size_id" ColumnName="size_id" />
+          <ScalarProperty Name="product_version_id" ColumnName="product_version_id" />
+          <ScalarProperty Name="quantity" ColumnName="quantity" />
+          <ScalarProperty Name="receive_qty" ColumnName="receive_qty" />
+          <ScalarProperty Name="unit_price" ColumnName="unit_price" />
+          <ScalarProperty Name="line_total" ColumnName="line_total" />
+          <ScalarProperty Name="status" ColumnName="status" />
+          <ScalarProperty Name="vat_pcnt" ColumnName="vat_pcnt" />
+          <ScalarProperty Name="tax_pcnt" ColumnName="tax_pcnt" />
+          <ScalarProperty Name="vat_amount" ColumnName="vat_amount" />
+          <ScalarProperty Name="tax_amount" ColumnName="tax_amount" />
+          <ScalarProperty Name="amount" ColumnName="amount" />
+          <ScalarProperty Name="last_modified_date" ColumnName="last_modified_date" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="local_purchase_order_master">
+      <EntityTypeMapping TypeName="SCMAamraDevModel.local_purchase_order_master">
+        <MappingFragment StoreEntitySet="local_purchase_order_master">
+          <ScalarProperty Name="local_purchase_order_master_id" ColumnName="local_purchase_order_master_id" />
+          <ScalarProperty Name="order_no" ColumnName="order_no" />
+          <ScalarProperty Name="local_purchase_order_reference_number" ColumnName="local_purchase_order_reference_number" />
+          <ScalarProperty Name="order_date" ColumnName="order_date" />
+          <ScalarProperty Name="currency_id" ColumnName="currency_id" />
+          <ScalarProperty Name="status" ColumnName="status" />
+          <ScalarProperty Name="remarks" ColumnName="remarks" />
+          <ScalarProperty Name="company_id" ColumnName="company_id" />
+          <ScalarProperty Name="supplier_id" ColumnName="supplier_id" />
+          <ScalarProperty Name="vat_total" ColumnName="vat_total" />
+          <ScalarProperty Name="tax_total" ColumnName="tax_total" />
+          <ScalarProperty Name="total_amount_without_vattax" ColumnName="total_amount_without_vattax" />
+          <ScalarProperty Name="total_amount_including_vattax" ColumnName="total_amount_including_vattax" />
+          <ScalarProperty Name="approve_status" ColumnName="approve_status" />
+          <ScalarProperty Name="created_by" ColumnName="created_by" />
+          <ScalarProperty Name="created_date" ColumnName="created_date" />
+          <ScalarProperty Name="updated_by" ColumnName="updated_by" />
+          <ScalarProperty Name="updated_date" ColumnName="updated_date" />
+          <ScalarProperty Name="is_active" ColumnName="is_active" />
+          <ScalarProperty Name="is_deleted" ColumnName="is_deleted" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="mail_receiver_setting">
+      <EntityTypeMapping TypeName="SCMAamraDevModel.mail_receiver_setting">
+        <MappingFragment StoreEntitySet="mail_receiver_setting">
+          <ScalarProperty Name="mail_receiver_setting_id" ColumnName="mail_receiver_setting_id" />
+          <ScalarProperty Name="process_code_id" ColumnName="process_code_id" />
+          <ScalarProperty Name="receiver_name" ColumnName="receiver_name" />
+          <ScalarProperty Name="receiver_email" ColumnName="receiver_email" />
+          <ScalarProperty Name="created_by" ColumnName="created_by" />
+          <ScalarProperty Name="created_date" ColumnName="created_date" />
+          <ScalarProperty Name="updated_by" ColumnName="updated_by" />
+          <ScalarProperty Name="updated_date" ColumnName="updated_date" />
+          <ScalarProperty Name="is_active" ColumnName="is_active" />
+          <ScalarProperty Name="is_deleted" ColumnName="is_deleted" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="mrr_details">
+      <EntityTypeMapping TypeName="SCMAamraDevModel.mrr_details">
+        <MappingFragment StoreEntitySet="mrr_details">
+          <ScalarProperty Name="mrr_details_id" ColumnName="mrr_details_id" />
+          <ScalarProperty Name="mrr_master_id" ColumnName="mrr_master_id" />
+          <ScalarProperty Name="product_id" ColumnName="product_id" />
+          <ScalarProperty Name="color_id" ColumnName="color_id" />
+          <ScalarProperty Name="product_version_id" ColumnName="product_version_id" />
+          <ScalarProperty Name="grn_quantity" ColumnName="grn_quantity" />
+          <ScalarProperty Name="saleable_quantity" ColumnName="saleable_quantity" />
+          <ScalarProperty Name="box_damage_quantity" ColumnName="box_damage_quantity" />
+          <ScalarProperty Name="physical_damaged_quantity" ColumnName="physical_damaged_quantity" />
+          <ScalarProperty Name="customs_lost_quantity" ColumnName="customs_lost_quantity" />
+          <ScalarProperty Name="total_received_quantity" ColumnName="total_received_quantity" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="mrr_master">
+      <EntityTypeMapping TypeName="SCMAamraDevModel.mrr_master">
+        <MappingFragment StoreEntitySet="mrr_master">
+          <ScalarProperty Name="mrr_master_id" ColumnName="mrr_master_id" />
+          <ScalarProperty Name="mrr_no" ColumnName="mrr_no" />
+          <ScalarProperty Name="grn_master_id" ColumnName="grn_master_id" />
+          <ScalarProperty Name="lost_comment" ColumnName="lost_comment" />
+          <ScalarProperty Name="created_by" ColumnName="created_by" />
+          <ScalarProperty Name="created_date" ColumnName="created_date" />
+          <ScalarProperty Name="from_warehouse_id" ColumnName="from_warehouse_id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="notifier_mail_account">
+      <EntityTypeMapping TypeName="SCMAamraDevModel.notifier_mail_account">
+        <MappingFragment StoreEntitySet="notifier_mail_account">
+          <ScalarProperty Name="notifier_mail_account_id" ColumnName="notifier_mail_account_id" />
+          <ScalarProperty Name="account_title" ColumnName="account_title" />
+          <ScalarProperty Name="account_email" ColumnName="account_email" />
+          <ScalarProperty Name="accoutn_password" ColumnName="accoutn_password" />
+          <ScalarProperty Name="created_by" ColumnName="created_by" />
+          <ScalarProperty Name="created_date" ColumnName="created_date" />
+          <ScalarProperty Name="updated_by" ColumnName="updated_by" />
+          <ScalarProperty Name="updated_date" ColumnName="updated_date" />
+          <ScalarProperty Name="is_active" ColumnName="is_active" />
+          <ScalarProperty Name="is_deleted" ColumnName="is_deleted" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="online_invoice_details">
+      <EntityTypeMapping TypeName="SCMAamraDevModel.online_invoice_details">
+        <MappingFragment StoreEntitySet="online_invoice_details">
+          <ScalarProperty Name="online_invoice_details_id" ColumnName="online_invoice_details_id" />
+          <ScalarProperty Name="online_invoice_master_id" ColumnName="online_invoice_master_id" />
+          <ScalarProperty Name="product_id" ColumnName="product_id" />
+          <ScalarProperty Name="product_category_id" ColumnName="product_category_id" />
+          <ScalarProperty Name="unit_id" ColumnName="unit_id" />
+          <ScalarProperty Name="color_id" ColumnName="color_id" />
+          <ScalarProperty Name="brand_id" ColumnName="brand_id" />
+          <ScalarProperty Name="quantity" ColumnName="quantity" />
+          <ScalarProperty Name="price" ColumnName="price" />
+          <ScalarProperty Name="line_total" ColumnName="line_total" />
+          <ScalarProperty Name="discount" ColumnName="discount" />
+          <ScalarProperty Name="discount_amount" ColumnName="discount_amount" />
+          <ScalarProperty Name="price_amount" ColumnName="price_amount" />
+          <ScalarProperty Name="product_version_id" ColumnName="product_version_id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="online_invoice_master">
+      <EntityTypeMapping TypeName="SCMAamraDevModel.online_invoice_master">
+        <MappingFragment StoreEntitySet="online_invoice_master">
+          <ScalarProperty Name="online_invoice_master_id" ColumnName="online_invoice_master_id" />
+          <ScalarProperty Name="online_invoice_no" ColumnName="online_invoice_no" />
+          <ScalarProperty Name="online_invoice_date" ColumnName="online_invoice_date" />
+          <ScalarProperty Name="party_id" ColumnName="party_id" />
+          <ScalarProperty Name="item_total" ColumnName="item_total" />
+          <ScalarProperty Name="rebate_total" ColumnName="rebate_total" />
+          <ScalarProperty Name="invoice_total" ColumnName="invoice_total" />
+          <ScalarProperty Name="account_balance" ColumnName="account_balance" />
+          <ScalarProperty Name="remarks" ColumnName="remarks" />
+          <ScalarProperty Name="discount_amount" ColumnName="discount_amount" />
+          <ScalarProperty Name="incentive_amount" ColumnName="incentive_amount" />
+          <ScalarProperty Name="incentive_percentage" ColumnName="incentive_percentage" />
+          <ScalarProperty Name="discount_percentage" ColumnName="discount_percentage" />
+          <ScalarProperty Name="pos_master_id" ColumnName="pos_master_id" />
+          <ScalarProperty Name="owner_party_id" ColumnName="owner_party_id" />
+          <ScalarProperty Name="retailer_delivery_master_id" ColumnName="retailer_delivery_master_id" />
+          <ScalarProperty Name="created_by" ColumnName="created_by" />
+          <ScalarProperty Name="created_date" ColumnName="created_date" />
+          <ScalarProperty Name="updated_by" ColumnName="updated_by" />
+          <ScalarProperty Name="updated_date" ColumnName="updated_date" />
+          <ScalarProperty Name="is_active" ColumnName="is_active" />
+          <ScalarProperty Name="is_deleted" ColumnName="is_deleted" />
+          <ScalarProperty Name="credit_limit" ColumnName="credit_limit" />
+          <ScalarProperty Name="party_type_id" ColumnName="party_type_id" />
+          <ScalarProperty Name="credit_term" ColumnName="credit_term" />
+          <ScalarProperty Name="contact_person_mobile" ColumnName="contact_person_mobile" />
+          <ScalarProperty Name="address" ColumnName="address" />
+          <ScalarProperty Name="reference_no" ColumnName="reference_no" />
+          <ScalarProperty Name="price_type" ColumnName="price_type" />
+          <ScalarProperty Name="company_id" ColumnName="company_id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="online_invoice_requisition_mapping">
+      <EntityTypeMapping TypeName="SCMAamraDevModel.online_invoice_requisition_mapping">
+        <MappingFragment StoreEntitySet="online_invoice_requisition_mapping">
+          <ScalarProperty Name="mapping_id" ColumnName="mapping_id" />
+          <ScalarProperty Name="online_invoice_master_id" ColumnName="online_invoice_master_id" />
+          <ScalarProperty Name="requisition_master_id" ColumnName="requisition_master_id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="online_return_details">
+      <EntityTypeMapping TypeName="SCMAamraDevModel.online_return_details">
+        <MappingFragment StoreEntitySet="online_return_details">
+          <ScalarProperty Name="online_return_details_id" ColumnName="online_return_details_id" />
+          <ScalarProperty Name="online_return_master_id" ColumnName="online_return_master_id" />
+          <ScalarProperty Name="invoice_master_id" ColumnName="invoice_master_id" />
+          <ScalarProperty Name="brand_id" ColumnName="brand_id" />
+          <ScalarProperty Name="product_id" ColumnName="product_id" />
+          <ScalarProperty Name="color_id" ColumnName="color_id" />
+          <ScalarProperty Name="product_version_id" ColumnName="product_version_id" />
+          <ScalarProperty Name="unit_id" ColumnName="unit_id" />
+          <ScalarProperty Name="returned_qty" ColumnName="returned_qty" />
+          <ScalarProperty Name="price" ColumnName="price" />
+          <ScalarProperty Name="imei_no" ColumnName="imei_no" />
+          <ScalarProperty Name="imei_no2" ColumnName="imei_no2" />
+          <ScalarProperty Name="verify_status" ColumnName="verify_status" />
+          <ScalarProperty Name="verify_date" ColumnName="verify_date" />
+          <ScalarProperty Name="warehouse_id" ColumnName="warehouse_id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="online_return_master">
+      <EntityTypeMapping TypeName="SCMAamraDevModel.online_return_master">
+        <MappingFragment StoreEntitySet="online_return_master">
+          <ScalarProperty Name="online_return_master_id" ColumnName="online_return_master_id" />
+          <ScalarProperty Name="return_code" ColumnName="return_code" />
+          <ScalarProperty Name="return_date" ColumnName="return_date" />
+          <ScalarProperty Name="party_id" ColumnName="party_id" />
+          <ScalarProperty Name="remarks" ColumnName="remarks" />
+          <ScalarProperty Name="returned_quantity" ColumnName="returned_quantity" />
+          <ScalarProperty Name="returned_by" ColumnName="returned_by" />
+          <ScalarProperty Name="created_by" ColumnName="created_by" />
+          <ScalarProperty Name="created_date" ColumnName="created_date" />
+          <ScalarProperty Name="updated_by" ColumnName="updated_by" />
+          <ScalarProperty Name="updated_date" ColumnName="updated_date" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="parties">
+      <EntityTypeMapping TypeName="SCMAamraDevModel.party">
+        <MappingFragment StoreEntitySet="party">
+          <ScalarProperty Name="party_id" ColumnName="party_id" />
+          <ScalarProperty Name="party_name" ColumnName="party_name" />
+          <ScalarProperty Name="address" ColumnName="address" />
+          <ScalarProperty Name="proprietor_name" ColumnName="proprietor_name" />
+          <ScalarProperty Name="phone" ColumnName="phone" />
+          <ScalarProperty Name="mobile" ColumnName="mobile" />
+          <ScalarProperty Name="email" ColumnName="email" />
+          <ScalarProperty Name="party_type_id" ColumnName="party_type_id" />
+          <ScalarProperty Name="start_date" ColumnName="start_date" />
+          <ScalarProperty Name="gl_account" ColumnName="gl_account" />
+          <ScalarProperty Name="party_code" ColumnName="party_code" />
+          <ScalarProperty Name="parent_party_id" ColumnName="parent_party_id" />
+          <ScalarProperty Name="country_id" ColumnName="country_id" />
+          <ScalarProperty Name="province_id" ColumnName="province_id" />
+          <ScalarProperty Name="city_id" ColumnName="city_id" />
+          <ScalarProperty Name="zone_id" ColumnName="zone_id" />
+          <ScalarProperty Name="area_id" ColumnName="area_id" />
+          <ScalarProperty Name="created_by" ColumnName="created_by" />
+          <ScalarProperty Name="created_date" ColumnName="created_date" />
+          <ScalarProperty Name="updated_by" ColumnName="updated_by" />
+          <ScalarProperty Name="updated_date" ColumnName="updated_date" />
+          <ScalarProperty Name="is_active" ColumnName="is_active" />
+          <ScalarProperty Name="is_deleted" ColumnName="is_deleted" />
+          <ScalarProperty Name="region_id" ColumnName="region_id" />
+          <ScalarProperty Name="territory_id" ColumnName="territory_id" />
+          <ScalarProperty Name="credit_limit" ColumnName="credit_limit" />
+          <ScalarProperty Name="dealer_type_id" ColumnName="dealer_type_id" />
+          <ScalarProperty Name="retailer_type_id" ColumnName="retailer_type_id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="party_journal">
+      <EntityTypeMapping TypeName="SCMAamraDevModel.party_journal">
+        <MappingFragment StoreEntitySet="party_journal">
+          <ScalarProperty Name="party_journal_id" ColumnName="party_journal_id" />
+          <ScalarProperty Name="transaction_date" ColumnName="transaction_date" />
+          <ScalarProperty Name="transaction_type" ColumnName="transaction_type" />
+          <ScalarProperty Name="party_id" ColumnName="party_id" />
+          <ScalarProperty Name="opening_balance" ColumnName="opening_balance" />
+          <ScalarProperty Name="dr_amount" ColumnName="dr_amount" />
+          <ScalarProperty Name="cr_amount" ColumnName="cr_amount" />
+          <ScalarProperty Name="closing_balance" ColumnName="closing_balance" />
+          <ScalarProperty Name="remarks" ColumnName="remarks" />
+          <ScalarProperty Name="owner_party_id" ColumnName="owner_party_id" />
+          <ScalarProperty Name="document_code" ColumnName="document_code" />
+          <ScalarProperty Name="created_by" ColumnName="created_by" />
+          <ScalarProperty Name="created_date" ColumnName="created_date" />
+          <ScalarProperty Name="updated_by" ColumnName="updated_by" />
+          <ScalarProperty Name="updated_date" ColumnName="updated_date" />
+          <ScalarProperty Name="is_active" ColumnName="is_active" />
+          <ScalarProperty Name="is_deleted" ColumnName="is_deleted" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="party_type">
+      <EntityTypeMapping TypeName="SCMAamraDevModel.party_type">
+        <MappingFragment StoreEntitySet="party_type">
+          <ScalarProperty Name="party_type_id" ColumnName="party_type_id" />
+          <ScalarProperty Name="party_type_name" ColumnName="party_type_name" />
+          <ScalarProperty Name="party_prefix" ColumnName="party_prefix" />
+          <ScalarProperty Name="role_id" ColumnName="role_id" />
+          <ScalarProperty Name="created_by" ColumnName="created_by" />
+          <ScalarProperty Name="created_date" ColumnName="created_date" />
+          <ScalarProperty Name="updated_by" ColumnName="updated_by" />
+          <ScalarProperty Name="updated_date" ColumnName="updated_date" />
+          <ScalarProperty Name="is_active" ColumnName="is_active" />
+          <ScalarProperty Name="is_deleted" ColumnName="is_deleted" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="payment_method">
+      <EntityTypeMapping TypeName="SCMAamraDevModel.payment_method">
+        <MappingFragment StoreEntitySet="payment_method">
+          <ScalarProperty Name="payment_method_id" ColumnName="payment_method_id" />
+          <ScalarProperty Name="payment_method_name" ColumnName="payment_method_name" />
+          <ScalarProperty Name="company_id" ColumnName="company_id" />
+          <ScalarProperty Name="created_by" ColumnName="created_by" />
+          <ScalarProperty Name="created_date" ColumnName="created_date" />
+          <ScalarProperty Name="updated_by" ColumnName="updated_by" />
+          <ScalarProperty Name="updated_date" ColumnName="updated_date" />
+          <ScalarProperty Name="is_active" ColumnName="is_active" />
+          <ScalarProperty Name="is_deleted" ColumnName="is_deleted" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="payment_request">
+      <EntityTypeMapping TypeName="SCMAamraDevModel.payment_request">
+        <MappingFragment StoreEntitySet="payment_request">
+          <ScalarProperty Name="payment_req_id" ColumnName="payment_req_id" />
+          <ScalarProperty Name="party_id" ColumnName="party_id" />
+          <ScalarProperty Name="cheque_no" ColumnName="cheque_no" />
+          <ScalarProperty Name="document_attachment" ColumnName="document_attachment" />
+          <ScalarProperty Name="approved" ColumnName="approved" />
+          <ScalarProperty Name="deposite_date" ColumnName="deposite_date" />
+          <ScalarProperty Name="remarks" ColumnName="remarks" />
+          <ScalarProperty Name="amount" ColumnName="amount" />
+          <ScalarProperty Name="payment_method_id" ColumnName="payment_method_id" />
+          <ScalarProperty Name="bank_id" ColumnName="bank_id" />
+          <ScalarProperty Name="bank_branch_id" ColumnName="bank_branch_id" />
+          <ScalarProperty Name="bank_account_id" ColumnName="bank_account_id" />
+          <ScalarProperty Name="sales_representative" ColumnName="sales_representative" />
+          <ScalarProperty Name="owner_party_id" ColumnName="owner_party_id" />
+          <ScalarProperty Name="created_by" ColumnName="created_by" />
+          <ScalarProperty Name="created_date" ColumnName="created_date" />
+          <ScalarProperty Name="updated_by" ColumnName="updated_by" />
+          <ScalarProperty Name="updated_date" ColumnName="updated_date" />
+          <ScalarProperty Name="is_active" ColumnName="is_active" />
+          <ScalarProperty Name="is_deleted" ColumnName="is_deleted" />
+          <ScalarProperty Name="requisition_master_id" ColumnName="requisition_master_id" />
+          <ScalarProperty Name="payment_type" ColumnName="payment_type" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="process_wise_mail_setting">
+      <EntityTypeMapping TypeName="SCMAamraDevModel.process_wise_mail_setting">
+        <MappingFragment StoreEntitySet="process_wise_mail_setting">
+          <ScalarProperty Name="process_wise_mail_setting_id" ColumnName="process_wise_mail_setting_id" />
+          <ScalarProperty Name="email_subject" ColumnName="email_subject" />
+          <ScalarProperty Name="email_body" ColumnName="email_body" />
+          <ScalarProperty Name="process_code_id" ColumnName="process_code_id" />
+          <ScalarProperty Name="created_by" ColumnName="created_by" />
+          <ScalarProperty Name="created_date" ColumnName="created_date" />
+          <ScalarProperty Name="updated_by" ColumnName="updated_by" />
+          <ScalarProperty Name="updated_date" ColumnName="updated_date" />
+          <ScalarProperty Name="is_active" ColumnName="is_active" />
+          <ScalarProperty Name="is_deleted" ColumnName="is_deleted" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="products">
+      <EntityTypeMapping TypeName="SCMAamraDevModel.product">
+        <MappingFragment StoreEntitySet="product">
+          <ScalarProperty Name="product_id" ColumnName="product_id" />
+          <ScalarProperty Name="product_name" ColumnName="product_name" />
+          <ScalarProperty Name="product_code" ColumnName="product_code" />
+          <ScalarProperty Name="product_category_id" ColumnName="product_category_id" />
+          <ScalarProperty Name="brand_id" ColumnName="brand_id" />
+          <ScalarProperty Name="unit_id" ColumnName="unit_id" />
+          <ScalarProperty Name="current_balance" ColumnName="current_balance" />
+          <ScalarProperty Name="product_image_url" ColumnName="product_image_url" />
+          <ScalarProperty Name="has_serial" ColumnName="has_serial" />
+          <ScalarProperty Name="has_warrenty" ColumnName="has_warrenty" />
+          <ScalarProperty Name="warrenty_type" ColumnName="warrenty_type" />
+          <ScalarProperty Name="warrenty_value" ColumnName="warrenty_value" />
+          <ScalarProperty Name="vat_percentage" ColumnName="vat_percentage" />
+          <ScalarProperty Name="tax_percentage" ColumnName="tax_percentage" />
+          <ScalarProperty Name="rp_price" ColumnName="rp_price" />
+          <ScalarProperty Name="mrp_price" ColumnName="mrp_price" />
+          <ScalarProperty Name="md_price" ColumnName="md_price" />
+          <ScalarProperty Name="bs_price" ColumnName="bs_price" />
+          <ScalarProperty Name="created_by" ColumnName="created_by" />
+          <ScalarProperty Name="created_date" ColumnName="created_date" />
+          <ScalarProperty Name="updated_by" ColumnName="updated_by" />
+          <ScalarProperty Name="updated_date" ColumnName="updated_date" />
+          <ScalarProperty Name="is_active" ColumnName="is_active" />
+          <ScalarProperty Name="is_deleted" ColumnName="is_deleted" />
+          <ScalarProperty Name="supplier_id" ColumnName="supplier_id" />
+          <ScalarProperty Name="eol_date" ColumnName="eol_date" />
+          <ScalarProperty Name="remarks" ColumnName="remarks" />
+          <ScalarProperty Name="specification" ColumnName="specification" />
+          <ScalarProperty Name="launce_date" ColumnName="launce_date" />
+          <ScalarProperty Name="accessories_category_id" ColumnName="accessories_category_id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="product_category">
+      <EntityTypeMapping TypeName="SCMAamraDevModel.product_category">
+        <MappingFragment StoreEntitySet="product_category">
+          <ScalarProperty Name="product_category_id" ColumnName="product_category_id" />
+          <ScalarProperty Name="product_category_name" ColumnName="product_category_name" />
+          <ScalarProperty Name="product_category_code" ColumnName="product_category_code" />
+          <ScalarProperty Name="created_by" ColumnName="created_by" />
+          <ScalarProperty Name="created_date" ColumnName="created_date" />
+          <ScalarProperty Name="updated_by" ColumnName="updated_by" />
+          <ScalarProperty Name="updated_date" ColumnName="updated_date" />
+          <ScalarProperty Name="is_active" ColumnName="is_active" />
+          <ScalarProperty Name="is_deleted" ColumnName="is_deleted" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="product_color_mapping">
+      <EntityTypeMapping TypeName="SCMAamraDevModel.product_color_mapping">
+        <MappingFragment StoreEntitySet="product_color_mapping">
+          <ScalarProperty Name="product_color_mapping_id" ColumnName="product_color_mapping_id" />
+          <ScalarProperty Name="product_id" ColumnName="product_id" />
+          <ScalarProperty Name="color_id" ColumnName="color_id" />
+          <ScalarProperty Name="created_by" ColumnName="created_by" />
+          <ScalarProperty Name="created_date" ColumnName="created_date" />
+          <ScalarProperty Name="updated_by" ColumnName="updated_by" />
+          <ScalarProperty Name="updated_date" ColumnName="updated_date" />
+          <ScalarProperty Name="is_active" ColumnName="is_active" />
+          <ScalarProperty Name="is_deleted" ColumnName="is_deleted" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="product_version">
+      <EntityTypeMapping TypeName="SCMAamraDevModel.product_version">
+        <MappingFragment StoreEntitySet="product_version">
+          <ScalarProperty Name="product_version_id" ColumnName="product_version_id" />
+          <ScalarProperty Name="product_version_name" ColumnName="product_version_name" />
+          <ScalarProperty Name="created_by" ColumnName="created_by" />
+          <ScalarProperty Name="created_date" ColumnName="created_date" />
+          <ScalarProperty Name="updated_by" ColumnName="updated_by" />
+          <ScalarProperty Name="updated_date" ColumnName="updated_date" />
+          <ScalarProperty Name="is_active" ColumnName="is_active" />
+          <ScalarProperty Name="is_deleted" ColumnName="is_deleted" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="product_version_mapping">
+      <EntityTypeMapping TypeName="SCMAamraDevModel.product_version_mapping">
+        <MappingFragment StoreEntitySet="product_version_mapping">
+          <ScalarProperty Name="product_version_mapping_id" ColumnName="product_version_mapping_id" />
+          <ScalarProperty Name="product_id" ColumnName="product_id" />
+          <ScalarProperty Name="product_version_id" ColumnName="product_version_id" />
+          <ScalarProperty Name="created_by" ColumnName="created_by" />
+          <ScalarProperty Name="created_date" ColumnName="created_date" />
+          <ScalarProperty Name="updated_by" ColumnName="updated_by" />
+          <ScalarProperty Name="updated_date" ColumnName="updated_date" />
+          <ScalarProperty Name="is_active" ColumnName="is_active" />
+          <ScalarProperty Name="is_deleted" ColumnName="is_deleted" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="promotion_channel_mapping">
+      <EntityTypeMapping TypeName="SCMAamraDevModel.promotion_channel_mapping">
+        <MappingFragment StoreEntitySet="promotion_channel_mapping">
+          <ScalarProperty Name="promotion_channel_mapping_id" ColumnName="promotion_channel_mapping_id" />
+          <ScalarProperty Name="promotion_master_id" ColumnName="promotion_master_id" />
+          <ScalarProperty Name="channel_id" ColumnName="channel_id" />
+          <ScalarProperty Name="is_active" ColumnName="is_active" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="promotion_details">
+      <EntityTypeMapping TypeName="SCMAamraDevModel.promotion_details">
+        <MappingFragment StoreEntitySet="promotion_details">
+          <ScalarProperty Name="promotion_details_id" ColumnName="promotion_details_id" />
+          <ScalarProperty Name="promotion_master_id" ColumnName="promotion_master_id" />
+          <ScalarProperty Name="product_category_id" ColumnName="product_category_id" />
+          <ScalarProperty Name="product_id" ColumnName="product_id" />
+          <ScalarProperty Name="gift_quantity" ColumnName="gift_quantity" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="promotion_master">
+      <EntityTypeMapping TypeName="SCMAamraDevModel.promotion_master">
+        <MappingFragment StoreEntitySet="promotion_master">
+          <ScalarProperty Name="promotion_master_id" ColumnName="promotion_master_id" />
+          <ScalarProperty Name="promotion_code" ColumnName="promotion_code" />
+          <ScalarProperty Name="promotion_name" ColumnName="promotion_name" />
+          <ScalarProperty Name="promotion_start_date" ColumnName="promotion_start_date" />
+          <ScalarProperty Name="promotion_end_date" ColumnName="promotion_end_date" />
+          <ScalarProperty Name="product_category_id" ColumnName="product_category_id" />
+          <ScalarProperty Name="product_id" ColumnName="product_id" />
+          <ScalarProperty Name="lifting_quantity_for_promotion" ColumnName="lifting_quantity_for_promotion" />
+          <ScalarProperty Name="promotion_type" ColumnName="promotion_type" />
+          <ScalarProperty Name="promotion_discount" ColumnName="promotion_discount" />
+          <ScalarProperty Name="is_discount_percent" ColumnName="is_discount_percent" />
+          <ScalarProperty Name="remarks" ColumnName="remarks" />
+          <ScalarProperty Name="is_active" ColumnName="is_active" />
+          <ScalarProperty Name="created_by" ColumnName="created_by" />
+          <ScalarProperty Name="created_date" ColumnName="created_date" />
+          <ScalarProperty Name="updated_by" ColumnName="updated_by" />
+          <ScalarProperty Name="updated_date" ColumnName="updated_date" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="purchase_order_details">
+      <EntityTypeMapping TypeName="SCMAamraDevModel.purchase_order_details">
+        <MappingFragment StoreEntitySet="purchase_order_details">
+          <ScalarProperty Name="purchase_order_details_id" ColumnName="purchase_order_details_id" />
+          <ScalarProperty Name="purchase_order_master_id" ColumnName="purchase_order_master_id" />
+          <ScalarProperty Name="product_id" ColumnName="product_id" />
+          <ScalarProperty Name="product_category_id" ColumnName="product_category_id" />
+          <ScalarProperty Name="brand_id" ColumnName="brand_id" />
+          <ScalarProperty Name="color_id" ColumnName="color_id" />
+          <ScalarProperty Name="unit_id" ColumnName="unit_id" />
+          <ScalarProperty Name="size_id" ColumnName="size_id" />
+          <ScalarProperty Name="product_version_id" ColumnName="product_version_id" />
+          <ScalarProperty Name="quantity" ColumnName="quantity" />
+          <ScalarProperty Name="pi_quantity" ColumnName="pi_quantity" />
+          <ScalarProperty Name="receive_qty" ColumnName="receive_qty" />
+          <ScalarProperty Name="unit_price" ColumnName="unit_price" />
+          <ScalarProperty Name="line_total" ColumnName="line_total" />
+          <ScalarProperty Name="status" ColumnName="status" />
+          <ScalarProperty Name="vat_pcnt" ColumnName="vat_pcnt" />
+          <ScalarProperty Name="tax_pcnt" ColumnName="tax_pcnt" />
+          <ScalarProperty Name="vat_amount" ColumnName="vat_amount" />
+          <ScalarProperty Name="tax_amount" ColumnName="tax_amount" />
+          <ScalarProperty Name="amount" ColumnName="amount" />
+          <ScalarProperty Name="last_modified_date" ColumnName="last_modified_date" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="purchase_order_master">
+      <EntityTypeMapping TypeName="SCMAamraDevModel.purchase_order_master">
+        <MappingFragment StoreEntitySet="purchase_order_master">
+          <ScalarProperty Name="purchase_order_master_id" ColumnName="purchase_order_master_id" />
+          <ScalarProperty Name="order_no" ColumnName="order_no" />
+          <ScalarProperty Name="purchase_order_reference_number" ColumnName="purchase_order_reference_number" />
+          <ScalarProperty Name="pi_number" ColumnName="pi_number" />
+          <ScalarProperty Name="order_date" ColumnName="order_date" />
+          <ScalarProperty Name="shipping_term" ColumnName="shipping_term" />
+          <ScalarProperty Name="shipping_method" ColumnName="shipping_method" />
+          <ScalarProperty Name="shipping_terms_id" ColumnName="shipping_terms_id" />
+          <ScalarProperty Name="shipping_method_id" ColumnName="shipping_method_id" />
+          <ScalarProperty Name="currency_id" ColumnName="currency_id" />
+          <ScalarProperty Name="status" ColumnName="status" />
+          <ScalarProperty Name="terms_n_condition" ColumnName="terms_n_condition" />
+          <ScalarProperty Name="pi_terms_n_condition" ColumnName="pi_terms_n_condition" />
+          <ScalarProperty Name="remarks" ColumnName="remarks" />
+          <ScalarProperty Name="company_id" ColumnName="company_id" />
+          <ScalarProperty Name="expected_shipment_date" ColumnName="expected_shipment_date" />
+          <ScalarProperty Name="supplier_id" ColumnName="supplier_id" />
+          <ScalarProperty Name="vat_total" ColumnName="vat_total" />
+          <ScalarProperty Name="tax_total" ColumnName="tax_total" />
+          <ScalarProperty Name="total_amount_without_vattax" ColumnName="total_amount_without_vattax" />
+          <ScalarProperty Name="total_amount_including_vattax" ColumnName="total_amount_including_vattax" />
+          <ScalarProperty Name="batch_id" ColumnName="batch_id" />
+          <ScalarProperty Name="lc_number" ColumnName="lc_number" />
+          <ScalarProperty Name="noc_number" ColumnName="noc_number" />
+          <ScalarProperty Name="pi_attachment_location" ColumnName="pi_attachment_location" />
+          <ScalarProperty Name="verify_status" ColumnName="verify_status" />
+          <ScalarProperty Name="approve_status" ColumnName="approve_status" />
+          <ScalarProperty Name="created_by" ColumnName="created_by" />
+          <ScalarProperty Name="created_date" ColumnName="created_date" />
+          <ScalarProperty Name="updated_by" ColumnName="updated_by" />
+          <ScalarProperty Name="updated_date" ColumnName="updated_date" />
+          <ScalarProperty Name="is_active" ColumnName="is_active" />
+          <ScalarProperty Name="is_deleted" ColumnName="is_deleted" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="receives">
+      <EntityTypeMapping TypeName="SCMAamraDevModel.receive">
+        <MappingFragment StoreEntitySet="receive">
+          <ScalarProperty Name="receive_id" ColumnName="receive_id" />
+          <ScalarProperty Name="receipt_no" ColumnName="receipt_no" />
+          <ScalarProperty Name="receive_date" ColumnName="receive_date" />
+          <ScalarProperty Name="party_id" ColumnName="party_id" />
+          <ScalarProperty Name="payment_method_id" ColumnName="payment_method_id" />
+          <ScalarProperty Name="amount" ColumnName="amount" />
+          <ScalarProperty Name="bank_id" ColumnName="bank_id" />
+          <ScalarProperty Name="bank_branch_id" ColumnName="bank_branch_id" />
+          <ScalarProperty Name="bank_account_id" ColumnName="bank_account_id" />
+          <ScalarProperty Name="bank_charge" ColumnName="bank_charge" />
+          <ScalarProperty Name="is_varified" ColumnName="is_varified" />
+          <ScalarProperty Name="status" ColumnName="status" />
+          <ScalarProperty Name="invoice_no" ColumnName="invoice_no" />
+          <ScalarProperty Name="last_invoice_balance" ColumnName="last_invoice_balance" />
+          <ScalarProperty Name="representative" ColumnName="representative" />
+          <ScalarProperty Name="remarks" ColumnName="remarks" />
+          <ScalarProperty Name="payment_req_id" ColumnName="payment_req_id" />
+          <ScalarProperty Name="document_attachment" ColumnName="document_attachment" />
+          <ScalarProperty Name="approved_by" ColumnName="approved_by" />
+          <ScalarProperty Name="cheque_no" ColumnName="cheque_no" />
+          <ScalarProperty Name="user_id" ColumnName="user_id" />
+          <ScalarProperty Name="received_invoice_no" ColumnName="received_invoice_no" />
+          <ScalarProperty Name="owner_party_id" ColumnName="owner_party_id" />
+          <ScalarProperty Name="created_by" ColumnName="created_by" />
+          <ScalarProperty Name="created_date" ColumnName="created_date" />
+          <ScalarProperty Name="updated_by" ColumnName="updated_by" />
+          <ScalarProperty Name="updated_date" ColumnName="updated_date" />
+          <ScalarProperty Name="is_active" ColumnName="is_active" />
+          <ScalarProperty Name="is_deleted" ColumnName="is_deleted" />
+          <ScalarProperty Name="requisition_master_id" ColumnName="requisition_master_id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="regions">
+      <EntityTypeMapping TypeName="SCMAamraDevModel.region">
+        <MappingFragment StoreEntitySet="region">
+          <ScalarProperty Name="region_id" ColumnName="region_id" />
+          <ScalarProperty Name="region_name" ColumnName="region_name" />
+          <ScalarProperty Name="region_code" ColumnName="region_code" />
+          <ScalarProperty Name="is_active" ColumnName="is_active" />
+          <ScalarProperty Name="created_date" ColumnName="created_date" />
+          <ScalarProperty Name="created_by" ColumnName="created_by" />
+          <ScalarProperty Name="update_date" ColumnName="update_date" />
+          <ScalarProperty Name="updated_by" ColumnName="updated_by" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="requisition_details">
+      <EntityTypeMapping TypeName="SCMAamraDevModel.requisition_details">
+        <MappingFragment StoreEntitySet="requisition_details">
+          <ScalarProperty Name="requisition_details_id" ColumnName="requisition_details_id" />
+          <ScalarProperty Name="requisition_master_id" ColumnName="requisition_master_id" />
+          <ScalarProperty Name="promotion_master_id" ColumnName="promotion_master_id" />
+          <ScalarProperty Name="product_category_id" ColumnName="product_category_id" />
+          <ScalarProperty Name="product_id" ColumnName="product_id" />
+          <ScalarProperty Name="unit_id" ColumnName="unit_id" />
+          <ScalarProperty Name="color_id" ColumnName="color_id" />
+          <ScalarProperty Name="brand_id" ColumnName="brand_id" />
+          <ScalarProperty Name="quantity" ColumnName="quantity" />
+          <ScalarProperty Name="delivered_quantity" ColumnName="delivered_quantity" />
+          <ScalarProperty Name="price" ColumnName="price" />
+          <ScalarProperty Name="line_total" ColumnName="line_total" />
+          <ScalarProperty Name="is_gift" ColumnName="is_gift" />
+          <ScalarProperty Name="is_live_dummy" ColumnName="is_live_dummy" />
+          <ScalarProperty Name="gift_type" ColumnName="gift_type" />
+          <ScalarProperty Name="product_version_id" ColumnName="product_version_id" />
+          <ScalarProperty Name="price_amount" ColumnName="price_amount" />
+          <ScalarProperty Name="discount" ColumnName="discount" />
+          <ScalarProperty Name="discount_amount" ColumnName="discount_amount" />
+          <ScalarProperty Name="invoice_quantity" ColumnName="invoice_quantity" />
+          <ScalarProperty Name="return_quantity" ColumnName="return_quantity" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="requisition_master">
+      <EntityTypeMapping TypeName="SCMAamraDevModel.requisition_master">
+        <MappingFragment StoreEntitySet="requisition_master">
+          <ScalarProperty Name="requisition_master_id" ColumnName="requisition_master_id" />
+          <ScalarProperty Name="party_id" ColumnName="party_id" />
+          <ScalarProperty Name="requisition_code" ColumnName="requisition_code" />
+          <ScalarProperty Name="requisition_date" ColumnName="requisition_date" />
+          <ScalarProperty Name="expected_receiving_date" ColumnName="expected_receiving_date" />
+          <ScalarProperty Name="status" ColumnName="status" />
+          <ScalarProperty Name="is_invoice_created" ColumnName="is_invoice_created" />
+          <ScalarProperty Name="remarks" ColumnName="remarks" />
+          <ScalarProperty Name="delivery_status" ColumnName="delivery_status" />
+          <ScalarProperty Name="warehouse_from" ColumnName="warehouse_from" />
+          <ScalarProperty Name="amount" ColumnName="amount" />
+          <ScalarProperty Name="payment_method_id" ColumnName="payment_method_id" />
+          <ScalarProperty Name="edit_count" ColumnName="edit_count" />
+          <ScalarProperty Name="discount_amount" ColumnName="discount_amount" />
+          <ScalarProperty Name="incentive_amount" ColumnName="incentive_amount" />
+          <ScalarProperty Name="incentive_percentage" ColumnName="incentive_percentage" />
+          <ScalarProperty Name="discount_percentage" ColumnName="discount_percentage" />
+          <ScalarProperty Name="finance_status" ColumnName="finance_status" />
+          <ScalarProperty Name="owner_party_id" ColumnName="owner_party_id" />
+          <ScalarProperty Name="created_by" ColumnName="created_by" />
+          <ScalarProperty Name="created_date" ColumnName="created_date" />
+          <ScalarProperty Name="updated_by" ColumnName="updated_by" />
+          <ScalarProperty Name="updated_date" ColumnName="updated_date" />
+          <ScalarProperty Name="is_active" ColumnName="is_active" />
+          <ScalarProperty Name="is_deleted" ColumnName="is_deleted" />
+          <ScalarProperty Name="region_id" ColumnName="region_id" />
+          <ScalarProperty Name="area_id" ColumnName="area_id" />
+          <ScalarProperty Name="company_id" ColumnName="company_id" />
+          <ScalarProperty Name="party_type_id" ColumnName="party_type_id" />
+          <ScalarProperty Name="credit_limit" ColumnName="credit_limit" />
+          <ScalarProperty Name="forwarded_by" ColumnName="forwarded_by" />
+          <ScalarProperty Name="forwarded_date" ColumnName="forwarded_date" />
+          <ScalarProperty Name="forwarded_status" ColumnName="forwarded_status" />
+          <ScalarProperty Name="verified_by" ColumnName="verified_by" />
+          <ScalarProperty Name="verified_date" ColumnName="verified_date" />
+          <ScalarProperty Name="approved_by" ColumnName="approved_by" />
+          <ScalarProperty Name="approved_date" ColumnName="approved_date" />
+          <ScalarProperty Name="credit_term" ColumnName="credit_term" />
+          <ScalarProperty Name="contact_person_mobile" ColumnName="contact_person_mobile" />
+          <ScalarProperty Name="address" ColumnName="address" />
+          <ScalarProperty Name="is_demo" ColumnName="is_demo" />
+          <ScalarProperty Name="territory_id" ColumnName="territory_id" />
+          <ScalarProperty Name="requisition_type" ColumnName="requisition_type" />
+          <ScalarProperty Name="forward_2_status" ColumnName="forward_2_status" />
+          <ScalarProperty Name="forward_2_by" ColumnName="forward_2_by" />
+          <ScalarProperty Name="forward_2_date" ColumnName="forward_2_date" />
+          <ScalarProperty Name="reference_no" ColumnName="reference_no" />
+          <ScalarProperty Name="price_type" ColumnName="price_type" />
+          <ScalarProperty Name="is_requisition_closed" ColumnName="is_requisition_closed" />
+          <ScalarProperty Name="invoicable_quantity" ColumnName="invoicable_quantity" />
+          <ScalarProperty Name="return_quantity" ColumnName="return_quantity" />
+          <ScalarProperty Name="sales_head_recommendation" ColumnName="sales_head_recommendation" />
+          <ScalarProperty Name="operation_remarks" ColumnName="operation_remarks" />
+          <ScalarProperty Name="accounts_remarks" ColumnName="accounts_remarks" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="retailer_type">
+      <EntityTypeMapping TypeName="SCMAamraDevModel.retailer_type">
+        <MappingFragment StoreEntitySet="retailer_type">
+          <ScalarProperty Name="retailer_type_id" ColumnName="retailer_type_id" />
+          <ScalarProperty Name="retailer_type_name" ColumnName="retailer_type_name" />
+          <ScalarProperty Name="retailer_type_prefix" ColumnName="retailer_type_prefix" />
+          <ScalarProperty Name="created_by" ColumnName="created_by" />
+          <ScalarProperty Name="created_date" ColumnName="created_date" />
+          <ScalarProperty Name="updated_by" ColumnName="updated_by" />
+          <ScalarProperty Name="updated_date" ColumnName="updated_date" />
+          <ScalarProperty Name="is_active" ColumnName="is_active" />
+          <ScalarProperty Name="is_deleted" ColumnName="is_deleted" />
+          <ScalarProperty Name="credit_limit" ColumnName="credit_limit" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="return_details">
+      <EntityTypeMapping TypeName="SCMAamraDevModel.return_details">
+        <MappingFragment StoreEntitySet="return_details">
+          <ScalarProperty Name="return_details_id" ColumnName="return_details_id" />
+          <ScalarProperty Name="return_master_id" ColumnName="return_master_id" />
+          <ScalarProperty Name="invoice_master_id" ColumnName="invoice_master_id" />
+          <ScalarProperty Name="brand_id" ColumnName="brand_id" />
+          <ScalarProperty Name="product_id" ColumnName="product_id" />
+          <ScalarProperty Name="color_id" ColumnName="color_id" />
+          <ScalarProperty Name="product_version_id" ColumnName="product_version_id" />
+          <ScalarProperty Name="unit_id" ColumnName="unit_id" />
+          <ScalarProperty Name="returned_qty" ColumnName="returned_qty" />
+          <ScalarProperty Name="price" ColumnName="price" />
+          <ScalarProperty Name="imei_no" ColumnName="imei_no" />
+          <ScalarProperty Name="imei_no2" ColumnName="imei_no2" />
+          <ScalarProperty Name="repair_date" ColumnName="repair_date" />
+          <ScalarProperty Name="item_status" ColumnName="item_status" />
+          <ScalarProperty Name="replaced_imei_no" ColumnName="replaced_imei_no" />
+          <ScalarProperty Name="replaced_by" ColumnName="replaced_by" />
+          <ScalarProperty Name="replace_date" ColumnName="replace_date" />
+          <ScalarProperty Name="verify_status" ColumnName="verify_status" />
+          <ScalarProperty Name="verify_date" ColumnName="verify_date" />
+          <ScalarProperty Name="doa_received_by" ColumnName="doa_received_by" />
+          <ScalarProperty Name="doa_receive_date" ColumnName="doa_receive_date" />
+          <ScalarProperty Name="warehouse_id" ColumnName="warehouse_id" />
+          <ScalarProperty Name="invoice_no" ColumnName="invoice_no" />
+          <ScalarProperty Name="invoice_date" ColumnName="invoice_date" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="return_master">
+      <EntityTypeMapping TypeName="SCMAamraDevModel.return_master">
+        <MappingFragment StoreEntitySet="return_master">
+          <ScalarProperty Name="return_master_id" ColumnName="return_master_id" />
+          <ScalarProperty Name="return_code" ColumnName="return_code" />
+          <ScalarProperty Name="return_date" ColumnName="return_date" />
+          <ScalarProperty Name="return_type" ColumnName="return_type" />
+          <ScalarProperty Name="party_id" ColumnName="party_id" />
+          <ScalarProperty Name="remarks" ColumnName="remarks" />
+          <ScalarProperty Name="doa_warehouse_id" ColumnName="doa_warehouse_id" />
+          <ScalarProperty Name="doa_varify_status" ColumnName="doa_varify_status" />
+          <ScalarProperty Name="doa_verified_date" ColumnName="doa_verified_date" />
+          <ScalarProperty Name="doa_verified_by" ColumnName="doa_verified_by" />
+          <ScalarProperty Name="doa_receive_status" ColumnName="doa_receive_status" />
+          <ScalarProperty Name="doa_received_by" ColumnName="doa_received_by" />
+          <ScalarProperty Name="doa_receive_date" ColumnName="doa_receive_date" />
+          <ScalarProperty Name="returned_quantity" ColumnName="returned_quantity" />
+          <ScalarProperty Name="returned_by" ColumnName="returned_by" />
+          <ScalarProperty Name="invoice_master_id" ColumnName="invoice_master_id" />
+          <ScalarProperty Name="created_by" ColumnName="created_by" />
+          <ScalarProperty Name="created_date" ColumnName="created_date" />
+          <ScalarProperty Name="updated_by" ColumnName="updated_by" />
+          <ScalarProperty Name="updated_date" ColumnName="updated_date" />
+          <ScalarProperty Name="is_active" ColumnName="is_active" />
+          <ScalarProperty Name="is_deleted" ColumnName="is_deleted" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="return_type">
+      <EntityTypeMapping TypeName="SCMAamraDevModel.return_type">
+        <MappingFragment StoreEntitySet="return_type">
+          <ScalarProperty Name="return_type_id" ColumnName="return_type_id" />
+          <ScalarProperty Name="return_type_name" ColumnName="return_type_name" />
+          <ScalarProperty Name="remarks" ColumnName="remarks" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="roles">
+      <EntityTypeMapping TypeName="SCMAamraDevModel.role">
+        <MappingFragment StoreEntitySet="role">
+          <ScalarProperty Name="role_id" ColumnName="role_id" />
+          <ScalarProperty Name="role_name" ColumnName="role_name" />
+          <ScalarProperty Name="company_id" ColumnName="company_id" />
+          <ScalarProperty Name="is_fixed" ColumnName="is_fixed" />
+          <ScalarProperty Name="role_type_id" ColumnName="role_type_id" />
+          <ScalarProperty Name="source_type" ColumnName="source_type" />
+          <ScalarProperty Name="created_by" ColumnName="created_by" />
+          <ScalarProperty Name="created_date" ColumnName="created_date" />
+          <ScalarProperty Name="updated_by" ColumnName="updated_by" />
+          <ScalarProperty Name="updated_date" ColumnName="updated_date" />
+          <ScalarProperty Name="is_active" ColumnName="is_active" />
+          <ScalarProperty Name="is_deleted" ColumnName="is_deleted" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="role_type">
+      <EntityTypeMapping TypeName="SCMAamraDevModel.role_type">
+        <MappingFragment StoreEntitySet="role_type">
+          <ScalarProperty Name="role_type_id" ColumnName="role_type_id" />
+          <ScalarProperty Name="role_type_name" ColumnName="role_type_name" />
+          <ScalarProperty Name="description" ColumnName="description" />
+          <ScalarProperty Name="party_role_id" ColumnName="party_role_id" />
+          <ScalarProperty Name="created_by" ColumnName="created_by" />
+          <ScalarProperty Name="created_date" ColumnName="created_date" />
+          <ScalarProperty Name="updated_by" ColumnName="updated_by" />
+          <ScalarProperty Name="updated_date" ColumnName="updated_date" />
+          <ScalarProperty Name="is_active" ColumnName="is_active" />
+          <ScalarProperty Name="is_deleted" ColumnName="is_deleted" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="sales_type">
+      <EntityTypeMapping TypeName="SCMAamraDevModel.sales_type">
+        <MappingFragment StoreEntitySet="sales_type">
+          <ScalarProperty Name="sales_type_id" ColumnName="sales_type_id" />
+          <ScalarProperty Name="sales_type1" ColumnName="sales_type" />
+          <ScalarProperty Name="is_active" ColumnName="is_active" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="sbus">
+      <EntityTypeMapping TypeName="SCMAamraDevModel.sbu">
+        <MappingFragment StoreEntitySet="sbu">
+          <ScalarProperty Name="sbu_id" ColumnName="sbu_id" />
+          <ScalarProperty Name="sbu_name" ColumnName="sbu_name" />
+          <ScalarProperty Name="is_active" ColumnName="is_active" />
+          <ScalarProperty Name="is_deleted" ColumnName="is_deleted" />
+          <ScalarProperty Name="created_by" ColumnName="created_by" />
+          <ScalarProperty Name="created_date" ColumnName="created_date" />
+          <ScalarProperty Name="updated_by" ColumnName="updated_by" />
+          <ScalarProperty Name="updated_date" ColumnName="updated_date" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="shipping_method">
+      <EntityTypeMapping TypeName="SCMAamraDevModel.shipping_method">
+        <MappingFragment StoreEntitySet="shipping_method">
+          <ScalarProperty Name="shipping_method_id" ColumnName="shipping_method_id" />
+          <ScalarProperty Name="shipping_method_name" ColumnName="shipping_method_name" />
+          <ScalarProperty Name="is_active" ColumnName="is_active" />
+          <ScalarProperty Name="is_deleted" ColumnName="is_deleted" />
+          <ScalarProperty Name="created_by" ColumnName="created_by" />
+          <ScalarProperty Name="created_date" ColumnName="created_date" />
+          <ScalarProperty Name="updated_by" ColumnName="updated_by" />
+          <ScalarProperty Name="updated_date" ColumnName="updated_date" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="shipping_terms">
+      <EntityTypeMapping TypeName="SCMAamraDevModel.shipping_terms">
+        <MappingFragment StoreEntitySet="shipping_terms">
+          <ScalarProperty Name="shipping_terms_id" ColumnName="shipping_terms_id" />
+          <ScalarProperty Name="shipping_terms_name" ColumnName="shipping_terms_name" />
+          <ScalarProperty Name="is_active" ColumnName="is_active" />
+          <ScalarProperty Name="is_deleted" ColumnName="is_deleted" />
+          <ScalarProperty Name="created_by" ColumnName="created_by" />
+          <ScalarProperty Name="created_date" ColumnName="created_date" />
+          <ScalarProperty Name="updated_by" ColumnName="updated_by" />
+          <ScalarProperty Name="updated_date" ColumnName="updated_date" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="software_process_module">
+      <EntityTypeMapping TypeName="SCMAamraDevModel.software_process_module">
+        <MappingFragment StoreEntitySet="software_process_module">
+          <ScalarProperty Name="process_code_id" ColumnName="process_code_id" />
+          <ScalarProperty Name="process_code_name" ColumnName="process_code_name" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="suppliers">
+      <EntityTypeMapping TypeName="SCMAamraDevModel.supplier">
+        <MappingFragment StoreEntitySet="supplier">
+          <ScalarProperty Name="supplier_id" ColumnName="supplier_id" />
+          <ScalarProperty Name="supplier_name" ColumnName="supplier_name" />
+          <ScalarProperty Name="supplier_code" ColumnName="supplier_code" />
+          <ScalarProperty Name="supplier_type_id" ColumnName="supplier_type_id" />
+          <ScalarProperty Name="company_address" ColumnName="company_address" />
+          <ScalarProperty Name="factory_address" ColumnName="factory_address" />
+          <ScalarProperty Name="phone" ColumnName="phone" />
+          <ScalarProperty Name="mobile" ColumnName="mobile" />
+          <ScalarProperty Name="email" ColumnName="email" />
+          <ScalarProperty Name="contact_person" ColumnName="contact_person" />
+          <ScalarProperty Name="total_debit" ColumnName="total_debit" />
+          <ScalarProperty Name="total_credit" ColumnName="total_credit" />
+          <ScalarProperty Name="balance" ColumnName="balance" />
+          <ScalarProperty Name="vat_id" ColumnName="vat_id" />
+          <ScalarProperty Name="tin_no" ColumnName="tin_no" />
+          <ScalarProperty Name="created_by" ColumnName="created_by" />
+          <ScalarProperty Name="created_date" ColumnName="created_date" />
+          <ScalarProperty Name="updated_by" ColumnName="updated_by" />
+          <ScalarProperty Name="updated_date" ColumnName="updated_date" />
+          <ScalarProperty Name="is_active" ColumnName="is_active" />
+          <ScalarProperty Name="is_deleted" ColumnName="is_deleted" />
+          <ScalarProperty Name="contact_person2" ColumnName="contact_person2" />
+          <ScalarProperty Name="email2" ColumnName="email2" />
+          <ScalarProperty Name="receiving_company_name" ColumnName="receiving_company_name" />
+          <ScalarProperty Name="receiving_company_person" ColumnName="receiving_company_person" />
+          <ScalarProperty Name="receiving_company_contact_email" ColumnName="receiving_company_contact_email" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="supplier_type">
+      <EntityTypeMapping TypeName="SCMAamraDevModel.supplier_type">
+        <MappingFragment StoreEntitySet="supplier_type">
+          <ScalarProperty Name="supplier_type_id" ColumnName="supplier_type_id" />
+          <ScalarProperty Name="supplier_type_name" ColumnName="supplier_type_name" />
+          <ScalarProperty Name="created_by" ColumnName="created_by" />
+          <ScalarProperty Name="created_date" ColumnName="created_date" />
+          <ScalarProperty Name="updated_by" ColumnName="updated_by" />
+          <ScalarProperty Name="updated_date" ColumnName="updated_date" />
+          <ScalarProperty Name="is_active" ColumnName="is_active" />
+          <ScalarProperty Name="is_deleted" ColumnName="is_deleted" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="terms_and_condition">
+      <EntityTypeMapping TypeName="SCMAamraDevModel.terms_and_condition">
+        <MappingFragment StoreEntitySet="terms_and_condition">
+          <ScalarProperty Name="terms_and_condition_id" ColumnName="terms_and_condition_id" />
+          <ScalarProperty Name="terms_and_condition_description" ColumnName="terms_and_condition_description" />
+          <ScalarProperty Name="terms_condition_header" ColumnName="terms_condition_header" />
+          <ScalarProperty Name="is_active" ColumnName="is_active" />
+          <ScalarProperty Name="created_date" ColumnName="created_date" />
+          <ScalarProperty Name="created_by" ColumnName="created_by" />
+          <ScalarProperty Name="update_date" ColumnName="update_date" />
+          <ScalarProperty Name="updated_by" ColumnName="updated_by" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="territories">
+      <EntityTypeMapping TypeName="SCMAamraDevModel.territory">
+        <MappingFragment StoreEntitySet="territory">
+          <ScalarProperty Name="territory_id" ColumnName="territory_id" />
+          <ScalarProperty Name="area_id" ColumnName="area_id" />
+          <ScalarProperty Name="territory_name" ColumnName="territory_name" />
+          <ScalarProperty Name="territory_code" ColumnName="territory_code" />
+          <ScalarProperty Name="is_active" ColumnName="is_active" />
+          <ScalarProperty Name="created_by" ColumnName="created_by" />
+          <ScalarProperty Name="created_date" ColumnName="created_date" />
+          <ScalarProperty Name="updated_by" ColumnName="updated_by" />
+          <ScalarProperty Name="updated_date" ColumnName="updated_date" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="to_delivery_details">
+      <EntityTypeMapping TypeName="SCMAamraDevModel.to_delivery_details">
+        <MappingFragment StoreEntitySet="to_delivery_details">
+          <ScalarProperty Name="to_delivery_details_id" ColumnName="to_delivery_details_id" />
+          <ScalarProperty Name="to_delivery_master_id" ColumnName="to_delivery_master_id" />
+          <ScalarProperty Name="product_id" ColumnName="product_id" />
+          <ScalarProperty Name="unit_id" ColumnName="unit_id" />
+          <ScalarProperty Name="color_id" ColumnName="color_id" />
+          <ScalarProperty Name="product_version_id" ColumnName="product_version_id" />
+          <ScalarProperty Name="to_quantity" ColumnName="to_quantity" />
+          <ScalarProperty Name="delivered_quantity" ColumnName="delivered_quantity" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="to_delivery_master">
+      <EntityTypeMapping TypeName="SCMAamraDevModel.to_delivery_master">
+        <MappingFragment StoreEntitySet="to_delivery_master">
+          <ScalarProperty Name="to_delivery_master_id" ColumnName="to_delivery_master_id" />
+          <ScalarProperty Name="to_delivery_no" ColumnName="to_delivery_no" />
+          <ScalarProperty Name="to_delivery_date" ColumnName="to_delivery_date" />
+          <ScalarProperty Name="to_delivery_address" ColumnName="to_delivery_address" />
+          <ScalarProperty Name="delivery_method" ColumnName="delivery_method" />
+          <ScalarProperty Name="to_logistics_delivered_by" ColumnName="to_logistics_delivered_by" />
+          <ScalarProperty Name="transfer_order_master_id" ColumnName="transfer_order_master_id" />
+          <ScalarProperty Name="courier_id" ColumnName="courier_id" />
+          <ScalarProperty Name="company_id" ColumnName="company_id" />
+          <ScalarProperty Name="courier_slip_no" ColumnName="courier_slip_no" />
+          <ScalarProperty Name="from_warehouse_id" ColumnName="from_warehouse_id" />
+          <ScalarProperty Name="to_warehouse_id" ColumnName="to_warehouse_id" />
+          <ScalarProperty Name="status" ColumnName="status" />
+          <ScalarProperty Name="remarks" ColumnName="remarks" />
+          <ScalarProperty Name="vehicle_no" ColumnName="vehicle_no" />
+          <ScalarProperty Name="truck_driver_name" ColumnName="truck_driver_name" />
+          <ScalarProperty Name="truck_driver_mobile" ColumnName="truck_driver_mobile" />
+          <ScalarProperty Name="created_by" ColumnName="created_by" />
+          <ScalarProperty Name="created_date" ColumnName="created_date" />
+          <ScalarProperty Name="updated_by" ColumnName="updated_by" />
+          <ScalarProperty Name="updated_date" ColumnName="updated_date" />
+          <ScalarProperty Name="is_active" ColumnName="is_active" />
+          <ScalarProperty Name="is_deleted" ColumnName="is_deleted" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="transaction_configuration">
+      <EntityTypeMapping TypeName="SCMAamraDevModel.transaction_configuration">
+        <MappingFragment StoreEntitySet="transaction_configuration">
+          <ScalarProperty Name="transaction_configuration_id" ColumnName="transaction_configuration_id" />
+          <ScalarProperty Name="transaction_type" ColumnName="transaction_type" />
+          <ScalarProperty Name="is_dr" ColumnName="is_dr" />
+          <ScalarProperty Name="is_cr" ColumnName="is_cr" />
+          <ScalarProperty Name="created_by" ColumnName="created_by" />
+          <ScalarProperty Name="created_date" ColumnName="created_date" />
+          <ScalarProperty Name="updated_by" ColumnName="updated_by" />
+          <ScalarProperty Name="updated_date" ColumnName="updated_date" />
+          <ScalarProperty Name="is_active" ColumnName="is_active" />
+          <ScalarProperty Name="is_deleted" ColumnName="is_deleted" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="transfer_order_details">
+      <EntityTypeMapping TypeName="SCMAamraDevModel.transfer_order_details">
+        <MappingFragment StoreEntitySet="transfer_order_details">
+          <ScalarProperty Name="transfer_order_details_id" ColumnName="transfer_order_details_id" />
+          <ScalarProperty Name="transfer_order_master_id" ColumnName="transfer_order_master_id" />
+          <ScalarProperty Name="product_id" ColumnName="product_id" />
+          <ScalarProperty Name="product_category_id" ColumnName="product_category_id" />
+          <ScalarProperty Name="brand_id" ColumnName="brand_id" />
+          <ScalarProperty Name="color_id" ColumnName="color_id" />
+          <ScalarProperty Name="unit_id" ColumnName="unit_id" />
+          <ScalarProperty Name="size_id" ColumnName="size_id" />
+          <ScalarProperty Name="product_version_id" ColumnName="product_version_id" />
+          <ScalarProperty Name="quantity" ColumnName="quantity" />
+          <ScalarProperty Name="transfered_quantity" ColumnName="transfered_quantity" />
+          <ScalarProperty Name="unit_price" ColumnName="unit_price" />
+          <ScalarProperty Name="line_total" ColumnName="line_total" />
+          <ScalarProperty Name="status" ColumnName="status" />
+          <ScalarProperty Name="last_modified_date" ColumnName="last_modified_date" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="transfer_order_master">
+      <EntityTypeMapping TypeName="SCMAamraDevModel.transfer_order_master">
+        <MappingFragment StoreEntitySet="transfer_order_master">
+          <ScalarProperty Name="transfer_order_master_id" ColumnName="transfer_order_master_id" />
+          <ScalarProperty Name="order_no" ColumnName="order_no" />
+          <ScalarProperty Name="order_date" ColumnName="order_date" />
+          <ScalarProperty Name="status" ColumnName="status" />
+          <ScalarProperty Name="remarks" ColumnName="remarks" />
+          <ScalarProperty Name="expected_transfer_date" ColumnName="expected_transfer_date" />
+          <ScalarProperty Name="total_amount" ColumnName="total_amount" />
+          <ScalarProperty Name="from_warehouse_id" ColumnName="from_warehouse_id" />
+          <ScalarProperty Name="to_warehouse_id" ColumnName="to_warehouse_id" />
+          <ScalarProperty Name="created_by" ColumnName="created_by" />
+          <ScalarProperty Name="created_date" ColumnName="created_date" />
+          <ScalarProperty Name="updated_by" ColumnName="updated_by" />
+          <ScalarProperty Name="updated_date" ColumnName="updated_date" />
+          <ScalarProperty Name="is_active" ColumnName="is_active" />
+          <ScalarProperty Name="is_deleted" ColumnName="is_deleted" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="units">
+      <EntityTypeMapping TypeName="SCMAamraDevModel.unit">
+        <MappingFragment StoreEntitySet="unit">
+          <ScalarProperty Name="unit_id" ColumnName="unit_id" />
+          <ScalarProperty Name="unit_name" ColumnName="unit_name" />
+          <ScalarProperty Name="created_by" ColumnName="created_by" />
+          <ScalarProperty Name="created_date" ColumnName="created_date" />
+          <ScalarProperty Name="updated_by" ColumnName="updated_by" />
+          <ScalarProperty Name="updated_date" ColumnName="updated_date" />
+          <ScalarProperty Name="is_active" ColumnName="is_active" />
+          <ScalarProperty Name="is_deleted" ColumnName="is_deleted" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="user_log">
+      <EntityTypeMapping TypeName="SCMAamraDevModel.user_log">
+        <MappingFragment StoreEntitySet="user_log">
+          <ScalarProperty Name="ulogo_id" ColumnName="ulogo_id" />
+          <ScalarProperty Name="user_id" ColumnName="user_id" />
+          <ScalarProperty Name="login_time" ColumnName="login_time" />
+          <ScalarProperty Name="login_date" ColumnName="login_date" />
+          <ScalarProperty Name="ip_address" ColumnName="ip_address" />
+          <ScalarProperty Name="logout_time" ColumnName="logout_time" />
+          <ScalarProperty Name="logout_date" ColumnName="logout_date" />
+          <ScalarProperty Name="login_name" ColumnName="login_name" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="user_permission">
+      <EntityTypeMapping TypeName="SCMAamraDevModel.user_permission">
+        <MappingFragment StoreEntitySet="user_permission">
+          <ScalarProperty Name="user_permission_id" ColumnName="user_permission_id" />
+          <ScalarProperty Name="user_au_id" ColumnName="user_au_id" />
+          <ScalarProperty Name="user_control_id" ColumnName="user_control_id" />
+          <ScalarProperty Name="user_permission_status" ColumnName="user_permission_status" />
+          <ScalarProperty Name="user_role_id" ColumnName="user_role_id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="users">
+      <EntityTypeMapping TypeName="SCMAamraDevModel.user">
+        <MappingFragment StoreEntitySet="users">
+          <ScalarProperty Name="user_id" ColumnName="user_id" />
+          <ScalarProperty Name="full_name" ColumnName="full_name" />
+          <ScalarProperty Name="login_name" ColumnName="login_name" />
+          <ScalarProperty Name="password" ColumnName="password" />
+          <ScalarProperty Name="role_id" ColumnName="role_id" />
+          <ScalarProperty Name="company_id" ColumnName="company_id" />
+          <ScalarProperty Name="branch_id" ColumnName="branch_id" />
+          <ScalarProperty Name="party_id" ColumnName="party_id" />
+          <ScalarProperty Name="is_new_pass" ColumnName="is_new_pass" />
+          <ScalarProperty Name="emp_id" ColumnName="emp_id" />
+          <ScalarProperty Name="created_by" ColumnName="created_by" />
+          <ScalarProperty Name="created_date" ColumnName="created_date" />
+          <ScalarProperty Name="updated_by" ColumnName="updated_by" />
+          <ScalarProperty Name="updated_date" ColumnName="updated_date" />
+          <ScalarProperty Name="is_active" ColumnName="is_active" />
+          <ScalarProperty Name="is_deleted" ColumnName="is_deleted" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="warehouses">
+      <EntityTypeMapping TypeName="SCMAamraDevModel.warehouse">
+        <MappingFragment StoreEntitySet="warehouse">
+          <ScalarProperty Name="warehouse_id" ColumnName="warehouse_id" />
+          <ScalarProperty Name="warehouse_name" ColumnName="warehouse_name" />
+          <ScalarProperty Name="warehouse_code" ColumnName="warehouse_code" />
+          <ScalarProperty Name="warehouse_address" ColumnName="warehouse_address" />
+          <ScalarProperty Name="warehouse_incharge" ColumnName="warehouse_incharge" />
+          <ScalarProperty Name="warehouse_type" ColumnName="warehouse_type" />
+          <ScalarProperty Name="party_id" ColumnName="party_id" />
+          <ScalarProperty Name="party_type_id" ColumnName="party_type_id" />
+          <ScalarProperty Name="province_id" ColumnName="province_id" />
+          <ScalarProperty Name="country_id" ColumnName="country_id" />
+          <ScalarProperty Name="city_id" ColumnName="city_id" />
+          <ScalarProperty Name="created_by" ColumnName="created_by" />
+          <ScalarProperty Name="created_date" ColumnName="created_date" />
+          <ScalarProperty Name="updated_by" ColumnName="updated_by" />
+          <ScalarProperty Name="updated_date" ColumnName="updated_date" />
+          <ScalarProperty Name="is_active" ColumnName="is_active" />
+          <ScalarProperty Name="is_deleted" ColumnName="is_deleted" />
+          <ScalarProperty Name="region_id" ColumnName="region_id" />
+          <ScalarProperty Name="area_id" ColumnName="area_id" />
+          <ScalarProperty Name="territory_id" ColumnName="territory_id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="product_price_mapping">
+      <EntityTypeMapping TypeName="SCMAamraDevModel.product_price_mapping">
+        <MappingFragment StoreEntitySet="product_price_mapping">
+          <ScalarProperty Name="last_grn_no" ColumnName="last_grn_no" />
+          <ScalarProperty Name="is_deleted" ColumnName="is_deleted" />
+          <ScalarProperty Name="is_active" ColumnName="is_active" />
+          <ScalarProperty Name="updated_date" ColumnName="updated_date" />
+          <ScalarProperty Name="updated_by" ColumnName="updated_by" />
+          <ScalarProperty Name="created_date" ColumnName="created_date" />
+          <ScalarProperty Name="retailer_margin" ColumnName="retailer_margin" />
+          <ScalarProperty Name="dealer_margin" ColumnName="dealer_margin" />
+          <ScalarProperty Name="amra_margin" ColumnName="amra_margin" />
+          <ScalarProperty Name="total_package_cost" ColumnName="total_package_cost" />
+          <ScalarProperty Name="package_cost" ColumnName="package_cost" />
+          <ScalarProperty Name="cost_price" ColumnName="cost_price" />
+          <ScalarProperty Name="we_cloud" ColumnName="we_cloud" />
+          <ScalarProperty Name="we_wifi" ColumnName="we_wifi" />
+          <ScalarProperty Name="qc_cost" ColumnName="qc_cost" />
+          <ScalarProperty Name="distribution_cost" ColumnName="distribution_cost" />
+          <ScalarProperty Name="marketing_cost" ColumnName="marketing_cost" />
+          <ScalarProperty Name="promotional_cost" ColumnName="promotional_cost" />
+          <ScalarProperty Name="incentive_cost" ColumnName="incentive_cost" />
+          <ScalarProperty Name="price_protection" ColumnName="price_protection" />
+          <ScalarProperty Name="fin_cost" ColumnName="fin_cost" />
+          <ScalarProperty Name="created_by" ColumnName="created_by" />
+          <ScalarProperty Name="land_cost" ColumnName="land_cost" />
+          <ScalarProperty Name="mrp_cost" ColumnName="mrp_cost" />
+          <ScalarProperty Name="retailer_cost" ColumnName="retailer_cost" />
+          <ScalarProperty Name="emi_cost" ColumnName="emi_cost" />
+          <ScalarProperty Name="gift_cost" ColumnName="gift_cost" />
+          <ScalarProperty Name="online_cost" ColumnName="online_cost" />
+          <ScalarProperty Name="internal_cost" ColumnName="internal_cost" />
+          <ScalarProperty Name="corporate_cost" ColumnName="corporate_cost" />
+          <ScalarProperty Name="telco_cost" ColumnName="telco_cost" />
+          <ScalarProperty Name="b2b_cost" ColumnName="b2b_cost" />
+          <ScalarProperty Name="dealer_cost" ColumnName="dealer_cost" />
+          <ScalarProperty Name="has_serial" ColumnName="has_serial" />
+          <ScalarProperty Name="color_id" ColumnName="color_id" />
+          <ScalarProperty Name="product_version_id" ColumnName="product_version_id" />
+          <ScalarProperty Name="product_id" ColumnName="product_id" />
+          <ScalarProperty Name="product_price_mapping_id" ColumnName="product_price_mapping_id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="product_price_mapping_log">
+      <EntityTypeMapping TypeName="SCMAamraDevModel.product_price_mapping_log">
+        <MappingFragment StoreEntitySet="product_price_mapping_log">
+          <ScalarProperty Name="last_grn_no" ColumnName="last_grn_no" />
+          <ScalarProperty Name="is_deleted" ColumnName="is_deleted" />
+          <ScalarProperty Name="is_active" ColumnName="is_active" />
+          <ScalarProperty Name="updated_date" ColumnName="updated_date" />
+          <ScalarProperty Name="updated_by" ColumnName="updated_by" />
+          <ScalarProperty Name="created_date" ColumnName="created_date" />
+          <ScalarProperty Name="retailer_margin" ColumnName="retailer_margin" />
+          <ScalarProperty Name="dealer_margin" ColumnName="dealer_margin" />
+          <ScalarProperty Name="amra_margin" ColumnName="amra_margin" />
+          <ScalarProperty Name="total_package_cost" ColumnName="total_package_cost" />
+          <ScalarProperty Name="package_cost" ColumnName="package_cost" />
+          <ScalarProperty Name="cost_price" ColumnName="cost_price" />
+          <ScalarProperty Name="we_cloud" ColumnName="we_cloud" />
+          <ScalarProperty Name="we_wifi" ColumnName="we_wifi" />
+          <ScalarProperty Name="qc_cost" ColumnName="qc_cost" />
+          <ScalarProperty Name="distribution_cost" ColumnName="distribution_cost" />
+          <ScalarProperty Name="marketing_cost" ColumnName="marketing_cost" />
+          <ScalarProperty Name="promotional_cost" ColumnName="promotional_cost" />
+          <ScalarProperty Name="incentive_cost" ColumnName="incentive_cost" />
+          <ScalarProperty Name="price_protection" ColumnName="price_protection" />
+          <ScalarProperty Name="fin_cost" ColumnName="fin_cost" />
+          <ScalarProperty Name="created_by" ColumnName="created_by" />
+          <ScalarProperty Name="land_cost" ColumnName="land_cost" />
+          <ScalarProperty Name="mrp_cost" ColumnName="mrp_cost" />
+          <ScalarProperty Name="retailer_cost" ColumnName="retailer_cost" />
+          <ScalarProperty Name="emi_cost" ColumnName="emi_cost" />
+          <ScalarProperty Name="gift_cost" ColumnName="gift_cost" />
+          <ScalarProperty Name="online_cost" ColumnName="online_cost" />
+          <ScalarProperty Name="internal_cost" ColumnName="internal_cost" />
+          <ScalarProperty Name="corporate_cost" ColumnName="corporate_cost" />
+          <ScalarProperty Name="telco_cost" ColumnName="telco_cost" />
+          <ScalarProperty Name="b2b_cost" ColumnName="b2b_cost" />
+          <ScalarProperty Name="dealer_cost" ColumnName="dealer_cost" />
+          <ScalarProperty Name="color_id" ColumnName="color_id" />
+          <ScalarProperty Name="product_version_id" ColumnName="product_version_id" />
+          <ScalarProperty Name="product_id" ColumnName="product_id" />
+          <ScalarProperty Name="product_price_mapping_id" ColumnName="product_price_mapping_id" />
+          <ScalarProperty Name="product_price_mapping_log_id" ColumnName="product_price_mapping_log_id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="RowCountsAndSizes">
+      <EntityTypeMapping TypeName="SCMAamraDevModel.RowCountsAndSize">
+        <MappingFragment StoreEntitySet="RowCountsAndSizes">
+          <ScalarProperty Name="unused" ColumnName="unused" />
+          <ScalarProperty Name="index_size" ColumnName="index_size" />
+          <ScalarProperty Name="data" ColumnName="data" />
+          <ScalarProperty Name="reserved" ColumnName="reserved" />
+          <ScalarProperty Name="rows" ColumnName="rows" />
+          <ScalarProperty Name="TableName" ColumnName="TableName" />
+          <ScalarProperty Name="TableId" ColumnName="TableId" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="viewDailySales">
+      <EntityTypeMapping TypeName="SCMAamraDevModel.viewDailySale">
+        <MappingFragment StoreEntitySet="viewDailySale">
+          <ScalarProperty Name="remain_balance_status" ColumnName="remain_balance_status" />
+          <ScalarProperty Name="balance_amount" ColumnName="balance_amount" />
+          <ScalarProperty Name="paid_amount" ColumnName="paid_amount" />
+          <ScalarProperty Name="invoice_total" ColumnName="invoice_total" />
+          <ScalarProperty Name="total_price_after_incen" ColumnName="total_price_after_incen" />
+          <ScalarProperty Name="total_incentive_amt" ColumnName="total_incentive_amt" />
+          <ScalarProperty Name="per_incentive" ColumnName="per_incentive" />
+          <ScalarProperty Name="total_price" ColumnName="total_price" />
+          <ScalarProperty Name="unit_price" ColumnName="unit_price" />
+          <ScalarProperty Name="delivered_quantity" ColumnName="delivered_quantity" />
+          <ScalarProperty Name="product_name" ColumnName="product_name" />
+          <ScalarProperty Name="product_id" ColumnName="product_id" />
+          <ScalarProperty Name="product_category_id" ColumnName="product_category_id" />
+          <ScalarProperty Name="product_category_name" ColumnName="product_category_name" />
+          <ScalarProperty Name="area_name" ColumnName="area_name" />
+          <ScalarProperty Name="region_name" ColumnName="region_name" />
+          <ScalarProperty Name="territory_name" ColumnName="territory_name" />
+          <ScalarProperty Name="product_version_name" ColumnName="product_version_name" />
+          <ScalarProperty Name="color_name" ColumnName="color_name" />
+          <ScalarProperty Name="party_name" ColumnName="party_name" />
+          <ScalarProperty Name="party_type_name" ColumnName="party_type_name" />
+          <ScalarProperty Name="delivery_date" ColumnName="delivery_date" />
+          <ScalarProperty Name="invoice_no" ColumnName="invoice_no" />
+          <ScalarProperty Name="invoice_details_id" ColumnName="invoice_details_id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="receive_serial_no_details">
+      <EntityTypeMapping TypeName="SCMAamraDevModel.receive_serial_no_details">
+        <MappingFragment StoreEntitySet="receive_serial_no_details">
+          <ScalarProperty Name="carton_no" ColumnName="carton_no" />
+          <ScalarProperty Name="is_deleted" ColumnName="is_deleted" />
+          <ScalarProperty Name="is_active" ColumnName="is_active" />
+          <ScalarProperty Name="updated_date" ColumnName="updated_date" />
+          <ScalarProperty Name="updated_by" ColumnName="updated_by" />
+          <ScalarProperty Name="created_date" ColumnName="created_date" />
+          <ScalarProperty Name="created_by" ColumnName="created_by" />
+          <ScalarProperty Name="customs_lost" ColumnName="customs_lost" />
+          <ScalarProperty Name="mrr_status" ColumnName="mrr_status" />
+          <ScalarProperty Name="mrr_box_damage" ColumnName="mrr_box_damage" />
+          <ScalarProperty Name="mrr_physical_damage" ColumnName="mrr_physical_damage" />
+          <ScalarProperty Name="mrr_saleable" ColumnName="mrr_saleable" />
+          <ScalarProperty Name="gift_type" ColumnName="gift_type" />
+          <ScalarProperty Name="is_live_dummy" ColumnName="is_live_dummy" />
+          <ScalarProperty Name="replaced_status" ColumnName="replaced_status" />
+          <ScalarProperty Name="current_warehouse_id" ColumnName="current_warehouse_id" />
+          <ScalarProperty Name="is_return" ColumnName="is_return" />
+          <ScalarProperty Name="retailer_id" ColumnName="retailer_id" />
+          <ScalarProperty Name="price_protected" ColumnName="price_protected" />
+          <ScalarProperty Name="is_gift" ColumnName="is_gift" />
+          <ScalarProperty Name="sales_status" ColumnName="sales_status" />
+          <ScalarProperty Name="sales_date" ColumnName="sales_date" />
+          <ScalarProperty Name="delivery_to_retailer_date" ColumnName="delivery_to_retailer_date" />
+          <ScalarProperty Name="deliver_date" ColumnName="deliver_date" />
+          <ScalarProperty Name="received_date" ColumnName="received_date" />
+          <ScalarProperty Name="to_deliver_master_id" ColumnName="to_deliver_master_id" />
+          <ScalarProperty Name="deliver_master_id" ColumnName="deliver_master_id" />
+          <ScalarProperty Name="grn_master_id" ColumnName="grn_master_id" />
+          <ScalarProperty Name="requisition_id" ColumnName="requisition_id" />
+          <ScalarProperty Name="party_id" ColumnName="party_id" />
+          <ScalarProperty Name="received_warehouse_id" ColumnName="received_warehouse_id" />
+          <ScalarProperty Name="imei_no2" ColumnName="imei_no2" />
+          <ScalarProperty Name="imei_no" ColumnName="imei_no" />
+          <ScalarProperty Name="product_version_id" ColumnName="product_version_id" />
+          <ScalarProperty Name="color_id" ColumnName="color_id" />
+          <ScalarProperty Name="brand_id" ColumnName="brand_id" />
+          <ScalarProperty Name="product_id" ColumnName="product_id" />
+          <ScalarProperty Name="receive_serial_no_details_id" ColumnName="receive_serial_no_details_id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+  </EntityContainerMapping>
+</Mapping>

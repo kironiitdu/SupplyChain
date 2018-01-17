@@ -1,0 +1,253 @@
+﻿using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Net;
+using System.Net.Http;
+using System.Web.Http;
+using System.Web.Http.Cors;
+using DMSApi.Models;
+using DMSApi.Models.IRepository;
+using DMSApi.Models.Repository;
+
+namespace DMSApi.Controllers
+{
+    [EnableCors(origins: "*", headers: "*", methods: "*")]
+    public class PartyTypeController : ApiController
+    {
+        private IPartyTypeRepository partyTypeRepository;
+
+        public PartyTypeController()
+        {
+            this.partyTypeRepository = new PartyTypeRepository();
+        }
+
+        public PartyTypeController(IPartyTypeRepository partyTypeRepository)
+        {
+            this.partyTypeRepository = partyTypeRepository;
+        }
+        [HttpGet, ActionName("GetAllPartyTypeNotADA")]
+        public HttpResponseMessage GetAllPartyTypeNotADA()
+        {
+            var countries = partyTypeRepository.GetAllPartyTypeNotADA();
+            var formatter = RequestFormat.JsonFormaterString();
+            return Request.CreateResponse(HttpStatusCode.OK, countries, formatter);
+        }
+
+        [HttpGet, ActionName("GetAllPartyType")]
+        public HttpResponseMessage GetAllPartyType()
+        {
+            var countries = partyTypeRepository.GetAllPartyType();
+            var formatter = RequestFormat.JsonFormaterString();
+            return Request.CreateResponse(HttpStatusCode.OK, countries, formatter);
+        }
+
+        [HttpGet, ActionName("GetAllPartyTypeForPromotion")]
+        public HttpResponseMessage GetAllPartyTypeForPromotion()
+        {
+            var countries = partyTypeRepository.GetAllPartyTypeForPromotion();
+            var formatter = RequestFormat.JsonFormaterString();
+            return Request.CreateResponse(HttpStatusCode.OK, countries, formatter);
+        }
+
+        public HttpResponseMessage GetClientPartyTypes()
+        {
+            var countries = partyTypeRepository.GetClientPartyTypes();
+            var formatter = RequestFormat.JsonFormaterString();
+            return Request.CreateResponse(HttpStatusCode.OK, countries, formatter);
+        }
+        public HttpResponseMessage GetPartyTypesForReturn()
+        {
+            var partyType = partyTypeRepository.GetPartyTypesForReturn();
+            var formatter = RequestFormat.JsonFormaterString();
+            return Request.CreateResponse(HttpStatusCode.OK, partyType, formatter);
+        }
+
+        [HttpGet, ActionName("GetInternalPartyTypeByPartyId")]
+        public HttpResponseMessage GetInternalPartyTypeByPartyId()
+        {
+            var countries = partyTypeRepository.GetInternalPartyTypeByPartyId();
+            var formatter = RequestFormat.JsonFormaterString();
+            return Request.CreateResponse(HttpStatusCode.OK, countries, formatter);
+        }
+
+        [HttpGet, ActionName("GetNormalClientPartyType")]
+        public HttpResponseMessage GetNormalClientPartyType()
+        {
+            var countries = partyTypeRepository.GetNormalClientPartyType();
+            var formatter = RequestFormat.JsonFormaterString();
+            return Request.CreateResponse(HttpStatusCode.OK, countries, formatter);
+        }
+
+        [HttpGet, ActionName("GetRetailerPartyType")]
+        public HttpResponseMessage GetRetailerPartyType()
+        {
+            var countries = partyTypeRepository.GetRetailerPartyType();
+            var formatter = RequestFormat.JsonFormaterString();
+            return Request.CreateResponse(HttpStatusCode.OK, countries, formatter);
+        }
+
+        [HttpGet, ActionName("GetDealer")]
+        public HttpResponseMessage GetDealer()
+        {
+            var partyType = partyTypeRepository.GetDealer();
+            var formatter = RequestFormat.JsonFormaterString();
+            return Request.CreateResponse(HttpStatusCode.OK, partyType, formatter);
+        }
+
+        [HttpGet, ActionName("GetPartyTypesForInitialBalance")]
+        public HttpResponseMessage GetPartyTypesForInitialBalance()
+        {
+            var partyType = partyTypeRepository.GetPartyTypesForInitialBalance();
+            var formatter = RequestFormat.JsonFormaterString();
+            return Request.CreateResponse(HttpStatusCode.OK, partyType, formatter);
+        }
+
+        //Updated By kiron (31/08/2016)
+        [HttpPost]
+        public HttpResponseMessage Post([FromBody]Models.party_type party_type, long created_by)
+        {
+            try
+            {
+                if (string.IsNullOrEmpty(party_type.party_type_name.Trim()))
+                {
+                    var formatter = RequestFormat.JsonFormaterString();
+                    return Request.CreateResponse(HttpStatusCode.OK, new Confirmation { output = "error", msg = "Party Type is Empty" }, formatter);
+                }
+                if (string.IsNullOrEmpty(party_type.party_prefix.Trim()))
+                {
+                    var formatter = RequestFormat.JsonFormaterString();
+                    return Request.CreateResponse(HttpStatusCode.OK, new Confirmation { output = "warning", msg = "Party Prefix is Empty" }, formatter);
+                }
+                else
+                {
+                    if (partyTypeRepository.CheckDuplicatPartyType(party_type.party_type_name))
+                    {
+                        var formatter = RequestFormat.JsonFormaterString();
+                        return Request.CreateResponse(HttpStatusCode.OK, new Confirmation { output = "warning", msg = "Party Type Already Exists" }, formatter);
+                    }
+                    if (partyTypeRepository.CheckDuplicatPartyPrefix(party_type.party_prefix.ToUpper().Trim()))
+                    {
+                        var formatter = RequestFormat.JsonFormaterString();
+                        return Request.CreateResponse(HttpStatusCode.OK, new Confirmation { output = "warning", msg = "Party Prefix Already Exists" }, formatter);
+                    }
+                    if (partyTypeRepository.CheckDuplicatPartyPrefix(party_type.party_prefix.ToLower().Trim()))
+                    {
+                        var formatter = RequestFormat.JsonFormaterString();
+                        return Request.CreateResponse(HttpStatusCode.OK, new Confirmation { output = "warning", msg = "Party Prefix Already Exists" }, formatter);
+                    }
+                    else
+                    {
+
+                        Models.party_type insertPartyType = new Models.party_type
+                        {
+                            party_type_name = party_type.party_type_name.Trim(),
+                            party_prefix = party_type.party_prefix.ToUpper().Trim(),
+                            created_by = created_by,
+                            created_date = DateTime.Now,
+                            is_deleted = party_type.is_deleted = false,
+                            is_active = party_type.is_active = true
+                        };
+                        bool save_party_type = partyTypeRepository.InsertPartyType(insertPartyType, created_by);
+
+                        var formatter = RequestFormat.JsonFormaterString();
+                        return Request.CreateResponse(HttpStatusCode.OK, new Confirmation { output = "success", msg = "Party Type save successfully" }, formatter);
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                var formatter = RequestFormat.JsonFormaterString();
+                return Request.CreateResponse(HttpStatusCode.OK, new Confirmation { output = "error", msg = ex.ToString() }, formatter);
+            }
+        }
+        //Updated By kiron (31/08/2016)
+        [HttpPut]
+        public HttpResponseMessage Put([FromBody]Models.party_type party_type, long updated_by)
+        {
+            try
+            {
+                if (string.IsNullOrEmpty(party_type.party_type_name.Trim()))
+                {
+                    var formatter = RequestFormat.JsonFormaterString();
+                    return Request.CreateResponse(HttpStatusCode.OK, new Confirmation { output = "warning", msg = "Party Type is Empty" }, formatter);
+                }
+                if (string.IsNullOrEmpty(party_type.party_prefix.Trim()))
+                {
+                    var formatter = RequestFormat.JsonFormaterString();
+                    return Request.CreateResponse(HttpStatusCode.OK, new Confirmation { output = "warning", msg = "Party Prefix is Empty" }, formatter);
+                }
+                else
+                {
+                    if (partyTypeRepository.CheckDuplicatPartyType(party_type.party_type_name.Trim()))
+                    {
+                        var formatter = RequestFormat.JsonFormaterString();
+                        return Request.CreateResponse(HttpStatusCode.OK, new Confirmation { output = "warning", msg = "Party Type Already Exists" }, formatter);
+                    }
+                    //if (partyTypeRepository.CheckDuplicatPartyPrefix(party_type.party_prefix.ToUpper().Trim()))
+                    //{
+                    //    var formatter = RequestFormat.JsonFormaterString();
+                    //    return Request.CreateResponse(HttpStatusCode.OK, new Confirmation { output = "warning", msg = "Party Prefix Already Exists" }, formatter);
+                    //}
+                    //if (partyTypeRepository.CheckDuplicatPartyPrefix(party_type.party_prefix.ToLower().Trim()))
+                    //{
+                    //    var formatter = RequestFormat.JsonFormaterString();
+                    //    return Request.CreateResponse(HttpStatusCode.OK,
+                    //        new Confirmation {output = "warning", msg = "Party Prefix Already Exists"}, formatter);
+                    //}
+                    else
+                    {
+                        Models.party_type updatePartyType = new Models.party_type
+
+                        {
+                            party_type_id = party_type.party_type_id,
+                            party_type_name = party_type.party_type_name.Trim(),
+                            party_prefix = party_type.party_prefix.ToUpper().Trim(),
+                            updated_by = updated_by,
+                            updated_date = DateTime.Now,
+                            is_active = true
+                        };
+
+                        bool irepoUpdate = partyTypeRepository.UpdatePartyType(updatePartyType, updated_by);
+
+                        if (irepoUpdate == true)
+                        {
+                            var formatter = RequestFormat.JsonFormaterString();
+                            return Request.CreateResponse(HttpStatusCode.OK,
+                                new Confirmation { output = "success", msg = "Party Type Updated successfully" }, formatter);
+                        }
+
+                        else
+                        {
+                            var formatter = RequestFormat.JsonFormaterString();
+                            return Request.CreateResponse(HttpStatusCode.OK,
+                                new Confirmation { output = "success", msg = "Update Failed" }, formatter);
+                        }
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                var formatter = RequestFormat.JsonFormaterString();
+                return Request.CreateResponse(HttpStatusCode.OK, new Confirmation { output = "error", msg = ex.ToString() }, formatter);
+            }
+        }
+
+        [HttpDelete]
+        public HttpResponseMessage Delete([FromBody]Models.party_type party_type, long updated_by)
+        {
+            try
+            {
+                //long con_id = long.Parse(country_id);
+                bool updatPartyType = partyTypeRepository.DeletePartyType(party_type.party_type_id, updated_by);
+
+                var formatter = RequestFormat.JsonFormaterString();
+                return Request.CreateResponse(HttpStatusCode.OK, new Confirmation { output = "success", msg = "Party Type Delete Successfully." }, formatter);
+            }
+            catch (Exception ex)
+            {
+                var formatter = RequestFormat.JsonFormaterString();
+                return Request.CreateResponse(HttpStatusCode.OK, new Confirmation { output = "error", msg = ex.ToString() }, formatter);
+            }
+        }
+    }
+}

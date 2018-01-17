@@ -1,0 +1,277 @@
+﻿using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Net;
+using System.Net.Http;
+using System.Web.Http;
+using System.Web.Http.Cors;
+using DMSApi.Models;
+using DMSApi.Models.IRepository;
+using DMSApi.Models.Repository;
+using Org.BouncyCastle.Asn1.Ocsp;
+
+namespace DMSApi.Controllers
+{
+    [EnableCors(origins: "*", headers: "*", methods: "*")]
+    public class SupplierController : ApiController
+    {
+        private ISupplierRepository supplierRepository;
+
+        public SupplierController()
+        {
+            this.supplierRepository = new SupplierRepository();
+        }
+
+        public SupplierController(ISupplierRepository supplierRepository)
+        {
+            this.supplierRepository = supplierRepository;
+        }
+        [HttpGet, ActionName("GetAllSuppliers")]
+        public HttpResponseMessage GetAllSuppliers()
+        {
+            var countries = supplierRepository.GetAllSuppliers();
+            var formatter = RequestFormat.JsonFormaterString();
+            return Request.CreateResponse(HttpStatusCode.OK, countries, formatter);
+        }
+
+        [HttpGet, ActionName("GetAllInternationalSuppliers")]
+        public HttpResponseMessage GetAllInternationalSuppliers()
+        {
+            var countries = supplierRepository.GetAllInternationalSuppliers();
+            var formatter = RequestFormat.JsonFormaterString();
+            return Request.CreateResponse(HttpStatusCode.OK, countries, formatter);
+        }
+
+        [HttpGet, ActionName("GetAllLocalSuppliers")]
+        public HttpResponseMessage GetAllLocalSuppliers()
+        {
+            var countries = supplierRepository.GetAllLocalSuppliers();
+            var formatter = RequestFormat.JsonFormaterString();
+            return Request.CreateResponse(HttpStatusCode.OK, countries, formatter);
+        }
+
+        [System.Web.Http.HttpPost]
+        public HttpResponseMessage Post([FromBody] Models.supplier supplier)
+        {
+
+            try
+            {
+
+                if (string.IsNullOrEmpty(supplier.supplier_name))
+                {
+                    var formatter = RequestFormat.JsonFormaterString();
+                    return Request.CreateResponse(HttpStatusCode.OK, new Confirmation { output = "error", msg = "Supplier Name is Empty" }, formatter);
+
+                }
+                if (supplierRepository.CheckDuplicateSupplier(supplier.supplier_name))
+                {
+                    var formatter = RequestFormat.JsonFormaterString();
+                    return Request.CreateResponse(HttpStatusCode.OK, new Confirmation { output = "error", msg = "Supplier Already Exists" }, formatter);
+                }
+
+                if (string.IsNullOrEmpty(supplier.supplier_type_id.ToString()))
+                {
+                    var formatter = RequestFormat.JsonFormaterString();
+                    return Request.CreateResponse(HttpStatusCode.OK, new Confirmation { output = "error", msg = "Supplier Type is Empty" }, formatter);
+
+                }
+                if (string.IsNullOrEmpty(supplier.mobile))
+                {
+                    var formatter = RequestFormat.JsonFormaterString();
+                    return Request.CreateResponse(HttpStatusCode.OK, new Confirmation { output = "error", msg = "Mobile is Empty" }, formatter);
+
+                }
+                if (string.IsNullOrEmpty(supplier.contact_person))
+                {
+                    var formatter = RequestFormat.JsonFormaterString();
+                    return Request.CreateResponse(HttpStatusCode.OK, new Confirmation { output = "error", msg = "Contact Person is Empty" }, formatter);
+
+                }
+                if (string.IsNullOrEmpty(supplier.email))
+                {
+                    var formatter = RequestFormat.JsonFormaterString();
+                    return Request.CreateResponse(HttpStatusCode.OK, new Confirmation { output = "error", msg = "Email 1 is Empty" }, formatter);
+
+                }
+                if (string.IsNullOrEmpty(supplier.receiving_company_person))
+                {
+                    var formatter = RequestFormat.JsonFormaterString();
+                    return Request.CreateResponse(HttpStatusCode.OK, new Confirmation { output = "error", msg = "Contact Person is Empty" }, formatter);
+
+                }
+                if (string.IsNullOrEmpty(supplier.receiving_company_contact_email))
+                {
+                    var formatter = RequestFormat.JsonFormaterString();
+                    return Request.CreateResponse(HttpStatusCode.OK, new Confirmation { output = "error", msg = "Email is Empty" }, formatter);
+
+                }
+                else
+                {
+                    supplier insertSupplier = new supplier
+                    {
+                        supplier_name = supplier.supplier_name,
+                        supplier_code = supplier.supplier_code,
+                        supplier_type_id = supplier.supplier_type_id,
+                        company_address = supplier.company_address,
+                        factory_address = supplier.factory_address,
+                        phone = supplier.phone,
+                        mobile = supplier.mobile,
+                        email = supplier.email,
+                        email2 = supplier.email2,
+                        contact_person = supplier.contact_person,
+                        contact_person2 = supplier.contact_person2,
+                        total_debit = 0,
+                        total_credit = 0,
+                        balance = 0,
+                        is_active = supplier.is_active = true,
+                        created_by = supplier.created_by,
+                        vat_id = supplier.vat_id,
+                        tin_no = supplier.tin_no,
+                        receiving_company_name = supplier.receiving_company_name,
+                        receiving_company_person = supplier.receiving_company_person,
+                        receiving_company_contact_email = supplier.receiving_company_contact_email
+                    };
+
+
+                    /* Supplier table entry by kiorn*/
+                    supplierRepository.AddSupplier(insertSupplier);
+                    /* Supplier table entry by kiorn*/
+
+                    var formatter = RequestFormat.JsonFormaterString();
+                    return Request.CreateResponse(HttpStatusCode.OK, new Confirmation { output = "success", msg = "Supplier save successfully" }, formatter);
+                }
+
+
+            }
+            catch (Exception ex)
+            {
+                var formatter = RequestFormat.JsonFormaterString();
+                return Request.CreateResponse(HttpStatusCode.OK, new Confirmation { output = "error", msg = ex.ToString() }, formatter);
+            }
+        }
+
+        [System.Web.Http.HttpPut]
+        public HttpResponseMessage Put([FromBody] Models.supplier supplier)
+        {
+            try
+            {
+
+                if (string.IsNullOrEmpty(supplier.supplier_name))
+                {
+                    var formatter = RequestFormat.JsonFormaterString();
+                    return Request.CreateResponse(HttpStatusCode.OK, new Confirmation { output = "error", msg = "Supplier Name is Empty" }, formatter);
+
+                }
+
+                if (string.IsNullOrEmpty(supplier.supplier_type_id.ToString()))
+                {
+                    var formatter = RequestFormat.JsonFormaterString();
+                    return Request.CreateResponse(HttpStatusCode.OK, new Confirmation { output = "error", msg = "Supplier Type is Empty" }, formatter);
+
+                }
+                if (string.IsNullOrEmpty(supplier.mobile))
+                {
+                    var formatter = RequestFormat.JsonFormaterString();
+                    return Request.CreateResponse(HttpStatusCode.OK, new Confirmation { output = "error", msg = "Mobile is Empty" }, formatter);
+
+                }
+                if (string.IsNullOrEmpty(supplier.contact_person))
+                {
+                    var formatter = RequestFormat.JsonFormaterString();
+                    return Request.CreateResponse(HttpStatusCode.OK, new Confirmation { output = "error", msg = "Contact Person is Empty" }, formatter);
+
+                }
+                if (string.IsNullOrEmpty(supplier.email))
+                {
+                    var formatter = RequestFormat.JsonFormaterString();
+                    return Request.CreateResponse(HttpStatusCode.OK, new Confirmation { output = "error", msg = "Email 1 is Empty" }, formatter);
+
+                }
+                if (string.IsNullOrEmpty(supplier.receiving_company_person))
+                {
+                    var formatter = RequestFormat.JsonFormaterString();
+                    return Request.CreateResponse(HttpStatusCode.OK, new Confirmation { output = "error", msg = "Contact Person is Empty" }, formatter);
+
+                }
+                if (string.IsNullOrEmpty(supplier.receiving_company_contact_email))
+                {
+                    var formatter = RequestFormat.JsonFormaterString();
+                    return Request.CreateResponse(HttpStatusCode.OK, new Confirmation { output = "error", msg = "Email is Empty" }, formatter);
+
+                }
+                else
+                {
+                    Models.supplier updateSupplier = new Models.supplier
+                    {
+                        supplier_id = supplier.supplier_id,
+                        supplier_name = supplier.supplier_name,
+                        supplier_code = supplier.supplier_code,
+                        supplier_type_id = supplier.supplier_type_id,
+                        company_address = supplier.company_address,
+                        factory_address = supplier.factory_address,
+                        phone = supplier.phone,
+                        mobile = supplier.mobile,
+                        email = supplier.email,
+                        email2 = supplier.email2,
+                        contact_person = supplier.contact_person,
+                        contact_person2 = supplier.contact_person2,
+                        total_debit = 0,
+                        total_credit = 0,
+                        balance = 0,
+                        receiving_company_name = supplier.receiving_company_name,
+                        receiving_company_person = supplier.receiving_company_person,
+                        receiving_company_contact_email = supplier.receiving_company_contact_email,
+                        vat_id = supplier.vat_id,
+                        tin_no = supplier.tin_no,
+                        updated_by = supplier.updated_by,
+                        is_active = supplier.is_active
+
+                    };
+                    /* Supplier table entry by Kiron*/               
+                    supplierRepository.EditSupplier(updateSupplier);
+
+                    var formatter = RequestFormat.JsonFormaterString();
+                    return Request.CreateResponse(HttpStatusCode.OK, new Confirmation { output = "success", msg = "Supplier update successfully" }, formatter);
+                }
+
+
+
+            }
+            catch (Exception ex)
+            {
+                var formatter = RequestFormat.JsonFormaterString();
+                return Request.CreateResponse(HttpStatusCode.OK, new Confirmation { output = "error", msg = ex.ToString() }, formatter);
+            }
+        }
+
+        [System.Web.Http.HttpDelete]
+        public HttpResponseMessage Delete([FromBody]Models.supplier supplier, long updated_by)
+        {
+            try
+            {
+
+                bool updatCountry = supplierRepository.DeleteSupplier(supplier.supplier_id, updated_by);
+
+                var formatter = RequestFormat.JsonFormaterString();
+                return Request.CreateResponse(HttpStatusCode.OK, new Confirmation { output = "success", msg = "Supplier Delete Successfully." }, formatter);
+            }
+            catch (Exception ex)
+            {
+                var formatter = RequestFormat.JsonFormaterString();
+                return Request.CreateResponse(HttpStatusCode.OK, new Confirmation { output = "error", msg = ex.ToString() }, formatter);
+            }
+
+        }
+
+        [ActionName("GetSupplierById")]
+        [System.Web.Http.HttpPost]
+        public HttpResponseMessage GetSupplierById([FromBody]Models.supplier supplier)
+        {
+            var supplierId = supplier.supplier_id;
+
+            var employee = supplierRepository.GetSupplierById(supplierId);
+            HttpResponseMessage response = Request.CreateResponse(HttpStatusCode.OK, employee);
+            return response;
+        }
+    }
+}

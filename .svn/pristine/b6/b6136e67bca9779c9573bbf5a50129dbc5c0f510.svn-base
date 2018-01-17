@@ -1,0 +1,396 @@
+﻿using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Web;
+using DMSApi.Models.IRepository;
+using DMSApi.Models.StronglyType;
+
+namespace DMSApi.Models.Repository
+{
+    public class EmployeeRepository : IEmployeeRepository
+    {
+        private DMSEntities _entities;
+
+        public EmployeeRepository()
+        {
+            this._entities = new DMSEntities();
+        }
+
+        public object GetAllEmployees()
+        {
+            var employee = (from emp in _entities.employees
+                            join dep in _entities.departments on emp.department_id equals dep.department_id into tmpDep
+                            join des in _entities.designations on emp.designation_id equals des.sales_designation_id into tmpDes
+                            join regi in _entities.regions on emp.region_id equals regi.region_id into tmpRegi
+                            join areaa in _entities.areas on emp.area_id equals areaa.area_id into tmpArea
+                            from dep in tmpDep.DefaultIfEmpty()
+                            from des in tmpDes.DefaultIfEmpty()
+                            from regi in tmpRegi.DefaultIfEmpty()
+                            from areaa in tmpArea.DefaultIfEmpty()
+                            select new
+                            {
+                                employee_id = emp.employee_id,
+                                employee_name = emp.employee_name,
+                                mobile_number = emp.mobile_number,
+                                address = emp.address,
+                                date_of_birth = emp.date_of_birth,
+                                date_of_join = emp.date_of_join,
+                                gender = emp.gender,
+                                blood_group = emp.blood_group,
+                                marital_status = emp.marital_status,
+                                email_address = emp.email_address,
+                                department_name = dep.department_name,
+                                designation_name = des.sales_designation,
+                                region_name = regi.region_name,
+                                area_name = areaa.area_name,
+                                is_active = emp.is_active,
+                                created_date = emp.created_date,
+                                created_by = emp.created_by ?? 0,
+                                updated_date = emp.updated_date,
+                                updated_by = emp.updated_by ?? 0,
+                            }).OrderByDescending(e => e.employee_id).ToList();
+
+            return employee;
+        }
+
+        public object GetEmployeeByEmployeeName(string employee_name)
+        {
+            var party = _entities.employees.OrderByDescending(e => e.employee_id).FirstOrDefault(p => p.employee_name == employee_name);
+            return party;
+        }
+
+        public List<employee> GetEmplyieesForDropdown()
+        {
+
+            var employee = _entities.employees.OrderByDescending(e => e.employee_id).ToList();
+            return employee;
+        }
+
+        public long AddEmployee(EmployeeModel employeeModel)
+        {
+            try
+            {
+                if (employeeModel.is_user == false)
+                {
+                    var insertEmployee = new employee
+                    {
+                        employee_name = employeeModel.employee_name,
+                        date_of_birth = employeeModel.date_of_birth,
+                        date_of_join = employeeModel.date_of_join,
+                        department_id = employeeModel.department_id,
+                        designation_id = employeeModel.designation_id,
+                        email_address = employeeModel.email_address,
+                        mobile_number = employeeModel.mobile_number,
+                        address = employeeModel.address,
+                        gender = employeeModel.gender,
+                        marital_status = employeeModel.marital_status,
+                        blood_group = employeeModel.blood_group,
+                        region_id = employeeModel.region_id,
+                        area_id = employeeModel.area_id,
+                        territory_id = employeeModel.territory_id,
+                        is_active = employeeModel.is_active,
+                        is_deleted = false,
+                        created_date = DateTime.Now,
+                        created_by = employeeModel.created_by,
+                        updated_date = DateTime.Now,
+                        updated_by = employeeModel.updated_by
+                    };
+                    _entities.employees.Add(insertEmployee);
+                    _entities.SaveChanges();
+                    long lastEmployeeId = insertEmployee.employee_id;
+                    return lastEmployeeId;
+                }
+                else
+                {
+                    var insertEmployee = new employee
+                    {
+                        employee_name = employeeModel.employee_name,
+                        date_of_birth = employeeModel.date_of_birth,
+                        date_of_join = employeeModel.date_of_join,
+                        department_id = employeeModel.department_id,
+                        designation_id = employeeModel.designation_id,
+                        email_address = employeeModel.email_address,
+                        mobile_number = employeeModel.mobile_number,
+                        address = employeeModel.address,
+                        gender = employeeModel.gender,
+                        marital_status = employeeModel.marital_status,
+                        blood_group = employeeModel.blood_group,
+                        region_id = employeeModel.region_id,
+                        area_id = employeeModel.area_id,
+                        territory_id = employeeModel.territory_id,
+                        is_active = employeeModel.is_active,
+                        is_deleted = false,
+                        created_date = DateTime.Now,
+                        created_by = employeeModel.created_by,
+                        updated_date = DateTime.Now,
+                        updated_by = employeeModel.updated_by
+                    };
+                    _entities.employees.Add(insertEmployee);
+                    _entities.SaveChanges();
+                    long lastEmployeeId = insertEmployee.employee_id;
+
+                    user insert_user = new user
+                    {
+                        full_name = employeeModel.employee_name,
+                        password = employeeModel.password,
+                        role_id = employeeModel.role_id,
+                        login_name = employeeModel.login_name,
+                        company_id = 2,
+                        is_new_pass = true,
+                        emp_id = lastEmployeeId,
+                        party_id = 1,
+                        created_by = employeeModel.created_by,
+                        created_date = DateTime.Now,
+                        is_active = true,
+                        is_deleted = false
+                    };
+                    _entities.users.Add(insert_user);
+                    _entities.SaveChanges();
+
+                    return lastEmployeeId;
+                }
+
+            }
+            catch (Exception ex)
+            {
+                return 0;
+            }
+        }
+
+        public EmployeeModel GetEmployeeById(long employee_id)
+        {
+            var employeeData = _entities.employees.Find(employee_id);
+            var userData = _entities.users.FirstOrDefault(e => e.emp_id == employee_id);
+            if (userData == null)
+            {
+
+                EmployeeModel employeeModel = new EmployeeModel
+                {
+                    employee_name = employeeData.employee_name,
+                    date_of_birth = employeeData.date_of_birth,
+                    date_of_join = employeeData.date_of_join,
+                    department_id = employeeData.department_id,
+                    designation_id = employeeData.designation_id,
+                    email_address = employeeData.email_address,
+                    mobile_number = employeeData.mobile_number,
+                    address = employeeData.address,
+                    gender = employeeData.gender,
+                    marital_status = employeeData.marital_status,
+                    blood_group = employeeData.blood_group,
+                    region_id = employeeData.region_id,
+                    area_id = employeeData.area_id,
+                    territory_id = employeeData.territory_id,
+                    is_active = employeeData.is_active,
+                    is_user = false,
+                    created_date = employeeData.created_date,
+                    created_by = employeeData.created_by,
+                    updated_date = employeeData.updated_date,
+                    updated_by = employeeData.updated_by
+                };
+                return employeeModel;
+            }
+            else
+            {
+                EmployeeModel employeeModel = new EmployeeModel
+                {
+                    employee_name = employeeData.employee_name,
+                    date_of_birth = employeeData.date_of_birth,
+                    date_of_join = employeeData.date_of_join,
+                    department_id = employeeData.department_id,
+                    designation_id = employeeData.designation_id,
+                    email_address = employeeData.email_address,
+                    mobile_number = employeeData.mobile_number,
+                    address = employeeData.address,
+                    gender = employeeData.gender,
+                    marital_status = employeeData.marital_status,
+                    blood_group = employeeData.blood_group,
+                    region_id = employeeData.region_id,
+                    area_id = employeeData.area_id,
+                    territory_id = employeeData.territory_id,
+                    is_active = employeeData.is_active,
+                    is_user = true,
+                    created_date = employeeData.created_date,
+                    created_by = employeeData.created_by,
+                    login_name = userData.login_name,
+                    role_id = (long)userData.role_id,
+                    user_id = userData.user_id,
+                    updated_date = employeeData.updated_date,
+                    updated_by = employeeData.updated_by
+                };
+                return employeeModel;
+            }
+        }
+
+        public bool EditEmployee(EmployeeModel employeeModel)
+        {
+            try
+            {
+                if (employeeModel.is_user == false)
+                {
+                    var emp = _entities.employees.Find(employeeModel.employee_id);
+                    emp.employee_name = employeeModel.employee_name;
+                    emp.date_of_birth = employeeModel.date_of_birth;
+                    emp.date_of_join = employeeModel.date_of_join;
+                    emp.department_id = employeeModel.department_id;
+                    emp.designation_id = employeeModel.designation_id;
+                    emp.email_address = employeeModel.email_address;
+                    emp.mobile_number = employeeModel.mobile_number;
+                    emp.address = employeeModel.address;
+                    emp.gender = employeeModel.gender;
+                    emp.marital_status = employeeModel.marital_status;
+                    emp.blood_group = employeeModel.blood_group;
+                    emp.region_id = employeeModel.region_id;
+                    emp.area_id = employeeModel.area_id;
+                    emp.territory_id = employeeModel.territory_id;
+                    emp.is_active = employeeModel.is_active;
+                    emp.updated_date = DateTime.Now;
+                    emp.updated_by = employeeModel.updated_by;
+                    
+                    _entities.SaveChanges();
+                    return true;
+                }
+                else
+                {
+                    var emp = _entities.employees.Find(employeeModel.employee_id);
+                    emp.employee_name = employeeModel.employee_name;
+                    emp.date_of_birth = employeeModel.date_of_birth;
+                    emp.date_of_join = employeeModel.date_of_join;
+                    emp.department_id = employeeModel.department_id;
+                    emp.designation_id = employeeModel.designation_id;
+                    emp.email_address = employeeModel.email_address;
+                    emp.mobile_number = employeeModel.mobile_number;
+                    emp.address = employeeModel.address;
+                    emp.gender = employeeModel.gender;
+                    emp.marital_status = employeeModel.marital_status;
+                    emp.blood_group = employeeModel.blood_group;
+                    emp.region_id = employeeModel.region_id;
+                    emp.area_id = employeeModel.area_id;
+                    emp.territory_id = employeeModel.territory_id;
+                    emp.is_active = employeeModel.is_active;
+                    emp.updated_date = DateTime.Now;
+                    emp.updated_by = employeeModel.updated_by;
+
+                    _entities.SaveChanges();
+
+                    var exixtUser = _entities.users.FirstOrDefault(u => u.emp_id == emp.employee_id);
+
+                    if (exixtUser==null)
+                    {
+                        user insert_user = new user
+                        {
+                            full_name = employeeModel.employee_name,
+                            password = employeeModel.password,
+                            role_id = employeeModel.role_id,
+                            login_name = employeeModel.login_name,
+                            company_id = 2,
+                            is_new_pass = true,
+                            emp_id = emp.employee_id
+                        };
+                        _entities.users.Add(insert_user);
+                        _entities.SaveChanges();
+                    }
+                    else
+                    {
+                        if (employeeModel.chk_pass==false)
+                        {
+                            exixtUser.role_id = employeeModel.role_id;
+                            _entities.SaveChanges();
+                        }
+                        else
+                        {
+                            exixtUser.role_id = employeeModel.role_id;
+                            exixtUser.password = employeeModel.password;
+                            _entities.SaveChanges();
+                        }
+                    }
+                    return true;
+                }
+            }
+            catch (Exception ex)
+            {
+                return false;
+            }
+        }
+
+        public bool DeleteEmployee(long employee_id)
+        {
+            try
+            {
+                employee oEmployee = _entities.employees.FirstOrDefault(c => c.employee_id == employee_id);
+                _entities.employees.Attach(oEmployee);
+                _entities.employees.Remove(oEmployee);
+                _entities.SaveChanges();
+
+                user existUser = _entities.users.FirstOrDefault(c => c.emp_id == employee_id);
+                if (existUser!=null)
+                {
+                    _entities.users.Attach(existUser);
+                    _entities.users.Remove(existUser);
+                    _entities.SaveChanges();
+                }
+                return true;
+            }
+            catch (Exception)
+            {
+                return false;
+            }
+        }
+
+        //public List<employee> GetPartywiseEmplyieesForDropdown(long partyId)
+        //{
+        //    var employee = _entities.employees.Where(e => e.party_id == partyId)
+        //        .OrderByDescending(e => e.employee_id).ToList();
+        //    return employee;
+        //}
+
+        //Farzana Islam
+        //Dropdown For Sales Target
+        //public object GetDropdownForSalesTarget()
+        //{
+        //    var salesemp = (from sd in _entities.sales_designation
+        //                    join emp in _entities.employees
+        //                        on sd.sales_designation_id equals emp.sales_designation_id
+        //                    where sd.has_target == true
+        //                    select new
+        //                    {
+
+        //                        employee_name = emp.employee_name,
+        //                        employee_id = emp.employee_id,
+        //                        designation_name = sd.designation_name,
+        //                        sales_designation_id = sd.sales_designation_id,
+        //                        has_target = sd.has_target
+
+        //                    }).ToList();
+
+
+        //    return salesemp;
+
+        //}
+
+        //Farzana Islam
+        //Dropdown For sales Representative
+        //public object GetDropdownForPaymentRequest(string party_type_name)
+        //{
+        //    var paysemp = (from emp in _entities.employees
+        //                    join p in _entities.parties
+        //                        on emp.party_id equals p.party_id
+        //                        join pt in _entities.party_type
+        //                        on p.party_type_id equals pt.party_type_id
+        //                    where pt.party_type_name == "Central"
+        //                    select new
+        //                    {
+
+        //                        employee_name = emp.employee_name,
+        //                        employee_id = emp.employee_id,
+        //                        party_id = p.party_id,
+        //                        party_name = p.party_name,
+        //                        party_type_id = pt.party_type_id,
+        //                        party_type_name = pt.party_type_name
+
+        //                    }).ToList();
+
+
+        //    return paysemp;
+        //}
+    }
+}

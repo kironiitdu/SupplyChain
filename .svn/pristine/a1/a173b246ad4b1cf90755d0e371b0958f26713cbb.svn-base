@@ -1,0 +1,187 @@
+﻿using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Net;
+using System.Net.Http;
+using System.Web.Http;
+using DMSApi.Models;
+using DMSApi.Models.IRepository;
+using DMSApi.Models.Repository;
+using DMSApi.Models.StronglyType;
+using System.Web.Http.Cors;
+using System.Data;
+
+namespace DMSApi.Controllers
+{
+    [EnableCors(origins: "*", headers: "*", methods: "*")]
+
+    public class InvoiceController : ApiController
+    {
+         private IInvoiceRepository invoiceRepository;
+
+         private InvoiceController()
+        {
+            this.invoiceRepository = new InvoiceRepository();
+        }
+
+        [ActionName("GetAllInvoice")]
+        public HttpResponseMessage GetAllInvoice()
+        {
+            var allinvoice = invoiceRepository.GetAllInvoice();
+            var formatter = RequestFormat.JsonFormaterString();
+            return Request.CreateResponse(HttpStatusCode.OK, allinvoice, formatter);
+        }
+        //invoice Report
+        public object GetInvoiceReportById(int invoice_master_id)
+        {
+            var invoice = invoiceRepository.GetInvoiceReportById(invoice_master_id);
+            var formatter = RequestFormat.JsonFormaterString();
+            return Request.CreateResponse(HttpStatusCode.OK, invoice, formatter);
+        }
+        //sales approval
+        [System.Web.Http.HttpPost]
+        public HttpResponseMessage Post([FromBody] InvoiceModel InvoiceModel)
+        {
+            try
+            {
+                    invoiceRepository.AddInvoiceNew(InvoiceModel);
+                    var formatter = RequestFormat.JsonFormaterString();
+                    return Request.CreateResponse(HttpStatusCode.OK, new Confirmation { output = "success", msg = "Approved successfully" }, formatter);
+               
+            }
+            catch (Exception ex)
+            {
+                var formatter = RequestFormat.JsonFormaterString();
+                return Request.CreateResponse(HttpStatusCode.OK, new Confirmation { output = "error", msg = ex.ToString() }, formatter);
+            }
+        }
+        
+        [System.Web.Http.HttpPost]
+        public HttpResponseMessage AccountsForward([FromBody] RequisitionModel RequisitionModel)
+        {
+            try
+            {
+                invoiceRepository.AccountsForward(RequisitionModel);
+                var formatter = RequestFormat.JsonFormaterString();
+                return Request.CreateResponse(HttpStatusCode.OK, new Confirmation { output = "success", msg = "Approved successfully" }, formatter);
+               
+            }
+            catch (Exception ex)
+            {
+                var formatter = RequestFormat.JsonFormaterString();
+                return Request.CreateResponse(HttpStatusCode.OK, new Confirmation { output = "error", msg = ex.ToString() }, formatter);
+            }
+        }
+        //HOOps approval 18.02.2017
+        [System.Web.Http.HttpPost]
+        public HttpResponseMessage HOOpsApproval([FromBody] InvoiceModel InvoiceModel)
+        {
+            try
+            {
+                invoiceRepository.HOOpsApproval(InvoiceModel);
+                var formatter = RequestFormat.JsonFormaterString();
+                return Request.CreateResponse(HttpStatusCode.OK, new Confirmation { output = "success", msg = "Forward to sales head successfully" }, formatter);
+
+            }
+            catch (Exception ex)
+            {
+                var formatter = RequestFormat.JsonFormaterString();
+                return Request.CreateResponse(HttpStatusCode.OK, new Confirmation { output = "error", msg = ex.ToString() }, formatter);
+            }
+        }
+
+        [System.Web.Http.HttpPost]
+        public HttpResponseMessage HOSpsApprovalByShafiq([FromBody] InvoiceModel InvoiceModel)
+        {
+            try
+            {
+                invoiceRepository.HOSpsApprovalByShafiq(InvoiceModel);
+                var formatter = RequestFormat.JsonFormaterString();
+                return Request.CreateResponse(HttpStatusCode.OK, new Confirmation { output = "success", msg = "Forward to sales head successfully" }, formatter);
+
+            }
+            catch (Exception ex)
+            {
+                var formatter = RequestFormat.JsonFormaterString();
+                return Request.CreateResponse(HttpStatusCode.OK, new Confirmation { output = "error", msg = ex.ToString() }, formatter);
+            }
+        }
+
+        [System.Web.Http.HttpPost]
+        public HttpResponseMessage DHOSpsApproval([FromBody] InvoiceModel InvoiceModel)
+        {
+            try
+            {
+                invoiceRepository.DHOSpsApproval(InvoiceModel);
+                var formatter = RequestFormat.JsonFormaterString();
+                return Request.CreateResponse(HttpStatusCode.OK, new Confirmation { output = "success", msg = "Forward to sales head successfully" }, formatter);
+
+            }
+            catch (Exception ex)
+            {
+                var formatter = RequestFormat.JsonFormaterString();
+                return Request.CreateResponse(HttpStatusCode.OK, new Confirmation { output = "error", msg = ex.ToString() }, formatter);
+            }
+        }
+        //Finance Approval and invoice creation
+        //08.10.2016
+        [System.Web.Http.HttpPost]
+        public HttpResponseMessage PostInvoice([FromBody] InvoiceModel InvoiceModel)
+        {
+            try
+            {
+                invoiceRepository.CreateInvoice(InvoiceModel);
+                var formatter = RequestFormat.JsonFormaterString();
+                return Request.CreateResponse(HttpStatusCode.OK, new Confirmation { output = "success", msg = "Invoice Created successfully" }, formatter);
+            }
+            catch (Exception ex)
+            {
+                var formatter = RequestFormat.JsonFormaterString();
+                return Request.CreateResponse(HttpStatusCode.OK, new Confirmation { output = "error", msg = ex.ToString() }, formatter);
+            }
+        }
+
+        [System.Web.Http.HttpPost]
+        public HttpResponseMessage CreateInvoiceByShafiq([FromBody] InvoiceModel InvoiceModel)
+        {
+            try
+            {
+                invoiceRepository.CreateInvoiceByShafiq(InvoiceModel);
+                var formatter = RequestFormat.JsonFormaterString();
+                return Request.CreateResponse(HttpStatusCode.OK, new Confirmation { output = "success", msg = "Invoice Created successfully" }, formatter);
+            }
+            catch (Exception ex)
+            {
+                var formatter = RequestFormat.JsonFormaterString();
+                return Request.CreateResponse(HttpStatusCode.OK, new Confirmation { output = "error", msg = ex.ToString() }, formatter);
+            }
+        }
+        public HttpResponseMessage GetInvoice()
+        {
+            var invoices = invoiceRepository.GetInvoice();
+            var formatter = RequestFormat.JsonFormaterString();
+            return Request.CreateResponse(HttpStatusCode.OK, invoices, formatter);
+        }
+        public HttpResponseMessage GetInvoices(string fromDate, string toDate)
+        {
+            var invoices = invoiceRepository.GetInvoices(fromDate, toDate);
+            var formatter = RequestFormat.JsonFormaterString();
+            return Request.CreateResponse(HttpStatusCode.OK, invoices, formatter);
+        }
+        //06.06.2017
+        public HttpResponseMessage GetInvoicesByFromDate(string fromDate)
+        {
+            var invoices = invoiceRepository.GetInvoicesByFromDate(fromDate);
+            var formatter = RequestFormat.JsonFormaterString();
+            return Request.CreateResponse(HttpStatusCode.OK, invoices, formatter);
+        }
+
+        ////sales report
+        //public HttpResponseMessage GetDailySalesReport(int party_id, string from_date, string to_date)
+        //{
+        //    var partyJournal = invoiceRepository.GetDailySalesReport(party_id, from_date, to_date);
+        //    var formatter = RequestFormat.JsonFormaterString();
+        //    return Request.CreateResponse(HttpStatusCode.OK, partyJournal, formatter);
+        //}
+    }
+}

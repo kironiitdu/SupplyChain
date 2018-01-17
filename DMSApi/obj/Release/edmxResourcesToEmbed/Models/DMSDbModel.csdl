@@ -1,0 +1,2052 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="SCMAamraDevModel" Alias="Self" p1:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:p1="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+  <EntityContainer Name="DMSEntities" p1:LazyLoadingEnabled="true">
+    <EntitySet Name="accessories_category" EntityType="SCMAamraDevModel.accessories_category" />
+    <EntitySet Name="areas" EntityType="SCMAamraDevModel.area" />
+    <EntitySet Name="banks" EntityType="SCMAamraDevModel.bank" />
+    <EntitySet Name="bank_account" EntityType="SCMAamraDevModel.bank_account" />
+    <EntitySet Name="bank_branch" EntityType="SCMAamraDevModel.bank_branch" />
+    <EntitySet Name="brands" EntityType="SCMAamraDevModel.brand" />
+    <EntitySet Name="ci_pl_details" EntityType="SCMAamraDevModel.ci_pl_details" />
+    <EntitySet Name="ci_pl_master" EntityType="SCMAamraDevModel.ci_pl_master" />
+    <EntitySet Name="cities" EntityType="SCMAamraDevModel.city" />
+    <EntitySet Name="colors" EntityType="SCMAamraDevModel.color" />
+    <EntitySet Name="companies" EntityType="SCMAamraDevModel.company" />
+    <EntitySet Name="controls" EntityType="SCMAamraDevModel.control" />
+    <EntitySet Name="countries" EntityType="SCMAamraDevModel.country" />
+    <EntitySet Name="couriers" EntityType="SCMAamraDevModel.courier" />
+    <EntitySet Name="currencies" EntityType="SCMAamraDevModel.currency" />
+    <EntitySet Name="damage_type" EntityType="SCMAamraDevModel.damage_type" />
+    <EntitySet Name="dealer_type" EntityType="SCMAamraDevModel.dealer_type" />
+    <EntitySet Name="delivery_details" EntityType="SCMAamraDevModel.delivery_details" />
+    <EntitySet Name="delivery_master" EntityType="SCMAamraDevModel.delivery_master" />
+    <EntitySet Name="departments" EntityType="SCMAamraDevModel.department" />
+    <EntitySet Name="designations" EntityType="SCMAamraDevModel.designation" />
+    <EntitySet Name="direct_transfer_details" EntityType="SCMAamraDevModel.direct_transfer_details" />
+    <EntitySet Name="direct_transfer_master" EntityType="SCMAamraDevModel.direct_transfer_master" />
+    <EntitySet Name="employees" EntityType="SCMAamraDevModel.employee" />
+    <EntitySet Name="eshop_cutomer_requisition_mapping" EntityType="SCMAamraDevModel.eshop_cutomer_requisition_mapping" />
+    <EntitySet Name="eshop_payment_method" EntityType="SCMAamraDevModel.eshop_payment_method" />
+    <EntitySet Name="eshop_return_details" EntityType="SCMAamraDevModel.eshop_return_details" />
+    <EntitySet Name="eshop_return_master" EntityType="SCMAamraDevModel.eshop_return_master" />
+    <EntitySet Name="eshop_shipping" EntityType="SCMAamraDevModel.eshop_shipping" />
+    <EntitySet Name="grn_details" EntityType="SCMAamraDevModel.grn_details" />
+    <EntitySet Name="grn_master" EntityType="SCMAamraDevModel.grn_master" />
+    <EntitySet Name="installment_details" EntityType="SCMAamraDevModel.installment_details" />
+    <EntitySet Name="internal_requisition_details" EntityType="SCMAamraDevModel.internal_requisition_details" />
+    <EntitySet Name="internal_requisition_master" EntityType="SCMAamraDevModel.internal_requisition_master" />
+    <EntitySet Name="inventories" EntityType="SCMAamraDevModel.inventory" />
+    <EntitySet Name="inventory_stock" EntityType="SCMAamraDevModel.inventory_stock" />
+    <EntitySet Name="invoice_details" EntityType="SCMAamraDevModel.invoice_details" />
+    <EntitySet Name="invoice_log" EntityType="SCMAamraDevModel.invoice_log" />
+    <EntitySet Name="invoice_master" EntityType="SCMAamraDevModel.invoice_master" />
+    <EntitySet Name="local_purchase_order_details" EntityType="SCMAamraDevModel.local_purchase_order_details" />
+    <EntitySet Name="local_purchase_order_master" EntityType="SCMAamraDevModel.local_purchase_order_master" />
+    <EntitySet Name="mail_receiver_setting" EntityType="SCMAamraDevModel.mail_receiver_setting" />
+    <EntitySet Name="mrr_details" EntityType="SCMAamraDevModel.mrr_details" />
+    <EntitySet Name="mrr_master" EntityType="SCMAamraDevModel.mrr_master" />
+    <EntitySet Name="notifier_mail_account" EntityType="SCMAamraDevModel.notifier_mail_account" />
+    <EntitySet Name="online_invoice_details" EntityType="SCMAamraDevModel.online_invoice_details" />
+    <EntitySet Name="online_invoice_master" EntityType="SCMAamraDevModel.online_invoice_master" />
+    <EntitySet Name="online_invoice_requisition_mapping" EntityType="SCMAamraDevModel.online_invoice_requisition_mapping" />
+    <EntitySet Name="online_return_details" EntityType="SCMAamraDevModel.online_return_details" />
+    <EntitySet Name="online_return_master" EntityType="SCMAamraDevModel.online_return_master" />
+    <EntitySet Name="parties" EntityType="SCMAamraDevModel.party" />
+    <EntitySet Name="party_journal" EntityType="SCMAamraDevModel.party_journal" />
+    <EntitySet Name="party_type" EntityType="SCMAamraDevModel.party_type" />
+    <EntitySet Name="payment_method" EntityType="SCMAamraDevModel.payment_method" />
+    <EntitySet Name="payment_request" EntityType="SCMAamraDevModel.payment_request" />
+    <EntitySet Name="process_wise_mail_setting" EntityType="SCMAamraDevModel.process_wise_mail_setting" />
+    <EntitySet Name="products" EntityType="SCMAamraDevModel.product" />
+    <EntitySet Name="product_category" EntityType="SCMAamraDevModel.product_category" />
+    <EntitySet Name="product_color_mapping" EntityType="SCMAamraDevModel.product_color_mapping" />
+    <EntitySet Name="product_version" EntityType="SCMAamraDevModel.product_version" />
+    <EntitySet Name="product_version_mapping" EntityType="SCMAamraDevModel.product_version_mapping" />
+    <EntitySet Name="promotion_channel_mapping" EntityType="SCMAamraDevModel.promotion_channel_mapping" />
+    <EntitySet Name="promotion_details" EntityType="SCMAamraDevModel.promotion_details" />
+    <EntitySet Name="promotion_master" EntityType="SCMAamraDevModel.promotion_master" />
+    <EntitySet Name="purchase_order_details" EntityType="SCMAamraDevModel.purchase_order_details" />
+    <EntitySet Name="purchase_order_master" EntityType="SCMAamraDevModel.purchase_order_master" />
+    <EntitySet Name="receives" EntityType="SCMAamraDevModel.receive" />
+    <EntitySet Name="regions" EntityType="SCMAamraDevModel.region" />
+    <EntitySet Name="requisition_details" EntityType="SCMAamraDevModel.requisition_details" />
+    <EntitySet Name="requisition_master" EntityType="SCMAamraDevModel.requisition_master" />
+    <EntitySet Name="retailer_type" EntityType="SCMAamraDevModel.retailer_type" />
+    <EntitySet Name="return_details" EntityType="SCMAamraDevModel.return_details" />
+    <EntitySet Name="return_master" EntityType="SCMAamraDevModel.return_master" />
+    <EntitySet Name="return_type" EntityType="SCMAamraDevModel.return_type" />
+    <EntitySet Name="roles" EntityType="SCMAamraDevModel.role" />
+    <EntitySet Name="role_type" EntityType="SCMAamraDevModel.role_type" />
+    <EntitySet Name="sales_type" EntityType="SCMAamraDevModel.sales_type" />
+    <EntitySet Name="sbus" EntityType="SCMAamraDevModel.sbu" />
+    <EntitySet Name="shipping_method" EntityType="SCMAamraDevModel.shipping_method" />
+    <EntitySet Name="shipping_terms" EntityType="SCMAamraDevModel.shipping_terms" />
+    <EntitySet Name="software_process_module" EntityType="SCMAamraDevModel.software_process_module" />
+    <EntitySet Name="suppliers" EntityType="SCMAamraDevModel.supplier" />
+    <EntitySet Name="supplier_type" EntityType="SCMAamraDevModel.supplier_type" />
+    <EntitySet Name="terms_and_condition" EntityType="SCMAamraDevModel.terms_and_condition" />
+    <EntitySet Name="territories" EntityType="SCMAamraDevModel.territory" />
+    <EntitySet Name="to_delivery_details" EntityType="SCMAamraDevModel.to_delivery_details" />
+    <EntitySet Name="to_delivery_master" EntityType="SCMAamraDevModel.to_delivery_master" />
+    <EntitySet Name="transaction_configuration" EntityType="SCMAamraDevModel.transaction_configuration" />
+    <EntitySet Name="transfer_order_details" EntityType="SCMAamraDevModel.transfer_order_details" />
+    <EntitySet Name="transfer_order_master" EntityType="SCMAamraDevModel.transfer_order_master" />
+    <EntitySet Name="units" EntityType="SCMAamraDevModel.unit" />
+    <EntitySet Name="user_log" EntityType="SCMAamraDevModel.user_log" />
+    <EntitySet Name="user_permission" EntityType="SCMAamraDevModel.user_permission" />
+    <EntitySet Name="users" EntityType="SCMAamraDevModel.user" />
+    <EntitySet Name="warehouses" EntityType="SCMAamraDevModel.warehouse" />
+    <EntitySet Name="product_price_mapping" EntityType="SCMAamraDevModel.product_price_mapping" />
+    <EntitySet Name="product_price_mapping_log" EntityType="SCMAamraDevModel.product_price_mapping_log" />
+    <EntitySet Name="RowCountsAndSizes" EntityType="SCMAamraDevModel.RowCountsAndSize" />
+    <EntitySet Name="viewDailySales" EntityType="SCMAamraDevModel.viewDailySale" />
+    <EntitySet Name="receive_serial_no_details" EntityType="SCMAamraDevModel.receive_serial_no_details" />
+  </EntityContainer>
+  <EntityType Name="accessories_category">
+    <Key>
+      <PropertyRef Name="accessories_category_id" />
+    </Key>
+    <Property Name="accessories_category_id" Type="Int64" Nullable="false" p1:StoreGeneratedPattern="Identity" />
+    <Property Name="accessories_category_name" Type="String" MaxLength="100" Unicode="true" FixedLength="false" />
+    <Property Name="price" Type="Decimal" Precision="18" Scale="2" />
+    <Property Name="created_by" Type="Int64" />
+    <Property Name="created_date" Type="DateTime" Precision="3" />
+    <Property Name="updated_by" Type="Int64" />
+    <Property Name="updated_date" Type="DateTime" Precision="3" />
+    <Property Name="is_active" Type="Boolean" />
+    <Property Name="is_deleted" Type="Boolean" />
+  </EntityType>
+  <EntityType Name="area">
+    <Key>
+      <PropertyRef Name="area_id" />
+    </Key>
+    <Property Name="area_id" Type="Int64" Nullable="false" p1:StoreGeneratedPattern="Identity" />
+    <Property Name="region_id" Type="Int64" />
+    <Property Name="area_name" Type="String" MaxLength="100" Unicode="true" FixedLength="false" />
+    <Property Name="area_code" Type="String" MaxLength="20" Unicode="true" FixedLength="false" />
+    <Property Name="is_active" Type="Boolean" />
+    <Property Name="created_date" Type="DateTime" Precision="3" />
+    <Property Name="created_by" Type="Int64" />
+    <Property Name="updated_date" Type="DateTime" Precision="3" />
+    <Property Name="updated_by" Type="Int64" />
+  </EntityType>
+  <EntityType Name="bank">
+    <Key>
+      <PropertyRef Name="bank_id" />
+    </Key>
+    <Property Name="bank_id" Type="Int64" Nullable="false" p1:StoreGeneratedPattern="Identity" />
+    <Property Name="bank_name" Type="String" MaxLength="100" Unicode="true" FixedLength="false" />
+    <Property Name="created_by" Type="Int64" />
+    <Property Name="created_date" Type="DateTime" Precision="3" />
+    <Property Name="updated_by" Type="Int64" />
+    <Property Name="updated_date" Type="DateTime" Precision="3" />
+    <Property Name="is_active" Type="Boolean" />
+    <Property Name="is_deleted" Type="Boolean" />
+  </EntityType>
+  <EntityType Name="bank_account">
+    <Key>
+      <PropertyRef Name="bank_account_id" />
+    </Key>
+    <Property Name="bank_account_id" Type="Int64" Nullable="false" p1:StoreGeneratedPattern="Identity" />
+    <Property Name="bank_branch_id" Type="Int64" />
+    <Property Name="bank_account_name" Type="String" MaxLength="100" Unicode="true" FixedLength="false" />
+    <Property Name="created_by" Type="Int64" />
+    <Property Name="created_date" Type="DateTime" Precision="3" />
+    <Property Name="updated_by" Type="Int64" />
+    <Property Name="updated_date" Type="DateTime" Precision="3" />
+    <Property Name="is_active" Type="Boolean" />
+    <Property Name="is_deleted" Type="Boolean" />
+  </EntityType>
+  <EntityType Name="bank_branch">
+    <Key>
+      <PropertyRef Name="bank_branch_id" />
+    </Key>
+    <Property Name="bank_branch_id" Type="Int64" Nullable="false" p1:StoreGeneratedPattern="Identity" />
+    <Property Name="bank_branch_name" Type="String" MaxLength="100" Unicode="true" FixedLength="false" />
+    <Property Name="bank_id" Type="Int64" />
+    <Property Name="created_by" Type="Int64" />
+    <Property Name="created_date" Type="DateTime" Precision="3" />
+    <Property Name="updated_by" Type="Int64" />
+    <Property Name="updated_date" Type="DateTime" Precision="3" />
+    <Property Name="is_active" Type="Boolean" />
+    <Property Name="is_deleted" Type="Boolean" />
+  </EntityType>
+  <EntityType Name="brand">
+    <Key>
+      <PropertyRef Name="brand_id" />
+    </Key>
+    <Property Name="brand_id" Type="Int64" Nullable="false" p1:StoreGeneratedPattern="Identity" />
+    <Property Name="brand_name" Type="String" MaxLength="100" Unicode="true" FixedLength="false" />
+    <Property Name="created_by" Type="Int64" />
+    <Property Name="created_date" Type="DateTime" Precision="3" />
+    <Property Name="updated_by" Type="Int64" />
+    <Property Name="updated_date" Type="DateTime" Precision="3" />
+    <Property Name="is_active" Type="Boolean" />
+    <Property Name="is_deleted" Type="Boolean" />
+  </EntityType>
+  <EntityType Name="ci_pl_details">
+    <Key>
+      <PropertyRef Name="ci_pl_details_id" />
+    </Key>
+    <Property Name="ci_pl_details_id" Type="Int64" Nullable="false" p1:StoreGeneratedPattern="Identity" />
+    <Property Name="ci_pl_master_id" Type="Int64" />
+    <Property Name="product_id" Type="Int64" />
+    <Property Name="quantity" Type="Int32" />
+    <Property Name="unit_price" Type="Decimal" Precision="18" Scale="2" />
+    <Property Name="amount" Type="Decimal" Precision="18" Scale="2" />
+    <Property Name="nw_kg_ctn" Type="Decimal" Precision="18" Scale="2" />
+    <Property Name="gw_kg_ctn" Type="Decimal" Precision="18" Scale="2" />
+    <Property Name="measurement" Type="Decimal" Precision="18" Scale="2" />
+  </EntityType>
+  <EntityType Name="ci_pl_master">
+    <Key>
+      <PropertyRef Name="ci_pl_master_id" />
+    </Key>
+    <Property Name="ci_pl_master_id" Type="Int64" Nullable="false" p1:StoreGeneratedPattern="Identity" />
+    <Property Name="supplier_id" Type="Int64" />
+    <Property Name="purchase_order_master_id" Type="Int64" />
+    <Property Name="ci_no" Type="String" MaxLength="250" Unicode="true" FixedLength="false" />
+    <Property Name="ref_no" Type="String" MaxLength="250" Unicode="true" FixedLength="false" />
+    <Property Name="ci_date" Type="DateTime" Precision="0" />
+    <Property Name="payment_term" Type="String" MaxLength="250" Unicode="true" FixedLength="false" />
+    <Property Name="dc_no" Type="String" MaxLength="250" Unicode="true" FixedLength="false" />
+    <Property Name="issue_date" Type="DateTime" Precision="0" />
+    <Property Name="ci_attachment_location" Type="String" MaxLength="Max" Unicode="true" FixedLength="false" />
+    <Property Name="pl_attachment_location" Type="String" MaxLength="Max" Unicode="true" FixedLength="false" />
+    <Property Name="created_by" Type="Int64" />
+    <Property Name="created_date" Type="DateTime" Precision="3" />
+    <Property Name="updated_by" Type="Int64" />
+    <Property Name="updated_date" Type="DateTime" Precision="3" />
+    <Property Name="is_active" Type="Boolean" />
+    <Property Name="is_received" Type="Boolean" />
+  </EntityType>
+  <EntityType Name="city">
+    <Key>
+      <PropertyRef Name="city_id" />
+    </Key>
+    <Property Name="city_id" Type="Int64" Nullable="false" p1:StoreGeneratedPattern="Identity" />
+    <Property Name="city_name" Type="String" MaxLength="100" Unicode="true" FixedLength="false" />
+    <Property Name="created_by" Type="Int64" />
+    <Property Name="created_date" Type="DateTime" Precision="3" />
+    <Property Name="updated_by" Type="Int64" />
+    <Property Name="updated_date" Type="DateTime" Precision="3" />
+    <Property Name="is_active" Type="Boolean" />
+    <Property Name="is_deleted" Type="Boolean" />
+  </EntityType>
+  <EntityType Name="color">
+    <Key>
+      <PropertyRef Name="color_id" />
+    </Key>
+    <Property Name="color_id" Type="Int64" Nullable="false" p1:StoreGeneratedPattern="Identity" />
+    <Property Name="color_name" Type="String" MaxLength="100" Unicode="true" FixedLength="false" />
+    <Property Name="created_by" Type="Int64" />
+    <Property Name="created_date" Type="DateTime" Precision="3" />
+    <Property Name="updated_by" Type="Int64" />
+    <Property Name="updated_date" Type="DateTime" Precision="3" />
+    <Property Name="is_active" Type="Boolean" />
+    <Property Name="is_deleted" Type="Boolean" />
+  </EntityType>
+  <EntityType Name="company">
+    <Key>
+      <PropertyRef Name="company_id" />
+    </Key>
+    <Property Name="company_id" Type="Int64" Nullable="false" p1:StoreGeneratedPattern="Identity" />
+    <Property Name="company_name" Type="String" MaxLength="250" Unicode="true" FixedLength="false" />
+    <Property Name="company_code" Type="String" MaxLength="50" Unicode="true" FixedLength="false" />
+    <Property Name="address" Type="String" MaxLength="Max" Unicode="true" FixedLength="false" />
+    <Property Name="mobile" Type="String" MaxLength="15" Unicode="true" FixedLength="false" />
+    <Property Name="zip_code" Type="String" MaxLength="50" Unicode="true" FixedLength="false" />
+    <Property Name="email" Type="String" MaxLength="50" Unicode="true" FixedLength="false" />
+    <Property Name="created_by" Type="Int64" />
+    <Property Name="created_date" Type="DateTime" Precision="3" />
+    <Property Name="updated_by" Type="Int64" />
+    <Property Name="updated_date" Type="DateTime" Precision="3" />
+    <Property Name="is_active" Type="Boolean" />
+    <Property Name="is_deleted" Type="Boolean" />
+    <Property Name="country_id" Type="Int64" />
+    <Property Name="city_id" Type="Int64" />
+  </EntityType>
+  <EntityType Name="control">
+    <Key>
+      <PropertyRef Name="control_id" />
+    </Key>
+    <Property Name="control_id" Type="Int64" Nullable="false" p1:StoreGeneratedPattern="Identity" />
+    <Property Name="control_name" Type="String" MaxLength="250" Unicode="true" FixedLength="false" />
+    <Property Name="control_parent_id" Type="Int64" />
+    <Property Name="control_type_id" Type="Int64" />
+    <Property Name="control_sort" Type="Int64" />
+    <Property Name="control_alias" Type="String" MaxLength="250" Unicode="true" FixedLength="false" />
+    <Property Name="control_controller" Type="String" MaxLength="250" Unicode="true" FixedLength="false" />
+    <Property Name="control_action" Type="String" MaxLength="250" Unicode="true" FixedLength="false" />
+    <Property Name="company_id" Type="Int64" />
+    <Property Name="Level" Type="Int64" />
+    <Property Name="icon" Type="String" MaxLength="250" Unicode="true" FixedLength="false" />
+    <Property Name="created_by" Type="Int64" />
+    <Property Name="created_date" Type="DateTime" Precision="3" />
+    <Property Name="updated_by" Type="Int64" />
+    <Property Name="updated_date" Type="DateTime" Precision="3" />
+    <Property Name="is_active" Type="Boolean" />
+    <Property Name="is_deleted" Type="Boolean" />
+    <Property Name="Territory_id" Type="Int64" />
+    <Property Name="region_id" Type="Int64" />
+  </EntityType>
+  <EntityType Name="country">
+    <Key>
+      <PropertyRef Name="country_id" />
+    </Key>
+    <Property Name="country_id" Type="Int64" Nullable="false" p1:StoreGeneratedPattern="Identity" />
+    <Property Name="country_name" Type="String" MaxLength="100" Unicode="true" FixedLength="false" />
+    <Property Name="country_code" Type="String" MaxLength="100" Unicode="true" FixedLength="false" />
+    <Property Name="created_by" Type="Int64" />
+    <Property Name="created_date" Type="DateTime" Precision="3" />
+    <Property Name="updated_by" Type="Int64" />
+    <Property Name="updated_date" Type="DateTime" Precision="3" />
+    <Property Name="is_active" Type="Boolean" />
+    <Property Name="is_deleted" Type="Boolean" />
+  </EntityType>
+  <EntityType Name="courier">
+    <Key>
+      <PropertyRef Name="courier_id" />
+    </Key>
+    <Property Name="courier_id" Type="Int64" Nullable="false" p1:StoreGeneratedPattern="Identity" />
+    <Property Name="courier_name" Type="String" MaxLength="100" Unicode="true" FixedLength="false" />
+    <Property Name="cell" Type="String" MaxLength="50" Unicode="true" FixedLength="false" />
+    <Property Name="created_by" Type="Int64" />
+    <Property Name="created_date" Type="DateTime" Precision="3" />
+    <Property Name="updated_by" Type="Int64" />
+    <Property Name="updated_date" Type="DateTime" Precision="3" />
+    <Property Name="is_active" Type="Boolean" />
+    <Property Name="is_deleted" Type="Boolean" />
+  </EntityType>
+  <EntityType Name="currency">
+    <Key>
+      <PropertyRef Name="currency_id" />
+    </Key>
+    <Property Name="currency_id" Type="Int64" Nullable="false" p1:StoreGeneratedPattern="Identity" />
+    <Property Name="currency_name" Type="String" MaxLength="250" Unicode="true" FixedLength="false" />
+  </EntityType>
+  <EntityType Name="damage_type">
+    <Key>
+      <PropertyRef Name="damage_type_id" />
+    </Key>
+    <Property Name="damage_type_id" Type="Int64" Nullable="false" p1:StoreGeneratedPattern="Identity" />
+    <Property Name="damage_type_name" Type="String" MaxLength="100" Unicode="true" FixedLength="false" />
+    <Property Name="created_by" Type="Int64" />
+    <Property Name="created_date" Type="DateTime" Precision="3" />
+    <Property Name="updated_by" Type="Int64" />
+    <Property Name="updated_date" Type="DateTime" Precision="3" />
+    <Property Name="is_active" Type="Boolean" />
+    <Property Name="is_deleted" Type="Boolean" />
+  </EntityType>
+  <EntityType Name="dealer_type">
+    <Key>
+      <PropertyRef Name="dealer_type_id" />
+    </Key>
+    <Property Name="dealer_type_id" Type="Int64" Nullable="false" p1:StoreGeneratedPattern="Identity" />
+    <Property Name="dealer_type_name" Type="String" MaxLength="100" Unicode="true" FixedLength="false" />
+    <Property Name="dealer_type_prefix" Type="String" MaxLength="50" Unicode="true" FixedLength="false" />
+    <Property Name="created_by" Type="Int64" />
+    <Property Name="created_date" Type="DateTime" Precision="3" />
+    <Property Name="updated_by" Type="Int64" />
+    <Property Name="updated_date" Type="DateTime" Precision="3" />
+    <Property Name="is_active" Type="Boolean" />
+    <Property Name="is_deleted" Type="Boolean" />
+    <Property Name="credit_limit" Type="Decimal" Precision="18" Scale="2" />
+  </EntityType>
+  <EntityType Name="delivery_details">
+    <Key>
+      <PropertyRef Name="delivery_details_id" />
+    </Key>
+    <Property Name="delivery_details_id" Type="Int64" Nullable="false" p1:StoreGeneratedPattern="Identity" />
+    <Property Name="delivery_master_id" Type="Int64" />
+    <Property Name="product_id" Type="Int64" />
+    <Property Name="unit_id" Type="Int64" />
+    <Property Name="color_id" Type="Int64" />
+    <Property Name="product_version_id" Type="Int64" />
+    <Property Name="party_id" Type="Int64" />
+    <Property Name="requisition_quantity" Type="Int32" />
+    <Property Name="delivered_quantity" Type="Int32" />
+    <Property Name="is_gift" Type="Boolean" />
+    <Property Name="is_live_dummy" Type="Boolean" />
+    <Property Name="gift_type" Type="String" MaxLength="50" Unicode="true" FixedLength="false" />
+    <Property Name="unit_price" Type="Decimal" Precision="18" Scale="2" />
+    <Property Name="line_total" Type="Decimal" Precision="18" Scale="2" />
+  </EntityType>
+  <EntityType Name="delivery_master">
+    <Key>
+      <PropertyRef Name="delivery_master_id" />
+    </Key>
+    <Property Name="delivery_master_id" Type="Int64" Nullable="false" p1:StoreGeneratedPattern="Identity" />
+    <Property Name="delivery_no" Type="String" MaxLength="50" Unicode="true" FixedLength="false" />
+    <Property Name="delivery_date" Type="DateTime" Precision="3" />
+    <Property Name="delivery_address" Type="String" MaxLength="Max" Unicode="true" FixedLength="false" />
+    <Property Name="delivered_by" Type="Int64" />
+    <Property Name="party_id" Type="Int64" />
+    <Property Name="requisition_master_id" Type="Int64" />
+    <Property Name="courier_id" Type="Int64" />
+    <Property Name="courier_slip_no" Type="String" MaxLength="50" Unicode="true" FixedLength="false" />
+    <Property Name="from_warehouse_id" Type="Int64" />
+    <Property Name="to_warehouse_id" Type="Int64" />
+    <Property Name="status" Type="String" MaxLength="50" Unicode="true" FixedLength="false" />
+    <Property Name="remarks" Type="String" MaxLength="Max" Unicode="true" FixedLength="false" />
+    <Property Name="lot_no" Type="String" MaxLength="50" Unicode="true" FixedLength="false" />
+    <Property Name="vehicle_no" Type="String" MaxLength="50" Unicode="true" FixedLength="false" />
+    <Property Name="truck_driver_name" Type="String" MaxLength="100" Unicode="true" FixedLength="false" />
+    <Property Name="truck_driver_mobile" Type="String" MaxLength="50" Unicode="true" FixedLength="false" />
+    <Property Name="total_amount" Type="Decimal" Precision="18" Scale="2" />
+    <Property Name="owner_party_id" Type="Int64" />
+    <Property Name="receive_by" Type="Int64" />
+    <Property Name="receive_date" Type="DateTime" Precision="3" />
+    <Property Name="created_by" Type="Int64" />
+    <Property Name="created_date" Type="DateTime" Precision="3" />
+    <Property Name="updated_by" Type="Int64" />
+    <Property Name="updated_date" Type="DateTime" Precision="3" />
+    <Property Name="is_active" Type="Boolean" />
+    <Property Name="is_deleted" Type="Boolean" />
+    <Property Name="company_id" Type="Int64" />
+    <Property Name="delivery_person_name" Type="String" MaxLength="150" Unicode="true" FixedLength="false" />
+    <Property Name="challan_copy" Type="String" MaxLength="250" Unicode="true" FixedLength="false" />
+    <Property Name="delivery_method_id" Type="Int32" />
+  </EntityType>
+  <EntityType Name="department">
+    <Key>
+      <PropertyRef Name="department_id" />
+    </Key>
+    <Property Name="department_id" Type="Int64" Nullable="false" p1:StoreGeneratedPattern="Identity" />
+    <Property Name="department_name" Type="String" MaxLength="50" Unicode="true" FixedLength="false" />
+    <Property Name="is_active" Type="Boolean" />
+  </EntityType>
+  <EntityType Name="designation">
+    <Key>
+      <PropertyRef Name="sales_designation_id" />
+    </Key>
+    <Property Name="sales_designation_id" Type="Int64" Nullable="false" p1:StoreGeneratedPattern="Identity" />
+    <Property Name="parent_designation_id" Type="Int64" />
+    <Property Name="designation_id" Type="Int64" />
+    <Property Name="sales_type_id" Type="Int64" />
+    <Property Name="sales_designation" Type="String" MaxLength="50" Unicode="true" FixedLength="false" />
+    <Property Name="sales_person_type_code" Type="String" MaxLength="10" Unicode="true" FixedLength="false" />
+    <Property Name="created_by" Type="Int64" />
+    <Property Name="created_date" Type="DateTime" Precision="3" />
+    <Property Name="updated_by" Type="Int64" />
+    <Property Name="updated_date" Type="DateTime" Precision="3" />
+  </EntityType>
+  <EntityType Name="direct_transfer_details">
+    <Key>
+      <PropertyRef Name="direct_transfer_details_id" />
+    </Key>
+    <Property Name="direct_transfer_details_id" Type="Int64" Nullable="false" p1:StoreGeneratedPattern="Identity" />
+    <Property Name="direct_transfer_master_id" Type="Int64" />
+    <Property Name="product_id" Type="Int64" />
+    <Property Name="color_id" Type="Int64" />
+    <Property Name="product_version_id" Type="Int64" />
+    <Property Name="quantity" Type="Int32" />
+  </EntityType>
+  <EntityType Name="direct_transfer_master">
+    <Key>
+      <PropertyRef Name="direct_transfer_master_id" />
+    </Key>
+    <Property Name="direct_transfer_master_id" Type="Int64" Nullable="false" p1:StoreGeneratedPattern="Identity" />
+    <Property Name="direct_transfer_code" Type="String" MaxLength="50" Unicode="true" FixedLength="false" />
+    <Property Name="from_warehouse_id" Type="Int64" />
+    <Property Name="to_warehouse_id" Type="Int64" />
+    <Property Name="transfer_date" Type="DateTime" Precision="3" />
+    <Property Name="remarks" Type="String" MaxLength="Max" Unicode="true" FixedLength="false" />
+    <Property Name="created_by" Type="Int64" />
+    <Property Name="created_date" Type="DateTime" Precision="3" />
+    <Property Name="updated_by" Type="Int64" />
+    <Property Name="updated_date" Type="DateTime" Precision="3" />
+    <Property Name="is_active" Type="Boolean" />
+    <Property Name="is_deleted" Type="Boolean" />
+  </EntityType>
+  <EntityType Name="employee">
+    <Key>
+      <PropertyRef Name="employee_id" />
+    </Key>
+    <Property Name="employee_id" Type="Int64" Nullable="false" p1:StoreGeneratedPattern="Identity" />
+    <Property Name="employee_name" Type="String" MaxLength="100" Unicode="true" FixedLength="false" />
+    <Property Name="date_of_birth" Type="DateTime" Precision="0" />
+    <Property Name="date_of_join" Type="DateTime" Precision="0" />
+    <Property Name="department_id" Type="Int64" />
+    <Property Name="designation_id" Type="Int64" />
+    <Property Name="email_address" Type="String" MaxLength="50" Unicode="true" FixedLength="false" />
+    <Property Name="mobile_number" Type="String" MaxLength="50" Unicode="true" FixedLength="false" />
+    <Property Name="address" Type="String" MaxLength="Max" Unicode="false" FixedLength="false" />
+    <Property Name="gender" Type="String" MaxLength="10" Unicode="true" FixedLength="false" />
+    <Property Name="marital_status" Type="String" MaxLength="10" Unicode="true" FixedLength="false" />
+    <Property Name="blood_group" Type="String" MaxLength="10" Unicode="true" FixedLength="false" />
+    <Property Name="region_id" Type="Int64" />
+    <Property Name="area_id" Type="Int64" />
+    <Property Name="territory_id" Type="Int64" />
+    <Property Name="is_active" Type="Boolean" />
+    <Property Name="is_deleted" Type="Boolean" />
+    <Property Name="created_by" Type="Int64" />
+    <Property Name="created_date" Type="DateTime" Precision="3" />
+    <Property Name="updated_by" Type="Int64" />
+    <Property Name="updated_date" Type="DateTime" Precision="3" />
+  </EntityType>
+  <EntityType Name="eshop_cutomer_requisition_mapping">
+    <Key>
+      <PropertyRef Name="eshop_cutomer_requisition_mapping_id" />
+    </Key>
+    <Property Name="eshop_cutomer_requisition_mapping_id" Type="Int64" Nullable="false" p1:StoreGeneratedPattern="Identity" />
+    <Property Name="delivery_date" Type="DateTime" Precision="3" />
+    <Property Name="requisition_master_id" Type="Int64" />
+    <Property Name="customer_name" Type="String" MaxLength="50" Unicode="true" FixedLength="false" />
+    <Property Name="mobile_no" Type="String" MaxLength="50" Unicode="true" FixedLength="false" />
+    <Property Name="customer_email" Type="String" MaxLength="Max" Unicode="true" FixedLength="false" />
+    <Property Name="shipping" Type="Int64" />
+    <Property Name="payment_method" Type="Int64" />
+    <Property Name="shipping_address" Type="String" MaxLength="Max" Unicode="true" FixedLength="false" />
+    <Property Name="billing_address" Type="String" MaxLength="Max" Unicode="true" FixedLength="false" />
+  </EntityType>
+  <EntityType Name="eshop_payment_method">
+    <Key>
+      <PropertyRef Name="eshop_payment_method_id" />
+    </Key>
+    <Property Name="eshop_payment_method_id" Type="Int64" Nullable="false" p1:StoreGeneratedPattern="Identity" />
+    <Property Name="method_name" Type="String" MaxLength="100" Unicode="true" FixedLength="false" />
+    <Property Name="is_active" Type="Boolean" />
+    <Property Name="created_date" Type="DateTime" Precision="3" />
+    <Property Name="created_by" Type="Int64" />
+    <Property Name="updated_date" Type="DateTime" Precision="3" />
+    <Property Name="updated_by" Type="Int64" />
+  </EntityType>
+  <EntityType Name="eshop_return_details">
+    <Key>
+      <PropertyRef Name="eshop_return_details_id" />
+    </Key>
+    <Property Name="eshop_return_details_id" Type="Int64" Nullable="false" p1:StoreGeneratedPattern="Identity" />
+    <Property Name="eshop_return_master_id" Type="Int64" />
+    <Property Name="brand_id" Type="Int64" />
+    <Property Name="product_id" Type="Int64" />
+    <Property Name="color_id" Type="Int64" />
+    <Property Name="product_version_id" Type="Int64" />
+    <Property Name="unit_id" Type="Int64" />
+    <Property Name="returned_qty" Type="Int32" />
+    <Property Name="price" Type="Decimal" Precision="18" Scale="2" />
+    <Property Name="imei_no" Type="String" MaxLength="50" Unicode="true" FixedLength="false" />
+    <Property Name="imei_no2" Type="String" MaxLength="50" Unicode="true" FixedLength="false" />
+    <Property Name="verify_status" Type="Boolean" />
+    <Property Name="verify_date" Type="DateTime" Precision="0" />
+    <Property Name="warehouse_id" Type="Int64" />
+  </EntityType>
+  <EntityType Name="eshop_return_master">
+    <Key>
+      <PropertyRef Name="eshop_return_master_id" />
+    </Key>
+    <Property Name="eshop_return_master_id" Type="Int64" Nullable="false" p1:StoreGeneratedPattern="Identity" />
+    <Property Name="return_code" Type="String" MaxLength="50" Unicode="true" FixedLength="false" />
+    <Property Name="return_date" Type="DateTime" Precision="3" />
+    <Property Name="invoice_master_id" Type="Int64" />
+    <Property Name="remarks" Type="String" MaxLength="Max" Unicode="true" FixedLength="false" />
+    <Property Name="returned_quantity" Type="Int32" />
+    <Property Name="returned_by" Type="Int64" />
+    <Property Name="created_by" Type="Int64" />
+    <Property Name="created_date" Type="DateTime" Precision="3" />
+    <Property Name="updated_by" Type="Int64" />
+    <Property Name="updated_date" Type="DateTime" Precision="3" />
+  </EntityType>
+  <EntityType Name="eshop_shipping">
+    <Key>
+      <PropertyRef Name="eshop_shipping_id" />
+    </Key>
+    <Property Name="eshop_shipping_id" Type="Int64" Nullable="false" p1:StoreGeneratedPattern="Identity" />
+    <Property Name="shipping_name" Type="String" MaxLength="100" Unicode="true" FixedLength="false" />
+    <Property Name="is_active" Type="Boolean" />
+    <Property Name="created_date" Type="DateTime" Precision="3" />
+    <Property Name="created_by" Type="Int64" />
+    <Property Name="updated_date" Type="DateTime" Precision="3" />
+    <Property Name="updated_by" Type="Int64" />
+  </EntityType>
+  <EntityType Name="grn_details">
+    <Key>
+      <PropertyRef Name="grn_details_id" />
+    </Key>
+    <Property Name="grn_details_id" Type="Int64" Nullable="false" p1:StoreGeneratedPattern="Identity" />
+    <Property Name="grn_master_id" Type="Int64" />
+    <Property Name="product_id" Type="Int64" />
+    <Property Name="brand_id" Type="Int64" />
+    <Property Name="color_id" Type="Int64" />
+    <Property Name="unit_id" Type="Int64" />
+    <Property Name="size_id" Type="Int64" />
+    <Property Name="product_version_id" Type="Int64" />
+    <Property Name="pi_quantity" Type="Int32" />
+    <Property Name="receive_quantity" Type="Int32" />
+    <Property Name="unit_price" Type="Decimal" Precision="18" Scale="2" />
+    <Property Name="vat_pcnt" Type="Decimal" Precision="18" Scale="2" />
+    <Property Name="tax_pcnt" Type="Decimal" Precision="18" Scale="2" />
+    <Property Name="vat_amount" Type="Decimal" Precision="18" Scale="2" />
+    <Property Name="tax_amount" Type="Decimal" Precision="18" Scale="2" />
+    <Property Name="line_total" Type="Decimal" Precision="18" Scale="2" />
+    <Property Name="amount" Type="Decimal" Precision="18" Scale="2" />
+  </EntityType>
+  <EntityType Name="grn_master">
+    <Key>
+      <PropertyRef Name="grn_master_id" />
+    </Key>
+    <Property Name="grn_master_id" Type="Int64" Nullable="false" p1:StoreGeneratedPattern="Identity" />
+    <Property Name="grn_no" Type="String" MaxLength="50" Unicode="true" FixedLength="false" />
+    <Property Name="supplier_id" Type="Int64" />
+    <Property Name="purchase_order_master_id" Type="Int64" />
+    <Property Name="lc_id" Type="Int64" />
+    <Property Name="warehouse_id" Type="Int64" />
+    <Property Name="grn_date" Type="DateTime" Precision="0" />
+    <Property Name="status" Type="String" MaxLength="50" Unicode="true" FixedLength="false" />
+    <Property Name="remarks" Type="String" MaxLength="Max" Unicode="true" FixedLength="false" />
+    <Property Name="company_id" Type="Int64" />
+    <Property Name="lot_no" Type="String" MaxLength="50" Unicode="true" FixedLength="false" />
+    <Property Name="vat_total" Type="Decimal" Precision="18" Scale="2" />
+    <Property Name="tax_total" Type="Decimal" Precision="18" Scale="2" />
+    <Property Name="total_amount_without_vattax" Type="Decimal" Precision="18" Scale="2" />
+    <Property Name="total_amount_including_vattax" Type="Decimal" Precision="18" Scale="2" />
+    <Property Name="created_by" Type="Int64" />
+    <Property Name="created_date" Type="DateTime" Precision="3" />
+    <Property Name="updated_by" Type="Int64" />
+    <Property Name="updated_date" Type="DateTime" Precision="3" />
+    <Property Name="is_active" Type="Boolean" />
+    <Property Name="is_deleted" Type="Boolean" />
+    <Property Name="mrr_status" Type="Boolean" />
+  </EntityType>
+  <EntityType Name="installment_details">
+    <Key>
+      <PropertyRef Name="installment_details_id" />
+    </Key>
+    <Property Name="installment_details_id" Type="Int64" Nullable="false" p1:StoreGeneratedPattern="Identity" />
+    <Property Name="internal_requisition_master_id" Type="Int64" />
+    <Property Name="installment_no" Type="String" MaxLength="100" Unicode="true" FixedLength="false" />
+    <Property Name="installment_date" Type="DateTime" Precision="0" />
+    <Property Name="installment_amount" Type="Decimal" Precision="18" Scale="2" />
+  </EntityType>
+  <EntityType Name="internal_requisition_details">
+    <Key>
+      <PropertyRef Name="internal_requisition_details_id" />
+    </Key>
+    <Property Name="internal_requisition_details_id" Type="Int64" Nullable="false" p1:StoreGeneratedPattern="Identity" />
+    <Property Name="internal_requisition_master_id" Type="Int64" />
+    <Property Name="product_id" Type="Int64" />
+    <Property Name="color_id" Type="Int64" />
+    <Property Name="product_version_id" Type="Int64" />
+    <Property Name="quantity" Type="Int32" />
+    <Property Name="price" Type="Decimal" Precision="18" Scale="2" />
+    <Property Name="incentive_amount" Type="Decimal" Precision="18" Scale="2" />
+    <Property Name="amount" Type="Decimal" Precision="18" Scale="2" />
+    <Property Name="promotion_master_id" Type="Int64" />
+    <Property Name="is_gift" Type="Boolean" />
+    <Property Name="gift_type" Type="String" MaxLength="50" Unicode="true" FixedLength="false" />
+  </EntityType>
+  <EntityType Name="internal_requisition_master">
+    <Key>
+      <PropertyRef Name="internal_requisition_master_id" />
+    </Key>
+    <Property Name="internal_requisition_master_id" Type="Int64" Nullable="false" p1:StoreGeneratedPattern="Identity" />
+    <Property Name="internal_requisition_no" Type="String" MaxLength="100" Unicode="true" FixedLength="false" />
+    <Property Name="customar_name" Type="String" MaxLength="150" Unicode="true" FixedLength="false" />
+    <Property Name="mobile_no" Type="String" MaxLength="20" Unicode="true" FixedLength="false" />
+    <Property Name="pricing" Type="String" MaxLength="50" Unicode="true" FixedLength="false" />
+    <Property Name="payment_type" Type="String" MaxLength="50" Unicode="true" FixedLength="false" />
+    <Property Name="total_amount" Type="Decimal" Precision="18" Scale="2" />
+    <Property Name="from_warehouse_id" Type="Int64" />
+    <Property Name="to_department" Type="Int64" />
+    <Property Name="requisition_date" Type="DateTime" Precision="3" />
+    <Property Name="remarks" Type="String" MaxLength="Max" Unicode="true" FixedLength="false" />
+    <Property Name="created_by" Type="Int64" />
+    <Property Name="created_date" Type="DateTime" Precision="3" />
+    <Property Name="requisition_status" Type="String" MaxLength="50" Unicode="true" FixedLength="false" />
+    <Property Name="no_of_installments" Type="Int32" />
+    <Property Name="first_installment_date" Type="DateTime" Precision="0" />
+    <Property Name="total_incentive_amount" Type="Decimal" Precision="18" Scale="2" />
+  </EntityType>
+  <EntityType Name="inventory">
+    <Key>
+      <PropertyRef Name="inventory_id" />
+    </Key>
+    <Property Name="inventory_id" Type="Int64" Nullable="false" p1:StoreGeneratedPattern="Identity" />
+    <Property Name="transaction_date" Type="DateTime" Precision="3" />
+    <Property Name="transaction_type" Type="String" MaxLength="50" Unicode="true" FixedLength="false" />
+    <Property Name="document_code" Type="String" MaxLength="50" Unicode="true" FixedLength="false" />
+    <Property Name="product_id" Type="Int64" />
+    <Property Name="color_id" Type="Int64" />
+    <Property Name="uom_id" Type="Int64" />
+    <Property Name="opening_stock" Type="Decimal" Precision="18" Scale="2" />
+    <Property Name="stock_in" Type="Decimal" Precision="18" Scale="2" />
+    <Property Name="stock_out" Type="Decimal" Precision="18" Scale="2" />
+    <Property Name="closing_stock" Type="Decimal" Precision="18" Scale="2" />
+    <Property Name="warehouse_id" Type="Int64" />
+    <Property Name="owner_party_id" Type="Int64" />
+    <Property Name="created_by" Type="Int64" />
+    <Property Name="created_date" Type="DateTime" Precision="3" />
+    <Property Name="updated_by" Type="Int64" />
+    <Property Name="updated_date" Type="DateTime" Precision="3" />
+    <Property Name="is_active" Type="Boolean" />
+    <Property Name="is_deleted" Type="Boolean" />
+    <Property Name="product_version_id" Type="Int64" />
+  </EntityType>
+  <EntityType Name="inventory_stock">
+    <Key>
+      <PropertyRef Name="inventory_stock_id" />
+    </Key>
+    <Property Name="inventory_stock_id" Type="Int64" Nullable="false" p1:StoreGeneratedPattern="Identity" />
+    <Property Name="product_id" Type="Int64" />
+    <Property Name="color_id" Type="Int64" />
+    <Property Name="uom_id" Type="Int64" />
+    <Property Name="warehouse_id" Type="Int64" />
+    <Property Name="stock_quantity" Type="Decimal" Precision="18" Scale="2" />
+    <Property Name="owner_party_id" Type="Int64" />
+    <Property Name="created_by" Type="Int64" />
+    <Property Name="created_date" Type="DateTime" Precision="3" />
+    <Property Name="updated_by" Type="Int64" />
+    <Property Name="updated_date" Type="DateTime" Precision="3" />
+    <Property Name="is_active" Type="Boolean" />
+    <Property Name="is_deleted" Type="Boolean" />
+    <Property Name="product_version_id" Type="Int64" />
+  </EntityType>
+  <EntityType Name="invoice_details">
+    <Key>
+      <PropertyRef Name="invoice_details_id" />
+    </Key>
+    <Property Name="invoice_details_id" Type="Int64" Nullable="false" p1:StoreGeneratedPattern="Identity" />
+    <Property Name="invoice_master_id" Type="Int64" />
+    <Property Name="product_id" Type="Int64" />
+    <Property Name="product_category_id" Type="Int64" />
+    <Property Name="unit_id" Type="Int64" />
+    <Property Name="color_id" Type="Int64" />
+    <Property Name="brand_id" Type="Int64" />
+    <Property Name="quantity" Type="Int32" />
+    <Property Name="price" Type="Decimal" Precision="18" Scale="2" />
+    <Property Name="line_total" Type="Decimal" Precision="18" Scale="2" />
+    <Property Name="is_gift" Type="Boolean" />
+    <Property Name="gift_type" Type="String" MaxLength="50" Unicode="true" FixedLength="false" />
+    <Property Name="is_live_dummy" Type="Boolean" />
+    <Property Name="product_version_id" Type="Int64" />
+    <Property Name="promotion_master_id" Type="Int64" />
+    <Property Name="discount" Type="Decimal" Precision="18" Scale="2" />
+    <Property Name="discount_amount" Type="Decimal" Precision="18" Scale="2" />
+  </EntityType>
+  <EntityType Name="invoice_log">
+    <Key>
+      <PropertyRef Name="invoice_log_id" />
+    </Key>
+    <Property Name="invoice_log_id" Type="Int64" Nullable="false" p1:StoreGeneratedPattern="Identity" />
+    <Property Name="invoice_master_id" Type="Int64" />
+    <Property Name="invoice_no" Type="String" MaxLength="50" Unicode="true" FixedLength="false" />
+    <Property Name="invoice_date" Type="DateTime" Precision="0" />
+    <Property Name="party_id" Type="Int64" />
+    <Property Name="requisition_master_id" Type="Int64" />
+    <Property Name="item_total" Type="Decimal" Precision="18" Scale="2" />
+    <Property Name="rebate_total" Type="Decimal" Precision="18" Scale="2" />
+    <Property Name="invoice_total" Type="Decimal" Precision="18" Scale="2" />
+    <Property Name="account_balance" Type="Decimal" Precision="18" Scale="2" />
+    <Property Name="remarks" Type="String" MaxLength="Max" Unicode="true" FixedLength="false" />
+    <Property Name="discount_amount" Type="Decimal" Precision="18" Scale="2" />
+    <Property Name="incentive_amount" Type="Decimal" Precision="18" Scale="2" />
+    <Property Name="incentive_percentage" Type="Decimal" Precision="18" Scale="2" />
+    <Property Name="discount_percentage" Type="Decimal" Precision="18" Scale="2" />
+    <Property Name="pos_master_id" Type="Int64" />
+    <Property Name="owner_party_id" Type="Int64" />
+    <Property Name="received_amount" Type="Decimal" Precision="18" Scale="2" />
+    <Property Name="balance_amount" Type="Decimal" Precision="18" Scale="2" />
+    <Property Name="previous_invoice_advance" Type="Decimal" Precision="18" Scale="2" />
+    <Property Name="previous_invoice_due" Type="Decimal" Precision="18" Scale="2" />
+    <Property Name="price_protected_amount" Type="Decimal" Precision="18" Scale="2" />
+    <Property Name="lifting_quantity" Type="Int32" />
+    <Property Name="returned_qty" Type="Int32" />
+    <Property Name="returned_amount" Type="Decimal" Precision="18" Scale="2" />
+    <Property Name="created_by" Type="Int64" />
+    <Property Name="created_date" Type="DateTime" Precision="3" />
+    <Property Name="updated_by" Type="Int64" />
+    <Property Name="updated_date" Type="DateTime" Precision="3" />
+    <Property Name="is_active" Type="Boolean" />
+    <Property Name="is_deleted" Type="Boolean" />
+    <Property Name="credit_limit" Type="Decimal" Precision="18" Scale="2" />
+    <Property Name="party_type_id" Type="Int64" />
+    <Property Name="credit_term" Type="DateTime" Precision="3" />
+    <Property Name="contact_person_mobile" Type="String" MaxLength="50" Unicode="true" FixedLength="false" />
+    <Property Name="address" Type="String" MaxLength="300" Unicode="true" FixedLength="false" />
+  </EntityType>
+  <EntityType Name="invoice_master">
+    <Key>
+      <PropertyRef Name="invoice_master_id" />
+    </Key>
+    <Property Name="invoice_master_id" Type="Int64" Nullable="false" p1:StoreGeneratedPattern="Identity" />
+    <Property Name="invoice_no" Type="String" MaxLength="50" Unicode="true" FixedLength="false" />
+    <Property Name="invoice_date" Type="DateTime" Precision="0" />
+    <Property Name="party_id" Type="Int64" />
+    <Property Name="requisition_master_id" Type="Int64" />
+    <Property Name="item_total" Type="Decimal" Precision="18" Scale="2" />
+    <Property Name="rebate_total" Type="Decimal" Precision="18" Scale="2" />
+    <Property Name="invoice_total" Type="Decimal" Precision="18" Scale="2" />
+    <Property Name="account_balance" Type="Decimal" Precision="18" Scale="2" />
+    <Property Name="remarks" Type="String" MaxLength="Max" Unicode="true" FixedLength="false" />
+    <Property Name="discount_amount" Type="Decimal" Precision="18" Scale="2" />
+    <Property Name="incentive_amount" Type="Decimal" Precision="18" Scale="2" />
+    <Property Name="incentive_percentage" Type="Decimal" Precision="18" Scale="2" />
+    <Property Name="discount_percentage" Type="Decimal" Precision="18" Scale="2" />
+    <Property Name="pos_master_id" Type="Int64" />
+    <Property Name="owner_party_id" Type="Int64" />
+    <Property Name="retailer_delivery_master_id" Type="Int64" />
+    <Property Name="created_by" Type="Int64" />
+    <Property Name="created_date" Type="DateTime" Precision="3" />
+    <Property Name="updated_by" Type="Int64" />
+    <Property Name="updated_date" Type="DateTime" Precision="3" />
+    <Property Name="is_active" Type="Boolean" />
+    <Property Name="is_deleted" Type="Boolean" />
+    <Property Name="credit_limit" Type="Decimal" Precision="18" Scale="2" />
+    <Property Name="party_type_id" Type="Int64" />
+    <Property Name="credit_term" Type="DateTime" Precision="3" />
+    <Property Name="contact_person_mobile" Type="String" MaxLength="50" Unicode="true" FixedLength="false" />
+    <Property Name="address" Type="String" MaxLength="300" Unicode="true" FixedLength="false" />
+    <Property Name="reference_no" Type="String" MaxLength="100" Unicode="true" FixedLength="false" />
+    <Property Name="price_type" Type="String" MaxLength="100" Unicode="true" FixedLength="false" />
+    <Property Name="company_id" Type="Int64" />
+    <Property Name="sales_head_recommendation" Type="String" MaxLength="300" Unicode="true" FixedLength="false" />
+    <Property Name="operation_remarks" Type="String" MaxLength="300" Unicode="true" FixedLength="false" />
+    <Property Name="requisition_amount" Type="Decimal" Precision="18" Scale="2" />
+  </EntityType>
+  <EntityType Name="local_purchase_order_details">
+    <Key>
+      <PropertyRef Name="local_purchase_order_details_id" />
+    </Key>
+    <Property Name="local_purchase_order_details_id" Type="Int64" Nullable="false" p1:StoreGeneratedPattern="Identity" />
+    <Property Name="local_purchase_order_master_id" Type="Int64" />
+    <Property Name="product_id" Type="Int64" />
+    <Property Name="product_category_id" Type="Int64" />
+    <Property Name="brand_id" Type="Int64" />
+    <Property Name="color_id" Type="Int64" />
+    <Property Name="unit_id" Type="Int64" />
+    <Property Name="size_id" Type="Int64" />
+    <Property Name="product_version_id" Type="Int64" />
+    <Property Name="quantity" Type="Int32" />
+    <Property Name="receive_qty" Type="Int32" />
+    <Property Name="unit_price" Type="Decimal" Precision="18" Scale="2" />
+    <Property Name="line_total" Type="Decimal" Precision="18" Scale="2" />
+    <Property Name="status" Type="String" MaxLength="50" Unicode="true" FixedLength="false" />
+    <Property Name="vat_pcnt" Type="Decimal" Precision="18" Scale="2" />
+    <Property Name="tax_pcnt" Type="Decimal" Precision="18" Scale="2" />
+    <Property Name="vat_amount" Type="Decimal" Precision="18" Scale="2" />
+    <Property Name="tax_amount" Type="Decimal" Precision="18" Scale="2" />
+    <Property Name="amount" Type="Decimal" Precision="18" Scale="2" />
+    <Property Name="last_modified_date" Type="DateTime" Precision="3" />
+  </EntityType>
+  <EntityType Name="local_purchase_order_master">
+    <Key>
+      <PropertyRef Name="local_purchase_order_master_id" />
+    </Key>
+    <Property Name="local_purchase_order_master_id" Type="Int64" Nullable="false" p1:StoreGeneratedPattern="Identity" />
+    <Property Name="order_no" Type="String" MaxLength="50" Unicode="true" FixedLength="false" />
+    <Property Name="local_purchase_order_reference_number" Type="String" MaxLength="50" Unicode="true" FixedLength="false" />
+    <Property Name="order_date" Type="DateTime" Precision="0" />
+    <Property Name="currency_id" Type="Int64" />
+    <Property Name="status" Type="String" MaxLength="50" Unicode="true" FixedLength="false" />
+    <Property Name="remarks" Type="String" MaxLength="Max" Unicode="true" FixedLength="false" />
+    <Property Name="company_id" Type="Int64" />
+    <Property Name="supplier_id" Type="Int64" />
+    <Property Name="vat_total" Type="Decimal" Precision="18" Scale="2" />
+    <Property Name="tax_total" Type="Decimal" Precision="18" Scale="2" />
+    <Property Name="total_amount_without_vattax" Type="Decimal" Precision="18" Scale="2" />
+    <Property Name="total_amount_including_vattax" Type="Decimal" Precision="18" Scale="2" />
+    <Property Name="approve_status" Type="String" MaxLength="50" Unicode="true" FixedLength="false" />
+    <Property Name="created_by" Type="Int64" />
+    <Property Name="created_date" Type="DateTime" Precision="3" />
+    <Property Name="updated_by" Type="Int64" />
+    <Property Name="updated_date" Type="DateTime" Precision="3" />
+    <Property Name="is_active" Type="Boolean" />
+    <Property Name="is_deleted" Type="Boolean" />
+  </EntityType>
+  <EntityType Name="mail_receiver_setting">
+    <Key>
+      <PropertyRef Name="mail_receiver_setting_id" />
+    </Key>
+    <Property Name="mail_receiver_setting_id" Type="Int64" Nullable="false" p1:StoreGeneratedPattern="Identity" />
+    <Property Name="process_code_id" Type="Int64" />
+    <Property Name="receiver_name" Type="String" MaxLength="250" Unicode="true" FixedLength="false" />
+    <Property Name="receiver_email" Type="String" MaxLength="250" Unicode="true" FixedLength="false" />
+    <Property Name="created_by" Type="Int64" />
+    <Property Name="created_date" Type="DateTime" Precision="3" />
+    <Property Name="updated_by" Type="Int64" />
+    <Property Name="updated_date" Type="DateTime" Precision="3" />
+    <Property Name="is_active" Type="Boolean" />
+    <Property Name="is_deleted" Type="Boolean" />
+  </EntityType>
+  <EntityType Name="mrr_details">
+    <Key>
+      <PropertyRef Name="mrr_details_id" />
+    </Key>
+    <Property Name="mrr_details_id" Type="Int64" Nullable="false" p1:StoreGeneratedPattern="Identity" />
+    <Property Name="mrr_master_id" Type="Int64" />
+    <Property Name="product_id" Type="Int64" />
+    <Property Name="color_id" Type="Int64" />
+    <Property Name="product_version_id" Type="Int64" />
+    <Property Name="grn_quantity" Type="Int32" />
+    <Property Name="saleable_quantity" Type="Int32" />
+    <Property Name="box_damage_quantity" Type="Int32" />
+    <Property Name="physical_damaged_quantity" Type="Int32" />
+    <Property Name="customs_lost_quantity" Type="Int32" />
+    <Property Name="total_received_quantity" Type="Int32" />
+  </EntityType>
+  <EntityType Name="mrr_master">
+    <Key>
+      <PropertyRef Name="mrr_master_id" />
+    </Key>
+    <Property Name="mrr_master_id" Type="Int64" Nullable="false" p1:StoreGeneratedPattern="Identity" />
+    <Property Name="mrr_no" Type="String" Nullable="false" MaxLength="50" Unicode="true" FixedLength="false" />
+    <Property Name="grn_master_id" Type="Int64" />
+    <Property Name="lost_comment" Type="String" MaxLength="Max" Unicode="true" FixedLength="false" />
+    <Property Name="created_by" Type="Int64" />
+    <Property Name="created_date" Type="DateTime" Precision="3" />
+    <Property Name="from_warehouse_id" Type="Int64" />
+  </EntityType>
+  <EntityType Name="notifier_mail_account">
+    <Key>
+      <PropertyRef Name="notifier_mail_account_id" />
+    </Key>
+    <Property Name="notifier_mail_account_id" Type="Int64" Nullable="false" p1:StoreGeneratedPattern="Identity" />
+    <Property Name="account_title" Type="String" MaxLength="250" Unicode="true" FixedLength="false" />
+    <Property Name="account_email" Type="String" MaxLength="250" Unicode="true" FixedLength="false" />
+    <Property Name="accoutn_password" Type="String" MaxLength="250" Unicode="true" FixedLength="false" />
+    <Property Name="created_by" Type="Int64" />
+    <Property Name="created_date" Type="DateTime" Precision="3" />
+    <Property Name="updated_by" Type="Int64" />
+    <Property Name="updated_date" Type="DateTime" Precision="3" />
+    <Property Name="is_active" Type="Boolean" />
+    <Property Name="is_deleted" Type="Boolean" />
+  </EntityType>
+  <EntityType Name="online_invoice_details">
+    <Key>
+      <PropertyRef Name="online_invoice_details_id" />
+    </Key>
+    <Property Name="online_invoice_details_id" Type="Int64" Nullable="false" p1:StoreGeneratedPattern="Identity" />
+    <Property Name="online_invoice_master_id" Type="Int64" />
+    <Property Name="product_id" Type="Int64" />
+    <Property Name="product_category_id" Type="Int64" />
+    <Property Name="unit_id" Type="Int64" />
+    <Property Name="color_id" Type="Int64" />
+    <Property Name="brand_id" Type="Int64" />
+    <Property Name="quantity" Type="Int32" />
+    <Property Name="price" Type="Decimal" Precision="18" Scale="2" />
+    <Property Name="line_total" Type="Decimal" Precision="18" Scale="2" />
+    <Property Name="discount" Type="Decimal" Precision="18" Scale="2" />
+    <Property Name="discount_amount" Type="Decimal" Precision="18" Scale="2" />
+    <Property Name="price_amount" Type="Decimal" Precision="18" Scale="2" />
+    <Property Name="product_version_id" Type="Int64" />
+  </EntityType>
+  <EntityType Name="online_invoice_master">
+    <Key>
+      <PropertyRef Name="online_invoice_master_id" />
+    </Key>
+    <Property Name="online_invoice_master_id" Type="Int64" Nullable="false" p1:StoreGeneratedPattern="Identity" />
+    <Property Name="online_invoice_no" Type="String" MaxLength="50" Unicode="true" FixedLength="false" />
+    <Property Name="online_invoice_date" Type="DateTime" Precision="0" />
+    <Property Name="party_id" Type="Int64" />
+    <Property Name="item_total" Type="Decimal" Precision="18" Scale="2" />
+    <Property Name="rebate_total" Type="Decimal" Precision="18" Scale="2" />
+    <Property Name="invoice_total" Type="Decimal" Precision="18" Scale="2" />
+    <Property Name="account_balance" Type="Decimal" Precision="18" Scale="2" />
+    <Property Name="remarks" Type="String" MaxLength="Max" Unicode="true" FixedLength="false" />
+    <Property Name="discount_amount" Type="Decimal" Precision="18" Scale="2" />
+    <Property Name="incentive_amount" Type="Decimal" Precision="18" Scale="2" />
+    <Property Name="incentive_percentage" Type="Decimal" Precision="18" Scale="2" />
+    <Property Name="discount_percentage" Type="Decimal" Precision="18" Scale="2" />
+    <Property Name="pos_master_id" Type="Int64" />
+    <Property Name="owner_party_id" Type="Int64" />
+    <Property Name="retailer_delivery_master_id" Type="Int64" />
+    <Property Name="created_by" Type="Int64" />
+    <Property Name="created_date" Type="DateTime" Precision="3" />
+    <Property Name="updated_by" Type="Int64" />
+    <Property Name="updated_date" Type="DateTime" Precision="3" />
+    <Property Name="is_active" Type="Boolean" />
+    <Property Name="is_deleted" Type="Boolean" />
+    <Property Name="credit_limit" Type="Decimal" Precision="18" Scale="2" />
+    <Property Name="party_type_id" Type="Int64" />
+    <Property Name="credit_term" Type="DateTime" Precision="3" />
+    <Property Name="contact_person_mobile" Type="String" MaxLength="50" Unicode="true" FixedLength="false" />
+    <Property Name="address" Type="String" MaxLength="300" Unicode="true" FixedLength="false" />
+    <Property Name="reference_no" Type="String" MaxLength="100" Unicode="true" FixedLength="false" />
+    <Property Name="price_type" Type="String" MaxLength="100" Unicode="true" FixedLength="false" />
+    <Property Name="company_id" Type="Int64" />
+  </EntityType>
+  <EntityType Name="online_invoice_requisition_mapping">
+    <Key>
+      <PropertyRef Name="mapping_id" />
+    </Key>
+    <Property Name="mapping_id" Type="Int64" Nullable="false" p1:StoreGeneratedPattern="Identity" />
+    <Property Name="online_invoice_master_id" Type="Int64" />
+    <Property Name="requisition_master_id" Type="Int64" />
+  </EntityType>
+  <EntityType Name="online_return_details">
+    <Key>
+      <PropertyRef Name="online_return_details_id" />
+    </Key>
+    <Property Name="online_return_details_id" Type="Int64" Nullable="false" p1:StoreGeneratedPattern="Identity" />
+    <Property Name="online_return_master_id" Type="Int64" />
+    <Property Name="invoice_master_id" Type="Int64" />
+    <Property Name="brand_id" Type="Int64" />
+    <Property Name="product_id" Type="Int64" />
+    <Property Name="color_id" Type="Int64" />
+    <Property Name="product_version_id" Type="Int64" />
+    <Property Name="unit_id" Type="Int64" />
+    <Property Name="returned_qty" Type="Int32" />
+    <Property Name="price" Type="Decimal" Precision="18" Scale="2" />
+    <Property Name="imei_no" Type="String" MaxLength="50" Unicode="true" FixedLength="false" />
+    <Property Name="imei_no2" Type="String" MaxLength="50" Unicode="true" FixedLength="false" />
+    <Property Name="verify_status" Type="Boolean" />
+    <Property Name="verify_date" Type="DateTime" Precision="0" />
+    <Property Name="warehouse_id" Type="Int64" />
+  </EntityType>
+  <EntityType Name="online_return_master">
+    <Key>
+      <PropertyRef Name="online_return_master_id" />
+    </Key>
+    <Property Name="online_return_master_id" Type="Int64" Nullable="false" p1:StoreGeneratedPattern="Identity" />
+    <Property Name="return_code" Type="String" MaxLength="50" Unicode="true" FixedLength="false" />
+    <Property Name="return_date" Type="DateTime" Precision="3" />
+    <Property Name="party_id" Type="Int64" />
+    <Property Name="remarks" Type="String" MaxLength="Max" Unicode="true" FixedLength="false" />
+    <Property Name="returned_quantity" Type="Int32" />
+    <Property Name="returned_by" Type="Int64" />
+    <Property Name="created_by" Type="Int64" />
+    <Property Name="created_date" Type="DateTime" Precision="3" />
+    <Property Name="updated_by" Type="Int64" />
+    <Property Name="updated_date" Type="DateTime" Precision="3" />
+  </EntityType>
+  <EntityType Name="party">
+    <Key>
+      <PropertyRef Name="party_id" />
+    </Key>
+    <Property Name="party_id" Type="Int64" Nullable="false" p1:StoreGeneratedPattern="Identity" />
+    <Property Name="party_name" Type="String" MaxLength="100" Unicode="true" FixedLength="false" />
+    <Property Name="address" Type="String" MaxLength="Max" Unicode="true" FixedLength="false" />
+    <Property Name="proprietor_name" Type="String" MaxLength="100" Unicode="true" FixedLength="false" />
+    <Property Name="phone" Type="String" MaxLength="100" Unicode="true" FixedLength="false" />
+    <Property Name="mobile" Type="String" MaxLength="100" Unicode="true" FixedLength="false" />
+    <Property Name="email" Type="String" MaxLength="100" Unicode="true" FixedLength="false" />
+    <Property Name="party_type_id" Type="Int64" />
+    <Property Name="start_date" Type="DateTime" Precision="0" />
+    <Property Name="gl_account" Type="String" MaxLength="50" Unicode="true" FixedLength="false" />
+    <Property Name="party_code" Type="String" MaxLength="50" Unicode="true" FixedLength="false" />
+    <Property Name="parent_party_id" Type="Int64" />
+    <Property Name="country_id" Type="Int64" />
+    <Property Name="province_id" Type="Int64" />
+    <Property Name="city_id" Type="Int64" />
+    <Property Name="zone_id" Type="Int64" />
+    <Property Name="area_id" Type="Int64" />
+    <Property Name="created_by" Type="Int64" />
+    <Property Name="created_date" Type="DateTime" Precision="3" />
+    <Property Name="updated_by" Type="Int64" />
+    <Property Name="updated_date" Type="DateTime" Precision="3" />
+    <Property Name="is_active" Type="Boolean" />
+    <Property Name="is_deleted" Type="Boolean" />
+    <Property Name="region_id" Type="Int64" />
+    <Property Name="territory_id" Type="Int64" />
+    <Property Name="credit_limit" Type="Decimal" Precision="18" Scale="2" />
+    <Property Name="dealer_type_id" Type="Int64" />
+    <Property Name="retailer_type_id" Type="Int64" />
+  </EntityType>
+  <EntityType Name="party_journal">
+    <Key>
+      <PropertyRef Name="party_journal_id" />
+    </Key>
+    <Property Name="party_journal_id" Type="Int64" Nullable="false" p1:StoreGeneratedPattern="Identity" />
+    <Property Name="transaction_date" Type="DateTime" Precision="3" />
+    <Property Name="transaction_type" Type="String" MaxLength="50" Unicode="true" FixedLength="false" />
+    <Property Name="party_id" Type="Int64" />
+    <Property Name="opening_balance" Type="Decimal" Precision="18" Scale="0" />
+    <Property Name="dr_amount" Type="Decimal" Precision="18" Scale="0" />
+    <Property Name="cr_amount" Type="Decimal" Precision="18" Scale="0" />
+    <Property Name="closing_balance" Type="Decimal" Precision="18" Scale="0" />
+    <Property Name="remarks" Type="String" MaxLength="Max" Unicode="true" FixedLength="false" />
+    <Property Name="owner_party_id" Type="Int64" />
+    <Property Name="document_code" Type="String" MaxLength="50" Unicode="true" FixedLength="false" />
+    <Property Name="created_by" Type="Int64" />
+    <Property Name="created_date" Type="DateTime" Precision="3" />
+    <Property Name="updated_by" Type="Int64" />
+    <Property Name="updated_date" Type="DateTime" Precision="3" />
+    <Property Name="is_active" Type="Boolean" />
+    <Property Name="is_deleted" Type="Boolean" />
+  </EntityType>
+  <EntityType Name="party_type">
+    <Key>
+      <PropertyRef Name="party_type_id" />
+    </Key>
+    <Property Name="party_type_id" Type="Int64" Nullable="false" p1:StoreGeneratedPattern="Identity" />
+    <Property Name="party_type_name" Type="String" MaxLength="100" Unicode="true" FixedLength="false" />
+    <Property Name="party_prefix" Type="String" MaxLength="50" Unicode="true" FixedLength="false" />
+    <Property Name="role_id" Type="Int64" />
+    <Property Name="created_by" Type="Int64" />
+    <Property Name="created_date" Type="DateTime" Precision="3" />
+    <Property Name="updated_by" Type="Int64" />
+    <Property Name="updated_date" Type="DateTime" Precision="3" />
+    <Property Name="is_active" Type="Boolean" />
+    <Property Name="is_deleted" Type="Boolean" />
+  </EntityType>
+  <EntityType Name="payment_method">
+    <Key>
+      <PropertyRef Name="payment_method_id" />
+    </Key>
+    <Property Name="payment_method_id" Type="Int64" Nullable="false" p1:StoreGeneratedPattern="Identity" />
+    <Property Name="payment_method_name" Type="String" MaxLength="100" Unicode="true" FixedLength="false" />
+    <Property Name="company_id" Type="Int64" />
+    <Property Name="created_by" Type="Int64" />
+    <Property Name="created_date" Type="DateTime" Precision="3" />
+    <Property Name="updated_by" Type="Int64" />
+    <Property Name="updated_date" Type="DateTime" Precision="3" />
+    <Property Name="is_active" Type="Boolean" />
+    <Property Name="is_deleted" Type="Boolean" />
+  </EntityType>
+  <EntityType Name="payment_request">
+    <Key>
+      <PropertyRef Name="payment_req_id" />
+    </Key>
+    <Property Name="payment_req_id" Type="Int64" Nullable="false" p1:StoreGeneratedPattern="Identity" />
+    <Property Name="party_id" Type="Int64" />
+    <Property Name="cheque_no" Type="String" MaxLength="50" Unicode="true" FixedLength="false" />
+    <Property Name="document_attachment" Type="String" MaxLength="250" Unicode="true" FixedLength="false" />
+    <Property Name="approved" Type="Boolean" />
+    <Property Name="deposite_date" Type="DateTime" Precision="3" />
+    <Property Name="remarks" Type="String" MaxLength="Max" Unicode="true" FixedLength="false" />
+    <Property Name="amount" Type="Decimal" Precision="18" Scale="2" />
+    <Property Name="payment_method_id" Type="Int64" />
+    <Property Name="bank_id" Type="Int64" />
+    <Property Name="bank_branch_id" Type="Int64" />
+    <Property Name="bank_account_id" Type="Int64" />
+    <Property Name="sales_representative" Type="String" MaxLength="250" Unicode="true" FixedLength="false" />
+    <Property Name="owner_party_id" Type="Int64" />
+    <Property Name="created_by" Type="Int64" />
+    <Property Name="created_date" Type="DateTime" Precision="3" />
+    <Property Name="updated_by" Type="Int64" />
+    <Property Name="updated_date" Type="DateTime" Precision="3" />
+    <Property Name="is_active" Type="Boolean" />
+    <Property Name="is_deleted" Type="Boolean" />
+    <Property Name="requisition_master_id" Type="Int64" />
+    <Property Name="payment_type" Type="String" MaxLength="50" Unicode="true" FixedLength="false" />
+  </EntityType>
+  <EntityType Name="process_wise_mail_setting">
+    <Key>
+      <PropertyRef Name="process_wise_mail_setting_id" />
+    </Key>
+    <Property Name="process_wise_mail_setting_id" Type="Int64" Nullable="false" p1:StoreGeneratedPattern="Identity" />
+    <Property Name="email_subject" Type="String" MaxLength="250" Unicode="true" FixedLength="false" />
+    <Property Name="email_body" Type="String" MaxLength="Max" Unicode="true" FixedLength="false" />
+    <Property Name="process_code_id" Type="Int64" />
+    <Property Name="created_by" Type="Int64" />
+    <Property Name="created_date" Type="DateTime" Precision="3" />
+    <Property Name="updated_by" Type="Int64" />
+    <Property Name="updated_date" Type="DateTime" Precision="3" />
+    <Property Name="is_active" Type="Boolean" />
+    <Property Name="is_deleted" Type="Boolean" />
+  </EntityType>
+  <EntityType Name="product">
+    <Key>
+      <PropertyRef Name="product_id" />
+    </Key>
+    <Property Name="product_id" Type="Int64" Nullable="false" p1:StoreGeneratedPattern="Identity" />
+    <Property Name="product_name" Type="String" MaxLength="50" Unicode="true" FixedLength="false" />
+    <Property Name="product_code" Type="String" MaxLength="50" Unicode="true" FixedLength="false" />
+    <Property Name="product_category_id" Type="Int64" />
+    <Property Name="brand_id" Type="Int64" />
+    <Property Name="unit_id" Type="Int64" />
+    <Property Name="current_balance" Type="Decimal" Precision="18" Scale="2" />
+    <Property Name="product_image_url" Type="String" MaxLength="Max" Unicode="true" FixedLength="false" />
+    <Property Name="has_serial" Type="Boolean" />
+    <Property Name="has_warrenty" Type="Boolean" />
+    <Property Name="warrenty_type" Type="String" MaxLength="50" Unicode="true" FixedLength="false" />
+    <Property Name="warrenty_value" Type="Decimal" Precision="18" Scale="2" />
+    <Property Name="vat_percentage" Type="Decimal" Precision="18" Scale="2" />
+    <Property Name="tax_percentage" Type="Decimal" Precision="18" Scale="2" />
+    <Property Name="rp_price" Type="Decimal" Precision="18" Scale="2" />
+    <Property Name="mrp_price" Type="Decimal" Precision="18" Scale="2" />
+    <Property Name="md_price" Type="Decimal" Precision="18" Scale="2" />
+    <Property Name="bs_price" Type="Decimal" Precision="18" Scale="2" />
+    <Property Name="created_by" Type="Int64" />
+    <Property Name="created_date" Type="DateTime" Precision="3" />
+    <Property Name="updated_by" Type="Int64" />
+    <Property Name="updated_date" Type="DateTime" Precision="3" />
+    <Property Name="is_active" Type="Boolean" />
+    <Property Name="is_deleted" Type="Boolean" />
+    <Property Name="supplier_id" Type="Int64" />
+    <Property Name="eol_date" Type="DateTime" Precision="3" />
+    <Property Name="remarks" Type="String" MaxLength="Max" Unicode="true" FixedLength="false" />
+    <Property Name="specification" Type="String" MaxLength="Max" Unicode="true" FixedLength="false" />
+    <Property Name="launce_date" Type="DateTime" Precision="3" />
+    <Property Name="accessories_category_id" Type="Int64" />
+  </EntityType>
+  <EntityType Name="product_category">
+    <Key>
+      <PropertyRef Name="product_category_id" />
+    </Key>
+    <Property Name="product_category_id" Type="Int64" Nullable="false" p1:StoreGeneratedPattern="Identity" />
+    <Property Name="product_category_name" Type="String" MaxLength="50" Unicode="true" FixedLength="false" />
+    <Property Name="product_category_code" Type="String" MaxLength="50" Unicode="true" FixedLength="false" />
+    <Property Name="created_by" Type="Int64" />
+    <Property Name="created_date" Type="DateTime" Precision="3" />
+    <Property Name="updated_by" Type="Int64" />
+    <Property Name="updated_date" Type="DateTime" Precision="3" />
+    <Property Name="is_active" Type="Boolean" />
+    <Property Name="is_deleted" Type="Boolean" />
+  </EntityType>
+  <EntityType Name="product_color_mapping">
+    <Key>
+      <PropertyRef Name="product_color_mapping_id" />
+    </Key>
+    <Property Name="product_color_mapping_id" Type="Int64" Nullable="false" p1:StoreGeneratedPattern="Identity" />
+    <Property Name="product_id" Type="Int64" />
+    <Property Name="color_id" Type="Int64" />
+    <Property Name="created_by" Type="Int64" />
+    <Property Name="created_date" Type="DateTime" Precision="3" />
+    <Property Name="updated_by" Type="Int64" />
+    <Property Name="updated_date" Type="DateTime" Precision="3" />
+    <Property Name="is_active" Type="Boolean" />
+    <Property Name="is_deleted" Type="Boolean" />
+  </EntityType>
+  <EntityType Name="product_version">
+    <Key>
+      <PropertyRef Name="product_version_id" />
+    </Key>
+    <Property Name="product_version_id" Type="Int64" Nullable="false" p1:StoreGeneratedPattern="Identity" />
+    <Property Name="product_version_name" Type="String" MaxLength="50" Unicode="true" FixedLength="false" />
+    <Property Name="created_by" Type="Int64" />
+    <Property Name="created_date" Type="DateTime" Precision="3" />
+    <Property Name="updated_by" Type="Int64" />
+    <Property Name="updated_date" Type="DateTime" Precision="3" />
+    <Property Name="is_active" Type="Boolean" />
+    <Property Name="is_deleted" Type="Boolean" />
+  </EntityType>
+  <EntityType Name="product_version_mapping">
+    <Key>
+      <PropertyRef Name="product_version_mapping_id" />
+    </Key>
+    <Property Name="product_version_mapping_id" Type="Int64" Nullable="false" p1:StoreGeneratedPattern="Identity" />
+    <Property Name="product_id" Type="Int64" />
+    <Property Name="product_version_id" Type="Int64" />
+    <Property Name="created_by" Type="Int64" />
+    <Property Name="created_date" Type="DateTime" Precision="3" />
+    <Property Name="updated_by" Type="Int64" />
+    <Property Name="updated_date" Type="DateTime" Precision="3" />
+    <Property Name="is_active" Type="Boolean" />
+    <Property Name="is_deleted" Type="Boolean" />
+  </EntityType>
+  <EntityType Name="promotion_channel_mapping">
+    <Key>
+      <PropertyRef Name="promotion_channel_mapping_id" />
+    </Key>
+    <Property Name="promotion_channel_mapping_id" Type="Int64" Nullable="false" p1:StoreGeneratedPattern="Identity" />
+    <Property Name="promotion_master_id" Type="Int64" />
+    <Property Name="channel_id" Type="Int64" />
+    <Property Name="is_active" Type="Boolean" Nullable="false" />
+  </EntityType>
+  <EntityType Name="promotion_details">
+    <Key>
+      <PropertyRef Name="promotion_details_id" />
+    </Key>
+    <Property Name="promotion_details_id" Type="Int64" Nullable="false" p1:StoreGeneratedPattern="Identity" />
+    <Property Name="promotion_master_id" Type="Int64" />
+    <Property Name="product_category_id" Type="Int64" />
+    <Property Name="product_id" Type="Int64" />
+    <Property Name="gift_quantity" Type="Int32" />
+  </EntityType>
+  <EntityType Name="promotion_master">
+    <Key>
+      <PropertyRef Name="promotion_master_id" />
+    </Key>
+    <Property Name="promotion_master_id" Type="Int64" Nullable="false" p1:StoreGeneratedPattern="Identity" />
+    <Property Name="promotion_code" Type="String" MaxLength="100" Unicode="true" FixedLength="false" />
+    <Property Name="promotion_name" Type="String" MaxLength="255" Unicode="true" FixedLength="false" />
+    <Property Name="promotion_start_date" Type="DateTime" Precision="0" />
+    <Property Name="promotion_end_date" Type="DateTime" Precision="0" />
+    <Property Name="product_category_id" Type="Int64" />
+    <Property Name="product_id" Type="Int64" />
+    <Property Name="lifting_quantity_for_promotion" Type="Int32" />
+    <Property Name="promotion_type" Type="String" MaxLength="50" Unicode="true" FixedLength="false" />
+    <Property Name="promotion_discount" Type="Decimal" Precision="18" Scale="2" />
+    <Property Name="is_discount_percent" Type="Boolean" />
+    <Property Name="remarks" Type="String" MaxLength="Max" Unicode="true" FixedLength="false" />
+    <Property Name="is_active" Type="Boolean" />
+    <Property Name="created_by" Type="Int64" />
+    <Property Name="created_date" Type="DateTime" Precision="3" />
+    <Property Name="updated_by" Type="Int64" />
+    <Property Name="updated_date" Type="DateTime" Precision="3" />
+  </EntityType>
+  <EntityType Name="purchase_order_details">
+    <Key>
+      <PropertyRef Name="purchase_order_details_id" />
+    </Key>
+    <Property Name="purchase_order_details_id" Type="Int64" Nullable="false" p1:StoreGeneratedPattern="Identity" />
+    <Property Name="purchase_order_master_id" Type="Int64" />
+    <Property Name="product_id" Type="Int64" />
+    <Property Name="product_category_id" Type="Int64" />
+    <Property Name="brand_id" Type="Int64" />
+    <Property Name="color_id" Type="Int64" />
+    <Property Name="unit_id" Type="Int64" />
+    <Property Name="size_id" Type="Int64" />
+    <Property Name="product_version_id" Type="Int64" />
+    <Property Name="quantity" Type="Int32" />
+    <Property Name="pi_quantity" Type="Int32" />
+    <Property Name="receive_qty" Type="Int32" />
+    <Property Name="unit_price" Type="Decimal" Precision="18" Scale="2" />
+    <Property Name="line_total" Type="Decimal" Precision="18" Scale="2" />
+    <Property Name="status" Type="String" MaxLength="50" Unicode="true" FixedLength="false" />
+    <Property Name="vat_pcnt" Type="Decimal" Precision="18" Scale="2" />
+    <Property Name="tax_pcnt" Type="Decimal" Precision="18" Scale="2" />
+    <Property Name="vat_amount" Type="Decimal" Precision="18" Scale="2" />
+    <Property Name="tax_amount" Type="Decimal" Precision="18" Scale="2" />
+    <Property Name="amount" Type="Decimal" Precision="18" Scale="2" />
+    <Property Name="last_modified_date" Type="DateTime" Precision="3" />
+  </EntityType>
+  <EntityType Name="purchase_order_master">
+    <Key>
+      <PropertyRef Name="purchase_order_master_id" />
+    </Key>
+    <Property Name="purchase_order_master_id" Type="Int64" Nullable="false" p1:StoreGeneratedPattern="Identity" />
+    <Property Name="order_no" Type="String" MaxLength="50" Unicode="true" FixedLength="false" />
+    <Property Name="purchase_order_reference_number" Type="String" MaxLength="50" Unicode="true" FixedLength="false" />
+    <Property Name="pi_number" Type="String" MaxLength="50" Unicode="true" FixedLength="false" />
+    <Property Name="order_date" Type="DateTime" Precision="0" />
+    <Property Name="shipping_term" Type="String" MaxLength="50" Unicode="true" FixedLength="false" />
+    <Property Name="shipping_method" Type="String" MaxLength="50" Unicode="true" FixedLength="false" />
+    <Property Name="shipping_terms_id" Type="Int64" />
+    <Property Name="shipping_method_id" Type="Int64" />
+    <Property Name="currency_id" Type="Int64" />
+    <Property Name="status" Type="String" MaxLength="50" Unicode="true" FixedLength="false" />
+    <Property Name="terms_n_condition" Type="String" MaxLength="Max" Unicode="true" FixedLength="false" />
+    <Property Name="pi_terms_n_condition" Type="String" MaxLength="Max" Unicode="true" FixedLength="false" />
+    <Property Name="remarks" Type="String" MaxLength="Max" Unicode="true" FixedLength="false" />
+    <Property Name="company_id" Type="Int64" />
+    <Property Name="expected_shipment_date" Type="DateTime" Precision="0" />
+    <Property Name="supplier_id" Type="Int64" />
+    <Property Name="vat_total" Type="Decimal" Precision="18" Scale="2" />
+    <Property Name="tax_total" Type="Decimal" Precision="18" Scale="2" />
+    <Property Name="total_amount_without_vattax" Type="Decimal" Precision="18" Scale="2" />
+    <Property Name="total_amount_including_vattax" Type="Decimal" Precision="18" Scale="2" />
+    <Property Name="batch_id" Type="Int64" />
+    <Property Name="lc_number" Type="String" MaxLength="100" Unicode="true" FixedLength="false" />
+    <Property Name="noc_number" Type="String" MaxLength="100" Unicode="true" FixedLength="false" />
+    <Property Name="pi_attachment_location" Type="String" MaxLength="Max" Unicode="true" FixedLength="false" />
+    <Property Name="verify_status" Type="String" MaxLength="50" Unicode="true" FixedLength="false" />
+    <Property Name="approve_status" Type="String" MaxLength="50" Unicode="true" FixedLength="false" />
+    <Property Name="created_by" Type="Int64" />
+    <Property Name="created_date" Type="DateTime" Precision="3" />
+    <Property Name="updated_by" Type="Int64" />
+    <Property Name="updated_date" Type="DateTime" Precision="3" />
+    <Property Name="is_active" Type="Boolean" />
+    <Property Name="is_deleted" Type="Boolean" />
+  </EntityType>
+  <EntityType Name="receive">
+    <Key>
+      <PropertyRef Name="receive_id" />
+    </Key>
+    <Property Name="receive_id" Type="Int64" Nullable="false" p1:StoreGeneratedPattern="Identity" />
+    <Property Name="receipt_no" Type="String" MaxLength="50" Unicode="true" FixedLength="false" />
+    <Property Name="receive_date" Type="DateTime" Precision="3" />
+    <Property Name="party_id" Type="Int64" />
+    <Property Name="payment_method_id" Type="Int64" />
+    <Property Name="amount" Type="Decimal" Precision="18" Scale="2" />
+    <Property Name="bank_id" Type="Int64" />
+    <Property Name="bank_branch_id" Type="Int64" />
+    <Property Name="bank_account_id" Type="Int64" />
+    <Property Name="bank_charge" Type="Decimal" Precision="18" Scale="2" />
+    <Property Name="is_varified" Type="Boolean" />
+    <Property Name="status" Type="String" MaxLength="50" Unicode="true" FixedLength="false" />
+    <Property Name="invoice_no" Type="String" MaxLength="50" Unicode="true" FixedLength="false" />
+    <Property Name="last_invoice_balance" Type="Decimal" Precision="18" Scale="2" />
+    <Property Name="representative" Type="String" MaxLength="100" Unicode="true" FixedLength="false" />
+    <Property Name="remarks" Type="String" MaxLength="Max" Unicode="true" FixedLength="false" />
+    <Property Name="payment_req_id" Type="Int64" />
+    <Property Name="document_attachment" Type="String" MaxLength="Max" Unicode="true" FixedLength="false" />
+    <Property Name="approved_by" Type="Int64" />
+    <Property Name="cheque_no" Type="String" MaxLength="50" Unicode="true" FixedLength="false" />
+    <Property Name="user_id" Type="Int64" />
+    <Property Name="received_invoice_no" Type="String" MaxLength="50" Unicode="true" FixedLength="false" />
+    <Property Name="owner_party_id" Type="Int64" />
+    <Property Name="created_by" Type="Int64" />
+    <Property Name="created_date" Type="DateTime" Precision="3" />
+    <Property Name="updated_by" Type="Int64" />
+    <Property Name="updated_date" Type="DateTime" Precision="3" />
+    <Property Name="is_active" Type="Boolean" />
+    <Property Name="is_deleted" Type="Boolean" />
+    <Property Name="requisition_master_id" Type="Int64" />
+  </EntityType>
+  <EntityType Name="region">
+    <Key>
+      <PropertyRef Name="region_id" />
+    </Key>
+    <Property Name="region_id" Type="Int64" Nullable="false" p1:StoreGeneratedPattern="Identity" />
+    <Property Name="region_name" Type="String" MaxLength="100" Unicode="true" FixedLength="false" />
+    <Property Name="region_code" Type="String" MaxLength="50" Unicode="true" FixedLength="false" />
+    <Property Name="is_active" Type="Boolean" />
+    <Property Name="created_date" Type="DateTime" Precision="3" />
+    <Property Name="created_by" Type="Int64" />
+    <Property Name="update_date" Type="DateTime" Precision="3" />
+    <Property Name="updated_by" Type="Int64" />
+  </EntityType>
+  <EntityType Name="requisition_details">
+    <Key>
+      <PropertyRef Name="requisition_details_id" />
+    </Key>
+    <Property Name="requisition_details_id" Type="Int64" Nullable="false" p1:StoreGeneratedPattern="Identity" />
+    <Property Name="requisition_master_id" Type="Int64" />
+    <Property Name="promotion_master_id" Type="Int64" />
+    <Property Name="product_category_id" Type="Int64" />
+    <Property Name="product_id" Type="Int64" />
+    <Property Name="unit_id" Type="Int64" />
+    <Property Name="color_id" Type="Int64" />
+    <Property Name="brand_id" Type="Int64" />
+    <Property Name="quantity" Type="Int32" />
+    <Property Name="delivered_quantity" Type="Int32" />
+    <Property Name="price" Type="Decimal" Precision="18" Scale="2" />
+    <Property Name="line_total" Type="Decimal" Precision="18" Scale="2" />
+    <Property Name="is_gift" Type="Boolean" />
+    <Property Name="is_live_dummy" Type="Boolean" />
+    <Property Name="gift_type" Type="String" MaxLength="50" Unicode="true" FixedLength="false" />
+    <Property Name="product_version_id" Type="Int64" />
+    <Property Name="price_amount" Type="Decimal" Precision="18" Scale="2" />
+    <Property Name="discount" Type="Decimal" Precision="18" Scale="2" />
+    <Property Name="discount_amount" Type="Decimal" Precision="18" Scale="2" />
+    <Property Name="invoice_quantity" Type="Int32" />
+    <Property Name="return_quantity" Type="Int32" />
+  </EntityType>
+  <EntityType Name="requisition_master">
+    <Key>
+      <PropertyRef Name="requisition_master_id" />
+    </Key>
+    <Property Name="requisition_master_id" Type="Int64" Nullable="false" p1:StoreGeneratedPattern="Identity" />
+    <Property Name="party_id" Type="Int64" />
+    <Property Name="requisition_code" Type="String" MaxLength="50" Unicode="true" FixedLength="false" />
+    <Property Name="requisition_date" Type="DateTime" Precision="3" />
+    <Property Name="expected_receiving_date" Type="DateTime" Precision="0" />
+    <Property Name="status" Type="String" MaxLength="50" Unicode="true" FixedLength="false" />
+    <Property Name="is_invoice_created" Type="Boolean" />
+    <Property Name="remarks" Type="String" MaxLength="Max" Unicode="true" FixedLength="false" />
+    <Property Name="delivery_status" Type="String" MaxLength="50" Unicode="true" FixedLength="false" />
+    <Property Name="warehouse_from" Type="Int64" />
+    <Property Name="amount" Type="Decimal" Precision="18" Scale="2" />
+    <Property Name="payment_method_id" Type="Int64" />
+    <Property Name="edit_count" Type="Int32" />
+    <Property Name="discount_amount" Type="Decimal" Precision="18" Scale="2" />
+    <Property Name="incentive_amount" Type="Decimal" Precision="18" Scale="2" />
+    <Property Name="incentive_percentage" Type="Decimal" Precision="18" Scale="2" />
+    <Property Name="discount_percentage" Type="Decimal" Precision="18" Scale="2" />
+    <Property Name="finance_status" Type="String" MaxLength="50" Unicode="true" FixedLength="false" />
+    <Property Name="owner_party_id" Type="Int64" />
+    <Property Name="created_by" Type="Int64" />
+    <Property Name="created_date" Type="DateTime" Precision="3" />
+    <Property Name="updated_by" Type="Int64" />
+    <Property Name="updated_date" Type="DateTime" Precision="3" />
+    <Property Name="is_active" Type="Boolean" />
+    <Property Name="is_deleted" Type="Boolean" />
+    <Property Name="region_id" Type="Int64" />
+    <Property Name="area_id" Type="Int64" />
+    <Property Name="company_id" Type="Int64" />
+    <Property Name="party_type_id" Type="Int64" />
+    <Property Name="credit_limit" Type="Decimal" Precision="18" Scale="2" />
+    <Property Name="forwarded_by" Type="Int64" />
+    <Property Name="forwarded_date" Type="DateTime" Precision="3" />
+    <Property Name="forwarded_status" Type="String" MaxLength="100" Unicode="true" FixedLength="false" />
+    <Property Name="verified_by" Type="Int64" />
+    <Property Name="verified_date" Type="DateTime" Precision="3" />
+    <Property Name="approved_by" Type="Int64" />
+    <Property Name="approved_date" Type="DateTime" Precision="3" />
+    <Property Name="credit_term" Type="DateTime" Precision="3" />
+    <Property Name="contact_person_mobile" Type="String" MaxLength="50" Unicode="true" FixedLength="false" />
+    <Property Name="address" Type="String" MaxLength="300" Unicode="true" FixedLength="false" />
+    <Property Name="is_demo" Type="String" MaxLength="50" Unicode="true" FixedLength="false" />
+    <Property Name="territory_id" Type="Int64" />
+    <Property Name="requisition_type" Type="String" MaxLength="100" Unicode="true" FixedLength="false" />
+    <Property Name="forward_2_status" Type="String" MaxLength="50" Unicode="true" FixedLength="false" />
+    <Property Name="forward_2_by" Type="Int64" />
+    <Property Name="forward_2_date" Type="DateTime" Precision="3" />
+    <Property Name="reference_no" Type="String" MaxLength="100" Unicode="true" FixedLength="false" />
+    <Property Name="price_type" Type="String" MaxLength="100" Unicode="true" FixedLength="false" />
+    <Property Name="is_requisition_closed" Type="Boolean" />
+    <Property Name="invoicable_quantity" Type="Int32" />
+    <Property Name="return_quantity" Type="Int32" />
+    <Property Name="sales_head_recommendation" Type="String" MaxLength="300" Unicode="true" FixedLength="false" />
+    <Property Name="operation_remarks" Type="String" MaxLength="300" Unicode="true" FixedLength="false" />
+    <Property Name="accounts_remarks" Type="String" MaxLength="300" Unicode="true" FixedLength="false" />
+  </EntityType>
+  <EntityType Name="retailer_type">
+    <Key>
+      <PropertyRef Name="retailer_type_id" />
+    </Key>
+    <Property Name="retailer_type_id" Type="Int64" Nullable="false" p1:StoreGeneratedPattern="Identity" />
+    <Property Name="retailer_type_name" Type="String" MaxLength="100" Unicode="true" FixedLength="false" />
+    <Property Name="retailer_type_prefix" Type="String" MaxLength="50" Unicode="true" FixedLength="false" />
+    <Property Name="created_by" Type="Int64" />
+    <Property Name="created_date" Type="DateTime" Precision="3" />
+    <Property Name="updated_by" Type="Int64" />
+    <Property Name="updated_date" Type="DateTime" Precision="3" />
+    <Property Name="is_active" Type="Boolean" />
+    <Property Name="is_deleted" Type="Boolean" />
+    <Property Name="credit_limit" Type="Decimal" Precision="18" Scale="2" />
+  </EntityType>
+  <EntityType Name="return_details">
+    <Key>
+      <PropertyRef Name="return_details_id" />
+    </Key>
+    <Property Name="return_details_id" Type="Int64" Nullable="false" p1:StoreGeneratedPattern="Identity" />
+    <Property Name="return_master_id" Type="Int64" />
+    <Property Name="invoice_master_id" Type="Int64" />
+    <Property Name="brand_id" Type="Int64" />
+    <Property Name="product_id" Type="Int64" />
+    <Property Name="color_id" Type="Int64" />
+    <Property Name="product_version_id" Type="Int64" />
+    <Property Name="unit_id" Type="Int64" />
+    <Property Name="returned_qty" Type="Int32" />
+    <Property Name="price" Type="Decimal" Precision="18" Scale="2" />
+    <Property Name="imei_no" Type="String" MaxLength="50" Unicode="true" FixedLength="false" />
+    <Property Name="imei_no2" Type="String" MaxLength="50" Unicode="true" FixedLength="false" />
+    <Property Name="repair_date" Type="DateTime" Precision="0" />
+    <Property Name="item_status" Type="String" MaxLength="50" Unicode="true" FixedLength="false" />
+    <Property Name="replaced_imei_no" Type="String" MaxLength="50" Unicode="true" FixedLength="false" />
+    <Property Name="replaced_by" Type="Int64" />
+    <Property Name="replace_date" Type="DateTime" Precision="0" />
+    <Property Name="verify_status" Type="Boolean" />
+    <Property Name="verify_date" Type="DateTime" Precision="0" />
+    <Property Name="doa_received_by" Type="Int64" />
+    <Property Name="doa_receive_date" Type="DateTime" Precision="0" />
+    <Property Name="warehouse_id" Type="Int64" />
+    <Property Name="invoice_no" Type="String" MaxLength="50" Unicode="true" FixedLength="false" />
+    <Property Name="invoice_date" Type="DateTime" Precision="0" />
+  </EntityType>
+  <EntityType Name="return_master">
+    <Key>
+      <PropertyRef Name="return_master_id" />
+    </Key>
+    <Property Name="return_master_id" Type="Int64" Nullable="false" p1:StoreGeneratedPattern="Identity" />
+    <Property Name="return_code" Type="String" MaxLength="50" Unicode="true" FixedLength="false" />
+    <Property Name="return_date" Type="DateTime" Precision="3" />
+    <Property Name="return_type" Type="Int64" />
+    <Property Name="party_id" Type="Int64" />
+    <Property Name="remarks" Type="String" MaxLength="Max" Unicode="true" FixedLength="false" />
+    <Property Name="doa_warehouse_id" Type="Int64" />
+    <Property Name="doa_varify_status" Type="String" MaxLength="50" Unicode="true" FixedLength="false" />
+    <Property Name="doa_verified_date" Type="DateTime" Precision="0" />
+    <Property Name="doa_verified_by" Type="Int64" />
+    <Property Name="doa_receive_status" Type="String" MaxLength="50" Unicode="true" FixedLength="false" />
+    <Property Name="doa_received_by" Type="Int64" />
+    <Property Name="doa_receive_date" Type="DateTime" Precision="0" />
+    <Property Name="returned_quantity" Type="Int32" />
+    <Property Name="returned_by" Type="Int64" />
+    <Property Name="invoice_master_id" Type="Int64" />
+    <Property Name="created_by" Type="Int64" />
+    <Property Name="created_date" Type="DateTime" Precision="3" />
+    <Property Name="updated_by" Type="Int64" />
+    <Property Name="updated_date" Type="DateTime" Precision="3" />
+    <Property Name="is_active" Type="Boolean" />
+    <Property Name="is_deleted" Type="Boolean" />
+  </EntityType>
+  <EntityType Name="return_type">
+    <Key>
+      <PropertyRef Name="return_type_id" />
+    </Key>
+    <Property Name="return_type_id" Type="Int64" Nullable="false" p1:StoreGeneratedPattern="Identity" />
+    <Property Name="return_type_name" Type="String" MaxLength="100" Unicode="true" FixedLength="false" />
+    <Property Name="remarks" Type="String" MaxLength="100" Unicode="true" FixedLength="false" />
+  </EntityType>
+  <EntityType Name="role">
+    <Key>
+      <PropertyRef Name="role_id" />
+    </Key>
+    <Property Name="role_id" Type="Int64" Nullable="false" p1:StoreGeneratedPattern="Identity" />
+    <Property Name="role_name" Type="String" MaxLength="100" Unicode="true" FixedLength="false" />
+    <Property Name="company_id" Type="Int64" />
+    <Property Name="is_fixed" Type="Boolean" />
+    <Property Name="role_type_id" Type="Int64" />
+    <Property Name="source_type" Type="String" MaxLength="50" Unicode="true" FixedLength="false" />
+    <Property Name="created_by" Type="Int64" />
+    <Property Name="created_date" Type="DateTime" Precision="3" />
+    <Property Name="updated_by" Type="Int64" />
+    <Property Name="updated_date" Type="DateTime" Precision="3" />
+    <Property Name="is_active" Type="Boolean" />
+    <Property Name="is_deleted" Type="Boolean" />
+  </EntityType>
+  <EntityType Name="role_type">
+    <Key>
+      <PropertyRef Name="role_type_id" />
+    </Key>
+    <Property Name="role_type_id" Type="Int64" Nullable="false" p1:StoreGeneratedPattern="Identity" />
+    <Property Name="role_type_name" Type="String" MaxLength="50" Unicode="true" FixedLength="false" />
+    <Property Name="description" Type="String" MaxLength="Max" Unicode="true" FixedLength="false" />
+    <Property Name="party_role_id" Type="Int64" />
+    <Property Name="created_by" Type="Int64" />
+    <Property Name="created_date" Type="DateTime" Precision="3" />
+    <Property Name="updated_by" Type="Int64" />
+    <Property Name="updated_date" Type="DateTime" Precision="3" />
+    <Property Name="is_active" Type="Boolean" />
+    <Property Name="is_deleted" Type="Boolean" />
+  </EntityType>
+  <EntityType Name="sales_type">
+    <Key>
+      <PropertyRef Name="sales_type_id" />
+    </Key>
+    <Property Name="sales_type_id" Type="Int64" Nullable="false" p1:StoreGeneratedPattern="Identity" />
+    <Property Name="sales_type1" Type="String" MaxLength="50" Unicode="true" FixedLength="false" />
+    <Property Name="is_active" Type="Boolean" />
+  </EntityType>
+  <EntityType Name="sbu">
+    <Key>
+      <PropertyRef Name="sbu_id" />
+    </Key>
+    <Property Name="sbu_id" Type="Int64" Nullable="false" p1:StoreGeneratedPattern="Identity" />
+    <Property Name="sbu_name" Type="String" MaxLength="Max" Unicode="true" FixedLength="false" />
+    <Property Name="is_active" Type="Boolean" />
+    <Property Name="is_deleted" Type="Boolean" />
+    <Property Name="created_by" Type="Int64" />
+    <Property Name="created_date" Type="DateTime" Precision="3" />
+    <Property Name="updated_by" Type="Int64" />
+    <Property Name="updated_date" Type="DateTime" Precision="3" />
+  </EntityType>
+  <EntityType Name="shipping_method">
+    <Key>
+      <PropertyRef Name="shipping_method_id" />
+    </Key>
+    <Property Name="shipping_method_id" Type="Int64" Nullable="false" p1:StoreGeneratedPattern="Identity" />
+    <Property Name="shipping_method_name" Type="String" MaxLength="Max" Unicode="true" FixedLength="false" />
+    <Property Name="is_active" Type="Boolean" />
+    <Property Name="is_deleted" Type="Boolean" />
+    <Property Name="created_by" Type="Int64" />
+    <Property Name="created_date" Type="DateTime" Precision="3" />
+    <Property Name="updated_by" Type="Int64" />
+    <Property Name="updated_date" Type="DateTime" Precision="3" />
+  </EntityType>
+  <EntityType Name="shipping_terms">
+    <Key>
+      <PropertyRef Name="shipping_terms_id" />
+    </Key>
+    <Property Name="shipping_terms_id" Type="Int64" Nullable="false" p1:StoreGeneratedPattern="Identity" />
+    <Property Name="shipping_terms_name" Type="String" MaxLength="Max" Unicode="true" FixedLength="false" />
+    <Property Name="is_active" Type="Boolean" />
+    <Property Name="is_deleted" Type="Boolean" />
+    <Property Name="created_by" Type="Int64" />
+    <Property Name="created_date" Type="DateTime" Precision="3" />
+    <Property Name="updated_by" Type="Int64" />
+    <Property Name="updated_date" Type="DateTime" Precision="3" />
+  </EntityType>
+  <EntityType Name="software_process_module">
+    <Key>
+      <PropertyRef Name="process_code_id" />
+    </Key>
+    <Property Name="process_code_id" Type="Int64" Nullable="false" p1:StoreGeneratedPattern="Identity" />
+    <Property Name="process_code_name" Type="String" MaxLength="250" Unicode="true" FixedLength="false" />
+  </EntityType>
+  <EntityType Name="supplier">
+    <Key>
+      <PropertyRef Name="supplier_id" />
+    </Key>
+    <Property Name="supplier_id" Type="Int64" Nullable="false" p1:StoreGeneratedPattern="Identity" />
+    <Property Name="supplier_name" Type="String" MaxLength="100" Unicode="true" FixedLength="false" />
+    <Property Name="supplier_code" Type="String" MaxLength="100" Unicode="true" FixedLength="false" />
+    <Property Name="supplier_type_id" Type="Int64" />
+    <Property Name="company_address" Type="String" MaxLength="Max" Unicode="true" FixedLength="false" />
+    <Property Name="factory_address" Type="String" MaxLength="Max" Unicode="true" FixedLength="false" />
+    <Property Name="phone" Type="String" MaxLength="100" Unicode="true" FixedLength="false" />
+    <Property Name="mobile" Type="String" MaxLength="100" Unicode="true" FixedLength="false" />
+    <Property Name="email" Type="String" MaxLength="100" Unicode="true" FixedLength="false" />
+    <Property Name="contact_person" Type="String" MaxLength="100" Unicode="true" FixedLength="false" />
+    <Property Name="total_debit" Type="Decimal" Precision="18" Scale="2" />
+    <Property Name="total_credit" Type="Decimal" Precision="18" Scale="2" />
+    <Property Name="balance" Type="Decimal" Precision="18" Scale="2" />
+    <Property Name="vat_id" Type="String" MaxLength="100" Unicode="true" FixedLength="false" />
+    <Property Name="tin_no" Type="String" MaxLength="100" Unicode="true" FixedLength="false" />
+    <Property Name="created_by" Type="Int64" />
+    <Property Name="created_date" Type="DateTime" Precision="3" />
+    <Property Name="updated_by" Type="Int64" />
+    <Property Name="updated_date" Type="DateTime" Precision="3" />
+    <Property Name="is_active" Type="Boolean" />
+    <Property Name="is_deleted" Type="Boolean" />
+    <Property Name="contact_person2" Type="String" MaxLength="100" Unicode="true" FixedLength="false" />
+    <Property Name="email2" Type="String" MaxLength="100" Unicode="true" FixedLength="false" />
+    <Property Name="receiving_company_name" Type="String" MaxLength="Max" Unicode="true" FixedLength="false" />
+    <Property Name="receiving_company_person" Type="String" MaxLength="Max" Unicode="true" FixedLength="false" />
+    <Property Name="receiving_company_contact_email" Type="String" MaxLength="Max" Unicode="true" FixedLength="false" />
+  </EntityType>
+  <EntityType Name="supplier_type">
+    <Key>
+      <PropertyRef Name="supplier_type_id" />
+    </Key>
+    <Property Name="supplier_type_id" Type="Int64" Nullable="false" p1:StoreGeneratedPattern="Identity" />
+    <Property Name="supplier_type_name" Type="String" MaxLength="50" Unicode="true" FixedLength="false" />
+    <Property Name="created_by" Type="Int64" />
+    <Property Name="created_date" Type="DateTime" Precision="3" />
+    <Property Name="updated_by" Type="Int64" />
+    <Property Name="updated_date" Type="DateTime" Precision="3" />
+    <Property Name="is_active" Type="Boolean" />
+    <Property Name="is_deleted" Type="Boolean" />
+  </EntityType>
+  <EntityType Name="terms_and_condition">
+    <Key>
+      <PropertyRef Name="terms_and_condition_id" />
+    </Key>
+    <Property Name="terms_and_condition_id" Type="Int64" Nullable="false" p1:StoreGeneratedPattern="Identity" />
+    <Property Name="terms_and_condition_description" Type="String" MaxLength="Max" Unicode="true" FixedLength="false" />
+    <Property Name="terms_condition_header" Type="String" MaxLength="50" Unicode="true" FixedLength="false" />
+    <Property Name="is_active" Type="Boolean" Nullable="false" />
+    <Property Name="created_date" Type="DateTime" Precision="3" />
+    <Property Name="created_by" Type="Int64" />
+    <Property Name="update_date" Type="DateTime" Precision="3" />
+    <Property Name="updated_by" Type="Int64" />
+  </EntityType>
+  <EntityType Name="territory">
+    <Key>
+      <PropertyRef Name="territory_id" />
+    </Key>
+    <Property Name="territory_id" Type="Int64" Nullable="false" p1:StoreGeneratedPattern="Identity" />
+    <Property Name="area_id" Type="Int64" />
+    <Property Name="territory_name" Type="String" MaxLength="100" Unicode="true" FixedLength="false" />
+    <Property Name="territory_code" Type="String" MaxLength="20" Unicode="true" FixedLength="false" />
+    <Property Name="is_active" Type="Boolean" />
+    <Property Name="created_by" Type="Int64" />
+    <Property Name="created_date" Type="DateTime" Precision="3" />
+    <Property Name="updated_by" Type="Int64" />
+    <Property Name="updated_date" Type="DateTime" Precision="3" />
+  </EntityType>
+  <EntityType Name="to_delivery_details">
+    <Key>
+      <PropertyRef Name="to_delivery_details_id" />
+    </Key>
+    <Property Name="to_delivery_details_id" Type="Int64" Nullable="false" p1:StoreGeneratedPattern="Identity" />
+    <Property Name="to_delivery_master_id" Type="Int64" />
+    <Property Name="product_id" Type="Int64" />
+    <Property Name="unit_id" Type="Int64" />
+    <Property Name="color_id" Type="Int64" />
+    <Property Name="product_version_id" Type="Int64" />
+    <Property Name="to_quantity" Type="Int32" />
+    <Property Name="delivered_quantity" Type="Int32" />
+  </EntityType>
+  <EntityType Name="to_delivery_master">
+    <Key>
+      <PropertyRef Name="to_delivery_master_id" />
+    </Key>
+    <Property Name="to_delivery_master_id" Type="Int64" Nullable="false" p1:StoreGeneratedPattern="Identity" />
+    <Property Name="to_delivery_no" Type="String" MaxLength="50" Unicode="true" FixedLength="false" />
+    <Property Name="to_delivery_date" Type="DateTime" Precision="3" />
+    <Property Name="to_delivery_address" Type="String" MaxLength="Max" Unicode="true" FixedLength="false" />
+    <Property Name="delivery_method" Type="String" MaxLength="50" Unicode="true" FixedLength="false" />
+    <Property Name="to_logistics_delivered_by" Type="String" MaxLength="250" Unicode="true" FixedLength="false" />
+    <Property Name="transfer_order_master_id" Type="Int64" />
+    <Property Name="courier_id" Type="Int64" />
+    <Property Name="company_id" Type="Int64" />
+    <Property Name="courier_slip_no" Type="String" MaxLength="50" Unicode="true" FixedLength="false" />
+    <Property Name="from_warehouse_id" Type="Int64" />
+    <Property Name="to_warehouse_id" Type="Int64" />
+    <Property Name="status" Type="String" MaxLength="50" Unicode="true" FixedLength="false" />
+    <Property Name="remarks" Type="String" MaxLength="Max" Unicode="true" FixedLength="false" />
+    <Property Name="vehicle_no" Type="String" MaxLength="100" Unicode="true" FixedLength="false" />
+    <Property Name="truck_driver_name" Type="String" MaxLength="100" Unicode="true" FixedLength="false" />
+    <Property Name="truck_driver_mobile" Type="String" MaxLength="100" Unicode="true" FixedLength="false" />
+    <Property Name="created_by" Type="Int64" />
+    <Property Name="created_date" Type="DateTime" Precision="3" />
+    <Property Name="updated_by" Type="Int64" />
+    <Property Name="updated_date" Type="DateTime" Precision="3" />
+    <Property Name="is_active" Type="Boolean" />
+    <Property Name="is_deleted" Type="Boolean" />
+  </EntityType>
+  <EntityType Name="transaction_configuration">
+    <Key>
+      <PropertyRef Name="transaction_configuration_id" />
+    </Key>
+    <Property Name="transaction_configuration_id" Type="Int64" Nullable="false" p1:StoreGeneratedPattern="Identity" />
+    <Property Name="transaction_type" Type="String" MaxLength="250" Unicode="true" FixedLength="false" />
+    <Property Name="is_dr" Type="Boolean" />
+    <Property Name="is_cr" Type="Boolean" />
+    <Property Name="created_by" Type="Int64" />
+    <Property Name="created_date" Type="DateTime" Precision="3" />
+    <Property Name="updated_by" Type="Int64" />
+    <Property Name="updated_date" Type="DateTime" Precision="3" />
+    <Property Name="is_active" Type="Boolean" />
+    <Property Name="is_deleted" Type="Boolean" />
+  </EntityType>
+  <EntityType Name="transfer_order_details">
+    <Key>
+      <PropertyRef Name="transfer_order_details_id" />
+    </Key>
+    <Property Name="transfer_order_details_id" Type="Int64" Nullable="false" p1:StoreGeneratedPattern="Identity" />
+    <Property Name="transfer_order_master_id" Type="Int64" />
+    <Property Name="product_id" Type="Int64" />
+    <Property Name="product_category_id" Type="Int64" />
+    <Property Name="brand_id" Type="Int64" />
+    <Property Name="color_id" Type="Int64" />
+    <Property Name="unit_id" Type="Int64" />
+    <Property Name="size_id" Type="Int64" />
+    <Property Name="product_version_id" Type="Int64" />
+    <Property Name="quantity" Type="Int32" />
+    <Property Name="transfered_quantity" Type="Int32" />
+    <Property Name="unit_price" Type="Decimal" Precision="18" Scale="2" />
+    <Property Name="line_total" Type="Decimal" Precision="18" Scale="2" />
+    <Property Name="status" Type="String" MaxLength="50" Unicode="true" FixedLength="false" />
+    <Property Name="last_modified_date" Type="DateTime" Precision="3" />
+  </EntityType>
+  <EntityType Name="transfer_order_master">
+    <Key>
+      <PropertyRef Name="transfer_order_master_id" />
+    </Key>
+    <Property Name="transfer_order_master_id" Type="Int64" Nullable="false" p1:StoreGeneratedPattern="Identity" />
+    <Property Name="order_no" Type="String" MaxLength="50" Unicode="true" FixedLength="false" />
+    <Property Name="order_date" Type="DateTime" Precision="0" />
+    <Property Name="status" Type="String" MaxLength="50" Unicode="true" FixedLength="false" />
+    <Property Name="remarks" Type="String" MaxLength="Max" Unicode="true" FixedLength="false" />
+    <Property Name="expected_transfer_date" Type="DateTime" Precision="0" />
+    <Property Name="total_amount" Type="Decimal" Precision="18" Scale="2" />
+    <Property Name="from_warehouse_id" Type="Int64" />
+    <Property Name="to_warehouse_id" Type="Int64" />
+    <Property Name="created_by" Type="Int64" />
+    <Property Name="created_date" Type="DateTime" Precision="3" />
+    <Property Name="updated_by" Type="Int64" />
+    <Property Name="updated_date" Type="DateTime" Precision="3" />
+    <Property Name="is_active" Type="Boolean" />
+    <Property Name="is_deleted" Type="Boolean" />
+  </EntityType>
+  <EntityType Name="unit">
+    <Key>
+      <PropertyRef Name="unit_id" />
+    </Key>
+    <Property Name="unit_id" Type="Int64" Nullable="false" p1:StoreGeneratedPattern="Identity" />
+    <Property Name="unit_name" Type="String" MaxLength="50" Unicode="true" FixedLength="false" />
+    <Property Name="created_by" Type="Int64" />
+    <Property Name="created_date" Type="DateTime" Precision="3" />
+    <Property Name="updated_by" Type="Int64" />
+    <Property Name="updated_date" Type="DateTime" Precision="3" />
+    <Property Name="is_active" Type="Boolean" />
+    <Property Name="is_deleted" Type="Boolean" />
+  </EntityType>
+  <EntityType Name="user_log">
+    <Key>
+      <PropertyRef Name="ulogo_id" />
+    </Key>
+    <Property Name="ulogo_id" Type="Int64" Nullable="false" p1:StoreGeneratedPattern="Identity" />
+    <Property Name="user_id" Type="Int64" />
+    <Property Name="login_time" Type="Time" Precision="7" />
+    <Property Name="login_date" Type="DateTime" Precision="3" />
+    <Property Name="ip_address" Type="String" MaxLength="100" Unicode="true" FixedLength="false" />
+    <Property Name="logout_time" Type="Time" Precision="7" />
+    <Property Name="logout_date" Type="DateTime" Precision="3" />
+    <Property Name="login_name" Type="String" MaxLength="50" Unicode="true" FixedLength="false" />
+  </EntityType>
+  <EntityType Name="user_permission">
+    <Key>
+      <PropertyRef Name="user_permission_id" />
+    </Key>
+    <Property Name="user_permission_id" Type="Int64" Nullable="false" p1:StoreGeneratedPattern="Identity" />
+    <Property Name="user_au_id" Type="Int64" />
+    <Property Name="user_control_id" Type="Int64" />
+    <Property Name="user_permission_status" Type="Int64" />
+    <Property Name="user_role_id" Type="Int64" />
+  </EntityType>
+  <EntityType Name="user">
+    <Key>
+      <PropertyRef Name="user_id" />
+    </Key>
+    <Property Name="user_id" Type="Int64" Nullable="false" p1:StoreGeneratedPattern="Identity" />
+    <Property Name="full_name" Type="String" MaxLength="100" Unicode="true" FixedLength="false" />
+    <Property Name="login_name" Type="String" MaxLength="100" Unicode="true" FixedLength="false" />
+    <Property Name="password" Type="String" MaxLength="100" Unicode="true" FixedLength="false" />
+    <Property Name="role_id" Type="Int64" />
+    <Property Name="company_id" Type="Int64" />
+    <Property Name="branch_id" Type="Int64" />
+    <Property Name="party_id" Type="Int64" />
+    <Property Name="is_new_pass" Type="Boolean" />
+    <Property Name="emp_id" Type="Int64" />
+    <Property Name="created_by" Type="Int64" />
+    <Property Name="created_date" Type="DateTime" Precision="3" />
+    <Property Name="updated_by" Type="Int64" />
+    <Property Name="updated_date" Type="DateTime" Precision="3" />
+    <Property Name="is_active" Type="Boolean" />
+    <Property Name="is_deleted" Type="Boolean" />
+  </EntityType>
+  <EntityType Name="warehouse">
+    <Key>
+      <PropertyRef Name="warehouse_id" />
+    </Key>
+    <Property Name="warehouse_id" Type="Int64" Nullable="false" p1:StoreGeneratedPattern="Identity" />
+    <Property Name="warehouse_name" Type="String" MaxLength="100" Unicode="true" FixedLength="false" />
+    <Property Name="warehouse_code" Type="String" MaxLength="100" Unicode="true" FixedLength="false" />
+    <Property Name="warehouse_address" Type="String" MaxLength="Max" Unicode="true" FixedLength="false" />
+    <Property Name="warehouse_incharge" Type="Int64" />
+    <Property Name="warehouse_type" Type="String" MaxLength="50" Unicode="true" FixedLength="false" />
+    <Property Name="party_id" Type="Int64" />
+    <Property Name="party_type_id" Type="Int64" />
+    <Property Name="province_id" Type="Int64" />
+    <Property Name="country_id" Type="Int64" />
+    <Property Name="city_id" Type="Int64" />
+    <Property Name="created_by" Type="Int64" />
+    <Property Name="created_date" Type="DateTime" Precision="3" />
+    <Property Name="updated_by" Type="Int64" />
+    <Property Name="updated_date" Type="DateTime" Precision="3" />
+    <Property Name="is_active" Type="Boolean" />
+    <Property Name="is_deleted" Type="Boolean" />
+    <Property Name="region_id" Type="Int64" />
+    <Property Name="area_id" Type="Int64" />
+    <Property Name="territory_id" Type="Int64" />
+  </EntityType>
+  <EntityType Name="product_price_mapping">
+    <Key>
+      <PropertyRef Name="product_price_mapping_id" />
+    </Key>
+    <Property Type="Int64" Name="product_price_mapping_id" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Type="Int64" Name="product_id" />
+    <Property Type="Int64" Name="product_version_id" />
+    <Property Type="Int64" Name="color_id" />
+    <Property Type="Boolean" Name="has_serial" />
+    <Property Type="Decimal" Name="dealer_cost" Precision="18" Scale="2" />
+    <Property Type="Decimal" Name="b2b_cost" Precision="18" Scale="2" />
+    <Property Type="Decimal" Name="telco_cost" Precision="18" Scale="2" />
+    <Property Type="Decimal" Name="corporate_cost" Precision="18" Scale="2" />
+    <Property Type="Decimal" Name="internal_cost" Precision="18" Scale="2" />
+    <Property Type="Decimal" Name="online_cost" Precision="18" Scale="2" />
+    <Property Type="Decimal" Name="gift_cost" Precision="18" Scale="2" />
+    <Property Type="Decimal" Name="emi_cost" Precision="18" Scale="2" />
+    <Property Type="Decimal" Name="retailer_cost" Precision="18" Scale="2" />
+    <Property Type="Decimal" Name="mrp_cost" Precision="18" Scale="2" />
+    <Property Type="Decimal" Name="land_cost" Precision="18" Scale="2" />
+    <Property Type="Int64" Name="created_by" />
+    <Property Type="Decimal" Name="fin_cost" Precision="18" Scale="2" />
+    <Property Type="Decimal" Name="price_protection" Precision="18" Scale="2" />
+    <Property Type="Decimal" Name="incentive_cost" Precision="18" Scale="2" />
+    <Property Type="Decimal" Name="promotional_cost" Precision="18" Scale="2" />
+    <Property Type="Decimal" Name="marketing_cost" Precision="18" Scale="2" />
+    <Property Type="Decimal" Name="distribution_cost" Precision="18" Scale="2" />
+    <Property Type="Decimal" Name="qc_cost" Precision="18" Scale="2" />
+    <Property Type="Decimal" Name="we_wifi" Precision="18" Scale="2" />
+    <Property Type="Decimal" Name="we_cloud" Precision="18" Scale="2" />
+    <Property Type="Decimal" Name="cost_price" Precision="18" Scale="2" />
+    <Property Type="Decimal" Name="package_cost" Precision="18" Scale="2" />
+    <Property Type="Decimal" Name="total_package_cost" Precision="18" Scale="2" />
+    <Property Type="Decimal" Name="amra_margin" Precision="18" Scale="2" />
+    <Property Type="Decimal" Name="dealer_margin" Precision="18" Scale="2" />
+    <Property Type="Decimal" Name="retailer_margin" Precision="18" Scale="2" />
+    <Property Type="DateTime" Name="created_date" Precision="3" />
+    <Property Type="Int64" Name="updated_by" />
+    <Property Type="DateTime" Name="updated_date" Precision="3" />
+    <Property Type="Boolean" Name="is_active" />
+    <Property Type="Boolean" Name="is_deleted" />
+    <Property Type="String" Name="last_grn_no" MaxLength="20" FixedLength="false" Unicode="true" />
+  </EntityType>
+  <EntityType Name="product_price_mapping_log">
+    <Key>
+      <PropertyRef Name="product_price_mapping_log_id" />
+    </Key>
+    <Property Type="Int64" Name="product_price_mapping_log_id" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Type="Int64" Name="product_price_mapping_id" />
+    <Property Type="Int64" Name="product_id" />
+    <Property Type="Int64" Name="product_version_id" />
+    <Property Type="Int64" Name="color_id" />
+    <Property Type="Decimal" Name="dealer_cost" Precision="18" Scale="2" />
+    <Property Type="Decimal" Name="b2b_cost" Precision="18" Scale="2" />
+    <Property Type="Decimal" Name="telco_cost" Precision="18" Scale="2" />
+    <Property Type="Decimal" Name="corporate_cost" Precision="18" Scale="2" />
+    <Property Type="Decimal" Name="internal_cost" Precision="18" Scale="2" />
+    <Property Type="Decimal" Name="online_cost" Precision="18" Scale="2" />
+    <Property Type="Decimal" Name="gift_cost" Precision="18" Scale="2" />
+    <Property Type="Decimal" Name="emi_cost" Precision="18" Scale="2" />
+    <Property Type="Decimal" Name="retailer_cost" Precision="18" Scale="2" />
+    <Property Type="Decimal" Name="mrp_cost" Precision="18" Scale="2" />
+    <Property Type="Decimal" Name="land_cost" Precision="18" Scale="2" />
+    <Property Type="Int64" Name="created_by" />
+    <Property Type="Decimal" Name="fin_cost" Precision="18" Scale="2" />
+    <Property Type="Decimal" Name="price_protection" Precision="18" Scale="2" />
+    <Property Type="Decimal" Name="incentive_cost" Precision="18" Scale="2" />
+    <Property Type="Decimal" Name="promotional_cost" Precision="18" Scale="2" />
+    <Property Type="Decimal" Name="marketing_cost" Precision="18" Scale="2" />
+    <Property Type="Decimal" Name="distribution_cost" Precision="18" Scale="2" />
+    <Property Type="Decimal" Name="qc_cost" Precision="18" Scale="2" />
+    <Property Type="Decimal" Name="we_wifi" Precision="18" Scale="2" />
+    <Property Type="Decimal" Name="we_cloud" Precision="18" Scale="2" />
+    <Property Type="Decimal" Name="cost_price" Precision="18" Scale="2" />
+    <Property Type="Decimal" Name="package_cost" Precision="18" Scale="2" />
+    <Property Type="Decimal" Name="total_package_cost" Precision="18" Scale="2" />
+    <Property Type="Decimal" Name="amra_margin" Precision="18" Scale="2" />
+    <Property Type="Decimal" Name="dealer_margin" Precision="18" Scale="2" />
+    <Property Type="Decimal" Name="retailer_margin" Precision="18" Scale="2" />
+    <Property Type="DateTime" Name="created_date" Precision="3" />
+    <Property Type="Int64" Name="updated_by" />
+    <Property Type="DateTime" Name="updated_date" Precision="3" />
+    <Property Type="Boolean" Name="is_active" />
+    <Property Type="Boolean" Name="is_deleted" />
+    <Property Type="String" Name="last_grn_no" MaxLength="20" FixedLength="false" Unicode="true" />
+  </EntityType>
+  <EntityType Name="RowCountsAndSize">
+    <Key>
+      <PropertyRef Name="TableId" />
+    </Key>
+    <Property Type="Int32" Name="TableId" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Type="String" Name="TableName" MaxLength="128" FixedLength="false" Unicode="true" />
+    <Property Type="String" Name="rows" MaxLength="11" FixedLength="true" Unicode="false" />
+    <Property Type="String" Name="reserved" MaxLength="18" FixedLength="false" Unicode="false" />
+    <Property Type="String" Name="data" MaxLength="18" FixedLength="false" Unicode="false" />
+    <Property Type="String" Name="index_size" MaxLength="18" FixedLength="false" Unicode="false" />
+    <Property Type="String" Name="unused" MaxLength="18" FixedLength="false" Unicode="false" />
+  </EntityType>
+  <EntityType Name="viewDailySale">
+    <Key>
+      <PropertyRef Name="product_category_id" />
+      <PropertyRef Name="product_id" />
+      <PropertyRef Name="remain_balance_status" />
+    </Key>
+    <Property Type="Int64" Name="invoice_details_id" />
+    <Property Type="String" Name="invoice_no" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Type="DateTime" Name="delivery_date" Precision="0" />
+    <Property Type="String" Name="party_type_name" MaxLength="100" FixedLength="false" Unicode="true" />
+    <Property Type="String" Name="party_name" MaxLength="100" FixedLength="false" Unicode="true" />
+    <Property Type="String" Name="color_name" MaxLength="100" FixedLength="false" Unicode="true" />
+    <Property Type="String" Name="product_version_name" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Type="String" Name="territory_name" MaxLength="100" FixedLength="false" Unicode="true" />
+    <Property Type="String" Name="region_name" MaxLength="100" FixedLength="false" Unicode="true" />
+    <Property Type="String" Name="area_name" MaxLength="100" FixedLength="false" Unicode="true" />
+    <Property Type="String" Name="product_category_name" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Type="Int64" Name="product_category_id" Nullable="false" />
+    <Property Type="Int64" Name="product_id" Nullable="false" />
+    <Property Type="String" Name="product_name" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Type="Int32" Name="delivered_quantity" />
+    <Property Type="Decimal" Name="unit_price" Precision="18" Scale="2" />
+    <Property Type="Decimal" Name="total_price" Precision="29" Scale="2" />
+    <Property Type="Decimal" Name="per_incentive" Precision="18" Scale="0" />
+    <Property Type="Decimal" Name="total_incentive_amt" Precision="18" Scale="2" />
+    <Property Type="Decimal" Name="total_price_after_incen" Precision="19" Scale="2" />
+    <Property Type="Decimal" Name="invoice_total" Precision="18" Scale="2" />
+    <Property Type="Decimal" Name="paid_amount" Precision="18" Scale="2" />
+    <Property Type="Decimal" Name="balance_amount" Precision="19" Scale="2" />
+    <Property Type="String" Name="remain_balance_status" Nullable="false" MaxLength="14" FixedLength="false" Unicode="false" />
+  </EntityType>
+  <EntityType Name="receive_serial_no_details">
+    <Key>
+      <PropertyRef Name="receive_serial_no_details_id" />
+    </Key>
+    <Property Type="Int64" Name="receive_serial_no_details_id" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Type="Int64" Name="product_id" />
+    <Property Type="Int64" Name="brand_id" />
+    <Property Type="Int64" Name="color_id" />
+    <Property Type="Int64" Name="product_version_id" />
+    <Property Type="String" Name="imei_no" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Type="String" Name="imei_no2" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Type="Int64" Name="received_warehouse_id" />
+    <Property Type="Int64" Name="party_id" />
+    <Property Type="Int64" Name="requisition_id" />
+    <Property Type="Int64" Name="grn_master_id" />
+    <Property Type="Int64" Name="deliver_master_id" />
+    <Property Type="Int64" Name="to_deliver_master_id" />
+    <Property Type="DateTime" Name="received_date" Precision="0" />
+    <Property Type="DateTime" Name="deliver_date" Precision="0" />
+    <Property Type="DateTime" Name="delivery_to_retailer_date" Precision="0" />
+    <Property Type="DateTime" Name="sales_date" Precision="0" />
+    <Property Type="Boolean" Name="sales_status" />
+    <Property Type="Boolean" Name="is_gift" />
+    <Property Type="Boolean" Name="price_protected" />
+    <Property Type="Int64" Name="retailer_id" />
+    <Property Type="Boolean" Name="is_return" />
+    <Property Type="Int64" Name="current_warehouse_id" />
+    <Property Type="Boolean" Name="replaced_status" />
+    <Property Type="Boolean" Name="is_live_dummy" />
+    <Property Type="String" Name="gift_type" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Type="Boolean" Name="mrr_saleable" />
+    <Property Type="Boolean" Name="mrr_physical_damage" />
+    <Property Type="Boolean" Name="mrr_box_damage" />
+    <Property Type="Boolean" Name="mrr_status" />
+    <Property Type="Boolean" Name="customs_lost" />
+    <Property Type="Int64" Name="created_by" />
+    <Property Type="DateTime" Name="created_date" Precision="3" />
+    <Property Type="Int64" Name="updated_by" />
+    <Property Type="DateTime" Name="updated_date" Precision="3" />
+    <Property Type="Boolean" Name="is_active" />
+    <Property Type="Boolean" Name="is_deleted" />
+    <Property Type="String" Name="carton_no" MaxLength="50" FixedLength="false" Unicode="true" />
+  </EntityType>
+</Schema>

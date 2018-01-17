@@ -1,0 +1,136 @@
+﻿using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Net;
+using System.Net.Http;
+using System.Web.Http;
+using System.Web.Http.Cors;
+using DMSApi.Models;
+using DMSApi.Models.IRepository;
+using DMSApi.Models.Repository;
+
+namespace DMSApi.Controllers
+{
+    [EnableCors(origins: "*", headers: "*", methods: "*")]
+    public class ProductVersionController : ApiController
+    {
+        private IProductVersionRepository productVersionRepository;
+
+        public ProductVersionController()
+        {
+            this.productVersionRepository = new ProductVersionRepository();
+        }
+
+        public ProductVersionController(IProductVersionRepository productVersionRepository)
+        {
+            this.productVersionRepository = productVersionRepository;
+        }
+
+        [HttpGet, ActionName("GetAllProductVersionForGrid")]
+        public HttpResponseMessage GetAllProductVersionForGrid()
+        {
+            var data = productVersionRepository.GetAllProductVersionForGrid();
+            var formatter = RequestFormat.JsonFormaterString();
+            return Request.CreateResponse(HttpStatusCode.OK, data, formatter);
+        }
+
+        [HttpGet, ActionName("GetAllProductVersionForDropDown")]
+        public HttpResponseMessage GetAllProductVersionForDropDown()
+        {
+            var data = productVersionRepository.GetAllProductVersionForDropDown();
+            var formatter = RequestFormat.JsonFormaterString();
+            return Request.CreateResponse(HttpStatusCode.OK, data, formatter);
+        }
+
+        [System.Web.Http.HttpPost]
+        public HttpResponseMessage Post([FromBody] Models.product_version product_version, long created_by)
+        {
+
+            try
+            {
+                if (string.IsNullOrEmpty(product_version.product_version_name))
+                {
+                    var formatter = RequestFormat.JsonFormaterString();
+                    return Request.CreateResponse(HttpStatusCode.OK, new Confirmation { output = "error", msg = "Version Name is Empty" }, formatter);
+
+                }
+                else
+                {
+                    if (productVersionRepository.CheckDuplicateProductVersion(product_version.product_version_name))
+                    {
+                        var formatter = RequestFormat.JsonFormaterString();
+                        return Request.CreateResponse(HttpStatusCode.OK, new Confirmation { output = "error", msg = "Version Name Already Exists" }, formatter);
+                    }
+                    else
+                    {
+                        product_version insert_product_version = new product_version
+                        {
+                            product_version_name = product_version.product_version_name,
+                        };
+
+                        productVersionRepository.AddProductVersion(insert_product_version, created_by);
+                        var formatter = RequestFormat.JsonFormaterString();
+                        return Request.CreateResponse(HttpStatusCode.OK, new Confirmation { output = "success", msg = "Product Version save successfully" }, formatter);
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                var formatter = RequestFormat.JsonFormaterString();
+                return Request.CreateResponse(HttpStatusCode.OK, new Confirmation { output = "error", msg = ex.ToString() }, formatter);
+            }
+        }
+
+        [System.Web.Http.HttpPut]
+        public HttpResponseMessage Put([FromBody] Models.product_version product_version, long updated_by)
+        {
+            try
+            {
+                product_version updateProductVersion = new Models.product_version
+                    {
+                        product_version_id = product_version.product_version_id,
+                        product_version_name = product_version.product_version_name,
+                        is_active = product_version.is_active
+                    };
+
+                productVersionRepository.EditProductVersion(updateProductVersion, updated_by);
+                var formatter = RequestFormat.JsonFormaterString();
+                return Request.CreateResponse(HttpStatusCode.OK, new Confirmation { output = "success", msg = "Product Version update successfully" }, formatter);
+            }
+            catch (Exception ex)
+            {
+                var formatter = RequestFormat.JsonFormaterString();
+                return Request.CreateResponse(HttpStatusCode.OK, new Confirmation { output = "error", msg = ex.ToString() }, formatter);
+            }
+        }
+
+        [System.Web.Http.HttpDelete]
+        public HttpResponseMessage Delete([FromBody]Models.product_version product_version)
+        {
+            try
+            {
+                bool data = productVersionRepository.DeleteProductVersion(product_version.product_version_id);
+                
+                var formatter = RequestFormat.JsonFormaterString();
+                return Request.CreateResponse(HttpStatusCode.OK, new Confirmation { output = "success", msg = "Product Version Delete Successfully." }, formatter);
+            }
+            catch (Exception ex)
+            {
+                var formatter = RequestFormat.JsonFormaterString();
+                return Request.CreateResponse(HttpStatusCode.OK, new Confirmation { output = "error", msg = ex.ToString() }, formatter);
+            }
+
+        }
+
+        [ActionName("GetProductVersionById")]
+        [System.Web.Http.HttpPost]
+        public HttpResponseMessage GetProductVersionById([FromBody]Models.product_version product_version)
+        {
+            var productVersionId = product_version.product_version_id;
+
+            var data = productVersionRepository.GetProductVersionById(productVersionId);
+            HttpResponseMessage response = Request.CreateResponse(HttpStatusCode.OK, data);
+            return response;
+        }
+    }
+}
